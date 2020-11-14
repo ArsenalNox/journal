@@ -16,7 +16,7 @@
 }
 @font-face {
   font-family: Panton-ExtraLight; /* Имя шрифта */
-  src: url(../fonts/Panton-Regular.ttf); /* Путь к файлу со шрифтом */
+  src: url(../fonts/Panton-ExtraLight.ttf); /* Путь к файлу со шрифтом */
 }
 ul{
   display:flex;
@@ -86,7 +86,6 @@ a {
 .login-form input{
   width: 200px;
   margin: 12px;
-  height: 31px;
   padding: 15px 15px 3px 15px;
   border: 1px solid #cdd1d4;
   font-size: 25px;
@@ -132,7 +131,8 @@ a {
 }
 
 .eljour {
-  margin: auto 0 auto 0;
+  font-size: 20px;
+  margin: auto;
   font-family: Panton-ExtraLight;
 }
 
