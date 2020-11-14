@@ -58,9 +58,14 @@ if(isset($_COOKIE['SSSIDH'])){
       </div>
     </section>
 
+    <div id='costil'>
+      
+    </div>
     <script src="js/index.js" charset="utf-8"></script>
-    <script src="js/main.js" charset="utf-8"></script>
     <script src="js/requests.js" charset="utf-8"></script>
+    <script src="js/main.js" charset="utf-8"></script>
+
     <script src="js/d3.min.js" charset="utf-8"></script>
+    <script src="js/graphs.js" charset="utf-8"></script>
   </body>
 </html>

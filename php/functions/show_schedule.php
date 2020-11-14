@@ -9,7 +9,7 @@ include_once '../dtb/dtb.php';
         $this_monday = str_replace('-','.',$this_monday);
         $day = array('Понедельник','Вторник','Среда','Четверг','Пятница','Суббота','Воскресенье');
         $sch = "schedule_".$this_monday."_".$class;
-        $sql = "SELECT * FROM `$sch`";
+        $sql = "SELECT * FROM `$sch` ORDER BY DATE_SCHEDULE";
         $result = mysqli_query($conn, $sql);
         if($result){
           if(mysqli_num_rows($result)>0){
