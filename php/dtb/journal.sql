@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.0.3
+-- version 5.0.2
 -- https://www.phpmyadmin.net/
 --
 -- Хост: 127.0.0.1
--- Время создания: Ноя 13 2020 г., 18:08
+-- Время создания: Ноя 14 2020 г., 10:04
 -- Версия сервера: 10.4.14-MariaDB
--- Версия PHP: 7.2.34
+-- Версия PHP: 7.2.33
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -24,327 +24,1033 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Структура таблицы `class`
+-- Структура таблицы `grades`
 --
 
-CREATE TABLE `class` (
-  `id` int(11) NOT NULL,
-  `name_class` varchar(30) NOT NULL,
-  `schedule_id` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Дамп данных таблицы `class`
---
-
-INSERT INTO `class` (`id`, `name_class`, `schedule_id`) VALUES
-(1, '5А', 1),
-(3, '6Б', 2);
-
--- --------------------------------------------------------
-
---
--- Структура таблицы `group_1`
---
-
-CREATE TABLE `group_1` (
-  `id` int(11) NOT NULL,
-  `nfm` varchar(50) NOT NULL,
-  `uid` varchar(50) NOT NULL,
-  `class_id` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Дамп данных таблицы `group_1`
---
-
-INSERT INTO `group_1` (`id`, `nfm`, `uid`, `class_id`) VALUES
-(1, 'АФЛ', 'test_student', 1),
-(3, 'Шашков Яков Мэлорович', 'student_1', 1),
-(4, 'Горбачёв Всеволод Филиппович', 'student_2', 1),
-(5, 'Корнилов Модест Миронович', 'student_3', 1),
-(6, 'Максимова Венера Ефимовна', 'student_4', 1),
-(7, 'Панова Эрида Васильевна', 'student_5', 1),
-(8, 'Тихонова Амалия Львовна', 'student_6', 3),
-(9, 'Савина Феодосия Германновна', 'student_7', 3),
-(10, 'Харитонова Пелагея Онисимовна', 'student_8', 3),
-(11, 'Самсонов Ибрагил Яковович', 'student_9', 3),
-(12, 'Миронов Герасим Павлович', 'student_10', 3);
-
--- --------------------------------------------------------
-
---
--- Структура таблицы `group_2`
---
-
-CREATE TABLE `group_2` (
-  `id` int(11) NOT NULL,
-  `nfm` varchar(50) NOT NULL,
-  `uid` varchar(50) NOT NULL,
-  `subject` varchar(50) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Дамп данных таблицы `group_2`
---
-
-INSERT INTO `group_2` (`id`, `nfm`, `uid`, `subject`) VALUES
-(1, 'Гаврилова Анэля Давидовна', 'teacher_1', 'Literarute'),
-(2, 'Крылова Пелагея Руслановна', 'teacher_2', 'Russian Language'),
-(3, 'Сазонова Берта Дамировна', 'teacher_3', 'Biology'),
-(4, 'Аксёнов Альберт Николаевич', 'teacher_4', 'Math'),
-(5, 'Андреев Исак Егорович', 'teacher_5', 'Physics'),
-(6, 'Сидорова Эльвина Рубеновна', 'teacher_6', 'English language'),
-(7, 'Семёнова Августа Эдуардовна', 'teacher_7', 'History');
-
--- --------------------------------------------------------
-
---
--- Структура таблицы `group_3`
---
-
-CREATE TABLE `group_3` (
-  `id` int(11) NOT NULL,
-  `nfm` varchar(50) NOT NULL,
-  `uid` varchar(50) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Дамп данных таблицы `group_3`
---
-
-INSERT INTO `group_3` (`id`, `nfm`, `uid`) VALUES
-(1, 'Сорокин Игнат Валентинович', 'metadist_1'),
-(2, 'Уваров Гавриил Михаилович', 'metadist_2');
-
--- --------------------------------------------------------
-
---
--- Структура таблицы `schedule_1`
---
-
-CREATE TABLE `schedule_1` (
-  `id` int(11) NOT NULL,
-  `date` date NOT NULL,
-  `num_lesson` int(11) NOT NULL,
-  `name_lesson` varchar(50) NOT NULL,
-  `type` varchar(10) DEFAULT NULL,
-  `comment` varchar(300) DEFAULT NULL,
-  `hw` varchar(300) DEFAULT NULL,
-  `teacher_id` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Дамп данных таблицы `schedule_1`
---
-
-INSERT INTO `schedule_1` (`id`, `date`, `num_lesson`, `name_lesson`, `type`, `comment`, `hw`, `teacher_id`) VALUES
-(1, '2020-11-02', 1, 'Math', NULL, NULL, NULL, 4),
-(2, '2020-11-02', 2, 'Russian Language', NULL, NULL, NULL, 2),
-(3, '2020-11-03', 1, 'Literarute', NULL, NULL, NULL, 1),
-(4, '2020-11-03', 2, 'Math', NULL, NULL, NULL, 4),
-(5, '2020-11-03', 3, 'Biology', NULL, NULL, NULL, 3),
-(6, '2020-11-03', 4, 'Physics', NULL, NULL, NULL, 5),
-(7, '2020-11-04', 1, 'Physics', NULL, NULL, NULL, 5),
-(8, '2020-11-04', 2, 'Literarute', NULL, NULL, NULL, 1),
-(9, '2020-11-04', 3, 'Russian Language', NULL, NULL, NULL, 2),
-(10, '2020-11-05', 1, 'Math', NULL, NULL, NULL, 4),
-(11, '2020-11-05', 2, 'Math', NULL, NULL, NULL, 4),
-(12, '2020-11-05', 3, 'Literarute', NULL, NULL, NULL, 1),
-(13, '2020-11-06', 1, 'Russian Language', NULL, NULL, NULL, 2),
-(15, '2020-11-06', 2, 'Physics', NULL, NULL, NULL, 5),
-(16, '2020-11-06', 3, 'Literarute', NULL, NULL, NULL, 1),
-(17, '2020-11-06', 4, 'Biology', NULL, NULL, NULL, 3),
-(18, '2020-11-06', 5, 'Math', NULL, NULL, NULL, 4),
-(19, '2020-11-07', 1, 'Russian Language', NULL, NULL, NULL, 2),
-(20, '2020-11-07', 2, 'Russian Language', NULL, NULL, NULL, 2),
-(21, '2020-11-07', 3, 'Literarute', NULL, NULL, NULL, 1);
-
--- --------------------------------------------------------
-
---
--- Структура таблицы `schedule_2`
---
-
-CREATE TABLE `schedule_2` (
-  `id` int(11) NOT NULL,
-  `date` date NOT NULL,
-  `num_lesson` int(11) NOT NULL,
-  `name_lesson` varchar(50) NOT NULL,
-  `type` varchar(10) DEFAULT NULL,
-  `comment` varchar(300) DEFAULT NULL,
-  `hw` varchar(300) DEFAULT NULL,
-  `teacher_id` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Дамп данных таблицы `schedule_2`
---
-
-INSERT INTO `schedule_2` (`id`, `date`, `num_lesson`, `name_lesson`, `type`, `comment`, `hw`, `teacher_id`) VALUES
-(1, '2020-11-02', 1, 'Physics', NULL, NULL, NULL, 5),
-(2, '2020-11-02', 2, 'Literarute', NULL, NULL, NULL, 1),
-(3, '2020-11-02', 3, 'Biology', NULL, NULL, NULL, 3),
-(4, '2020-11-02', 4, 'Math', NULL, NULL, NULL, 4),
-(5, '2020-11-03', 1, 'Biology', NULL, NULL, NULL, 3),
-(6, '2020-11-03', 2, 'Physics', NULL, NULL, NULL, 5),
-(7, '2020-11-03', 3, 'Literarute', NULL, NULL, NULL, 1),
-(8, '2020-11-03', 4, 'Russian Language', NULL, NULL, NULL, 2),
-(9, '2020-11-04', 1, 'Math', NULL, NULL, NULL, 4),
-(10, '2020-11-04', 2, 'Literarute', NULL, NULL, NULL, 1),
-(11, '2020-11-04', 3, 'Russian Language', NULL, NULL, NULL, 2),
-(12, '2020-11-05', 1, 'Physics', NULL, NULL, NULL, 5),
-(13, '2020-11-05', 2, 'Math', NULL, NULL, NULL, 4),
-(14, '2020-11-05', 3, 'Physics', NULL, NULL, NULL, 5),
-(15, '2020-11-06', 1, 'Literarute', NULL, NULL, NULL, 1),
-(16, '2020-11-06', 2, 'Russian Language', NULL, NULL, NULL, 2),
-(17, '2020-11-06', 3, 'Russian Language', NULL, NULL, NULL, 2),
-(18, '2020-11-06', 4, 'Biology', NULL, NULL, NULL, 3),
-(19, '2020-11-07', 1, 'Physics', NULL, NULL, NULL, 5),
-(20, '2020-11-07', 2, 'Physics', NULL, NULL, NULL, 5),
-(21, '2020-11-07', 3, 'Biology', NULL, NULL, NULL, 3);
-
--- --------------------------------------------------------
-
---
--- Структура таблицы `users`
---
-
-CREATE TABLE `users` (
-  `id` int(11) NOT NULL,
-  `uid` varchar(120) NOT NULL,
-  `pwd` varchar(120) NOT NULL,
-  `group` int(3) NOT NULL
+CREATE TABLE `grades` (
+  `GRADEGROUPFK` int(2) DEFAULT NULL,
+  `LITER` varchar(1) DEFAULT NULL,
+  `GRADENAME` varchar(10) DEFAULT NULL,
+  `GRADEMARK` varchar(6) DEFAULT NULL,
+  `LEARNINGORDER` int(1) DEFAULT NULL,
+  `STUDYDURATION` int(2) DEFAULT NULL,
+  `GRADEHEAD` varchar(32) DEFAULT NULL,
+  `EDUPERIODFK` varchar(10) DEFAULT NULL,
+  `APPID` varchar(10) DEFAULT NULL,
+  `GRADESETFK` varchar(10) DEFAULT NULL,
+  `ADDID` varchar(10) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Дамп данных таблицы `users`
+-- Дамп данных таблицы `grades`
 --
 
-INSERT INTO `users` (`id`, `uid`, `pwd`, `group`) VALUES
-(1, 'test_admin', 'test_password', 0),
-(2, 'student_1', 'FumWVZ', 1),
-(3, 'student_2', 't7uKwg', 1),
-(4, 'student_3', '2BSqyx', 1),
-(5, 'student_4', 'pmImM0', 1),
-(6, 'student_5', 'viyPsX', 1),
-(7, 'teacher_1', '3eNQ05', 2),
-(8, 'teacher_2', 'vkYbhv', 2),
-(9, 'teacher_3', 'Jbn1io', 2),
-(10, 'teacher_4', 'CWweDe', 2),
-(11, 'teacher_5', 'ALWq1F', 2),
-(12, 'metadist_1', '8gxNzo', 3),
-(13, 'metadist_2', 'OhjA1l', 3),
-(14, 'teacher_6', 'GiuTUW', 2),
-(15, 'teacher_7', 'lnNZ16', 2),
-(16, 'student_6', 'qlREyW', 1),
-(17, 'student_7', '3XvyfN', 1),
-(18, 'student_8', 'N2nYa2', 1),
-(19, 'student_9', 'dBloY3', 1),
-(20, 'student_10', 'jDwBO6', 1);
+INSERT INTO `grades` (`GRADEGROUPFK`, `LITER`, `GRADENAME`, `GRADEMARK`, `LEARNINGORDER`, `STUDYDURATION`, `GRADEHEAD`, `EDUPERIODFK`, `APPID`, `GRADESETFK`, `ADDID`) VALUES
+(7, 'Б', NULL, 'normal', 1, 11, 'CA600E34AA0C434ABA75998041C3EB3A', NULL, NULL, NULL, NULL),
+(7, 'А', NULL, 'normal', 1, 11, '082258086E40487E8EB54B898679F430', NULL, NULL, NULL, NULL),
+(9, 'А', NULL, 'gia', 1, 11, '4EF8BBF20510473592665C4E07BB98AA', NULL, NULL, NULL, NULL),
+(10, 'А', NULL, 'normal', 1, 11, 'E1685EFC0F474438A15D3A7C4109FF04', NULL, NULL, NULL, NULL),
+(1, 'Б', NULL, 'normal', 1, 11, 'C78E8A5F7427466FB137FF5E2A4EB617', NULL, NULL, NULL, NULL),
+(1, 'А', NULL, 'normal', 1, 11, 'C2DB206DD40A492DB64CD1BD91842B24', NULL, NULL, NULL, NULL),
+(1, 'В', NULL, 'normal', 1, 11, 'DF706F3665F444AF9E776D2CC56EA3FC', NULL, NULL, NULL, NULL),
+(9, 'Б', NULL, 'gia', 1, 11, '683C86E2620C45999FC351B280496A1C', NULL, NULL, NULL, NULL),
+(8, 'Б', NULL, 'normal', 1, 11, '53B3791B042347F79E0E750AF36BA834', NULL, NULL, NULL, NULL),
+(6, 'В', NULL, 'normal', 1, 11, '5104B84165A64981B8132D803CE9AEC6', NULL, NULL, NULL, NULL),
+(3, 'В', NULL, 'normal', 1, 11, NULL, NULL, NULL, NULL, NULL),
+(2, 'А', NULL, 'normal', 1, 11, NULL, NULL, NULL, NULL, NULL),
+(4, 'Б', NULL, 'normal', 1, 11, NULL, NULL, NULL, NULL, NULL),
+(4, 'А', NULL, 'normal', 1, 11, NULL, NULL, NULL, NULL, NULL),
+(5, 'В', NULL, 'normal', 1, 11, NULL, NULL, NULL, NULL, NULL),
+(11, 'А', NULL, 'ege', 1, 11, '6C9571332DBF4D34B4687B9D17A1642A', NULL, NULL, NULL, NULL),
+(8, 'А', NULL, 'normal', 1, 11, '063E8203E5FF4BB9B3B2A150BC5B9377', NULL, NULL, NULL, NULL),
+(4, 'В', NULL, 'normal', 1, 11, NULL, NULL, NULL, NULL, NULL),
+(8, 'В', NULL, 'normal', 1, 11, 'EBB41023BB6B4AF3A6F998140341E8EF', NULL, NULL, NULL, NULL),
+(7, 'В', NULL, 'normal', 1, 11, 'D2B0787C35C14ACAA0B68FA69EA0244E', NULL, NULL, NULL, NULL),
+(6, 'А', NULL, 'normal', 1, 11, NULL, NULL, NULL, NULL, NULL),
+(3, 'А', NULL, 'normal', 1, 11, NULL, NULL, NULL, NULL, NULL),
+(3, 'Б', NULL, 'normal', 1, 11, NULL, NULL, NULL, NULL, NULL),
+(5, 'Б', NULL, 'normal', 1, 11, NULL, NULL, NULL, NULL, NULL),
+(2, 'Б', NULL, 'normal', 1, 11, NULL, NULL, NULL, NULL, NULL),
+(5, 'А', NULL, 'normal', 1, 11, NULL, NULL, NULL, NULL, NULL),
+(6, 'Б', NULL, 'normal', 1, 11, NULL, NULL, NULL, NULL, NULL);
+
+-- --------------------------------------------------------
+
+--
+-- Структура таблицы `paraticipants`
+--
+
+CREATE TABLE `paraticipants` (
+  `PARTICIPANTID` int(10) NOT NULL,
+  `SURNAME` varchar(6) DEFAULT NULL,
+  `NAME` varchar(6) DEFAULT NULL,
+  `SECONDNAME` varchar(7) DEFAULT NULL,
+  `DOCUMENTTYPEFK` int(1) DEFAULT NULL,
+  `DOCUMENTSERIES` varchar(4) DEFAULT NULL,
+  `DOCUMENTNUMBER` bigint(11) DEFAULT NULL,
+  `SNILS` varchar(15) DEFAULT NULL,
+  `SEX` varchar(1) DEFAULT NULL,
+  `BIRTHDAY` varchar(10) DEFAULT NULL,
+  `EXPINFO` varchar(10) DEFAULT NULL,
+  `ROLEFK` varchar(11) DEFAULT NULL,
+  `RETIRED` varchar(10) DEFAULT NULL,
+  `APPID` varchar(10) DEFAULT NULL,
+  `COMMAND` varchar(24) DEFAULT NULL,
+  `PARTPARENTFK` varchar(32) DEFAULT NULL,
+  `PARTPARENT2FK` varchar(32) DEFAULT NULL,
+  `LEGAL_AGENT` varchar(32) DEFAULT NULL,
+  `BEGDATE` varchar(10) DEFAULT NULL,
+  `JOINTCODE` varchar(10) DEFAULT NULL,
+  `FCTGUID` varchar(39) DEFAULT NULL,
+  `EGECITIZENSHIPFK` varchar(10) DEFAULT NULL,
+  `D_LIMITEDPOTENTFK` int(1) DEFAULT NULL,
+  `ADDID` varchar(10) DEFAULT NULL,
+  `PARTICIPANT_INVALID` varchar(10) DEFAULT NULL,
+  `INVALID_EDU` varchar(10) DEFAULT NULL,
+  `ADRESS` varchar(35) DEFAULT NULL,
+  `GONEFLAG` int(1) DEFAULT NULL,
+  `CON_REG_ID` varchar(10) DEFAULT NULL,
+  `CON_FED_ID` varchar(10) DEFAULT NULL,
+  `CON_REG_ERR` varchar(10) DEFAULT NULL,
+  `MOBILE` varchar(10) DEFAULT NULL,
+  `DATA_DOC` varchar(10) DEFAULT NULL,
+  `REC_DOC` varchar(10) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Дамп данных таблицы `paraticipants`
+--
+
+INSERT INTO `paraticipants` (`PARTICIPANTID`, `SURNAME`, `NAME`, `SECONDNAME`, `DOCUMENTTYPEFK`, `DOCUMENTSERIES`, `DOCUMENTNUMBER`, `SNILS`, `SEX`, `BIRTHDAY`, `EXPINFO`, `ROLEFK`, `RETIRED`, `APPID`, `COMMAND`, `PARTPARENTFK`, `PARTPARENT2FK`, `LEGAL_AGENT`, `BEGDATE`, `JOINTCODE`, `FCTGUID`, `EGECITIZENSHIPFK`, `D_LIMITEDPOTENTFK`, `ADDID`, `PARTICIPANT_INVALID`, `INVALID_EDU`, `ADRESS`, `GONEFLAG`, `CON_REG_ID`, `CON_FED_ID`, `CON_REG_ERR`, `MOBILE`, `DATA_DOC`, `REC_DOC`) VALUES
+(1, 'Петров', 'Сергей', 'Юрьевич', 1, 'I-РА', 903759, '000-000-000 01', 'М', '27.01.2005', NULL, 'participant', NULL, NULL, NULL, 'C6E6D738F1914E34A0583924956C38D5', NULL, NULL, NULL, NULL, '{F026E8BF-25B9-4317-A801-D92F75B50894} ', NULL, NULL, NULL, NULL, NULL, NULL, 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(2, 'Петров', 'Сергей', 'Юрьевич', 4, 'I-РА', 826611, '000-000-000 02', 'М', '23.12.2008', NULL, 'participant', NULL, NULL, NULL, 'F828461A596144BBB2515BAAC062AA75', NULL, NULL, NULL, NULL, '{887B0107-38E3-7C37-D9DE-ECD0602D1200} ', NULL, 1, NULL, NULL, NULL, NULL, 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(3, 'Петров', 'Сергей', 'Юрьевич', 1, 'I-РА', 971371, '000-000-000 03', 'М', '23.11.2005', NULL, 'participant', NULL, NULL, NULL, '380FDD732D0B47B69D7485D76B646B1E', NULL, '15FF39664EC24C84AB913C3A80D93773', NULL, NULL, '{25D826E3-5A75-460B-89E7-A16E7A8DF1AE} ', NULL, NULL, NULL, NULL, NULL, NULL, 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(4, 'Петров', 'Сергей', 'Юрьевич', 1, 'I-РА', 997168, '000-000-000 04', 'М', '21.03.2006', NULL, 'participant', NULL, NULL, NULL, '4F88DB2C77B94A318DC0B450CF0FDD86', NULL, NULL, NULL, NULL, '{BF0D8AD2-2A01-B752-63AC-316BC876FE6D} ', NULL, 1, NULL, NULL, NULL, NULL, 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(5, 'Петров', 'Сергей', 'Юрьевич', 4, 'I-РА', 630049, '000-000-000 05', 'М', '31.05.2012', NULL, NULL, '23.10.2020', NULL, 'Приказ №52 от 23.10.2020', NULL, '15FECC0F0AF247E39AE799455F097C6A', NULL, NULL, NULL, '{C2FC7F37-2904-44BC-AA49-AC044765600B} ', NULL, NULL, NULL, NULL, NULL, NULL, 1, NULL, NULL, NULL, NULL, NULL, NULL),
+(6, 'Петров', 'Сергей', 'Юрьевич', 1, 'I-РА', 928282, '000-000-000 06', 'М', '11.04.2005', NULL, 'participant', NULL, NULL, NULL, 'E19D7EFADAC74B308F39FA16AA4F8A5A', NULL, NULL, NULL, NULL, '{A8AA7A11-2821-4FD0-A7D2-80206191B34E} ', NULL, NULL, NULL, NULL, NULL, NULL, 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(7, 'Петров', 'Сергей', 'Юрьевич', 4, 'I-РА', 875997, '000-000-000 07', 'М', '17.11.2010', NULL, 'participant', NULL, NULL, NULL, NULL, '4374C62372194CA1144B13D98735FE41', NULL, NULL, NULL, NULL, NULL, 1, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 13', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(8, 'Петров', 'Сергей', 'Юрьевич', 1, 'I-РА', 904073, '000-000-000 08', 'М', '03.04.2005', NULL, 'participant', NULL, NULL, NULL, NULL, '7FE11CD5A540449397E2EC41D896CA3B', NULL, NULL, NULL, '{881EFC10-922C-4074-8D51-7D42AB1F10FF} ', NULL, NULL, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 14', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(9, 'Петров', 'Сергей', 'Юрьевич', 1, 'I-РА', 928312, '000-000-000 09', 'М', '28.05.2005', NULL, 'participant', NULL, NULL, NULL, '9C5F150B7A0E456693EC1B60B5FD5C51', NULL, NULL, NULL, NULL, '{F1895551-22BC-48AA-887D-98209DA9E79D} ', NULL, 1, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 15', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(10, 'Петров', 'Сергей', 'Юрьевич', 1, 'I-РА', 928327, '000-000-000 10', 'М', '09.06.2005', NULL, 'participant', NULL, NULL, NULL, 'C9179B8E7AC34635A227784435DDCE74', NULL, NULL, NULL, NULL, '{C5AD4711-4A82-49F7-CB3C-90F626268D5D} ', NULL, 1, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 16', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(11, 'Петров', 'Сергей', 'Юрьевич', 1, 'I-РА', 928284, '000-000-000 11', 'М', '27.02.2005', NULL, 'participant', NULL, NULL, NULL, 'A3213A68B97B49DC803B9ECC9B0E9414', NULL, NULL, NULL, NULL, '{56F798A0-448D-4F87-BC8A-DF0756A3F6E6} ', NULL, 1, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 17', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(12, 'Петров', 'Сергей', 'Юрьевич', 4, 'I-РА', 630370, '000-000-000 12', 'М', '12.10.2012', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '11AF709F764A2C27839810ACD0B67D53', NULL, NULL, NULL, NULL, 1, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 18', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(13, 'Петров', 'Сергей', 'Юрьевич', 4, 'I-РА', 758904, '000-000-000 13', 'М', '10.12.2007', NULL, 'participant', '27.10.2020', NULL, 'Приказ №53 от 27.10.2020', NULL, NULL, NULL, NULL, NULL, '{12DB201A-A7ED-4A3D-AC1D-8FA7C2CA62CE} ', NULL, 1, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 19', 1, NULL, NULL, NULL, NULL, NULL, NULL),
+(14, 'Петров', 'Сергей', 'Юрьевич', 4, 'I-РА', 693099, '000-000-000 14', 'М', '11.10.2013', NULL, 'participant', NULL, NULL, NULL, NULL, NULL, '9728BAF23E374C6F9A03F202439B7EF1', NULL, NULL, NULL, NULL, 1, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 20', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(15, 'Петров', 'Сергей', 'Юрьевич', 4, 'I-РА', 630819, '000-000-000 15', 'М', '02.06.2013', NULL, 'participant', NULL, NULL, NULL, 'C7010F918D22B09A068D29CDD12E23D6', NULL, NULL, NULL, NULL, NULL, NULL, 1, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 21', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(16, 'Петров', 'Сергей', 'Юрьевич', 4, 'I-РА', 642974, '000-000-000 16', 'М', '22.03.2013', NULL, 'participant', NULL, NULL, NULL, '2996165CF5A94FEFF9B1290900C10F99', NULL, NULL, NULL, NULL, NULL, NULL, 1, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 22', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(17, 'Петров', 'Сергей', 'Юрьевич', 4, 'I-РА', 758731, '000-000-000 17', 'М', '23.08.2007', NULL, 'participant', '02.09.2020', NULL, 'Приказ №45 от 02.09.2020', NULL, '990B2CB533234E6FB40709B49961BE97', NULL, NULL, NULL, '{E030D5CC-D66B-4CD4-B077-87B01052C386} ', NULL, 1, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 23', 1, NULL, NULL, NULL, NULL, NULL, NULL),
+(18, 'Петров', 'Сергей', 'Юрьевич', 4, 'I-РА', 693014, '000-000-000 18', 'М', '07.09.2013', NULL, 'participant', NULL, NULL, NULL, 'DDD2EB28F3DDDF29DEA0254114835CEA', NULL, NULL, NULL, NULL, NULL, NULL, 1, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 24', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(19, 'Петров', 'Сергей', 'Юрьевич', 4, 'I-РА', 845738, '000-000-000 19', 'М', '26.08.2010', NULL, 'participant', NULL, NULL, NULL, 'F302E22FC80D4C09B74899F8A9A10E32', 'A57FEBC3FFD643E694AA7E286C77FB4B', NULL, NULL, NULL, '{9293176E-856C-439D-BB36-1B0EC16352F3} ', NULL, 1, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 25', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(20, 'Петров', 'Сергей', 'Юрьевич', 4, 'I-РА', 826358, '000-000-000 20', 'М', '12.08.2008', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 26', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(21, 'Петров', 'Сергей', 'Юрьевич', 4, 'I-РА', 693097, '000-000-000 21', 'М', '16.10.2013', NULL, 'participant', NULL, NULL, NULL, '6F1CB9F8597F448C93D40AA605A33EA0', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 27', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(22, 'Петров', 'Сергей', 'Юрьевич', 4, 'I-РА', 630832, '000-000-000 22', 'М', '10.06.2013', NULL, 'participant', NULL, NULL, NULL, '40F83026853A387135F8F9570279100E', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 28', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(23, 'Петров', 'Сергей', 'Юрьевич', 4, 'I-РА', 845738, '000-000-000 23', 'М', '26.08.2010', NULL, 'participant', '02.11.2020', NULL, NULL, 'F302E22FC80D4C09B74899F8A9A10E32', 'A57FEBC3FFD643E694AA7E286C77FB4B', NULL, NULL, NULL, '{9293176E-856C-439D-BB36-1B0EC16352F3} ', NULL, 1, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 29', 1, NULL, NULL, NULL, NULL, NULL, NULL),
+(24, 'Петров', 'Сергей', 'Юрьевич', 4, 'I-РА', 630759, '000-000-000 24', 'М', '09.05.2013', NULL, 'participant', NULL, NULL, NULL, '4D2782F5380BF6C1C9D3DCE1FC4256C5', NULL, NULL, NULL, NULL, NULL, NULL, 1, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 30', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(25, 'Петров', 'Сергей', 'Юрьевич', 4, 'I-РА', 573874, '000-000-000 25', 'М', '01.08.2013', NULL, 'participant', NULL, NULL, NULL, '1E7675F40ABF4EA49CDC9DE802892342', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 31', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(26, 'Петров', 'Сергей', 'Юрьевич', 4, 'I-РА', 573807, '000-000-000 26', 'М', '02.06.2013', NULL, 'participant', NULL, NULL, NULL, '059D343BAE847C3E5CBF38ED515722A1', NULL, NULL, NULL, NULL, NULL, NULL, 1, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 32', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(27, 'Петров', 'Сергей', 'Юрьевич', 1, 'I-РА', 928244, '000-000-000 27', 'М', '17.05.2005', NULL, 'participant', NULL, NULL, NULL, 'E64042F4D5A2454180C7E658A5DA701D', NULL, NULL, NULL, NULL, '{1FC4488E-6EF5-453F-A603-CD208C330548} ', NULL, NULL, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 33', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(28, 'Петров', 'Сергей', 'Юрьевич', 1, 'I-РА', 928167, '000-000-000 28', 'М', '30.04.2005', NULL, 'participant', NULL, NULL, NULL, 'F1D2BEC1AC7A49A0B2190A07A0EABD68', NULL, NULL, NULL, NULL, '{2EC244DF-B9F7-4477-B898-7B4B3F950668} ', NULL, 1, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 34', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(29, 'Петров', 'Сергей', 'Юрьевич', 1, 'I-РА', 903699, '000-000-000 29', 'М', '22.01.2005', NULL, 'participant', NULL, NULL, NULL, 'ECB9AC94DBFC4CEBAD5F469D54406D8A', NULL, NULL, NULL, NULL, '{AEAC4201-B3D4-4ED7-CD26-0265AABB0417} ', NULL, 1, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 35', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(30, 'Петров', 'Сергей', 'Юрьевич', 1, 'I-РА', 928588, '000-000-000 30', 'М', '20.07.2005', NULL, 'participant', NULL, NULL, NULL, 'FFEE5FDA7AEE43C9A96CF43194770F57', NULL, NULL, NULL, NULL, '{6FF2D6CC-207B-4E3C-B414-C82C997D8073} ', NULL, NULL, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 36', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(31, 'Петров', 'Сергей', 'Юрьевич', 1, 'I-РА', 903826, '000-000-000 31', 'М', '31.01.2005', NULL, 'participant', NULL, NULL, NULL, '85B8C587E8D24C4CAE2041030ADD5606', NULL, NULL, NULL, NULL, '{80427204-F846-4E40-894A-E36C7F432BD1} ', NULL, NULL, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 37', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(32, 'Петров', 'Сергей', 'Юрьевич', 1, 'I-РА', 948032, '000-000-000 32', 'М', '19.09.2005', NULL, 'participant', NULL, NULL, NULL, NULL, '108C25A474CD4BC3A0BAB9A42676B0B9', NULL, NULL, NULL, '{F4321DE5-3A0E-4AB0-817D-199532C48475} ', NULL, NULL, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 38', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(33, 'Петров', 'Сергей', 'Юрьевич', 1, 'I-РА', 971189, '000-000-000 33', 'М', '20.10.2005', NULL, 'participant', NULL, NULL, NULL, '071C5BB909114C31900D9BE07C2C0F1E', NULL, NULL, NULL, NULL, '{CB99B171-E2B9-47A1-93AA-2B5CA6B38B3C} ', NULL, NULL, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 39', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(34, 'Петров', 'Сергей', 'Юрьевич', 1, 'I-РА', 904002, '000-000-000 34', 'М', '13.12.2004', NULL, 'participant', NULL, NULL, NULL, '9A3E0A6B44A8494E86A4D435850204CD', NULL, NULL, NULL, NULL, '{1F20DF58-6304-2A5F-BD97-4E21D763F95F} ', NULL, 1, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 40', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(35, 'Петров', 'Сергей', 'Юрьевич', 1, 'I-РА', 928297, '000-000-000 35', 'М', '30.04.2005', NULL, 'participant', NULL, NULL, NULL, 'EFB2217B0E4048F180FC5BF060D2FC08', NULL, NULL, NULL, NULL, '{12EB7063-519A-429F-8665-AE079A9047CA} ', NULL, NULL, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 41', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(36, 'Петров', 'Сергей', 'Юрьевич', 1, 'I-РА', 885775, '000-000-000 36', 'М', '04.01.2005', NULL, 'participant', NULL, NULL, NULL, '877E7DA41DE143AD8C9B934C253AD5DB', NULL, NULL, NULL, NULL, '{EEA8FC55-488D-47B5-B1CA-AFD870F89A69} ', NULL, NULL, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 42', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(37, 'Петров', 'Сергей', 'Юрьевич', 1, 'I-РА', 971451, '000-000-000 37', 'М', '22.11.2005', NULL, 'participant', NULL, NULL, NULL, '0E7683B70DDE49B29CDCE6363F1110C7', NULL, NULL, NULL, NULL, '{B5CF9145-1F60-468A-B7EA-D8870F39709B} ', NULL, 1, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 43', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(38, 'Петров', 'Сергей', 'Юрьевич', 1, 'I-РА', 928163, '000-000-000 38', 'М', '29.04.2005', NULL, 'participant', NULL, NULL, NULL, '11F791FFB4364725AD56F44BF2AEE55D', NULL, NULL, NULL, NULL, '{59317BEA-5EDD-43EF-A4C3-8782BEC8EFD3} ', NULL, NULL, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 44', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(39, 'Петров', 'Сергей', 'Юрьевич', 1, 'I-РА', 947755, '000-000-000 39', 'М', '11.08.2005', NULL, 'participant', NULL, NULL, NULL, 'CA0CAE96CFB64171A41504CEBDE1CA7C', NULL, NULL, NULL, NULL, '{A441E993-3508-4015-B987-D69C60A09849} ', NULL, NULL, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 45', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(40, 'Петров', 'Сергей', 'Юрьевич', 1, 'I-РА', 904088, '000-000-000 40', 'М', '15.04.2005', NULL, 'participant', NULL, NULL, NULL, 'E83067C5CA4A4D9EAC71D63FD199E5C8', NULL, NULL, NULL, NULL, '{288296AC-BB4B-4B2A-B4ED-69A6D2BE5D9C} ', NULL, 1, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 46', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(41, 'Петров', 'Сергей', 'Юрьевич', 1, 'I-РА', 903814, '000-000-000 41', 'М', '22.02.2005', NULL, 'participant', NULL, NULL, NULL, NULL, '64EB1A1A4CB54902810125E77EA803BA', NULL, NULL, NULL, '{832222E3-A931-4594-A19F-7320C4E428C4} ', NULL, NULL, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 47', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(42, 'Петров', 'Сергей', 'Юрьевич', 1, 'I-РА', 971480, '000-000-000 42', 'М', '01.12.2005', NULL, 'participant', NULL, NULL, NULL, '2FF80F5D45CC4997A37532ABCFC1D7DB', NULL, NULL, NULL, NULL, '{BE6C41B9-0E41-4AA4-A536-6A1D528F987B} ', NULL, 1, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 48', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(43, 'Петров', 'Сергей', 'Юрьевич', 1, 'I-РА', 903706, '000-000-000 43', 'М', '06.01.2005', NULL, 'participant', NULL, NULL, NULL, 'BDC1848B8B9D47D899B89122B1C69164', NULL, NULL, NULL, NULL, '{30B40870-A6F1-438F-9FE4-3157504B8E0A} ', NULL, NULL, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 49', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(44, 'Петров', 'Сергей', 'Юрьевич', 1, 'I-РА', 903662, '000-000-000 44', 'М', '26.01.2005', NULL, 'participant', NULL, NULL, NULL, NULL, '81348CCFF8154A4A8C470A05594F238C', NULL, NULL, NULL, '{88EE74C3-A4D3-425A-9028-167B968F6A20} ', NULL, 5, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 50', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(45, 'Петров', 'Сергей', 'Юрьевич', 1, 'I-РА', 996967, '000-000-000 45', 'М', '06.02.2006', NULL, 'participant', NULL, NULL, NULL, '9A18A5826C5D43849944AF42CCE5743F', NULL, NULL, NULL, NULL, '{3E62994A-3B64-DBDC-BEDE-74B80FD3636C} ', NULL, 1, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 51', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(46, 'Петров', 'Сергей', 'Юрьевич', 1, 'I-РА', 885776, '000-000-000 46', 'М', '25.12.2004', NULL, 'participant', NULL, NULL, NULL, 'D4CB406CA2F141378F3E7C65802527F1', NULL, NULL, NULL, NULL, '{D27A51FD-0554-49D3-9703-E6C79B4CA300} ', NULL, NULL, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 52', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(47, 'Петров', 'Сергей', 'Юрьевич', 1, 'I-РА', 928171, '000-000-000 47', 'М', '06.04.2005', NULL, 'participant', NULL, NULL, NULL, '63EBB9AB136D4A9191E76A11D18AE018', NULL, NULL, NULL, NULL, '{5D0E7CB9-4FCF-4FA7-8D93-00B983B67AB7} ', NULL, NULL, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 53', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(48, 'Петров', 'Сергей', 'Юрьевич', 1, 'I-РА', 928169, '000-000-000 48', 'М', '04.05.2005', NULL, 'participant', NULL, NULL, NULL, 'EB4E4159E8D548D1AA63548F1A881BD3', NULL, NULL, NULL, NULL, '{8C1A99D0-215C-4C0C-B959-A899F56D56BB} ', NULL, NULL, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 54', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(49, 'Петров', 'Сергей', 'Юрьевич', 1, 'I-РА', 928316, '000-000-000 49', 'М', '23.05.2005', NULL, 'participant', NULL, NULL, NULL, '65854F3C50F1464FB25C2FE829D346B8', NULL, NULL, NULL, NULL, '{AE956871-E4FB-4FA5-A074-BA8D0FC9C523} ', NULL, NULL, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 55', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(50, 'Петров', 'Сергей', 'Юрьевич', 1, 'I-РА', 928448, '000-000-000 50', 'М', '08.06.2005', NULL, 'participant', NULL, NULL, NULL, 'B0672E7671174D6A875FF9CFCD5BC25A', NULL, NULL, NULL, NULL, '{2BB92210-AFFC-482A-6480-494DA361A9A5} ', NULL, 1, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 56', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(51, 'Петров', 'Сергей', 'Юрьевич', 1, 'I-РА', 928484, '000-000-000 51', 'М', '04.07.2005', NULL, 'participant', NULL, NULL, NULL, '0929D43329C74EB3B9DC47704A9404C5', NULL, NULL, NULL, NULL, '{EA5E9214-18C7-4D5B-B758-EDE8E99D4E0B} ', NULL, NULL, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 57', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(52, 'Петров', 'Сергей', 'Юрьевич', 4, 'I-РА', 875897, '000-000-000 52', 'М', '23.09.2010', NULL, 'participant', NULL, NULL, NULL, '96319929C6204AAE9E1ABE1A58274CE8', NULL, NULL, NULL, NULL, '{4B948C95-7235-405D-ADEB-FDE67C3285D6} ', NULL, 1, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 58', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(53, 'Петров', 'Сергей', 'Юрьевич', 4, 'I-РА', 856718, '000-000-000 53', 'М', '05.08.2009', NULL, 'participant', NULL, NULL, NULL, NULL, '0D327AC926184BA8A9E1360FD65F2676', NULL, NULL, NULL, '{E1C31443-814A-7B0B-7759-BA6BF68759C1} ', NULL, 1, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 59', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(54, 'Петров', 'Сергей', 'Юрьевич', 4, 'I-РА', 875940, '000-000-000 54', 'М', '31.10.2010', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '{BE074F6C-D4C3-40DE-8F39-2130CBF21257} ', NULL, 1, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 60', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(55, 'Петров', 'Сергей', 'Юрьевич', 4, 'I-РА', 744354, '000-000-000 55', 'М', '22.02.2008', NULL, 'participant', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 61', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(56, 'Петров', 'Сергей', 'Юрьевич', 4, 'I-РА', 542433, '000-000-000 56', 'М', '21.03.2009', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '{6AB1E336-0FD2-4288-8104-1D937ACF0059} ', NULL, 1, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 62', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(57, 'Петров', 'Сергей', 'Юрьевич', 4, 'I-РА', 758637, '000-000-000 57', 'М', '02.07.2007', NULL, 'participant', NULL, NULL, NULL, 'F03D07665C9343CB970BEFB080DC4071', NULL, NULL, NULL, NULL, '{1B7AA00A-BCC0-4F85-ABED-B2DD6DF37219} ', NULL, 1, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 63', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(58, 'Петров', 'Сергей', 'Юрьевич', 4, 'I-РА', 758595, '000-000-000 58', 'М', '25.06.2007', NULL, 'participant', NULL, NULL, NULL, NULL, 'C8E456BF66B14A0F9FD3D5F7FD3A2621', NULL, NULL, NULL, '{07C2B4F0-0A9F-459E-8666-43DC85D9AB23} ', NULL, 1, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 64', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(59, 'Петров', 'Сергей', 'Юрьевич', 4, 'I-РА', 826783, '000-000-000 59', 'М', '18.02.2009', NULL, 'participant', NULL, NULL, NULL, '8A6875D34DF9410C99B28615A754F873', NULL, NULL, NULL, NULL, '{42107372-A2AE-49CC-8887-48BB394F1B0C} ', NULL, 1, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 65', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(60, 'Петров', 'Сергей', 'Юрьевич', 4, 'I-РА', 717624, '000-000-000 60', 'М', '08.12.2005', NULL, NULL, NULL, NULL, NULL, 'DF31A0D0F29844E0989EB637A3B70E89', NULL, NULL, NULL, NULL, '{20C6F7C8-FB96-4A42-8910-3F18BBEE3016} ', NULL, NULL, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 66', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(61, 'Петров', 'Сергей', 'Юрьевич', 4, 'I-РА', 504568, '000-000-000 61', 'М', '31.12.2008', NULL, 'participant', NULL, NULL, NULL, 'ECB9AC94DBFC4CEBAD5F469D54406D8A', NULL, NULL, NULL, NULL, '{A9A2DED3-881C-B95A-96B5-FD4E969BBAA2} ', NULL, 1, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 67', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(62, 'Петров', 'Сергей', 'Юрьевич', 4, 'I-РА', 630073, '000-000-000 62', 'М', '07.09.2006', NULL, 'participant', NULL, NULL, NULL, '3FC16E286EBF43DF87E820DB955E2DC9', NULL, NULL, NULL, NULL, '{9ED5F0B6-EC83-4F24-AE0E-698E7DEF0D0A} ', NULL, 1, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 68', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(63, 'Петров', 'Сергей', 'Юрьевич', 4, 'I-РА', 758631, '000-000-000 63', 'М', '29.06.2007', NULL, 'participant', NULL, NULL, NULL, '42F7E47BF76F4C0D9134ACB2D938F6AA', NULL, NULL, NULL, NULL, '{8BE47486-4392-4991-902D-427F667AF037} ', NULL, 1, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 69', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(64, 'Петров', 'Сергей', 'Юрьевич', 4, 'I-РА', 875898, '000-000-000 64', 'М', '19.09.2010', NULL, 'participant', NULL, NULL, NULL, 'E64042F4D5A2454180C7E658A5DA701D', NULL, NULL, NULL, NULL, '{BF844C03-AC98-46CE-B66F-358FE48FEE09} ', NULL, 1, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 70', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(65, 'Петров', 'Сергей', 'Юрьевич', 4, 'I-РА', 731605, '000-000-000 65', 'М', '24.07.2007', NULL, 'participant', NULL, NULL, NULL, '6EFE12E4BE454E56966F731825AA11AB', NULL, NULL, NULL, NULL, '{017D355E-CD69-45E3-B277-B1950041659C} ', NULL, 1, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 71', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(66, 'Петров', 'Сергей', 'Юрьевич', 4, 'I-РА', 826465, '000-000-000 66', 'М', '06.10.2008', NULL, 'participant', NULL, NULL, NULL, 'EB31D8F667CE43BFBEAE68492F9AD412', NULL, NULL, NULL, NULL, '{89450DEC-1D7C-D8A0-A9A5-712AF9C4D2F5} ', NULL, 1, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 72', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(67, 'Петров', 'Сергей', 'Юрьевич', 4, 'I-РА', 570933, '000-000-000 67', 'М', '14.04.2006', NULL, 'participant', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '{1A456AC0-E693-4791-8FEC-64E1EF35A8A4} ', NULL, 1, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 73', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(68, 'Петров', 'Сергей', 'Юрьевич', 4, 'I-РА', 758426, '000-000-000 68', 'М', '16.03.2007', NULL, 'participant', NULL, NULL, NULL, '980053FC335F48A195C175E7F36013FC', '980053FC335F48A195C175E7F36013FC', NULL, NULL, NULL, '{7EC89E99-5B9F-4CED-916A-8F2B2EBA1D0A} ', NULL, 1, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 74', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(69, 'Петров', 'Сергей', 'Юрьевич', 4, 'I-РА', 787756, '000-000-000 69', 'М', '07.11.2007', NULL, 'participant', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 75', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(70, 'Петров', 'Сергей', 'Юрьевич', 4, 'I-РА', 758340, '000-000-000 70', 'М', '07.02.2007', NULL, 'participant', NULL, NULL, NULL, 'C2FF7E8540114A888CB0FE302B899C84', NULL, NULL, NULL, NULL, '{AED46FA7-E1FE-4F08-80BF-6E5A46A01462} ', NULL, 1, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 76', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(71, 'Петров', 'Сергей', 'Юрьевич', 4, 'I-РА', 826650, '000-000-000 71', 'М', '20.01.2009', NULL, 'participant', NULL, NULL, NULL, '21F8E7DA44F44D7688E3909E2622BB64', NULL, '145C96C0948647048E8DEB1C4015B51A', NULL, NULL, '{EA0D6464-6543-4DD4-BDC6-9AB904726266} ', NULL, 1, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 77', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(72, 'Петров', 'Сергей', 'Юрьевич', 4, 'I-РА', 744512, '000-000-000 72', 'М', '04.01.2008', NULL, 'participant', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 78', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(73, 'Петров', 'Сергей', 'Юрьевич', 4, 'I-РА', 758978, '000-000-000 73', 'М', '20.01.2008', NULL, 'participant', NULL, NULL, NULL, 'F85B6B4A578D44A08B499A9DA1AE3453', NULL, NULL, NULL, NULL, '{EDB73181-0B6C-4FE1-B3AC-20EC1F65213F} ', NULL, 1, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 79', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(74, 'Петров', 'Сергей', 'Юрьевич', 4, 'I-РА', 875131, '000-000-000 74', 'М', '05.09.2009', NULL, 'participant', NULL, NULL, NULL, 'DC520FD3564A436D8F6B3BE338345ECF', NULL, NULL, NULL, NULL, '{DF6A553E-9470-488A-A4C2-C161195ED509} ', NULL, 1, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 80', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(75, 'Петров', 'Сергей', 'Юрьевич', 4, 'I-РА', 845209, '000-000-000 75', 'М', '10.09.2009', NULL, 'participant', NULL, NULL, NULL, 'AED2D19C06BF490AB61AD14CF4809817', NULL, NULL, NULL, NULL, '{4EECA294-FCD2-A82D-9F93-FDE10D4AAB0E} ', NULL, 1, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 81', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(76, 'Петров', 'Сергей', 'Юрьевич', 4, 'I-РА', 744688, '000-000-000 76', 'М', '09.12.2008', NULL, 'participant', NULL, NULL, NULL, '8C50D2CBBB2C419BAB54409DD8A276C4', NULL, NULL, NULL, NULL, '{4780153D-FAA3-40D0-8E17-8AADD9A5152A} ', NULL, 1, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 82', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(77, 'Петров', 'Сергей', 'Юрьевич', 4, 'I-РА', 845426, '000-000-000 77', 'М', '26.01.2010', NULL, 'participant', NULL, NULL, NULL, '4792900B0C474B0EA5723747A0276EE9', NULL, NULL, NULL, NULL, '{FE28B150-6235-45A3-B432-04C52C6E1389} ', NULL, 1, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 83', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(78, 'Петров', 'Сергей', 'Юрьевич', 4, 'I-РА', 758057, '000-000-000 78', 'М', '18.08.2006', NULL, 'participant', NULL, NULL, NULL, '9599658BA1A24783827E274A84B816C5', NULL, NULL, NULL, NULL, '{3F6AF659-E8A1-4CD0-9A5C-54335A718B62} ', NULL, 1, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 84', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(79, 'Петров', 'Сергей', 'Юрьевич', 4, 'I-РА', 875037, '000-000-000 79', 'М', '01.08.2009', NULL, 'participant', NULL, NULL, NULL, '897C574D7A094327B96AA7AA1EE34D09', NULL, NULL, NULL, NULL, '{20A8AA2B-6695-4341-8090-2D2ACC6F529B} ', NULL, 1, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 85', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(80, 'Петров', 'Сергей', 'Юрьевич', 4, 'I-РА', 717846, '000-000-000 80', 'М', '02.05.2006', NULL, NULL, NULL, NULL, NULL, 'D650B94B318B4AEC85EC3F2B44D94B7A', NULL, NULL, NULL, NULL, '{52003985-CB13-476C-9634-9FADAE6549E8} ', NULL, NULL, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 86', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(81, 'Петров', 'Сергей', 'Юрьевич', 4, 'I-РА', 731606, '000-000-000 81', 'М', '24.07.2007', NULL, 'participant', NULL, NULL, NULL, '5EC35DFEA16B40E394A5FED5746CFB54', NULL, NULL, NULL, NULL, '{0ECC8CBF-BDD3-4F6C-A541-795286497371} ', NULL, 1, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 87', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(82, 'Петров', 'Сергей', 'Юрьевич', 4, 'I-РА', 826252, '000-000-000 82', 'М', '03.07.2008', NULL, 'participant', NULL, NULL, NULL, 'EA6BC6871FE74669AD2F53BABE8078D1', NULL, NULL, NULL, NULL, '{A3882ACB-2D96-4D0C-9C9A-63FA0E5FCDB3} ', NULL, 1, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 88', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(83, 'Петров', 'Сергей', 'Юрьевич', 4, 'I-РА', 875619, '000-000-000 83', 'М', '19.05.2010', NULL, 'participant', NULL, NULL, NULL, 'D35A663419224BD5BE511AE36523F78C', NULL, NULL, NULL, NULL, '{38FAA61B-7A31-4D4B-984C-84C892EFE6FE} ', NULL, 1, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 89', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(84, 'Петров', 'Сергей', 'Юрьевич', 4, 'I-РА', 634617, '000-000-000 84', 'М', '07.08.2006', NULL, 'participant', NULL, NULL, NULL, 'E596FA917E59435C8EFACF5127D5DCF9', NULL, NULL, NULL, NULL, '{4CBFBD0B-BC1A-B002-C1FE-318D7045A983} ', NULL, 1, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 90', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(85, 'Петров', 'Сергей', 'Юрьевич', 4, 'I-РА', 875732, '000-000-000 85', 'М', '13.07.2010', NULL, 'participant', NULL, NULL, NULL, '675AC720FFA74FA29A0AC6521C81A518', NULL, NULL, NULL, NULL, '{8E557475-E8D4-4BE9-A163-3BFF488B51A0} ', NULL, 1, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 91', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(86, 'Петров', 'Сергей', 'Юрьевич', 4, 'I-РА', 731045, '000-000-000 86', 'М', '28.01.2006', NULL, 'participant', NULL, NULL, NULL, 'AB3CE334F8074F1C951B9D583539A228', NULL, NULL, NULL, NULL, '{726DB01B-2D65-4CA6-BE5C-8E8F5FFEFC25} ', NULL, NULL, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 92', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(87, 'Петров', 'Сергей', 'Юрьевич', 4, 'I-РА', 875349, '000-000-000 87', 'М', '16.01.2010', NULL, 'participant', NULL, NULL, NULL, 'E26BCB2B2B2A4C8EA32949038A77702E', NULL, 'CCDC0AA10EDE47AB978AB325C6585E1B', NULL, NULL, '{76FC7233-5BA0-456D-BCFB-6D212F638CD1} ', NULL, 1, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 93', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(88, 'Петров', 'Сергей', 'Юрьевич', 4, 'I-РА', 758280, '000-000-000 88', 'М', '13.01.2007', NULL, 'participant', NULL, NULL, NULL, 'FDF6624104E9407DB8D732BC578413E8', '41E3B334C4CD4CCEAF6282C1A7166CED', NULL, NULL, NULL, '{2A6AE573-5DFE-4593-9031-2AB2545D06D9} ', NULL, 1, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 94', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(89, 'Петров', 'Сергей', 'Юрьевич', 4, 'I-РА', 717760, '000-000-000 89', 'М', '12.03.2006', NULL, 'participant', NULL, NULL, NULL, '7F9BEB62521C482DA86FCAAE2F662671', NULL, NULL, NULL, NULL, '{BF497E7C-BB75-4D00-AB0C-E937C3EFFC2D} ', NULL, NULL, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 95', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(90, 'Петров', 'Сергей', 'Юрьевич', 4, 'I-РА', 61883, '000-000-000 90', 'М', '05.11.2006', NULL, NULL, NULL, NULL, NULL, '06C26FA52BA54A9AAEFC98E450BE3360', NULL, NULL, NULL, NULL, '{A0F51829-B909-42F5-BF2A-40C390998933} ', NULL, 1, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 96', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(91, 'Петров', 'Сергей', 'Юрьевич', 4, 'I-РА', 875915, '000-000-000 91', 'М', '17.10.2010', NULL, 'participant', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '{717FF340-8CCC-4D0C-96FC-322FE7472664} ', NULL, 1, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 97', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(92, 'Петров', 'Сергей', 'Юрьевич', 4, 'I-РА', 826240, '000-000-000 92', 'М', '25.06.2008', NULL, 'participant', NULL, NULL, NULL, '18FB246A4AE741CB82961335E68814AD', NULL, NULL, NULL, NULL, '{D185435B-D06F-F61B-F15E-067AEC8EBDC9} ', NULL, 1, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 98', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(93, 'Петров', 'Сергей', 'Юрьевич', 4, 'I-РА', 826357, '000-000-000 93', 'М', '14.08.2008', NULL, 'participant', NULL, NULL, NULL, 'F4A274D9D44243ECAAA4505704DA5567', '69FA13715591443789B07CB71CD663BC', NULL, NULL, NULL, '{757D8B26-70A0-46C2-B353-7EF166E94E4F} ', NULL, 1, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 99', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(94, 'Петров', 'Сергей', 'Юрьевич', 4, 'I-РА', 758970, '000-000-000 94', 'М', '20.01.2008', NULL, 'participant', NULL, NULL, NULL, 'A79B69B1FF224BF6BFFA01BA72AB3685', NULL, NULL, NULL, NULL, '{E5DC8C7E-7BDA-4FC5-B98B-EDA281903BB9} ', NULL, 1, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 100', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(95, 'Петров', 'Сергей', 'Юрьевич', 4, 'I-РА', 758544, '000-000-000 95', 'М', '11.05.2007', NULL, 'participant', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '{7D12424D-74E0-44D8-8342-F3A078F6C496} ', NULL, 1, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 101', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(96, 'Петров', 'Сергей', 'Юрьевич', 4, 'I-РА', 826511, '000-000-000 96', 'М', '10.11.2009', NULL, 'participant', NULL, NULL, NULL, 'E81872A899AE431E809DA2C5E3D47BCB', NULL, NULL, NULL, NULL, '{CC6B3113-9D26-4595-8C31-FA88379E4507} ', NULL, 1, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 102', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(97, 'Петров', 'Сергей', 'Юрьевич', 4, 'I-РА', 758518, '000-000-000 97', 'М', '07.05.2007', NULL, 'participant', NULL, NULL, NULL, 'AEF6E1B1A78E4694A3AD1A2E935837EC', NULL, NULL, NULL, NULL, '{2FCCC7D6-56CE-4A52-9D41-DD79BCF615D8} ', NULL, 1, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 103', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(98, 'Петров', 'Сергей', 'Юрьевич', 4, 'I-РА', 781694, '000-000-000 98', 'М', '28.04.2007', NULL, 'participant', NULL, NULL, NULL, '87E08BAF17DA4411A14D4A35840FB2FD', NULL, NULL, NULL, NULL, '{FC956BAE-B122-4307-AA82-5CAE29603459} ', NULL, 1, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 104', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(99, 'Петров', 'Сергей', 'Юрьевич', 4, 'I-РА', 826625, '000-000-000 99', 'М', '21.01.2009', NULL, 'participant', NULL, NULL, NULL, '46C0B19ED87F46BB8C923ADF7F451BAB', NULL, NULL, NULL, NULL, '{3046F18E-1D1F-489A-8077-575965EA7976} ', NULL, 1, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 105', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(100, 'Петров', 'Сергей', 'Юрьевич', 4, 'I-РА', 875535, '000-000-000 100', 'М', '15.04.2010', NULL, 'participant', NULL, NULL, NULL, 'A1747D8119E749D58ED3ED1225594FA1', NULL, NULL, NULL, NULL, '{61B924C1-8E1A-4377-9073-7D64DAE3E961} ', NULL, 1, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 106', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(101, 'Петров', 'Сергей', 'Юрьевич', 4, 'I-РА', 845593, '000-000-000 101', 'М', '24.03.2010', NULL, NULL, NULL, NULL, NULL, '8AAA70C6C55E41F987DC6CBF221791EC', NULL, NULL, NULL, NULL, '{6C81C116-1BCC-4B36-A4D9-497A0F2D3867} ', NULL, 1, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 107', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(102, 'Петров', 'Сергей', 'Юрьевич', 4, 'I-РА', 826435, '000-000-000 102', 'М', '03.08.2008', NULL, 'participant', NULL, NULL, NULL, '6080128F107549469F88BF244435A70C', NULL, NULL, NULL, NULL, '{44C80008-A33D-4CD3-A36C-30ADAF862FB8} ', NULL, 1, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 108', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(103, 'Петров', 'Сергей', 'Юрьевич', 4, 'I-РА', 875076, '000-000-000 103', 'М', '06.08.2009', NULL, 'participant', NULL, NULL, NULL, 'E538DA2745BD4F54B9E6D5C3D5B554A1', NULL, NULL, NULL, NULL, '{31ADF04B-2F99-4A1B-B364-86B1DE4AE30A} ', NULL, 1, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 109', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(104, 'Петров', 'Сергей', 'Юрьевич', 4, 'I-РА', 827442, '000-000-000 104', 'М', '18.12.2008', NULL, 'participant', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '{FB55504F-C7CE-4434-A876-5CDED80991AB} ', NULL, 1, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 110', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(105, 'Петров', 'Сергей', 'Юрьевич', 4, 'I-РА', 744266, '000-000-000 105', 'М', '16.09.2006', NULL, 'participant', NULL, NULL, NULL, '56ABDA8C4E5B44A28F10276313012675', NULL, NULL, NULL, NULL, '{EA99761C-6008-4C6E-B146-EF5F0D096E59} ', NULL, NULL, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 111', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(106, 'Петров', 'Сергей', 'Юрьевич', 4, 'I-РА', 744948, '000-000-000 106', 'М', '15.07.2009', NULL, 'participant', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '{6E9A3AE3-CD50-481E-8A16-45432C08192E} ', NULL, 1, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 112', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(107, 'Петров', 'Сергей', 'Юрьевич', 4, 'I-РА', 875050, '000-000-000 107', 'М', '22.07.2009', NULL, 'participant', NULL, NULL, NULL, 'F764A2CB8E0F4BFD80DDCF96E69B0564', NULL, NULL, NULL, NULL, '{21F2C0D2-6665-45A4-85E1-A10F2A0F4459} ', NULL, 1, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 113', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(108, 'Петров', 'Сергей', 'Юрьевич', 4, 'I-РА', 826926, '000-000-000 108', 'М', '08.06.2009', NULL, 'participant', NULL, NULL, NULL, '584241CB73BB4523A6DF919D6254B086', NULL, NULL, NULL, NULL, '{1B911709-4A74-446E-A433-2F67EAE59380} ', NULL, 1, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 114', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(109, 'Петров', 'Сергей', 'Юрьевич', 4, 'I-РА', 634932, '000-000-000 109', 'М', '01.12.2006', NULL, 'participant', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 115', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(110, 'Петров', 'Сергей', 'Юрьевич', 4, 'I-РА', 875050, '000-000-000 110', 'М', '18.06.2009', NULL, 'participant', NULL, NULL, NULL, '6596B2C21FB34B4783C56A6693202224', NULL, NULL, NULL, NULL, '{78E2AD73-63AA-48A9-869F-1D1B063D063D} ', NULL, 1, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 116', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(111, 'Петров', 'Сергей', 'Юрьевич', 4, 'I-РА', 875639, '000-000-000 111', 'М', '31.05.2010', NULL, NULL, NULL, NULL, NULL, '7BE71A79F76740B2830D7C6A965D735E', NULL, NULL, NULL, NULL, '{F1BD1F30-21F4-483A-AF37-E3CFAB0E423C} ', NULL, 1, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 117', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(112, 'Петров', 'Сергей', 'Юрьевич', 4, 'I-РА', 826210, '000-000-000 112', 'М', '26.05.2008', NULL, 'participant', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 118', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(113, 'Петров', 'Сергей', 'Юрьевич', 4, 'I-РА', 815025, '000-000-000 113', 'М', '15.03.2008', NULL, 'participant', NULL, NULL, NULL, '8661EA60A9A646F89397773EBC759E9C', NULL, NULL, NULL, NULL, '{F910FDEA-35C4-C9D2-736F-C8288898A9EE} ', NULL, 1, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 119', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(114, 'Петров', 'Сергей', 'Юрьевич', 4, 'I-РА', 826583, '000-000-000 114', 'М', '01.01.2009', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '{C8E9125A-9ED8-4B1F-A80F-D5B86BA2F80B} ', NULL, 1, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 120', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(115, 'Петров', 'Сергей', 'Юрьевич', 4, 'I-РА', 875509, '000-000-000 115', 'М', '01.04.2010', NULL, 'participant', NULL, NULL, NULL, '0C4B36B766E5456388DA460106AA23A8', NULL, NULL, NULL, NULL, '{99680702-203F-417D-885F-13E51618C261} ', NULL, 1, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 121', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(116, 'Петров', 'Сергей', 'Юрьевич', 4, 'I-РА', 758899, '000-000-000 116', 'М', '01.12.2007', NULL, 'participant', NULL, NULL, NULL, '8A1D9CDAF3B849468568227D3A39011E', '8A1D9CDAF3B849468568227D3A39011E', NULL, NULL, NULL, '{D5CD231A-EE97-43A1-893E-CDF7D73BB647} ', NULL, 1, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 122', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(117, 'Петров', 'Сергей', 'Юрьевич', 4, 'I-РА', 679733, '000-000-000 117', 'М', '12.05.2009', NULL, 'participant', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '{CB98DDAB-2B7A-4D56-8D1F-6B176ACF3827} ', NULL, 1, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 123', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(118, 'Петров', 'Сергей', 'Юрьевич', 4, 'I-РА', 667106, '000-000-000 118', 'М', '20.01.2006', NULL, 'participant', NULL, NULL, NULL, 'ECAA12CC72EE46A3A88035CEE1A23785', NULL, NULL, NULL, NULL, '{4976AC68-2020-4345-B2E1-75771151A510} ', NULL, 1, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 124', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(119, 'Петров', 'Сергей', 'Юрьевич', 4, 'I-РА', 826149, '000-000-000 119', 'М', '04.05.2008', NULL, 'participant', NULL, NULL, NULL, '9CCE427D337542628F1E905E3CBC274F', NULL, NULL, NULL, NULL, '{EC8DB9A0-E60F-483F-93A6-8317F0E9FE18} ', NULL, 1, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 125', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(120, 'Петров', 'Сергей', 'Юрьевич', 4, 'I-РА', 758790, '000-000-000 120', 'М', '06.10.2007', NULL, 'participant', NULL, NULL, NULL, 'F34C21AF4C694108B25E6BC12CC371B8', NULL, NULL, NULL, NULL, '{25F4105B-D845-4E19-B696-48C889FD9049} ', NULL, 1, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 126', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(121, 'Петров', 'Сергей', 'Юрьевич', 4, 'I-РА', 744534, '000-000-000 121', 'М', '21.09.2007', NULL, 'participant', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '{1C8B8F93-03F3-4D66-A066-FBF8A90F25FC} ', NULL, 1, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 127', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(122, 'Петров', 'Сергей', 'Юрьевич', 4, 'I-РА', 826382, '000-000-000 122', 'М', '02.09.2008', NULL, 'participant', NULL, NULL, NULL, '6C0AADF5717B4797933D637D49052B5D', NULL, NULL, NULL, NULL, '{AED8E81F-402A-4EAA-B1C1-78BA91A7DEF8} ', NULL, 1, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 128', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(123, 'Петров', 'Сергей', 'Юрьевич', 4, 'I-РА', 787603, '000-000-000 123', 'М', '26.06.2009', NULL, 'participant', NULL, NULL, NULL, 'ECAA12CC72EE46A3A88035CEE1A23785', NULL, NULL, NULL, NULL, '{0B0B4DCB-CF44-4C87-B4A6-A59F12933A26} ', NULL, 1, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 129', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(124, 'Петров', 'Сергей', 'Юрьевич', 4, 'I-РА', 758165, '000-000-000 124', 'М', '07.11.2006', NULL, 'participant', NULL, NULL, NULL, 'F1EE63FEDEEB428FB8A1A6B110B77026', NULL, NULL, NULL, NULL, '{433893DF-6E53-4AEB-9224-E431DF1A3A1D} ', NULL, NULL, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 130', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(125, 'Петров', 'Сергей', 'Юрьевич', 4, 'I-РА', 758362, '000-000-000 125', 'М', '12.02.2007', NULL, 'participant', NULL, NULL, NULL, '911B9F037B9A43F7AFA79CF3DD5B0AD5', NULL, NULL, NULL, NULL, '{A5F4CFFD-9093-453A-91EC-E23BA3388FA3} ', NULL, 1, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 131', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(126, 'Петров', 'Сергей', 'Юрьевич', 4, 'I-РА', 693844, '000-000-000 126', 'М', '14.12.2007', NULL, 'participant', NULL, NULL, NULL, '96AE1F2F5AB9424DBB74FF497F8510BF', NULL, NULL, NULL, NULL, '{810E2074-A3E3-449C-862C-20D16E6ADABD} ', NULL, 1, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 132', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(127, 'Петров', 'Сергей', 'Юрьевич', 4, 'I-РА', 826268, '000-000-000 127', 'М', '10.07.2008', NULL, 'participant', NULL, NULL, NULL, '52572E27CE0F4E03B1653C3167498DD3', NULL, '33140912289545C9A894AC6CE59A0F63', NULL, NULL, '{7022CB4F-CE89-878F-E58D-D147DE8E9A1C} ', NULL, 1, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 133', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(128, 'Петров', 'Сергей', 'Юрьевич', 4, 'I-РА', 758430, '000-000-000 128', 'М', '07.03.2007', NULL, 'participant', NULL, NULL, NULL, '2D6A7DE6B1EF434DBB1CA84E698F3F83', NULL, NULL, NULL, NULL, '{31F1A4A0-4963-4787-9FAA-3ACA8AF3A2C0} ', NULL, 1, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 134', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(129, 'Петров', 'Сергей', 'Юрьевич', 4, 'I-РА', 758442, '000-000-000 129', 'М', '04.12.2005', NULL, 'participant', NULL, NULL, NULL, '8C8276DCA7874C55B0084561F6C37480', NULL, NULL, NULL, NULL, '{5B7C9422-5F28-410C-8724-7EF305939665} ', NULL, 1, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 135', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(130, 'Петров', 'Сергей', 'Юрьевич', 4, 'I-РА', 717695, '000-000-000 130', 'М', '31.01.2006', NULL, 'participant', NULL, NULL, NULL, '8BC95A8F58924F029BF07038453D650B', NULL, NULL, NULL, NULL, '{38EA8EFC-2C87-4F39-911E-EA95EFAC9D12} ', NULL, NULL, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 136', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(131, 'Петров', 'Сергей', 'Юрьевич', 4, 'I-РА', 826376, '000-000-000 131', 'М', '12.08.2008', NULL, 'participant', NULL, NULL, NULL, '5E0896CA01D84798BCBA44ECB50DCDB0', NULL, NULL, NULL, NULL, '{4A51D6E0-69A2-4691-9175-1F3B0FB42009} ', NULL, 1, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 137', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(132, 'Петров', 'Сергей', 'Юрьевич', 4, 'I-РА', 744655, '000-000-000 132', 'М', '30.03.2009', NULL, 'participant', NULL, NULL, NULL, '57BA9F9689F9476FB6974C0C43178BF2', NULL, NULL, NULL, NULL, '{8F077216-CA69-4FD1-8242-1C272FB407E7} ', NULL, 1, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 138', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(133, 'Петров', 'Сергей', 'Юрьевич', 4, 'I-РА', 744315, '000-000-000 133', 'М', '23.03.2007', NULL, 'participant', NULL, NULL, NULL, '0636AB2301C24AD58E41D787ABA75A7B', NULL, 'FC9C1C705D0848D78983D32B4BCBD194', NULL, NULL, '{646905B2-5386-4464-B65C-C42CD2B86378} ', NULL, 1, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 139', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(134, 'Петров', 'Сергей', 'Юрьевич', 4, 'I-РА', 875074, '000-000-000 134', 'М', '11.08.2009', NULL, 'participant', NULL, NULL, NULL, '76C3D725561844A4BB8B708054945AB3', NULL, NULL, NULL, NULL, '{62FF90FE-3FFC-4FB8-9CBD-990FD14CA626} ', NULL, 1, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 140', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(135, 'Петров', 'Сергей', 'Юрьевич', 4, 'I-РА', 875517, '000-000-000 135', 'М', '02.04.2010', NULL, 'participant', NULL, NULL, NULL, '28FC92EAC6134FEC98DB3EF4DA9E3DA8', NULL, NULL, NULL, NULL, '{84E36B7D-4687-43E1-973B-F3280C8E892D} ', NULL, 1, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 141', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(136, 'Петров', 'Сергей', 'Юрьевич', 4, 'I-РА', 875599, '000-000-000 136', 'М', '10.05.2010', NULL, 'participant', NULL, NULL, NULL, '1D6178E962C54275A9D3937B10B71612', NULL, NULL, NULL, NULL, '{4922B70E-5E28-45E9-A3D3-EDF52AE033AF} ', NULL, 1, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 142', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(137, 'Петров', 'Сергей', 'Юрьевич', 4, 'I-РА', 758845, '000-000-000 137', 'М', '30.10.2007', NULL, 'participant', NULL, NULL, NULL, '0BFE841CB5B74A38876209402664A521', NULL, NULL, NULL, NULL, '{10225FC3-BBBF-486B-8564-53A9D56E8821} ', NULL, NULL, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 143', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(138, 'Петров', 'Сергей', 'Юрьевич', 4, 'I-РА', 678367, '000-000-000 138', 'М', '11.11.2009', NULL, 'participant', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '{EAB5E0C6-95F1-4701-8EE4-86A37D3BBC05} ', NULL, 1, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 144', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(139, 'Петров', 'Сергей', 'Юрьевич', 4, 'I-РА', 758659, '000-000-000 139', 'М', '26.07.2007', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '{B2B8529B-10BE-46CC-8227-71EF334B2367} ', NULL, 1, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 145', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(140, 'Петров', 'Сергей', 'Юрьевич', 4, 'I-РА', 758793, '000-000-000 140', 'М', '03.10.2007', NULL, 'participant', NULL, NULL, NULL, 'E31C723A67804140BD6434E8415F9708', NULL, 'B34105D4F7F7454C98EC6F436CB89C42', NULL, NULL, '{7AF7576F-4D38-4115-801C-7D9AE2ACC007} ', NULL, 1, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 146', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(141, 'Петров', 'Сергей', 'Юрьевич', 4, 'I-РА', 744597, '000-000-000 141', 'М', '07.11.2007', NULL, 'participant', NULL, NULL, NULL, 'F302E22FC80D4C09B74899F8A9A10E32', NULL, NULL, NULL, NULL, '{AC11012C-1020-43FB-896D-B92DA52F682A} ', NULL, 1, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 147', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(142, 'Петров', 'Сергей', 'Юрьевич', 4, 'I-РА', 744378, '000-000-000 142', 'М', '10.06.2007', NULL, 'participant', NULL, NULL, NULL, '5870A196CBAB41C69D2FA6DFBC21BC96', '5870A196CBAB41C69D2FA6DFBC21BC96', NULL, NULL, NULL, '{395150F0-2765-4E7E-B6AE-47B1543DCEBD} ', NULL, 1, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 148', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(143, 'Петров', 'Сергей', 'Юрьевич', 4, 'I-РА', 826202, '000-000-000 143', 'М', '03.06.2008', NULL, 'participant', NULL, NULL, NULL, 'D35A663419224BD5BE511AE36523F78C', NULL, NULL, NULL, NULL, '{13EF4B42-8AFF-4998-BD41-3A0B3067740C} ', NULL, 1, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 149', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(144, 'Петров', 'Сергей', 'Юрьевич', 4, 'I-РА', 758578, '000-000-000 144', 'М', '15.06.2007', NULL, 'participant', NULL, NULL, NULL, '158A6658569342AEB9A5CB4F0D117505', NULL, NULL, NULL, NULL, '{74541B82-63FC-404F-AC7F-80320968266A} ', NULL, 1, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 150', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(145, 'Петров', 'Сергей', 'Юрьевич', 4, 'I-РА', 758838, '000-000-000 145', 'М', '25.10.2007', NULL, 'participant', NULL, NULL, NULL, 'E2456D81AA3B47698F3F85552B6B64C7', NULL, NULL, NULL, NULL, '{6C49AA9D-76C8-4777-8DFA-DCAFBA5CA220} ', NULL, 1, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 151', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(146, 'Петров', 'Сергей', 'Юрьевич', 4, 'I-РА', 758378, '000-000-000 146', 'М', '22.02.2007', NULL, 'participant', NULL, NULL, NULL, '7AC127A2E3AE44C7A3F8024499B34C7C', NULL, NULL, NULL, NULL, '{E093AA00-6C2F-4F45-A4A3-ABC10662E07B} ', NULL, NULL, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 152', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(147, 'Петров', 'Сергей', 'Юрьевич', 4, 'I-РА', 875726, '000-000-000 147', 'М', '08.07.2010', NULL, NULL, NULL, NULL, NULL, '6F959D1EA2C049FEA69F46D7373C7377', '84E9E860D2CE43FEB74ECA31B4B66441', NULL, NULL, NULL, '{C727E199-19B8-433A-B597-9FD11032DE7C} ', NULL, 1, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 153', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(148, 'Петров', 'Сергей', 'Юрьевич', 4, 'I-РА', 717909, '000-000-000 148', 'М', '01.07.2006', NULL, 'participant', NULL, NULL, NULL, '70E436F0326F444D8E9DBDB862508DEB', NULL, NULL, NULL, NULL, '{1A308B9A-0D26-45D9-8E49-9EDCB853AE74} ', NULL, NULL, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 154', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(149, 'Петров', 'Сергей', 'Юрьевич', 4, 'I-РА', 875294, '000-000-000 149', 'М', '15.12.2009', NULL, 'participant', NULL, NULL, NULL, '3DD6990CB2DB4EA98CA15824F8AF5305', NULL, NULL, NULL, NULL, '{4DF7E49C-53C9-499A-BB63-BE3A6E0D9D8C} ', NULL, 1, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 155', 0, NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO `paraticipants` (`PARTICIPANTID`, `SURNAME`, `NAME`, `SECONDNAME`, `DOCUMENTTYPEFK`, `DOCUMENTSERIES`, `DOCUMENTNUMBER`, `SNILS`, `SEX`, `BIRTHDAY`, `EXPINFO`, `ROLEFK`, `RETIRED`, `APPID`, `COMMAND`, `PARTPARENTFK`, `PARTPARENT2FK`, `LEGAL_AGENT`, `BEGDATE`, `JOINTCODE`, `FCTGUID`, `EGECITIZENSHIPFK`, `D_LIMITEDPOTENTFK`, `ADDID`, `PARTICIPANT_INVALID`, `INVALID_EDU`, `ADRESS`, `GONEFLAG`, `CON_REG_ID`, `CON_FED_ID`, `CON_REG_ERR`, `MOBILE`, `DATA_DOC`, `REC_DOC`) VALUES
+(150, 'Петров', 'Сергей', 'Юрьевич', 4, 'I-РА', 758599, '000-000-000 150', 'М', '07.05.2007', NULL, 'participant', NULL, NULL, NULL, 'E312040DA474462CB09390941029B3D2', NULL, NULL, NULL, NULL, '{22C0C755-7D44-4568-B071-AA29A08CD234} ', NULL, 1, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 156', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(151, 'Петров', 'Сергей', 'Юрьевич', 4, 'I-РА', 758692, '000-000-000 151', 'М', '12.08.2007', NULL, 'participant', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '{50EF8521-7C24-44C8-A18B-55E87A8976DC} ', NULL, 1, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 157', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(152, 'Петров', 'Сергей', 'Юрьевич', 4, 'I-РА', 845412, '000-000-000 152', 'М', '13.04.2006', NULL, 'participant', NULL, NULL, NULL, '512603304F2949278AF479DF99E0810E', NULL, NULL, NULL, NULL, '{2097677E-EF98-402A-9287-BC0E19131920} ', NULL, NULL, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 158', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(153, 'Петров', 'Сергей', 'Юрьевич', 4, 'I-РА', 875014, '000-000-000 153', 'М', '23.07.2009', NULL, 'participant', NULL, NULL, NULL, 'EB18AD7EF67F4BAD8577B56F2FA09BCF', NULL, NULL, NULL, NULL, '{64753588-E4EF-41D0-B594-D3C7F41E7C1F} ', NULL, 1, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 159', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(154, 'Петров', 'Сергей', 'Юрьевич', 4, 'I-РА', 875462, '000-000-000 154', 'М', '17.02.2010', NULL, 'participant', NULL, NULL, NULL, '31498D1F176542E5870ED10FAA89C73D', NULL, NULL, NULL, NULL, '{FCF42FEC-13BF-4D85-B030-7E5B23481437} ', NULL, 1, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 160', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(155, 'Петров', 'Сергей', 'Юрьевич', 4, 'I-РА', 826246, '000-000-000 155', 'М', '30.06.2008', NULL, 'participant', NULL, NULL, NULL, '49C7F690AE534E718AAB59EA429B5761', NULL, '49C7F690AE534E718AAB59EA429B5761', NULL, NULL, '{F6E987C8-9A09-446F-A548-F9E6DF691F99} ', NULL, 1, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 161', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(156, 'Петров', 'Сергей', 'Юрьевич', 4, 'I-РА', 758180, '000-000-000 156', 'М', '15.11.2006', NULL, 'participant', NULL, NULL, NULL, '0E4C187AC2E14B96ACFD4D04F682A899', NULL, NULL, NULL, NULL, '{49BBE341-E8C4-4383-BF93-13251B256179} ', NULL, NULL, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 162', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(157, 'Петров', 'Сергей', 'Юрьевич', 4, 'I-РА', 759122, '000-000-000 157', 'М', '10.02.2006', NULL, 'participant', NULL, NULL, NULL, 'D28D785BBA384C02AAD36C68ADB7CADA', NULL, NULL, NULL, NULL, '{47CF563C-226B-481C-981D-CF0BA94934D9} ', NULL, NULL, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 163', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(158, 'Петров', 'Сергей', 'Юрьевич', 4, 'I-РА', 550079, '000-000-000 158', 'М', '19.01.2011', NULL, NULL, NULL, NULL, NULL, 'EB284669ED18454D9CD45A1DAC0E9EA7', NULL, NULL, NULL, NULL, '{ECE8CC92-27F4-4C21-8E02-6AAC3DC9BB83} ', NULL, 1, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 164', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(159, 'Петров', 'Сергей', 'Юрьевич', 4, 'I-РА', 826408, '000-000-000 159', 'М', '03.09.2008', NULL, 'participant', NULL, NULL, NULL, NULL, NULL, 'AD36B9349DA443809E07D25E557D5AF4', NULL, NULL, '{97714F8B-9D90-4313-8754-C50CFDB5A9C7} ', NULL, 1, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 165', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(160, 'Петров', 'Сергей', 'Юрьевич', 4, 'I-РА', 550644, '000-000-000 160', 'М', '23.03.2007', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '{0A6D1017-9DD7-4958-9FAC-6311B59A3C90} ', NULL, 1, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 166', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(161, 'Петров', 'Сергей', 'Юрьевич', 4, 'I-РА', 630781, '000-000-000 161', 'М', '27.07.2006', NULL, 'participant', NULL, NULL, NULL, '64CB265AA1EE4195825ADFA377DCFF07', NULL, NULL, NULL, NULL, '{6EEA0EF4-4F76-42B2-B85A-C86A0BE1A8E9} ', NULL, NULL, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 167', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(162, 'Петров', 'Сергей', 'Юрьевич', 4, 'I-РА', 550057, '000-000-000 162', 'М', '24.12.2010', NULL, 'participant', NULL, NULL, NULL, 'CBAA162FF8C34EE4AA2D8F0A14197283', NULL, NULL, NULL, NULL, '{2F6CCEAB-0128-4637-A34F-EB0700A50187} ', NULL, NULL, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 168', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(163, 'Петров', 'Сергей', 'Юрьевич', 4, 'I-РА', 762369, '000-000-000 163', 'М', '13.10.2006', NULL, 'participant', NULL, NULL, NULL, '33FC15E4BAFC4F86A7378E50C9D0846A', NULL, NULL, NULL, NULL, '{29687D50-BCB2-71B5-2FD4-83031E3CF64D} ', NULL, 1, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 169', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(164, 'Петров', 'Сергей', 'Юрьевич', 4, 'I-РА', 758572, '000-000-000 164', 'М', '26.05.2007', NULL, 'participant', NULL, NULL, NULL, '23734729581F4C6B970F0206D1B1D68C', NULL, NULL, NULL, NULL, '{824B1C4D-2C9B-4CBA-8F8B-2DD70F62B913} ', NULL, 1, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 170', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(165, 'Петров', 'Сергей', 'Юрьевич', 4, 'I-РА', 875458, '000-000-000 165', 'М', '26.02.2010', NULL, 'participant', NULL, NULL, NULL, '08352F1F92924D159CC691AF33D59C41', NULL, NULL, NULL, NULL, '{8F0B773D-89DC-481B-BE13-C1B7E9CE291C} ', NULL, 1, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 171', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(166, 'Петров', 'Сергей', 'Юрьевич', 4, 'I-РА', 845206, '000-000-000 166', 'М', '18.05.2009', NULL, 'participant', NULL, NULL, NULL, '9B6F2AF2D1214400B8E9B5F6443C0F99', NULL, NULL, NULL, NULL, '{C09D6565-01EA-D90C-DF47-F6FAE8E8B2AA} ', NULL, 1, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 172', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(167, 'Петров', 'Сергей', 'Юрьевич', 4, 'I-РА', 676993, '000-000-000 167', 'М', '06.09.2009', NULL, 'participant', NULL, NULL, NULL, '91D6413E71E547D3B74AC90504E39D47', 'BEB9807E010249D59153C5164685ACC5', NULL, NULL, NULL, '{F9594BCD-1CFD-4A67-81EA-E1C6E56814C1} ', NULL, 1, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 173', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(168, 'Петров', 'Сергей', 'Юрьевич', 4, 'I-РА', 875395, '000-000-000 168', 'М', '05.02.2010', NULL, 'participant', NULL, NULL, NULL, '6F69A3E19A0D4099A1C043524A8AF75F', NULL, NULL, NULL, NULL, '{3B5AA6D8-32AE-42B6-98DD-0E517AFE878F} ', NULL, 1, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 174', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(169, 'Петров', 'Сергей', 'Юрьевич', 4, 'I-РА', 7652627, '000-000-000 169', 'М', '07.05.2008', NULL, 'participant', NULL, NULL, NULL, '74B3FA1AC5E24E00B74637E96CCD3F2E', NULL, 'F9D3239923EF4B4DAE24CBAB2707954B', NULL, NULL, '{6C67C195-21FD-48D2-9B76-32B43D3D233E} ', NULL, 1, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 175', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(170, 'Петров', 'Сергей', 'Юрьевич', 4, 'I-РА', 717872, '000-000-000 170', 'М', '12.05.2006', NULL, 'participant', NULL, NULL, NULL, NULL, '0B72613E89774B0C9550D473B80E2BBC', NULL, NULL, NULL, '{7B8E29FB-FFAF-4ECF-A3C4-4C93511C9E51} ', NULL, NULL, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 176', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(171, 'Петров', 'Сергей', 'Юрьевич', 4, 'I-РА', 826915, '000-000-000 171', 'М', '04.06.2009', NULL, 'participant', NULL, NULL, NULL, '147B1722691B40E6A08BEC715CCB829B', NULL, NULL, NULL, NULL, '{3826A151-5A1E-4B19-9C57-5055956617E8} ', NULL, 1, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 177', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(172, 'Петров', 'Сергей', 'Юрьевич', 4, 'I-РА', 826792, '000-000-000 172', 'М', '30.03.2009', NULL, 'participant', NULL, NULL, NULL, NULL, 'E2EA2207C6B7451B81D6CB5C75B2D390', NULL, NULL, NULL, '{B5AE4A7D-339E-4BFE-8F99-F63F428A5B10} ', NULL, 1, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 178', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(173, 'Петров', 'Сергей', 'Юрьевич', 4, 'I-РА', 826166, '000-000-000 173', 'М', '20.05.2008', NULL, 'participant', NULL, NULL, NULL, '0929D43329C74EB3B9DC47704A9404C5', NULL, NULL, NULL, NULL, '{C8E70D51-D50D-482E-AB10-82820F46410F} ', NULL, 1, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 179', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(174, 'Петров', 'Сергей', 'Юрьевич', 4, 'I-РА', 826763, '000-000-000 174', 'М', '20.03.2009', NULL, 'participant', NULL, NULL, NULL, '8B95A376EA8D4B1FA3E8CB99D6704BD7', NULL, NULL, NULL, NULL, '{D5F193AB-73A8-4910-AE8B-7D8550A94492} ', NULL, 1, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 180', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(175, 'Петров', 'Сергей', 'Юрьевич', 4, 'I-РА', 826928, '000-000-000 175', 'М', '05.06.2009', NULL, 'participant', NULL, NULL, NULL, 'D0CE6BBD912E4951900BD33B3FC527AC', NULL, NULL, NULL, NULL, '{CE991767-CC34-9E3B-8DD5-4046FC05D51B} ', NULL, 1, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 181', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(176, 'Петров', 'Сергей', 'Юрьевич', 4, 'I-РА', 820452, '000-000-000 176', 'М', '06.05.2008', NULL, 'participant', NULL, NULL, NULL, '2201E1B5006A4B6EA7CE812012763353', NULL, NULL, NULL, NULL, '{10435C4E-B9C3-4457-BBDA-EF065E0B1646} ', NULL, 1, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 182', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(177, 'Петров', 'Сергей', 'Юрьевич', 4, 'I-РА', 875801, '000-000-000 177', 'М', '10.03.2007', NULL, 'participant', NULL, NULL, NULL, '2EC0644172C54C8886C61D5C8F8DADDB', NULL, NULL, NULL, NULL, '{9188A7F7-322A-4243-8C95-6A84FDD7A4CE} ', NULL, 1, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 183', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(178, 'Петров', 'Сергей', 'Юрьевич', 4, 'I-РА', 374366, '000-000-000 178', 'М', '02.06.2006', NULL, 'participant', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '{7C2EA5C4-0FA1-4D73-861E-0ADC59BBC2BF} ', NULL, 1, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 184', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(179, 'Петров', 'Сергей', 'Юрьевич', 4, 'I-РА', 875210, '000-000-000 179', 'М', '14.03.2009', NULL, 'participant', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '{4D3E98FC-6E41-45E1-9D81-FF6B9E2A690E} ', NULL, NULL, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 185', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(180, 'Петров', 'Сергей', 'Юрьевич', 4, 'I-РА', 535487, '000-000-000 180', 'М', '21.09.2010', NULL, 'participant', NULL, NULL, NULL, '14FF7B33F3E64EFA8F201C8EED9A020D', NULL, NULL, NULL, NULL, '{23C0FB7C-4C76-4E32-87DA-E1524331E6A7} ', NULL, 1, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 186', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(181, 'Петров', 'Сергей', 'Юрьевич', 4, 'I-РА', 768433, '000-000-000 181', 'М', '09.11.2006', NULL, 'participant', '27.08.2020', NULL, 'Приказ №42 от 27.08.2020', 'EDCFDC832E2243239E270B8B414DF03B', NULL, NULL, NULL, NULL, '{F2F74933-99DF-4765-A19B-BB30CC032B26} ', NULL, NULL, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 187', 1, NULL, NULL, NULL, NULL, NULL, NULL),
+(182, 'Петров', 'Сергей', 'Юрьевич', 4, 'I-РА', 875121, '000-000-000 182', 'М', '28.08.2009', NULL, 'participant', NULL, NULL, NULL, '70E436F0326F444D8E9DBDB862508DEB', NULL, NULL, NULL, NULL, '{80204CA2-B9C1-4616-9595-38A50237D48D} ', NULL, 1, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 188', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(183, 'Петров', 'Сергей', 'Юрьевич', 4, 'I-РА', 875181, '000-000-000 183', 'М', '07.10.2009', NULL, 'participant', NULL, NULL, NULL, '7C8B3631A4B44C44AE830EC340BDE72F', NULL, NULL, NULL, NULL, '{A01134F7-ADF8-427E-AD16-FF02B474FD4D} ', NULL, 1, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 189', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(184, 'Петров', 'Сергей', 'Юрьевич', 4, 'I-РА', 758542, '000-000-000 184', 'М', '24.05.2007', NULL, NULL, NULL, NULL, NULL, 'FB3ABC14399A4A358BD16D60A1269828', NULL, NULL, NULL, NULL, '{87B63CE3-C5AF-4D33-BF00-233D067932AD} ', NULL, 1, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 190', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(185, 'Петров', 'Сергей', 'Юрьевич', 4, 'I-РА', 550399, '000-000-000 185', 'М', '15.01.2008', NULL, 'participant', NULL, NULL, NULL, '754F9240587748448F9B55994DB4C94F', NULL, NULL, NULL, NULL, '{0AEF1F13-7B0D-4FE1-B8D0-315058AE88E5} ', NULL, 1, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 191', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(186, 'Петров', 'Сергей', 'Юрьевич', 4, 'I-РА', 875451, '000-000-000 186', 'М', '04.03.2010', NULL, 'participant', NULL, NULL, NULL, '359A836101434ECAB4FFB2DB17B80700', NULL, NULL, NULL, NULL, '{A949CA10-D5B0-4313-B248-FCA06D1CDD00} ', NULL, 1, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 192', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(187, 'Петров', 'Сергей', 'Юрьевич', 4, 'I-РА', 674584, '000-000-000 187', 'М', '15.03.2006', NULL, 'participant', '01.09.2017', NULL, '01.11.109', '1CD9204B838B4A219A78C48AF4B97824', NULL, NULL, NULL, NULL, '{159A0C71-0AAD-436F-9EE8-3C5C63541B6A} ', NULL, NULL, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 193', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(188, 'Петров', 'Сергей', 'Юрьевич', 4, 'I-РА', 875012, '000-000-000 188', 'М', '13.07.2009', NULL, 'participant', NULL, NULL, NULL, '3D5B46F65C9042BB8F845C8E31D25B12', NULL, NULL, NULL, NULL, '{752E433A-7E2B-4979-954D-AB28DBF7ADE8} ', NULL, 1, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 194', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(189, 'Петров', 'Сергей', 'Юрьевич', 4, 'I-РА', 758464, '000-000-000 189', 'М', '11.03.2007', NULL, 'participant', NULL, NULL, NULL, 'BE184547E6B04341AF0B4EAE46E4C49A', NULL, NULL, NULL, NULL, '{6D8AB310-A776-4F95-BFC2-9503924DCF04} ', NULL, 1, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 195', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(190, 'Петров', 'Сергей', 'Юрьевич', 4, 'I-РА', 758948, '000-000-000 190', 'М', '17.01.2008', NULL, 'participant', NULL, NULL, NULL, '047E10779B534AF2901F05AEB0E48438', NULL, NULL, NULL, NULL, '{1660F70D-447E-40FC-87FE-54A3A695C1AE} ', NULL, 1, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 196', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(191, 'Петров', 'Сергей', 'Юрьевич', 4, 'I-РА', 875186, '000-000-000 191', 'М', '02.10.2009', NULL, 'participant', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '{2CC1B9D5-6496-497E-BCC9-BAB97CC58628} ', NULL, 1, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 197', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(192, 'Петров', 'Сергей', 'Юрьевич', 4, 'I-РА', 875196, '000-000-000 192', 'М', '09.10.2009', NULL, 'participant', NULL, NULL, NULL, 'CBAA162FF8C34EE4AA2D8F0A14197283', NULL, NULL, NULL, NULL, '{658B2A97-10D1-4CFA-A101-8EE24E8CAA62} ', NULL, 1, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 198', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(193, 'Петров', 'Сергей', 'Юрьевич', 4, 'I-РА', 758335, '000-000-000 193', 'М', '09.02.2007', NULL, 'participant', NULL, NULL, NULL, NULL, 'A251865CF826472FAF2722707A055082', NULL, NULL, NULL, '{7C5B280F-20B9-4A3A-94B8-23C2D94F71E0} ', NULL, 1, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 199', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(194, 'Петров', 'Сергей', 'Юрьевич', 4, 'I-РА', 676553, '000-000-000 194', 'М', '02.01.2009', NULL, 'participant', NULL, NULL, NULL, '00183A5627BA4CAAADE628197123D6DD', NULL, NULL, NULL, NULL, '{D2D1AD57-A273-4AB0-BBCC-3EF498CBD2A0} ', NULL, 1, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 200', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(195, 'Петров', 'Сергей', 'Юрьевич', 4, 'I-РА', 875269, '000-000-000 195', 'М', '16.11.2009', NULL, 'participant', NULL, NULL, NULL, 'F28028CCD76D482292713F1C2A512BC2', NULL, NULL, NULL, NULL, '{C8B52FF1-45B3-4BEC-95F0-0D246E32239F} ', NULL, 1, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 201', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(196, 'Петров', 'Сергей', 'Юрьевич', 4, 'I-РА', 875527, '000-000-000 196', 'М', '12.04.2010', NULL, 'participant', NULL, NULL, NULL, 'C9DA5C04704548299914DB43A121671E', NULL, NULL, NULL, NULL, '{1925720A-D735-43AB-BB65-4C2A173EAEF9} ', NULL, 1, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 202', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(197, 'Петров', 'Сергей', 'Юрьевич', 4, 'I-РА', 875283, '000-000-000 197', 'М', '15.12.2009', NULL, 'participant', NULL, NULL, NULL, 'FD0D516F8994483B81EBBC363439A411', NULL, NULL, NULL, NULL, '{31CB2E2B-EAF1-4E24-B153-1F7A088F6C7F} ', NULL, 1, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 203', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(198, 'Петров', 'Сергей', 'Юрьевич', 4, 'I-РА', 758575, '000-000-000 198', 'М', '05.06.2007', NULL, 'participant', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 204', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(199, 'Петров', 'Сергей', 'Юрьевич', 4, 'I-РА', 875472, '000-000-000 199', 'М', '13.03.2010', NULL, 'participant', NULL, NULL, NULL, 'C545B6705C5E47AFB434D868A0987329', NULL, NULL, NULL, NULL, '{1A7F3BBF-2AF0-4D7C-B69A-4BE90AD35037} ', NULL, 1, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 205', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(200, 'Петров', 'Сергей', 'Юрьевич', 4, 'I-РА', 758967, '000-000-000 200', 'М', '03.01.2008', NULL, 'participant', NULL, NULL, NULL, 'B9C1E0A72ECF4CF29A9C639329CEF72C', NULL, NULL, NULL, NULL, '{6934697D-6094-4736-A1FD-E396F95E4E5B} ', NULL, 1, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 206', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(201, 'Петров', 'Сергей', 'Юрьевич', 4, 'I-РА', 758869, '000-000-000 201', 'М', '20.11.2007', NULL, 'participant', NULL, NULL, NULL, NULL, '53E9EEB1CA264689BCA1315517D69AD9', NULL, NULL, NULL, '{9F24EACC-7162-4E5B-977C-0BA35D1EEDDF} ', NULL, 1, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 207', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(202, 'Петров', 'Сергей', 'Юрьевич', 4, 'I-РА', 758434, '000-000-000 202', 'М', '02.03.2007', NULL, 'participant', NULL, NULL, NULL, '653A68B6E0E247F69586B748499F85FA', NULL, NULL, NULL, NULL, '{2633A1C0-AEAA-4D14-8C78-3F6171063E40} ', NULL, NULL, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 208', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(203, 'Петров', 'Сергей', 'Юрьевич', 4, 'I-РА', 826778, '000-000-000 203', 'М', '30.03.2009', NULL, 'participant', NULL, NULL, NULL, '047E10779B534AF2901F05AEB0E48438', NULL, NULL, NULL, NULL, '{3F9D7BFE-B759-4F93-A344-9ECED17C87BB} ', NULL, 1, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 209', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(204, 'Петров', 'Сергей', 'Юрьевич', 4, 'I-РА', 845639, '000-000-000 204', 'М', '18.07.2010', NULL, 'participant', NULL, NULL, NULL, '51D38605932D473D80D90A2A9C84CB3F', NULL, NULL, NULL, NULL, '{82359A72-DF46-4F40-8AC6-A0FFE4829280} ', NULL, 1, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 210', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(205, 'Петров', 'Сергей', 'Юрьевич', 4, 'I-РА', 758759, '000-000-000 205', 'М', '13.09.2007', NULL, 'participant', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '{EC072C41-4ACC-40C9-9DB5-42E1E6203FC6} ', NULL, 1, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 211', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(206, 'Петров', 'Сергей', 'Юрьевич', 4, 'I-РА', 845724, '000-000-000 206', 'М', '20.05.2010', NULL, 'participant', NULL, NULL, NULL, '5B97EA222B5445D3B6A8CA6F61B75026', NULL, NULL, NULL, NULL, '{C4447EC4-27A0-4759-AC9E-8C9FB3D307DE} ', NULL, 1, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 212', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(207, 'Петров', 'Сергей', 'Юрьевич', 4, 'I-РА', 845616, '000-000-000 207', 'М', '25.07.2010', NULL, 'participant', NULL, NULL, NULL, 'A634A3302EEF40129592BD755A840922', NULL, NULL, NULL, NULL, '{BC9485D8-E90E-4502-BD05-EDC17E406514} ', NULL, 1, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 213', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(208, 'Петров', 'Сергей', 'Юрьевич', 4, 'I-РА', 744317, '000-000-000 208', 'М', '09.09.2007', NULL, 'participant', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '{FE471FAE-260A-4310-BBE7-657EAC8D4E2A} ', NULL, 1, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 214', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(209, 'Петров', 'Сергей', 'Юрьевич', 4, 'I-РА', 758216, '000-000-000 209', 'М', '21.03.2007', NULL, 'participant', NULL, NULL, NULL, '14938255CF694DE68753FDEA060C238D', NULL, NULL, NULL, NULL, '{E422BC60-D416-416D-A29A-713D77E6B8DF} ', NULL, 1, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 215', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(210, 'Петров', 'Сергей', 'Юрьевич', 4, 'I-РА', 630898, '000-000-000 210', 'М', '15.02.2009', NULL, 'participant', NULL, NULL, NULL, '29EBA6FAEF0840C8881C44706615E045', NULL, NULL, NULL, NULL, '{41F57BF1-9892-415D-9FAF-D3CDDA58ED49} ', NULL, 1, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 216', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(211, 'Петров', 'Сергей', 'Юрьевич', 4, 'I-РА', 523631, '000-000-000 211', 'М', '08.04.2009', NULL, 'participant', NULL, NULL, NULL, NULL, '439300E6494E45ABA9B50561E790BFCA', NULL, NULL, NULL, '{044D39D1-806F-426E-AD1E-35617F29E548} ', NULL, 1, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 217', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(212, 'Петров', 'Сергей', 'Юрьевич', 4, 'I-РА', 826935, '000-000-000 212', 'М', '09.06.2009', NULL, 'participant', NULL, NULL, NULL, 'C0476CB443344910AC3F05D134A38FF2', NULL, NULL, NULL, NULL, '{1BBFBB1D-1637-45C4-B44B-45969B4A4823} ', NULL, 1, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 218', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(213, 'Петров', 'Сергей', 'Юрьевич', 4, 'I-РА', 826032, '000-000-000 213', 'М', '26.02.2008', NULL, 'participant', NULL, NULL, NULL, '9FFCA6EDA34845A2BC0D47AD2BBFB1DB', NULL, NULL, NULL, NULL, '{55ED264A-B221-4C9F-A8AB-BB0C9F41D4FA} ', NULL, 1, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 219', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(214, 'Петров', 'Сергей', 'Юрьевич', 4, 'I-РА', 758168, '000-000-000 214', 'М', '05.11.2006', NULL, 'participant', NULL, NULL, NULL, 'ABACB32107B843A991C28AD1607A2AC3', NULL, NULL, NULL, NULL, '{359F9642-3829-467B-93F2-DEA446DC3148} ', NULL, 1, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 220', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(215, 'Петров', 'Сергей', 'Юрьевич', 4, 'I-РА', 717739, '000-000-000 215', 'М', '27.02.2006', NULL, NULL, NULL, NULL, NULL, '410B789DD1224F7A9CE0F9F1DB8F02E8', NULL, NULL, NULL, NULL, '{27FA5442-3E8B-4E46-8238-03A83EEBC4AB} ', NULL, 1, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 221', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(216, 'Петров', 'Сергей', 'Юрьевич', 4, 'I-РА', 875720, '000-000-000 216', 'М', '11.07.2010', NULL, 'participant', NULL, NULL, NULL, '46AA27BD01EF493CA1E5D514D465A889', NULL, 'E3E76720CFF34D99B17A3D897B7D5A7F', NULL, NULL, '{6D0AC09B-8CED-487C-A5BF-2F9145DB2D12} ', NULL, 1, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 222', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(217, 'Петров', 'Сергей', 'Юрьевич', 4, 'I-РА', 826242, '000-000-000 217', 'М', '26.06.2008', NULL, 'participant', NULL, NULL, NULL, '6E85125FAE1C4C8381EA4863D850C247', NULL, NULL, NULL, NULL, '{1DCD73E2-4AA9-4F97-B354-2525E67F3404} ', NULL, 1, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 223', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(218, 'Петров', 'Сергей', 'Юрьевич', 4, 'I-РА', 758712, '000-000-000 218', 'М', '26.08.2007', NULL, 'participant', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '{B85F22DA-99DD-47FB-9B91-D6772DA75234} ', NULL, 1, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 224', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(219, 'Петров', 'Сергей', 'Юрьевич', 4, 'I-РА', 826358, '000-000-000 219', 'М', '12.08.2008', NULL, NULL, '02.11.2020', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 225', 1, NULL, NULL, NULL, NULL, NULL, NULL),
+(220, 'Петров', 'Сергей', 'Юрьевич', 4, 'I-РА', 826827, '000-000-000 220', 'М', '25.03.2009', NULL, 'participant', NULL, NULL, NULL, '2E31E47B8E8A4161AE821717F2EE0256', NULL, NULL, NULL, NULL, '{683BCD29-E5AF-4CDA-9CFC-97DDBD225556} ', NULL, NULL, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 226', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(221, 'Петров', 'Сергей', 'Юрьевич', 4, 'I-РА', 826170, '000-000-000 221', 'М', '15.05.2008', NULL, 'participant', NULL, NULL, NULL, 'A6B311FA0A404BB8A1DE62E9272225E2', NULL, NULL, NULL, NULL, '{2C356FDD-CC5B-462D-8142-FC553DFB899F} ', NULL, 1, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 227', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(222, 'Петров', 'Сергей', 'Юрьевич', 4, 'I-РА', 826784, '000-000-000 222', 'М', '23.04.2007', NULL, 'participant', NULL, NULL, NULL, '6D27E75ABBA74249BE7306EC6911DCCF', NULL, NULL, NULL, NULL, '{726D7B4D-2BEE-4FB3-9443-0E92D527E567} ', NULL, 1, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 228', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(223, 'Петров', 'Сергей', 'Юрьевич', 4, 'I-РА', 826786, '000-000-000 223', 'М', '03.04.2009', NULL, 'participant', NULL, NULL, NULL, '0EDC225492704499A7C58009FB821677', NULL, NULL, NULL, NULL, '{ADC05936-6128-4C1B-ACF3-8E550F216222} ', NULL, 1, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 229', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(224, 'Петров', 'Сергей', 'Юрьевич', 4, 'I-РА', 758353, '000-000-000 224', 'М', '10.01.2007', NULL, 'participant', NULL, NULL, NULL, '22727C338A184413B93ACDD4DC4866FB', NULL, NULL, NULL, NULL, '{5C64C04E-BAF5-F60F-1E0D-AB23282BA4FA} ', NULL, 1, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 230', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(225, 'Петров', 'Сергей', 'Юрьевич', 4, 'I-РА', 826634, '000-000-000 225', 'М', '03.01.2009', NULL, 'participant', NULL, NULL, NULL, '581F6E27465E43DC8E8A7B903D4CAB07', NULL, NULL, NULL, NULL, '{6911AF48-2191-47C1-A2C1-8493D294E2CA} ', NULL, 1, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 231', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(226, 'Петров', 'Сергей', 'Юрьевич', 4, 'I-РА', 744739, '000-000-000 226', 'М', '16.02.2009', NULL, 'participant', NULL, NULL, NULL, 'DE479ED8A5CB4173A2F7C99B039DAFD5', NULL, NULL, NULL, NULL, '{25BEBD01-16CC-4D39-0715-B49CB15E4E38} ', NULL, 1, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 232', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(227, 'Петров', 'Сергей', 'Юрьевич', 4, 'I-РА', 758834, '000-000-000 227', 'М', '21.03.2007', NULL, 'participant', NULL, NULL, NULL, '08016F2443284A9D82ED3D91E8C84BAE', NULL, NULL, NULL, NULL, '{6AAC83FB-A67E-441C-ABA0-6EA7C19D394E} ', NULL, 1, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 233', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(228, 'Петров', 'Сергей', 'Юрьевич', 4, 'I-РА', 826924, '000-000-000 228', 'М', '03.06.2009', NULL, 'participant', NULL, NULL, NULL, '008A58FD3BC44DEDA22B1B5B2820D7C6', NULL, NULL, NULL, NULL, '{39E318C8-2018-A87A-EADE-01153A32C507} ', NULL, 1, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 234', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(229, 'Петров', 'Сергей', 'Юрьевич', 4, 'I-РА', 826370, '000-000-000 229', 'М', '24.08.2008', NULL, 'participant', NULL, NULL, NULL, '426E645DC4534EA9AF7932F64156E684', NULL, NULL, NULL, NULL, '{8D5C1C6B-3802-4E8F-A7EE-2D5BFE17742D} ', NULL, 1, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 235', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(230, 'Петров', 'Сергей', 'Юрьевич', 4, 'I-РА', 610045, '000-000-000 230', 'М', '25.09.2002', NULL, 'participant', NULL, NULL, NULL, '66CF76C59F6649A395F1E24C8F8CBE61', NULL, NULL, NULL, NULL, '{B2A50100-67CE-4FF3-A000-910DB9CC1649} ', NULL, 1, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 236', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(231, 'Петров', 'Сергей', 'Юрьевич', 4, 'I-РА', 875777, '000-000-000 231', 'М', '09.08.2010', NULL, 'participant', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '{665DE119-2C0E-4402-8FA1-61FBE6B9A2FA} ', NULL, 1, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 237', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(232, 'Петров', 'Сергей', 'Юрьевич', 4, 'I-РА', 758009, '000-000-000 232', 'М', '09.08.2006', NULL, 'participant', NULL, NULL, NULL, '4EDF7B90BC5A4640B792A4DBB9131476', NULL, NULL, NULL, NULL, '{399D807A-7C59-4489-AC4C-06698BDF815A} ', NULL, 1, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 238', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(233, 'Петров', 'Сергей', 'Юрьевич', 4, 'I-РА', 875399, '000-000-000 233', 'М', '11.02.2010', NULL, 'participant', NULL, NULL, NULL, '098206131E91478B8B42267695BF0B46', NULL, NULL, NULL, NULL, '{F4198D48-76ED-4265-8EDB-03F0B9E2B34F} ', NULL, 1, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 239', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(234, 'Петров', 'Сергей', 'Юрьевич', 4, 'I-РА', 758545, '000-000-000 234', 'М', '11.05.2007', NULL, 'participant', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '{9BA2E888-1390-4A26-AE27-12147BA46D0A} ', NULL, 1, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 240', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(235, 'Петров', 'Сергей', 'Юрьевич', 4, 'I-РА', 826546, '000-000-000 235', 'М', '03.12.2008', NULL, 'participant', NULL, NULL, NULL, '0D64BF68620A477BA7CEA2CF712D1DA9', NULL, NULL, NULL, NULL, '{9AF1D22C-3057-470B-B1AA-AE9CFB2A40E0} ', NULL, 1, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 241', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(236, 'Петров', 'Сергей', 'Юрьевич', 4, 'I-РА', 717794, '000-000-000 236', 'М', '06.04.2006', NULL, NULL, '01.09.2017', NULL, '01.11.111', '2B858E0E3BCF47FF981A4DDD7F162C87', NULL, NULL, NULL, NULL, '{1099208F-2731-480E-A9AF-7397E2192B65} ', NULL, NULL, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 242', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(237, 'Петров', 'Сергей', 'Юрьевич', 4, 'I-РА', 758370, '000-000-000 237', 'М', '18.02.2007', NULL, 'participant', NULL, NULL, NULL, 'B53857E6DC9347D3A4BDEC8207E32A03', NULL, NULL, NULL, NULL, '{413FB0C6-498E-1425-CC0A-780D7C178CED} ', NULL, 1, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 243', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(238, 'Петров', 'Сергей', 'Юрьевич', 4, 'I-РА', 875169, '000-000-000 238', 'М', '24.09.2009', NULL, 'participant', NULL, NULL, NULL, 'C0A53EFD33954041A4CAE01E8DD3AFCD', NULL, NULL, NULL, NULL, '{5AABBFDC-47F1-4984-A4F6-7D20E9116657} ', NULL, 1, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 244', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(239, 'Петров', 'Сергей', 'Юрьевич', 4, 'I-РА', 318696, '000-000-000 239', 'М', '31.12.2007', NULL, 'participant', NULL, NULL, NULL, '0814F2EB1F2247B8A93B0444F7ADEF7A', NULL, NULL, NULL, NULL, '{7E5AD882-A8B3-4421-A2AB-0C35E8DA5A77} ', NULL, 1, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 245', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(240, 'Петров', 'Сергей', 'Юрьевич', 4, 'I-РА', 630707, '000-000-000 240', 'М', '07.08.2006', NULL, 'participant', NULL, NULL, NULL, '63FC379CABC74351A9C476F6A5B11251', NULL, NULL, NULL, NULL, '{E802A9BB-5446-415C-998C-43F72662D51D} ', NULL, NULL, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 246', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(241, 'Петров', 'Сергей', 'Юрьевич', 4, 'I-РА', 875191, '000-000-000 241', 'М', '29.09.2009', NULL, 'participant', NULL, NULL, NULL, '7CAA650C5EA24B22AE3A016311A3EC0A', NULL, NULL, NULL, NULL, '{E2399BC0-FACD-4392-B1AA-9D770DE4B507} ', NULL, 1, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 247', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(242, 'Петров', 'Сергей', 'Юрьевич', 4, 'I-РА', 625578, '000-000-000 242', 'М', '25.01.2007', NULL, 'participant', NULL, NULL, NULL, 'E31C723A67804140BD6434E8415F9708', NULL, NULL, NULL, NULL, '{676B5422-8480-4844-A15E-52524745A96C} ', NULL, 1, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 248', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(243, 'Петров', 'Сергей', 'Юрьевич', 4, 'I-РА', 727563, '000-000-000 243', 'М', '06.08.2007', NULL, 'participant', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '{1CD3650F-FDC9-407B-B70D-D387932FB9A5} ', NULL, 1, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 249', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(244, 'Петров', 'Сергей', 'Юрьевич', 4, 'I-РА', 826471, '000-000-000 244', 'М', '25.09.2008', NULL, 'participant', NULL, NULL, NULL, '1D8973F239384557B28B67D0A02F2993', NULL, NULL, NULL, NULL, '{21F6DD6E-071A-425F-BC12-FB9372E879C2} ', NULL, 1, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 250', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(245, 'Петров', 'Сергей', 'Юрьевич', 4, 'I-РА', 758308, '000-000-000 245', 'М', '20.01.2007', NULL, 'participant', NULL, NULL, NULL, '7C40C1A79D834AAB9B6FFB95BC46799A', NULL, NULL, NULL, NULL, '{4C5402C8-4035-4147-9A99-3201CDE9D30A} ', NULL, 1, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 251', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(246, 'Петров', 'Сергей', 'Юрьевич', 4, 'I-РА', 630919, '000-000-000 246', 'М', '16.04.2009', NULL, 'participant', NULL, NULL, NULL, 'E7647FD2EB364BEDADD0683B48DBD618', NULL, NULL, NULL, NULL, '{4B569CE6-332E-40B4-BFC1-345161FFD1D2} ', NULL, 1, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 252', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(247, 'Петров', 'Сергей', 'Юрьевич', 4, 'I-РА', 826432, '000-000-000 247', 'М', '22.09.2008', NULL, 'participant', NULL, NULL, NULL, 'C7643A21E2C347CC9A336D51B4A879D4', NULL, NULL, NULL, NULL, '{5DB46A81-DA6C-44CB-9663-B12675E09ED6} ', NULL, 1, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 253', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(248, 'Петров', 'Сергей', 'Юрьевич', 4, 'I-РА', 758479, '000-000-000 248', 'М', '04.07.2007', NULL, 'participant', NULL, NULL, NULL, 'AA4B2DD03A1942E1A39E7D516DA5F5D1', NULL, NULL, NULL, NULL, '{DFF5B194-FC2A-4CAB-B619-5843DD40B1AD} ', NULL, 1, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 254', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(249, 'Петров', 'Сергей', 'Юрьевич', 4, 'I-РА', 826897, '000-000-000 249', 'М', '25.05.2009', NULL, 'participant', NULL, NULL, NULL, '63EBB9AB136D4A9191E76A11D18AE018', NULL, NULL, NULL, NULL, '{6ECF7AB2-F835-C8B0-66CC-A83645584F76} ', NULL, 1, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 255', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(250, 'Петров', 'Сергей', 'Юрьевич', 4, 'I-РА', 758844, '000-000-000 250', 'М', '25.10.2007', NULL, 'participant', NULL, NULL, NULL, '5EC35DFEA16B40E394A5FED5746CFB54', NULL, NULL, NULL, NULL, '{414A4985-F50C-45F9-A345-F78996130462} ', NULL, 1, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 256', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(251, 'Петров', 'Сергей', 'Юрьевич', 4, 'I-РА', 826616, '000-000-000 251', 'М', '10.01.2009', NULL, 'participant', NULL, NULL, NULL, 'CF913F2FA3044624843A42952653445D', NULL, NULL, NULL, NULL, '{DD5D28EA-DCF5-4FFD-82AB-1666F07205C6} ', NULL, 1, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 257', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(252, 'Петров', 'Сергей', 'Юрьевич', 4, 'I-РА', 826047, '000-000-000 252', 'М', '01.03.2008', NULL, 'participant', NULL, NULL, NULL, '1D6178E962C54275A9D3937B10B71612', NULL, NULL, NULL, NULL, '{BB68C143-7775-01D9-57D2-1A2BE0A4FA4D} ', NULL, 1, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 258', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(253, 'Петров', 'Сергей', 'Юрьевич', 4, 'I-РА', 758757, '000-000-000 253', 'М', '18.09.2007', NULL, 'participant', NULL, NULL, NULL, '9728BAF23E374C6F9A03F202439B7EF1', NULL, NULL, NULL, NULL, '{C6BFEDF1-10B3-44E6-A6CA-250E33A00C94} ', NULL, 1, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 259', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(254, 'Петров', 'Сергей', 'Юрьевич', 4, 'I-РА', 875159, '000-000-000 254', 'М', '29.08.2009', NULL, 'participant', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '{A8ED59C2-BDF7-04D4-69E5-051A044CEECF} ', NULL, 1, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 260', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(255, 'Петров', 'Сергей', 'Юрьевич', 4, 'I-РА', 826471, '000-000-000 255', 'М', '30.08.2008', NULL, 'participant', NULL, NULL, NULL, '5144A6F50E314EEE883E7845D52AD675', NULL, NULL, NULL, NULL, '{DEE70D52-A8BD-4A89-A143-5A4E663DD485} ', NULL, 1, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 261', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(256, 'Петров', 'Сергей', 'Юрьевич', 4, 'I-РА', 826308, '000-000-000 256', 'М', '13.07.2008', NULL, 'participant', NULL, NULL, NULL, '410B789DD1224F7A9CE0F9F1DB8F02E8', NULL, NULL, NULL, NULL, '{67087DD5-D431-4212-92F3-BFF1618FDC58} ', NULL, 1, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 262', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(257, 'Петров', 'Сергей', 'Юрьевич', 4, 'I-РА', 758583, '000-000-000 257', 'М', '19.06.2007', NULL, 'participant', NULL, NULL, NULL, 'F9F72B91AE504A55A799F93F7419CBD5', NULL, NULL, NULL, NULL, '{CEBE3B11-EA5B-4EC5-B330-67B165F4E1AA} ', NULL, 1, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 263', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(258, 'Петров', 'Сергей', 'Юрьевич', 4, 'I-РА', 740610, '000-000-000 258', 'М', '27.11.2006', NULL, NULL, NULL, NULL, NULL, '6F1CB9F8597F448C93D40AA605A33EA0', NULL, NULL, NULL, NULL, '{E23C521F-53B1-47DC-A40C-E13D019850C0} ', NULL, NULL, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 264', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(259, 'Петров', 'Сергей', 'Юрьевич', 4, 'I-РА', 875134, '000-000-000 259', 'М', '15.09.2009', NULL, 'participant', NULL, NULL, NULL, 'CD512D8B7C97413BB49C9274BE5332C8', NULL, NULL, NULL, NULL, '{3FCAE8E7-7AD1-46F5-BA80-78D5EF3371F0} ', NULL, 1, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 265', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(260, 'Петров', 'Сергей', 'Юрьевич', 4, 'I-РА', 875375, '000-000-000 260', 'М', '20.01.2010', NULL, 'participant', NULL, NULL, NULL, '8EC0D9135C604F24987AD4CA81132409', NULL, NULL, NULL, NULL, '{29FCD317-5639-4BD9-86A7-FF9037719AE6} ', NULL, 1, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 266', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(261, 'Петров', 'Сергей', 'Юрьевич', 4, 'I-РА', 875342, '000-000-000 261', 'М', '21.01.2010', NULL, 'participant', NULL, NULL, NULL, '368EAA0B27A34D66B41DC41800AFC224', NULL, 'E1956F9974164B54B713755A01EAB14A', NULL, NULL, '{F5986E67-0607-4D1A-AFD5-8684131C43C0} ', NULL, 1, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 267', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(262, 'Петров', 'Сергей', 'Юрьевич', 4, 'I-РА', 826488, '000-000-000 262', 'М', '21.10.2008', NULL, 'participant', '07.10.2020', NULL, 'Приказ №50 от 07.10.2020', '4D91A608821042B0A04C76E6E6DE8EA6', NULL, NULL, NULL, NULL, '{7FCBBAD7-2DC7-A756-40DE-A4233BA70764} ', NULL, 1, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 268', 1, NULL, NULL, NULL, NULL, NULL, NULL),
+(263, 'Петров', 'Сергей', 'Юрьевич', 4, 'I-РА', 875854, '000-000-000 263', 'М', '10.09.2010', NULL, 'participant', NULL, NULL, NULL, '6BD7D9F0A1E44B82AA5E6BB113C227BC', NULL, NULL, NULL, NULL, '{8BECB160-9304-4127-B8E7-ED18434BBB7A} ', NULL, 1, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 269', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(264, 'Петров', 'Сергей', 'Юрьевич', 4, 'I-РА', 826549, '000-000-000 264', 'М', '06.12.2008', NULL, 'participant', NULL, NULL, NULL, 'B96BF66B820B4B15BAEE1E999E0F6BF5', NULL, NULL, NULL, NULL, '{90F1B45D-8ED9-4069-A5D3-BB212E070453} ', NULL, 1, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 270', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(265, 'Петров', 'Сергей', 'Юрьевич', 4, 'I-РА', 758603, '000-000-000 265', 'М', '28.06.2007', NULL, 'participant', NULL, NULL, NULL, 'BFBD5BA032B94B52B9F942FD5791113B', NULL, NULL, NULL, NULL, '{B502A217-A391-4E8F-9CB7-5344BA09C023} ', NULL, 1, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 271', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(266, 'Петров', 'Сергей', 'Юрьевич', 4, 'I-РА', 826378, '000-000-000 266', 'М', '29.08.2008', NULL, 'participant', NULL, NULL, NULL, '2B9183079FED4C14B9A76389CEE342D8', 'D0B2A0D71FCA4531B34C38D81217A0FF', NULL, NULL, NULL, '{290451DE-CDB6-4916-BDD5-511D08549185} ', NULL, 1, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 272', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(267, 'Петров', 'Сергей', 'Юрьевич', 4, 'I-РА', 731543, '000-000-000 267', 'М', '18.04.2007', NULL, 'participant', NULL, NULL, NULL, 'D687FABCEAA34097A6A49017396BFDBA', NULL, NULL, NULL, NULL, '{E9976A28-BF3A-45FE-A1D4-E3109AE3F7F2} ', NULL, 1, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 273', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(268, 'Петров', 'Сергей', 'Юрьевич', 4, 'I-РА', 845208, '000-000-000 268', 'М', '14.08.2009', NULL, 'participant', NULL, NULL, NULL, 'D177E6CE2E0B424591633770BD8F9FE8', NULL, NULL, NULL, NULL, '{1D0E5052-C708-2CFF-B4FC-A8396A17FA5D} ', NULL, 1, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 274', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(269, 'Петров', 'Сергей', 'Юрьевич', 4, 'I-РА', 795735, '000-000-000 269', 'М', '09.04.2008', NULL, 'participant', NULL, NULL, NULL, '770DD4BDA3744A34BFBF994C92616560', NULL, 'FBC7E717DF5B4E2FA902AE6C81B0E569', NULL, NULL, '{89A26EC1-B866-4213-90E9-B74055374B5B} ', NULL, 1, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 275', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(270, 'Петров', 'Сергей', 'Юрьевич', 4, 'I-РА', 744669, '000-000-000 270', 'М', '10.03.2008', NULL, 'participant', NULL, NULL, NULL, '6631C88DF7AD4EA595406443A618CB7D', NULL, NULL, NULL, NULL, '{F61090FF-B349-4F4A-9F9D-BFB85BF4E65E} ', NULL, 1, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 276', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(271, 'Петров', 'Сергей', 'Юрьевич', 4, 'I-РА', 826807, '000-000-000 271', 'М', '01.04.2009', NULL, 'participant', NULL, NULL, NULL, 'B9203280CC6E473CA2E5BE89D6DC23CE', NULL, NULL, NULL, NULL, '{2CA4F89E-FB0C-48BB-9C46-54F80134664D} ', NULL, 1, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 277', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(272, 'Петров', 'Сергей', 'Юрьевич', 4, 'I-РА', 717949, '000-000-000 272', 'М', '29.07.2006', NULL, NULL, NULL, NULL, NULL, 'EC63B6D20086455C83225E96E66D88B2', NULL, NULL, NULL, NULL, '{C347004A-99B2-43C8-AD55-B51081CF177D} ', NULL, NULL, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 278', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(273, 'Петров', 'Сергей', 'Юрьевич', 4, 'I-РА', 758541, '000-000-000 273', 'М', '18.05.2007', NULL, NULL, NULL, NULL, NULL, 'E09A58112C1B4645ACA4D330B44A294F', NULL, NULL, NULL, NULL, '{777998FF-DFCE-4D71-AC4B-AB4FCBB3B38A} ', NULL, 1, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 279', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(274, 'Петров', 'Сергей', 'Юрьевич', 4, 'I-РА', 762344, '000-000-000 274', 'М', '18.12.2006', NULL, 'participant', NULL, NULL, NULL, 'D0A3E7DC0ABB4EBDB3103A73FF8EDD21', NULL, 'D0A3E7DC0ABB4EBDB3103A73FF8EDD21', NULL, NULL, '{4BE1593A-F8E7-5A90-FD70-2B81A262E10E} ', NULL, 1, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 280', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(275, 'Петров', 'Сергей', 'Юрьевич', 4, 'I-РА', 758249, '000-000-000 275', 'М', '20.12.2006', NULL, 'participant', NULL, NULL, NULL, 'EF5452E024314613911C680682950550', NULL, NULL, NULL, NULL, '{D10A3759-A2DD-4D83-87DF-AE05B7717D9D} ', NULL, 1, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 281', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(276, 'Петров', 'Сергей', 'Юрьевич', 4, 'I-РА', 744707, '000-000-000 276', 'М', '26.03.2008', NULL, 'participant', NULL, NULL, NULL, '8BEC5FA093E94E4DB72FD8DAC62F4DBF', NULL, NULL, NULL, NULL, '{BAEAA92E-F69B-439A-AB03-CCD8FF551DE5} ', NULL, 1, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 282', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(277, 'Петров', 'Сергей', 'Юрьевич', 4, 'I-РА', 826770, '000-000-000 277', 'М', '28.03.2009', NULL, 'participant', NULL, NULL, NULL, '45D048CF122741FA9189ED7D66E38C63', NULL, NULL, NULL, NULL, '{FB25EDC0-DD38-4BF0-B6CD-5094449FC6DF} ', NULL, 1, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 283', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(278, 'Петров', 'Сергей', 'Юрьевич', 4, 'I-РА', 826871, '000-000-000 278', 'М', '29.04.2009', NULL, 'participant', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '{65A74C7C-86A5-478B-9A96-7D2BA836CCA7} ', NULL, 1, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 284', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(279, 'Петров', 'Сергей', 'Юрьевич', 4, 'I-РА', 758615, '000-000-000 279', 'М', '24.06.2007', NULL, 'participant', NULL, NULL, NULL, '26217D5D6C3C4E16820111A3CFB3EDD1', NULL, NULL, NULL, NULL, '{337BF459-9AA0-4F40-96FB-4BE71D540AC9} ', NULL, 1, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 285', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(280, 'Петров', 'Сергей', 'Юрьевич', 4, 'I-РА', 717895, '000-000-000 280', 'М', '22.06.2006', NULL, 'participant', NULL, NULL, NULL, 'C0A0230A17F24A35A9089D778636CA5D', NULL, NULL, NULL, NULL, '{BAF14333-A09E-45DC-AB83-E1CA84FD0322} ', NULL, 1, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 286', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(281, 'Петров', 'Сергей', 'Юрьевич', 4, 'I-РА', 826794, '000-000-000 281', 'М', '28.03.2009', NULL, 'participant', NULL, NULL, NULL, 'C05A3C70F8E8402E99580B3DB94AF95C', NULL, NULL, NULL, NULL, '{2CA61573-3BA0-45A8-BEB7-023EB01083E9} ', NULL, 1, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 287', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(282, 'Петров', 'Сергей', 'Юрьевич', 4, 'I-РА', 826579, '000-000-000 282', 'М', '14.12.2008', NULL, 'participant', NULL, NULL, NULL, '6E6221833E9047AAB475874968253CC7', NULL, NULL, NULL, NULL, '{81155782-59C8-B443-3265-FE0D89D3D02F} ', NULL, 1, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 288', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(283, 'Петров', 'Сергей', 'Юрьевич', 4, 'I-РА', 758404, '000-000-000 283', 'М', '06.03.2007', NULL, 'participant', NULL, NULL, NULL, '65C31D79A08046DF8129A0F00701AC20', NULL, NULL, NULL, NULL, '{8D4CF2BD-124C-4DDF-8A88-67CE0B71B844} ', NULL, NULL, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 289', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(284, 'Петров', 'Сергей', 'Юрьевич', 4, 'I-РА', 875256, '000-000-000 284', 'М', '15.11.2009', NULL, 'participant', NULL, NULL, NULL, 'E19D7EFADAC74B308F39FA16AA4F8A5A', NULL, NULL, NULL, NULL, '{10C0F7F3-FAE0-425E-A083-E46E1E6A1A31} ', NULL, 1, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 290', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(285, 'Петров', 'Сергей', 'Юрьевич', 4, 'I-РА', 759107, '000-000-000 285', 'М', '03.02.2006', NULL, 'participant', NULL, NULL, NULL, 'B71EFB9B863549DAA40577FF94DABD7E', NULL, NULL, NULL, NULL, '{495FCDED-A205-4B36-847D-D941A15B8F92} ', NULL, NULL, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 291', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(286, 'Петров', 'Сергей', 'Юрьевич', 4, 'I-РА', 758914, '000-000-000 286', 'М', '15.12.2007', NULL, 'participant', NULL, NULL, NULL, NULL, 'D0AF99CA646E4F89876502B5CC11C241', NULL, NULL, NULL, '{1530CD33-D963-4687-9184-7E6DB7386173} ', NULL, 1, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 292', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(287, 'Петров', 'Сергей', 'Юрьевич', 4, 'I-РА', 758450, '000-000-000 287', 'М', '02.04.2007', NULL, 'participant', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 293', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(288, 'Петров', 'Сергей', 'Юрьевич', 4, 'I-РА', 845304, '000-000-000 288', 'М', '30.05.2009', NULL, 'participant', NULL, NULL, NULL, '2257EDDA55A249138E5B3CEC300B1D26', NULL, 'FBAA814D5C5A40AB99BA55B2341AC9BB', NULL, NULL, '{8512B5A6-6099-40B7-84BF-0BBF87B04371} ', NULL, 1, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 294', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(289, 'Петров', 'Сергей', 'Юрьевич', 4, 'I-РА', 710526, '000-000-000 289', 'М', '24.07.2010', NULL, 'participant', NULL, NULL, NULL, 'FA82CA7A23204E9BB4FEBE5999D9A80D', NULL, '44C3016CF9F34016B55EA4919E13F4C7', NULL, NULL, '{4E3E08D1-CC6A-47E2-A8B7-40E9A4B4CF96} ', NULL, 1, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 295', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(290, 'Петров', 'Сергей', 'Юрьевич', 4, 'I-РА', 826823, '000-000-000 290', 'М', '19.04.2009', NULL, 'participant', NULL, NULL, NULL, 'DC41143538414C2B9A4807DCF6DC9109', '46C4B115F71E45048548B819BD25C2EF', NULL, NULL, NULL, '{9D224725-C2FA-462C-AC03-5684E44FB4CF} ', NULL, 1, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 296', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(291, 'Петров', 'Сергей', 'Юрьевич', 4, 'I-РА', 758440, '000-000-000 291', 'М', '21.03.2007', NULL, 'participant', NULL, NULL, NULL, 'E81B4C651F1040F49F9AE35956BBE837', NULL, NULL, NULL, NULL, '{2D7E8C0B-4795-4085-AC22-ABA8BB23A07A} ', NULL, NULL, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 297', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(292, 'Петров', 'Сергей', 'Юрьевич', 4, 'I-РА', 838619, '000-000-000 292', 'М', '02.08.2006', NULL, 'participant', NULL, NULL, NULL, '114AB4599E2C4AFF8B1F9D4B2E9DA72D', NULL, NULL, NULL, NULL, '{9DECFDD5-160C-46DB-B17E-2525D388857B} ', NULL, 1, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 298', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(293, 'Петров', 'Сергей', 'Юрьевич', 4, 'I-РА', 560668, '000-000-000 293', 'М', '25.02.2007', NULL, 'participant', NULL, NULL, NULL, '0216CD33F09046798F5F79CFE913833A', '0216CD33F09046798F5F79CFE913833A', NULL, NULL, NULL, '{EA33D767-9A76-43EE-A5E8-FA76A19CC925} ', NULL, NULL, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 299', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(294, 'Петров', 'Сергей', 'Юрьевич', 4, 'I-РА', 826476, '000-000-000 294', 'М', '17.10.2008', NULL, 'participant', NULL, NULL, NULL, '0F74F1F8F58643F6BE2F02D229F7D387', NULL, NULL, NULL, NULL, '{29DF6C1C-E480-4AF4-BEFE-DACE66F33655} ', NULL, 1, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 300', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(295, 'Петров', 'Сергей', 'Юрьевич', 4, 'I-РА', 734605, '000-000-000 295', 'М', '06.09.2008', NULL, 'participant', NULL, NULL, NULL, 'D8A0BD9AC6E74E138D1BCE59606BD476', NULL, NULL, NULL, NULL, '{035FECCC-F3CB-4FF0-A7BF-E9F365D82714} ', NULL, 1, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 301', 0, NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO `paraticipants` (`PARTICIPANTID`, `SURNAME`, `NAME`, `SECONDNAME`, `DOCUMENTTYPEFK`, `DOCUMENTSERIES`, `DOCUMENTNUMBER`, `SNILS`, `SEX`, `BIRTHDAY`, `EXPINFO`, `ROLEFK`, `RETIRED`, `APPID`, `COMMAND`, `PARTPARENTFK`, `PARTPARENT2FK`, `LEGAL_AGENT`, `BEGDATE`, `JOINTCODE`, `FCTGUID`, `EGECITIZENSHIPFK`, `D_LIMITEDPOTENTFK`, `ADDID`, `PARTICIPANT_INVALID`, `INVALID_EDU`, `ADRESS`, `GONEFLAG`, `CON_REG_ID`, `CON_FED_ID`, `CON_REG_ERR`, `MOBILE`, `DATA_DOC`, `REC_DOC`) VALUES
+(296, 'Петров', 'Сергей', 'Юрьевич', 4, 'I-РА', 826285, '000-000-000 296', 'М', '11.07.2008', NULL, 'participant', NULL, NULL, NULL, '541A52D43B2D45D78F4579149C76E219', NULL, NULL, NULL, NULL, '{77CF4332-95A1-37D8-C50C-20930DAA4699} ', NULL, 1, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 302', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(297, 'Петров', 'Сергей', 'Юрьевич', 4, 'I-РА', 875112, '000-000-000 297', 'М', '24.04.2006', NULL, 'participant', NULL, NULL, NULL, 'AF0F346535AC4D96AFAB66A8979C0CC2', NULL, NULL, NULL, NULL, '{7E4FE5E6-3EB0-408D-B03F-0DDB90C35CFF} ', NULL, NULL, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 303', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(298, 'Петров', 'Сергей', 'Юрьевич', 4, 'I-РА', 758795, '000-000-000 298', 'М', '10.10.2007', NULL, 'participant', NULL, NULL, NULL, '6F69A3E19A0D4099A1C043524A8AF75F', NULL, NULL, NULL, NULL, '{2703572D-8A32-4FAD-9CA3-6660250A8863} ', NULL, 1, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 304', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(299, 'Петров', 'Сергей', 'Юрьевич', 4, 'I-РА', 826899, '000-000-000 299', 'М', '24.05.2009', NULL, 'participant', NULL, NULL, NULL, '35EFB77D97BA440BB6E91CB6DAF798B7', NULL, NULL, NULL, NULL, '{240CD084-A28B-4C90-9A10-F04F2E02F74B} ', NULL, 1, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 305', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(300, 'Петров', 'Сергей', 'Юрьевич', 4, 'I-РА', 758818, '000-000-000 300', 'М', '13.10.2007', NULL, 'participant', NULL, NULL, NULL, 'DC860AEB420149E3AB837879DC59D536', NULL, NULL, NULL, NULL, '{D01CC3D7-A638-4459-AC55-803BF7BCC4FA} ', NULL, 1, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 306', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(301, 'Петров', 'Сергей', 'Юрьевич', 4, 'I-РА', 82683, '000-000-000 301', 'М', '10.04.2009', NULL, 'participant', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 307', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(302, 'Петров', 'Сергей', 'Юрьевич', 4, 'I-РА', 875183, '000-000-000 302', 'М', '29.09.2009', NULL, 'participant', NULL, NULL, NULL, '4B848E3108244FEBBFFBC562E26CAC31', NULL, NULL, NULL, NULL, '{7F8567C3-7AA4-4A5C-BF51-845028632383} ', NULL, 1, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 308', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(303, 'Петров', 'Сергей', 'Юрьевич', 4, 'I-РА', 758295, '000-000-000 303', 'М', '09.01.2007', NULL, 'participant', NULL, NULL, NULL, '948E500A6B9B4D2CA1646EF747BA7CBF', NULL, NULL, NULL, NULL, '{D3DEC320-4AE1-4828-AFC2-196058987E94} ', NULL, 1, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 309', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(304, 'Петров', 'Сергей', 'Юрьевич', 4, 'I-РА', 826668, '000-000-000 304', 'М', '26.12.2008', NULL, 'participant', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '{4FA25AF6-8C8C-4240-9295-45E3E970276C} ', NULL, 1, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 310', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(305, 'Петров', 'Сергей', 'Юрьевич', 4, 'I-РА', 758794, '000-000-000 305', 'М', '08.10.2007', NULL, 'participant', NULL, NULL, NULL, 'E78D6D4CAF374D7EA76F84811C6D906F', NULL, NULL, NULL, NULL, '{5A7D1FAD-9B96-4B9A-A5AF-515563D80D25} ', NULL, 1, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 311', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(306, 'Петров', 'Сергей', 'Юрьевич', 4, 'I-РА', 826469, '000-000-000 306', 'М', '09.10.2008', NULL, 'participant', NULL, NULL, NULL, '9633F9A8D2164F2A8586A3DA9D6D91B3', NULL, NULL, NULL, NULL, '{C694BD1D-5E89-45D4-8A5F-CA0017443C4A} ', NULL, 1, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 312', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(307, 'Петров', 'Сергей', 'Юрьевич', 4, 'I-РА', 634968, '000-000-000 307', 'М', '01.10.2003', NULL, 'participant', NULL, NULL, NULL, '55F80A90E16E4C33A4E2A6FF33E414E4', NULL, NULL, NULL, NULL, '{5B3AD245-7A8C-4122-96F1-85B03791253A} ', NULL, NULL, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 313', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(308, 'Петров', 'Сергей', 'Юрьевич', 4, 'I-РА', 826624, '000-000-000 308', 'М', '09.01.2009', NULL, 'participant', NULL, NULL, NULL, '46C0B19ED87F46BB8C923ADF7F451BAB', NULL, NULL, NULL, NULL, '{3D5F2FBF-3DAD-8BE2-F0C6-40C68C62A24A} ', NULL, 1, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 314', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(309, 'Петров', 'Сергей', 'Юрьевич', 4, 'I-РА', 826525, '000-000-000 309', 'М', '21.11.2008', NULL, 'participant', NULL, NULL, NULL, '591AB84A3E5B448B9B4ABAA82E053FD4', NULL, NULL, NULL, NULL, '{FB5942EB-E2E1-4C30-8085-1DEA0F4A02AD} ', NULL, 1, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 315', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(310, 'Петров', 'Сергей', 'Юрьевич', 4, 'I-РА', 826119, '000-000-000 310', 'М', '15.04.2008', NULL, 'participant', NULL, NULL, NULL, 'A2F5C6C4117C47829CCC24A666F93AA0', NULL, NULL, NULL, NULL, '{2C71CA7F-EB4D-4A03-BEB3-A2506D414A6E} ', NULL, 1, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 316', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(311, 'Петров', 'Сергей', 'Юрьевич', 4, 'I-РА', 758492, '000-000-000 311', 'М', '26.04.2007', NULL, 'participant', NULL, NULL, NULL, 'FAB7389A3CCB43CBAA7B54603A5E3695', NULL, NULL, NULL, NULL, '{27ED1144-2052-4049-AA44-5C454C9F4F9A} ', NULL, 1, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 317', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(312, 'Петров', 'Сергей', 'Юрьевич', 4, 'I-РА', 758854, '000-000-000 312', 'М', '09.11.2007', NULL, 'participant', NULL, NULL, NULL, 'DA3D98C8019B4CC8A3008417709536FA', NULL, NULL, NULL, NULL, '{7B58D43B-EC8B-444D-AD52-8BC2FD3D7730} ', NULL, 1, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 318', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(313, 'Петров', 'Сергей', 'Юрьевич', 4, 'I-РА', 845056, '000-000-000 313', 'М', '12.08.2008', NULL, 'participant', NULL, NULL, NULL, 'F1D2BEC1AC7A49A0B2190A07A0EABD68', NULL, NULL, NULL, NULL, '{F26D5464-677E-481E-AD62-D250CBFC1301} ', NULL, 1, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 319', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(314, 'Петров', 'Сергей', 'Юрьевич', 4, 'I-РА', 875682, '000-000-000 314', 'М', '24.06.2010', NULL, 'participant', NULL, NULL, NULL, 'A0C623DEEA7741D4898871866EFC54FD', NULL, '715EA701CBD749EBB1F3C967015B3CFE', NULL, NULL, '{D1CFC029-CF45-497A-92DC-275C63033151} ', NULL, 1, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 320', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(315, 'Петров', 'Сергей', 'Юрьевич', 4, 'I-РА', 758448, '000-000-000 315', 'М', '28.03.2007', NULL, 'participant', NULL, NULL, NULL, 'AF712C50C774479094D62FAABB458D74', NULL, NULL, NULL, NULL, '{CB801CB5-18FA-419D-9687-54B674C67B89} ', NULL, 1, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 321', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(316, 'Петров', 'Сергей', 'Юрьевич', 4, 'I-РА', 861220, '000-000-000 316', 'М', '08.08.2009', NULL, 'participant', NULL, NULL, NULL, '7148590047314C91A2A1607359386169', NULL, NULL, NULL, NULL, '{2E2DB66E-B35A-4551-9246-D1A37D207195} ', NULL, 1, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 322', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(317, 'Петров', 'Сергей', 'Юрьевич', 4, 'I-РА', 758460, '000-000-000 317', 'М', '06.04.2007', NULL, 'participant', NULL, NULL, NULL, '9682CECD11A44EE196F6AC16FE283B1D', NULL, NULL, NULL, NULL, '{96E87893-DD55-4DB2-9594-ED11038B3CA7} ', NULL, 1, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 323', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(318, 'Петров', 'Сергей', 'Юрьевич', 4, 'I-РА', 524692, '000-000-000 318', 'М', '29.09.2010', NULL, 'participant', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 324', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(319, 'Петров', 'Сергей', 'Юрьевич', 4, 'I-РА', 826132, '000-000-000 319', 'М', '29.04.2008', NULL, 'participant', NULL, NULL, NULL, 'EDF5D585751A4FC392C6348B8AE214B9', NULL, NULL, NULL, NULL, '{038D52D6-4BED-43D0-AB3C-07EE39684C4E} ', NULL, 1, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 325', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(320, 'Петров', 'Сергей', 'Юрьевич', 4, 'I-РА', 693406, '000-000-000 320', 'М', '24.09.2007', NULL, 'participant', NULL, NULL, NULL, 'C0F9C1C3D7C540B0B26EBC6CB2B7F45C', NULL, NULL, NULL, NULL, '{3010C5C6-D6E5-4EA6-AC60-36C6C7791B47} ', NULL, 1, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 326', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(321, 'Петров', 'Сергей', 'Юрьевич', 4, 'I-РА', 826631, '000-000-000 321', 'М', '12.01.2009', NULL, 'participant', NULL, NULL, NULL, '77B97564CD4445BA9E81BC784159E229', NULL, NULL, NULL, NULL, '{2AC38C27-E0AC-41C4-8D80-540B58960843} ', NULL, 1, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 327', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(322, 'Петров', 'Сергей', 'Юрьевич', 4, 'I-РА', 744015, '000-000-000 322', 'М', '14.05.2006', NULL, 'participant', NULL, NULL, NULL, '4586EAE004714F1DA0FCD818064BFA10', NULL, NULL, NULL, NULL, '{0014999C-7AED-267C-F448-26ACE523A049} ', NULL, 1, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 328', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(323, 'Петров', 'Сергей', 'Юрьевич', 4, 'I-РА', 758520, '000-000-000 323', 'М', '15.05.2007', NULL, 'participant', NULL, NULL, NULL, '04438FF677014353A12AE8534B9085B7', NULL, NULL, NULL, NULL, '{BF14C4E0-5406-479B-AC3A-28BF7478DA8D} ', NULL, 1, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 329', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(324, 'Петров', 'Сергей', 'Юрьевич', 4, 'I-РА', 826540, '000-000-000 324', 'М', '02.12.2008', NULL, 'participant', NULL, NULL, NULL, 'B82748CF4A7A412E8B5E56AF0F4EE94A', NULL, NULL, NULL, NULL, '{98FCCC52-5146-46E2-A494-C7E2E5F5688E} ', NULL, 1, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 330', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(325, 'Петров', 'Сергей', 'Юрьевич', 4, 'I-РА', 875098, '000-000-000 325', 'М', '04.05.2006', NULL, 'participant', NULL, NULL, NULL, '478BDAA04E574C29A21E4360B6DF3364', NULL, NULL, NULL, NULL, '{6BE594C6-AB06-416D-8B8A-7122A9FD990C} ', NULL, NULL, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 331', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(326, 'Петров', 'Сергей', 'Юрьевич', 4, 'I-РА', 744740, '000-000-000 326', 'М', '27.02.2009', NULL, 'participant', NULL, NULL, NULL, 'E0DAB9E8BB67434AB37098749F8980C0', NULL, NULL, NULL, NULL, '{295DEFC5-481A-828D-50C9-4DFEE91F9E9B} ', NULL, 1, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 332', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(327, 'Петров', 'Сергей', 'Юрьевич', 4, 'I-РА', 630656, '000-000-000 327', 'М', '12.03.2013', NULL, 'participant', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 333', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(328, 'Петров', 'Сергей', 'Юрьевич', 4, 'I-РА', 500144, '000-000-000 328', 'М', '20.04.2012', NULL, NULL, NULL, NULL, NULL, 'A25BBA6BE2F543568284086935323BEB', NULL, NULL, NULL, NULL, '{6AAD3961-D3AC-4213-A9FC-34505374DEFD} ', NULL, 1, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 334', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(329, 'Петров', 'Сергей', 'Юрьевич', 4, 'I-РА', 875659, '000-000-000 329', 'М', '17.06.2010', NULL, 'participant', NULL, NULL, NULL, '98B5C28AF9244B1B8D508D0B025DB04D', NULL, NULL, NULL, NULL, '{4F8A0B64-89F7-4B8D-A554-2D167E611FD7} ', NULL, 1, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 335', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(330, 'Петров', 'Сергей', 'Юрьевич', 4, 'I-РА', 548643, '000-000-000 330', 'М', '06.04.2011', NULL, NULL, NULL, NULL, NULL, NULL, '5A69D57C469A4D2EB59DC2C1C9C1B160', NULL, NULL, NULL, '{8A2D50D9-FE6A-4098-A570-159EA2753B3C} ', NULL, 1, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 336', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(331, 'Петров', 'Сергей', 'Юрьевич', 4, 'I-РА', 581687, '000-000-000 331', 'М', '28.09.2011', NULL, NULL, NULL, NULL, NULL, 'EF80CE88AB0542C6A0BFFB45DB870083', NULL, NULL, NULL, NULL, '{5D363BED-A351-4A12-94F7-D649EDDDA7F0} ', NULL, 1, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 337', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(332, 'Петров', 'Сергей', 'Юрьевич', 4, 'I-РА', 550519, '000-000-000 332', 'М', '27.08.2011', NULL, NULL, NULL, NULL, NULL, '9A37DFA1020B4C2D97F0635C6E78156B', NULL, '4A5764DE42074FDB8E27E5E02EB12BE2', NULL, NULL, '{DF83926B-485C-4120-8936-4FD2142A95D3} ', NULL, 1, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 338', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(333, 'Петров', 'Сергей', 'Юрьевич', 4, 'I-РА', 573943, '000-000-000 333', 'М', '24.07.2013', NULL, 'participant', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 339', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(334, 'Петров', 'Сергей', 'Юрьевич', 4, 'I-РА', 550361, '000-000-000 334', 'М', '07.07.2011', NULL, NULL, NULL, NULL, NULL, '229F6B756B494488A4A7D5F8C990372D', NULL, NULL, NULL, NULL, '{DF5105BF-65FE-4153-A2FB-C4E6BD2A9FB6} ', NULL, 1, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 340', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(335, 'Петров', 'Сергей', 'Юрьевич', 4, 'I-РА', 630767, '000-000-000 335', 'М', '01.05.2013', NULL, 'participant', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 341', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(336, 'Петров', 'Сергей', 'Юрьевич', 4, 'I-РА', 550890, '000-000-000 336', 'М', '20.02.2012', NULL, NULL, NULL, NULL, NULL, '7CE97381524C4BFBA0AC9B1315E84157', NULL, NULL, NULL, NULL, '{85003CA9-D809-4337-AAA6-8058E267B07A} ', NULL, 1, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 342', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(337, 'Петров', 'Сергей', 'Юрьевич', 4, 'I-РА', 550271, '000-000-000 337', 'М', '20.04.2011', NULL, NULL, NULL, NULL, NULL, '071C5BB909114C31900D9BE07C2C0F1E', NULL, NULL, NULL, NULL, '{0599AAE2-165F-44EE-965B-42105BE98F76} ', NULL, 1, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 343', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(338, 'Петров', 'Сергей', 'Юрьевич', 4, 'I-РА', 630410, '000-000-000 338', 'М', '30.10.2012', NULL, NULL, NULL, NULL, NULL, 'C7E4ECE24DF94F6184F49556AC9B623A', NULL, NULL, NULL, NULL, '{BF2F5652-EFFE-4A2F-A996-83EF945018A5} ', NULL, NULL, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 344', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(339, 'Петров', 'Сергей', 'Юрьевич', 4, 'I-РА', 550679, '000-000-000 339', 'М', '13.11.2011', NULL, NULL, NULL, NULL, NULL, '0043DC843B874E75BF049B7803F0AC73', '4AD11498683B4B63AB339D2E76A19AA2', NULL, NULL, NULL, '{CEA73264-C39F-4F12-A888-139CF1556BA7} ', NULL, 1, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 345', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(340, 'Петров', 'Сергей', 'Юрьевич', 4, 'I-РА', 630186, '000-000-000 340', 'М', '12.07.2012', NULL, NULL, NULL, NULL, NULL, 'AB5D524CAE0F45ADB65A36EB5A8B2828', NULL, NULL, NULL, NULL, '{ED115D33-2C96-4FC9-9C33-234D85083621} ', NULL, 1, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 346', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(341, 'Петров', 'Сергей', 'Юрьевич', 4, 'I-РА', 630423, '000-000-000 341', 'М', '14.11.2012', NULL, NULL, NULL, NULL, NULL, 'B71EFB9B863549DAA40577FF94DABD7E', NULL, NULL, NULL, NULL, '{ACB54F0B-5A3B-4860-A257-CA75AB8BC633} ', NULL, NULL, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 347', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(342, 'Петров', 'Сергей', 'Юрьевич', 4, 'I-РА', 630148, '000-000-000 342', 'М', '09.07.2012', NULL, 'participant', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 348', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(343, 'Петров', 'Сергей', 'Юрьевич', 4, 'I-РА', 550913, '000-000-000 343', 'М', '04.03.2012', NULL, NULL, NULL, NULL, NULL, '4B868C5E23AD40278A03347CC17A6400', NULL, NULL, NULL, NULL, '{08A9DBBA-D1C7-480F-8560-5823FEC4C4FD} ', NULL, NULL, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 349', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(344, 'Петров', 'Сергей', 'Юрьевич', 4, 'I-РА', 845629, '000-000-000 344', 'М', '13.12.2010', NULL, 'participant', NULL, NULL, NULL, 'AB955374DB8248B0A38025A11D8BAFCF', NULL, NULL, NULL, NULL, '{2FC0C4E8-343C-4F97-A78D-7BB99CA6471A} ', NULL, 1, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 350', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(345, 'Петров', 'Сергей', 'Юрьевич', 4, 'I-РА', 875692, '000-000-000 345', 'М', '16.06.2010', NULL, 'participant', NULL, NULL, NULL, '5EBE5048C4644F00B5C6DFDFCFF4FB5E', NULL, NULL, NULL, NULL, '{E700F8FE-FF2B-4099-B0AE-E6A0089C0C89} ', NULL, NULL, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 351', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(346, 'Петров', 'Сергей', 'Юрьевич', 4, 'I-РА', 677930, '000-000-000 346', 'М', '26.05.2008', NULL, 'participant', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '{49513A91-A3CF-4DAB-898E-5CD7DE2B72D6} ', NULL, 1, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 352', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(347, 'Петров', 'Сергей', 'Юрьевич', 4, 'I-РА', 630624, '000-000-000 347', 'М', '27.02.2013', NULL, 'participant', NULL, NULL, NULL, '8C9823BADE87441EB5C43C606790FDC7', NULL, NULL, NULL, NULL, NULL, NULL, 1, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 353', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(348, 'Петров', 'Сергей', 'Юрьевич', 4, 'I-РА', 573854, '000-000-000 348', 'М', '03.11.2013', NULL, 'participant', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 354', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(349, 'Петров', 'Сергей', 'Юрьевич', 4, 'I-РА', 573222, '000-000-000 349', 'М', '15.10.2011', NULL, NULL, NULL, NULL, NULL, NULL, '108C25A474CD4BC3A0BAB9A42676B0B9', NULL, NULL, NULL, '{DE351E38-5274-41D4-8D07-5BD740ABCF44} ', NULL, 1, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 355', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(350, 'Петров', 'Сергей', 'Юрьевич', 4, 'I-РА', 550531, '000-000-000 350', 'М', '24.08.2011', NULL, NULL, NULL, NULL, NULL, 'CE57BFD1D6034893BB6E1455DAF9788E', NULL, NULL, NULL, NULL, '{AB7F1F14-334A-4585-95FF-8BA719B32784} ', NULL, 1, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 356', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(351, 'Петров', 'Сергей', 'Юрьевич', 4, 'I-РА', 550480, '000-000-000 351', 'М', '19.07.2011', NULL, NULL, NULL, NULL, NULL, 'EA0DFC6086C547F288AE36A54F7DB40C', NULL, NULL, NULL, NULL, '{8557ABEB-E0CD-495C-8809-DAE6130F8D7E} ', NULL, 1, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 357', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(352, 'Петров', 'Сергей', 'Юрьевич', 4, 'I-РА', 557042, '000-000-000 352', 'М', '24.01.2011', NULL, NULL, NULL, NULL, NULL, '4586EAE004714F1DA0FCD818064BFA10', NULL, NULL, NULL, NULL, '{AE71004A-F32F-4687-AFD8-D75E7A3D43D4} ', NULL, NULL, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 358', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(353, 'Петров', 'Сергей', 'Юрьевич', 4, 'I-РА', 550774, '000-000-000 353', 'М', '04.01.2012', NULL, NULL, NULL, NULL, NULL, 'FF8C602B7F6B48D49B37762AF812CE3F', NULL, NULL, NULL, NULL, '{D9C32EED-65CF-4BEB-B5EE-46BBCC4984E8} ', NULL, 1, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 359', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(354, 'Петров', 'Сергей', 'Юрьевич', 4, 'I-РА', 500327, '000-000-000 354', 'М', '24.09.2011', NULL, NULL, NULL, NULL, NULL, '6C0AADF5717B4797933D637D49052B5D', NULL, NULL, NULL, NULL, '{4C7859B4-7D9D-4105-A465-B4EC45A7B7A9} ', NULL, NULL, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 360', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(355, 'Петров', 'Сергей', 'Юрьевич', 1, 'I-РА', 747844, '000-000-000 355', 'М', '24.07.2003', NULL, 'participant', NULL, NULL, NULL, '6D474ABC9FFE45ABAA69BD7D30B8F81C', NULL, NULL, NULL, NULL, '{425722A3-4BE6-4581-97FB-E93484182577} ', NULL, NULL, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 361', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(356, 'Петров', 'Сергей', 'Юрьевич', 4, 'I-РА', 573221, '000-000-000 356', 'М', '15.10.2011', NULL, NULL, NULL, NULL, NULL, NULL, '108C25A474CD4BC3A0BAB9A42676B0B9', NULL, NULL, NULL, '{AB76AA8A-7B31-4F48-AE21-A23767FE1809} ', NULL, 1, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 362', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(357, 'Петров', 'Сергей', 'Юрьевич', 1, 'I-РА', 748140, '000-000-000 357', 'М', '16.09.2003', NULL, 'participant', NULL, NULL, NULL, 'ED1FEAD8F27148F898DD33591E0FBF66', NULL, NULL, NULL, NULL, '{E78F48D2-6AE4-4C8A-AEC0-7B3283718DE8} ', NULL, NULL, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 363', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(358, 'Петров', 'Сергей', 'Юрьевич', 4, 'I-РА', 717780, '000-000-000 358', 'М', '01.04.2006', NULL, 'participant', NULL, NULL, NULL, 'FB1DC52CE0D44562A944A5A4367A4D30', NULL, NULL, NULL, NULL, '{ECC1FDEA-2518-BEF8-5256-9E1FC8806D57} ', NULL, 1, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 364', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(359, 'Петров', 'Сергей', 'Юрьевич', 4, 'I-РА', 550930, '000-000-000 359', 'М', '15.03.2012', NULL, 'participant', NULL, NULL, NULL, '426E645DC4534EA9AF7932F64156E684', NULL, NULL, NULL, NULL, '{19C78553-1F8B-4175-814C-D6C77C96665C} ', NULL, 1, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 365', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(360, 'Петров', 'Сергей', 'Юрьевич', 4, 'I-РА', 630389, '000-000-000 360', 'М', '23.10.2012', NULL, NULL, NULL, NULL, NULL, 'BA9C4729A1BE452CB272D7B40EDF212A', NULL, NULL, NULL, NULL, '{702B8DFF-A75A-4E1A-B309-59A6AEC0B945} ', NULL, 1, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 366', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(361, 'Петров', 'Сергей', 'Юрьевич', 4, 'I-РА', 630892, '000-000-000 361', 'М', '03.07.2013', NULL, 'participant', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 367', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(362, 'Петров', 'Сергей', 'Юрьевич', 4, 'I-РА', 550632, '000-000-000 362', 'М', '24.10.2011', NULL, NULL, NULL, NULL, NULL, NULL, '8582832DC51043B3BBDBBE7561A3C272', NULL, NULL, NULL, '{1841383A-EE81-42AB-8888-9E4D26F738D9} ', NULL, 1, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 368', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(363, 'Петров', 'Сергей', 'Юрьевич', 4, 'I-РА', 525122, '000-000-000 363', 'М', '28.06.2010', NULL, 'participant', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 369', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(364, 'Петров', 'Сергей', 'Юрьевич', 4, 'I-РА', 630005, '000-000-000 364', 'М', '02.05.2012', NULL, NULL, NULL, NULL, NULL, 'C545B6705C5E47AFB434D868A0987329', NULL, NULL, NULL, NULL, '{3F2938B3-61A3-4529-A409-C6B878FB6767} ', NULL, 1, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 370', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(365, 'Петров', 'Сергей', 'Юрьевич', 4, 'I-РА', 693143, '000-000-000 365', 'М', '27.10.2013', NULL, 'participant', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 371', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(366, 'Петров', 'Сергей', 'Юрьевич', 4, 'I-РА', 69322, '000-000-000 366', 'М', '31.05.2011', NULL, NULL, NULL, NULL, NULL, 'B5CC51E7492A424C859646ECA3815DB8', NULL, NULL, NULL, NULL, '{8436D734-0405-4C0C-91F5-ECAEE0A54F59} ', NULL, 1, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 372', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(367, 'Петров', 'Сергей', 'Юрьевич', 4, 'I-РА', 550312, '000-000-000 367', 'М', '16.05.2011', NULL, NULL, NULL, NULL, NULL, '27B352404C024994A0EC5E1872EEBEBF', NULL, NULL, NULL, NULL, '{DFB6DD08-5C3E-468A-925F-620399081A34} ', NULL, 1, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 373', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(368, 'Петров', 'Сергей', 'Юрьевич', 4, 'I-РА', 826245, '000-000-000 368', 'М', '12.06.2008', NULL, 'participant', NULL, NULL, NULL, '6356153E46E04860BF9C30A999588C64', NULL, NULL, NULL, NULL, '{F0556763-9C3A-42E0-8D68-9F60D5F423A6} ', NULL, 1, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 374', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(369, 'Петров', 'Сергей', 'Юрьевич', 1, 'I-РА', 726907, '000-000-000 369', 'М', '06.06.2003', NULL, 'participant', NULL, NULL, NULL, '9F56B9375A0F4D20A80F084BD8FA73C5', NULL, NULL, NULL, NULL, '{BD007042-B3FA-4719-BB9D-CE3F73BF02DD} ', NULL, NULL, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 375', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(370, 'Петров', 'Сергей', 'Юрьевич', 4, 'I-РА', 550190, '000-000-000 370', 'М', '23.03.2011', NULL, NULL, NULL, NULL, NULL, NULL, '4DB6320C04B14284B49EB7C259E398FB', NULL, NULL, NULL, '{716868C5-82C5-4C28-B23B-41375F56EE7B} ', NULL, 1, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 376', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(371, 'Петров', 'Сергей', 'Юрьевич', 4, 'I-РА', 550149, '000-000-000 371', 'М', '12.02.2011', NULL, NULL, NULL, NULL, NULL, '6F69A3E19A0D4099A1C043524A8AF75F', NULL, NULL, NULL, NULL, '{1CFB78FD-AABC-49D7-8D33-9253ACE770DB} ', NULL, 1, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 377', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(372, 'Петров', 'Сергей', 'Юрьевич', 4, 'I-РА', 599369, '000-000-000 372', 'М', '24.02.2011', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '{961E3813-D733-46BA-93E6-393229C1F154} ', NULL, 1, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 378', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(373, 'Петров', 'Сергей', 'Юрьевич', 4, 'I-РА', 550874, '000-000-000 373', 'М', '14.02.2012', NULL, NULL, NULL, NULL, NULL, '57F562C0172942DA96E777BDFDF04AED', NULL, NULL, NULL, NULL, '{0E82DFBC-8881-4FCA-84DA-F309BFC7DD15} ', NULL, NULL, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 379', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(374, 'Петров', 'Сергей', 'Юрьевич', 4, 'I-РА', 550981, '000-000-000 374', 'М', '19.04.2012', NULL, NULL, NULL, NULL, NULL, 'BE184547E6B04341AF0B4EAE46E4C49A', NULL, NULL, NULL, NULL, '{80582E9F-C320-4472-9065-19E6F4E9F6C2} ', NULL, 1, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 380', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(375, 'Петров', 'Сергей', 'Юрьевич', 4, 'I-РА', 573745, '000-000-000 375', 'М', '16.02.2013', NULL, 'participant', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 381', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(376, 'Петров', 'Сергей', 'Юрьевич', 4, 'I-РА', 550425, '000-000-000 376', 'М', '11.07.2011', NULL, NULL, NULL, NULL, NULL, '9A6678E7A67845DFAEAD4879FCD6B56D', NULL, NULL, NULL, NULL, '{63C8CE84-9CA9-40FD-AB2A-391C6492D1C0} ', NULL, 1, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 382', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(377, 'Петров', 'Сергей', 'Юрьевич', 4, 'I-РА', 564435, '000-000-000 377', 'М', '19.07.2011', NULL, NULL, NULL, NULL, NULL, '8661EA60A9A646F89397773EBC759E9C', NULL, NULL, NULL, NULL, '{9383E96E-33B8-4F46-B8E5-C943BCE6BB9F} ', NULL, 1, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 383', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(378, 'Петров', 'Сергей', 'Юрьевич', 4, 'I-РА', 630034, '000-000-000 378', 'М', '16.05.2012', NULL, NULL, NULL, NULL, NULL, '44E87E52F119419CA25457590334CC38', NULL, NULL, NULL, NULL, '{AC9C9F94-478A-4311-A9FA-C72E9D6E5FD8} ', NULL, 1, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 384', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(379, 'Петров', 'Сергей', 'Юрьевич', 4, 'I-РА', 557191, '000-000-000 379', 'М', '26.06.2011', NULL, NULL, NULL, NULL, NULL, '66CF76C59F6649A395F1E24C8F8CBE61', NULL, NULL, NULL, NULL, '{F3C90CE8-8E85-436C-8E0F-1CC69037FD63} ', NULL, NULL, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 385', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(380, 'Петров', 'Сергей', 'Юрьевич', 4, 'I-РА', 550064, '000-000-000 380', 'М', '15.12.2010', NULL, 'participant', NULL, NULL, NULL, '8B1F6BEC94CF4BD08C8758966886CC8E', NULL, NULL, NULL, NULL, '{E28A3B7D-EE94-4100-A1C6-F1D8824EDF79} ', NULL, 1, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 386', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(381, 'Петров', 'Сергей', 'Юрьевич', 4, 'I-РА', 630752, '000-000-000 381', 'М', '12.05.2013', NULL, 'participant', NULL, NULL, NULL, 'E27CE1C1FF69952C586677BD073B352A', NULL, NULL, NULL, NULL, NULL, NULL, 1, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 387', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(382, 'Петров', 'Сергей', 'Юрьевич', 4, 'I-РА', 875987, '000-000-000 382', 'М', '16.11.2010', NULL, 'participant', NULL, NULL, NULL, '7B612D6F0C9542AE94B65F4F042B649D', NULL, NULL, NULL, NULL, '{FDF8E412-851F-486E-B0D4-23CB2603763F} ', NULL, 1, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 388', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(383, 'Петров', 'Сергей', 'Юрьевич', 4, 'I-РА', 875906, '000-000-000 383', 'М', '07.10.2010', NULL, 'participant', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '{25DD00C6-4895-4B95-8A17-748ABA7DC66B} ', NULL, 1, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 389', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(384, 'Петров', 'Сергей', 'Юрьевич', 4, 'I-РА', 573509, '000-000-000 384', 'М', '15.09.2012', NULL, NULL, NULL, NULL, NULL, 'EF24428F0C61487DA7FA7C47295B4576', NULL, NULL, NULL, NULL, '{D9128C0E-EAF8-4800-9AE9-B4929E858133} ', NULL, NULL, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 390', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(385, 'Петров', 'Сергей', 'Юрьевич', 4, 'I-РА', 573944, '000-000-000 385', 'М', '22.08.2013', NULL, 'participant', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 391', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(386, 'Петров', 'Сергей', 'Юрьевич', 4, 'I-РА', 573270, '000-000-000 386', 'М', '14.03.2012', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '{E787790E-A150-4793-B186-3349081C30BD} ', NULL, NULL, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 392', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(387, 'Петров', 'Сергей', 'Юрьевич', 4, 'I-РА', 630485, '000-000-000 387', 'М', '19.12.2012', NULL, 'participant', NULL, NULL, NULL, 'B3ADF0B2CEB8425182B96688233C0481', NULL, NULL, NULL, NULL, '{53C81F21-7E86-4821-ABF0-71618F9CF429} ', NULL, 1, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 393', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(388, 'Петров', 'Сергей', 'Юрьевич', 4, 'I-РА', 845798, '000-000-000 388', 'М', '29.03.2011', NULL, NULL, NULL, NULL, NULL, 'B532DB841281417DA032B01319A8A99F', NULL, NULL, NULL, NULL, '{0CB20F5F-BB77-4285-920E-0D1ACDE1BA5D} ', NULL, 1, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 394', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(389, 'Петров', 'Сергей', 'Юрьевич', 4, 'I-РА', 550949, '000-000-000 389', 'М', '02.04.2012', NULL, NULL, NULL, NULL, NULL, 'A06788E98660483896B33158FDCF4717', NULL, NULL, NULL, NULL, '{E248C990-57C6-42BE-9A99-4CB46CF9255E} ', NULL, NULL, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 395', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(390, 'Петров', 'Сергей', 'Юрьевич', 4, 'I-РА', 80516554140, '000-000-000 390', 'М', '16.05.2008', NULL, 'participant', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '{5A6E6CD5-0048-4639-B302-4ACB50B6EBBD} ', NULL, 1, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 396', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(391, 'Петров', 'Сергей', 'Юрьевич', 4, 'I-РА', 573132, '000-000-000 391', 'М', '23.07.2011', NULL, NULL, NULL, NULL, NULL, '196A34F4FA8D4C4095300F3AA9CA971D', NULL, NULL, NULL, NULL, '{BD90F968-D329-44DD-B8BB-269B35F4FF72} ', NULL, 1, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 397', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(392, 'Петров', 'Сергей', 'Юрьевич', 4, 'I-РА', 438741, '000-000-000 392', 'М', '24.06.2004', NULL, 'participant', NULL, NULL, NULL, 'A3BE570DBCE843B28F6CF49F8F774B29', NULL, NULL, NULL, NULL, '{C941519C-F27D-40DE-AD82-1FB498C307FC} ', NULL, NULL, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 398', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(393, 'Петров', 'Сергей', 'Юрьевич', 1, 'I-РА', 748119, '000-000-000 393', 'М', '05.09.2003', NULL, 'participant', NULL, NULL, NULL, '8769D09654BF459EACE9874CFB7DA168', NULL, NULL, NULL, NULL, '{C9EA4A62-31EE-4664-9771-3980A98D741F} ', NULL, 1, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 399', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(394, 'Петров', 'Сергей', 'Юрьевич', 4, 'I-РА', 645619, '000-000-000 394', 'М', '08.01.2013', NULL, 'participant', NULL, NULL, NULL, '49313CA5CC9F08EF7544567071148106', NULL, NULL, NULL, NULL, NULL, NULL, 1, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 400', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(395, 'Петров', 'Сергей', 'Юрьевич', 4, 'I-РА', 689765, '000-000-000 395', 'М', '15.10.2010', NULL, 'participant', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '{6139108A-C66E-46CA-B940-938E284DD6F3} ', NULL, NULL, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 401', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(396, 'Петров', 'Сергей', 'Юрьевич', 4, 'I-РА', 758286, '000-000-000 396', 'М', '15.01.2007', NULL, NULL, NULL, NULL, NULL, '9C0B3F5F583A4AA4A9EECBE68B09C053', NULL, NULL, NULL, NULL, '{B927CAE8-2185-4475-8E51-73DCAA32C945} ', NULL, 1, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 402', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(397, 'Петров', 'Сергей', 'Юрьевич', 4, 'I-РА', 630867, '000-000-000 397', 'М', '26.06.2013', NULL, 'participant', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 403', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(398, 'Петров', 'Сергей', 'Юрьевич', 4, 'I-РА', 630963, '000-000-000 398', 'М', '18.08.2013', NULL, 'participant', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 404', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(399, 'Петров', 'Сергей', 'Юрьевич', 4, 'I-РА', 550060, '000-000-000 399', 'М', '03.01.2011', NULL, NULL, NULL, NULL, NULL, '2780C2015C3C4AEA8064B314A93CD18F', NULL, NULL, NULL, NULL, '{CC3981C4-E017-429B-937A-D8A7D140DF7E} ', NULL, 1, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 405', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(400, 'Петров', 'Сергей', 'Юрьевич', 1, 'I-РА', 726768, '000-000-000 400', 'М', '06.05.2003', NULL, 'participant', NULL, NULL, NULL, 'B82738B06A064C6485EB83CFA86223A7', '379AD2BB194C488391C7B7B96BCF351F', NULL, NULL, NULL, '{BC5BB947-A013-42EF-888C-0707D0A2137F} ', NULL, NULL, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 406', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(401, 'Петров', 'Сергей', 'Юрьевич', 4, 'I-РА', 875961, '000-000-000 401', 'М', '03.11.2010', NULL, 'participant', NULL, NULL, NULL, '8A1D9CDAF3B849468568227D3A39011E', '8A1D9CDAF3B849468568227D3A39011E', NULL, NULL, NULL, '{9E55FEF2-2583-4231-9E9D-781D4E57594F} ', NULL, 1, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 407', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(402, 'Петров', 'Сергей', 'Юрьевич', 4, 'I-РА', 693005, '000-000-000 402', 'М', '04.09.2013', NULL, NULL, NULL, NULL, NULL, NULL, '870C3B422A0CBC986B116DC7EEEA8413', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 408', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(403, 'Петров', 'Сергей', 'Юрьевич', 4, 'I-РА', 550603, '000-000-000 403', 'М', '12.10.2011', NULL, NULL, NULL, NULL, NULL, '9DF68B2B709040AD9A04A4B0135CEA13', NULL, NULL, NULL, NULL, '{8B3F9FD4-4DA1-4DBD-86F8-FB92FCB5DA3F} ', NULL, 1, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 409', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(404, 'Петров', 'Сергей', 'Юрьевич', 4, 'I-РА', 573945, '000-000-000 404', 'М', '14.10.2013', NULL, 'participant', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 410', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(405, 'Петров', 'Сергей', 'Юрьевич', 4, 'I-РА', 630715, '000-000-000 405', 'М', '19.04.2013', NULL, 'participant', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 411', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(406, 'Петров', 'Сергей', 'Юрьевич', 4, 'I-РА', 550160, '000-000-000 406', 'М', '01.03.2010', NULL, NULL, NULL, NULL, NULL, '3FC16E286EBF43DF87E820DB955E2DC9', NULL, NULL, NULL, NULL, '{6934AA0B-08DF-4124-8D85-F5989D5B4768} ', NULL, NULL, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 412', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(407, 'Петров', 'Сергей', 'Юрьевич', 4, 'I-РА', 525895, '000-000-000 407', 'М', '01.10.2013', NULL, 'participant', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 413', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(408, 'Петров', 'Сергей', 'Юрьевич', 4, 'I-РА', 717837, '000-000-000 408', 'М', '08.05.2006', NULL, 'participant', NULL, NULL, NULL, '32E06E5A681E4B95ACB659C84E4396B1', NULL, NULL, NULL, NULL, '{E04858F1-160E-EE5A-E45B-6A2B562ACB0D} ', NULL, 1, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 414', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(409, 'Петров', 'Сергей', 'Юрьевич', 4, 'I-РА', 573159, '000-000-000 409', 'М', '16.10.2011', NULL, NULL, NULL, NULL, NULL, '56ABDA8C4E5B44A28F10276313012675', NULL, NULL, NULL, NULL, '{461563C8-E64A-4A98-B1AF-785622998C8A} ', NULL, 1, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 415', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(410, 'Петров', 'Сергей', 'Юрьевич', 1, 'I-РА', 747657, '000-000-000 410', 'М', '17.07.2003', NULL, 'participant', NULL, NULL, NULL, 'C58876274BC04E88A93D855C8CA946D9', NULL, NULL, NULL, NULL, '{00461583-B595-4079-BA90-98EFFB7EBA33} ', NULL, NULL, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 416', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(411, 'Петров', 'Сергей', 'Юрьевич', 4, 'I-РА', 693164, '000-000-000 411', 'М', '10.11.2013', NULL, 'participant', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 417', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(412, 'Петров', 'Сергей', 'Юрьевич', 4, 'I-РА', 630306, '000-000-000 412', 'М', '20.09.2012', NULL, NULL, NULL, NULL, NULL, '2BEA12D043184A0CAAF64EBD8F57B9B3', NULL, NULL, NULL, NULL, '{8043D382-8E15-441C-804D-0F2969B9B31A} ', NULL, 1, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 418', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(413, 'Петров', 'Сергей', 'Юрьевич', 4, 'I-РА', 717852, '000-000-000 413', 'М', '23.05.2006', NULL, 'participant', NULL, NULL, NULL, 'ED7EFC48AFC745DC840F13FCBCCDD63A', NULL, NULL, NULL, NULL, '{BDC58EE3-066D-B219-24DA-0DA53760E871} ', NULL, 1, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 419', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(414, 'Петров', 'Сергей', 'Юрьевич', 4, 'I-РА', 573506, '000-000-000 414', 'М', '16.06.2012', NULL, NULL, NULL, NULL, NULL, 'A83CCF06CD6C478C8DED02A9F070491F', NULL, NULL, NULL, NULL, '{2BA23064-5582-4821-8796-EE4F25C618E9} ', NULL, 1, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 420', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(415, 'Петров', 'Сергей', 'Юрьевич', 1, 'I-РА', 844643, '000-000-000 415', 'М', '30.07.2004', NULL, NULL, '15.10.2020', NULL, 'Приказ №51 от 15.10.2020', 'BA0ED8A693219B80D46FE0E0BEFFC547', NULL, NULL, NULL, NULL, NULL, NULL, 1, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 421', 1, NULL, NULL, NULL, NULL, NULL, NULL),
+(416, 'Петров', 'Сергей', 'Юрьевич', 4, 'I-РА', 693765, '000-000-000 416', 'М', '02.09.2011', NULL, NULL, NULL, NULL, NULL, '7606CA379C9944D7BBB7D8238DC0314E', NULL, NULL, NULL, NULL, '{1024D5C4-72E7-43CD-995E-E14A6F150D69} ', NULL, 1, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 422', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(417, 'Петров', 'Сергей', 'Юрьевич', 4, 'I-РА', 573994, '000-000-000 417', 'М', '13.02.2013', NULL, 'participant', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 423', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(418, 'Петров', 'Сергей', 'Юрьевич', 4, 'I-РА', 630325, '000-000-000 418', 'М', '03.10.2012', NULL, 'participant', NULL, NULL, NULL, '324A2F248E59490E82429EBA561D3793', NULL, NULL, NULL, NULL, '{98C7DA37-CF9B-42F0-A5D8-88BF4A2BB592} ', NULL, 1, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 424', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(419, 'Петров', 'Сергей', 'Юрьевич', 4, 'I-РА', 630957, '000-000-000 419', 'М', '12.08.2013', NULL, 'participant', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 425', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(420, 'Петров', 'Сергей', 'Юрьевич', 4, 'I-РА', 717759, '000-000-000 420', 'М', '05.03.2006', NULL, 'participant', NULL, NULL, NULL, '5B8ECE4B91EB43DF839E5172CDD5A41B', NULL, NULL, NULL, NULL, '{1E140436-CBAE-624B-2713-071B7805E037} ', NULL, 1, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 426', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(421, 'Петров', 'Сергей', 'Юрьевич', 4, 'I-РА', 550474, '000-000-000 421', 'М', '31.07.2011', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '{0BEDC492-B7D1-472C-AF76-70AEA0229AEB} ', NULL, 1, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 427', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(422, 'Петров', 'Сергей', 'Юрьевич', 4, 'I-РА', 875994, '000-000-000 422', 'М', '18.11.2010', NULL, NULL, NULL, NULL, NULL, 'E31C723A67804140BD6434E8415F9708', NULL, NULL, NULL, NULL, '{D37A3F08-D4A2-43E1-8858-B4797078F4E2} ', NULL, 1, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 428', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(423, 'Петров', 'Сергей', 'Юрьевич', 4, 'I-РА', 573645, '000-000-000 423', 'М', '28.03.2020', NULL, 'participant', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 429', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(424, 'Петров', 'Сергей', 'Юрьевич', 4, 'I-РА', 550941, '000-000-000 424', 'М', '04.01.2011', NULL, NULL, NULL, NULL, NULL, '8A4BC367697643248EC0D58FF1CB9F61', NULL, NULL, NULL, NULL, '{F836EB01-6B5E-462F-B083-F0FA1F36B525} ', NULL, 1, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 430', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(425, 'Петров', 'Сергей', 'Юрьевич', 4, 'I-РА', 845523, '000-000-000 425', 'М', '06.06.2010', NULL, 'participant', NULL, NULL, NULL, 'B13E25902D4A4D34B130EAF994EF374D', NULL, NULL, NULL, NULL, '{C0DCEC4B-F2E7-4154-8505-8846E580706C} ', NULL, 1, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 431', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(426, 'Петров', 'Сергей', 'Юрьевич', 4, 'I-РА', 630390, '000-000-000 426', 'М', '26.10.2012', NULL, 'participant', NULL, NULL, NULL, 'EA6BC6871FE74669AD2F53BABE8078D1', NULL, NULL, NULL, NULL, '{145F994C-3BAE-4242-923A-1CB8A6670730} ', NULL, 1, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 432', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(427, 'Петров', 'Сергей', 'Юрьевич', 4, 'I-РА', 693103, '000-000-000 427', 'М', '16.10.2013', NULL, 'participant', NULL, NULL, NULL, 'B4F8F15783B52122528E3DA66707AD63', NULL, NULL, NULL, NULL, NULL, NULL, 1, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 433', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(428, 'Петров', 'Сергей', 'Юрьевич', 1, 'I-РА', 844835, '000-000-000 428', 'М', '21.08.2004', NULL, 'participant', NULL, NULL, NULL, '783E1EACF2E5496C97F73BDD897E3403', NULL, NULL, NULL, NULL, '{2B519F21-D60D-4E48-A0F4-280169F2995F} ', NULL, 1, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 434', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(429, 'Петров', 'Сергей', 'Юрьевич', 4, 'I-РА', 550366, '000-000-000 429', 'М', '29.05.2011', NULL, NULL, NULL, NULL, NULL, '67F11F885E4942B59486183A3F746C94', NULL, NULL, NULL, NULL, '{ADFFC526-8333-4806-9770-828761B7CACA} ', NULL, 1, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 435', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(430, 'Петров', 'Сергей', 'Юрьевич', 4, 'I-РА', 550098, '000-000-000 430', 'М', '31.01.2011', NULL, NULL, NULL, NULL, NULL, '54F31EC3BB5C4044B2548261DD818E7C', NULL, NULL, NULL, NULL, '{6919C28A-649D-4C8E-9DA2-1C8A6F3AB5C8} ', NULL, 1, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 436', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(431, 'Петров', 'Сергей', 'Юрьевич', 4, 'I-РА', 550737, '000-000-000 431', 'М', '04.12.2011', NULL, NULL, NULL, NULL, NULL, '3133779E194E429F8F3BCB02A1108004', NULL, NULL, NULL, NULL, '{5B7F548F-49C4-4507-BAAE-E8D60A88D709} ', NULL, 1, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 437', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(432, 'Петров', 'Сергей', 'Юрьевич', 4, 'I-РА', 630884, '000-000-000 432', 'М', '17.06.2013', NULL, 'participant', NULL, NULL, NULL, '6095C57966E736E9DC0E4114E6868219', NULL, NULL, NULL, NULL, NULL, NULL, 1, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 438', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(433, 'Петров', 'Сергей', 'Юрьевич', 4, 'I-РА', 693077, '000-000-000 433', 'М', '08.10.2013', NULL, 'participant', NULL, NULL, NULL, '70E15127B8AE4C22CE79F59580B67020', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 439', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(434, 'Петров', 'Сергей', 'Юрьевич', 4, 'I-РА', 630797, '000-000-000 434', 'М', '24.05.2013', NULL, 'participant', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 440', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(435, 'Петров', 'Сергей', 'Юрьевич', 1, 'I-РА', 726807, '000-000-000 435', 'М', '04.05.2003', NULL, NULL, NULL, NULL, NULL, '358CF4DC303E494587C8488688AFB4DD', NULL, NULL, NULL, NULL, '{B9081D1C-19F9-4037-A7CC-15CFE928E94F} ', NULL, NULL, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 441', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(436, 'Петров', 'Сергей', 'Юрьевич', 4, 'I-РА', 875951, '000-000-000 436', 'М', '02.11.2010', NULL, 'participant', NULL, NULL, NULL, 'D78E419369E44C7A84C872BAB8029FFE', NULL, NULL, NULL, NULL, '{68392345-EACA-49A9-9711-E88C21481899} ', NULL, NULL, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 442', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(437, 'Петров', 'Сергей', 'Юрьевич', 4, 'I-РА', 693464, '000-000-000 437', 'М', '09.04.2014', NULL, 'participant', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 443', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(438, 'Петров', 'Сергей', 'Юрьевич', 1, 'I-РА', 885653, '000-000-000 438', 'М', '07.12.2004', NULL, 'participant', NULL, NULL, NULL, '77B97564CD4445BA9E81BC784159E229', NULL, NULL, NULL, NULL, '{DDC7722C-3DAE-4A04-9E69-691D3563DBF0} ', NULL, NULL, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 444', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(439, 'Петров', 'Сергей', 'Юрьевич', 4, 'I-РА', 693132, '000-000-000 439', 'М', '05.10.2013', NULL, 'participant', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 445', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(440, 'Петров', 'Сергей', 'Юрьевич', 4, 'I-РА', 762214, '000-000-000 440', 'М', '26.06.2013', NULL, 'participant', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 446', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(441, 'Петров', 'Сергей', 'Юрьевич', 4, 'I-РА', 693085, '000-000-000 441', 'М', '23.09.2013', NULL, 'teacher', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 447', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(442, 'Петров', 'Сергей', 'Юрьевич', 4, 'I-РА', 630336, '000-000-000 442', 'М', '01.10.2012', NULL, NULL, NULL, NULL, NULL, '5144A6F50E314EEE883E7845D52AD675', NULL, NULL, NULL, NULL, '{59D7511D-34A4-4CBE-9B78-03FC7A6080DB} ', NULL, 1, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 448', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(443, 'Петров', 'Сергей', 'Юрьевич', 4, 'I-РА', 550546, '000-000-000 443', 'М', '12.09.2011', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '{29F41405-BAB3-4AF9-8951-7DFC850EE1F4} ', NULL, 1, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 449', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(444, 'Петров', 'Сергей', 'Юрьевич', 4, 'I-РА', 550699, '000-000-000 444', 'М', '20.11.2011', NULL, NULL, NULL, NULL, NULL, '57F2B9F340C546EDBBBF01F5C04C5A07', NULL, NULL, NULL, NULL, '{921B2C9C-D47B-45E5-B480-DE0A5BD3D713} ', NULL, 1, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 450', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(445, 'Петров', 'Сергей', 'Юрьевич', 4, 'I-РА', 826113, '000-000-000 445', 'М', '06.04.2008', NULL, 'participant', NULL, NULL, NULL, 'BFE6403D04EF4662B0924CC9D5F30F3B', NULL, NULL, NULL, NULL, '{A7C5391D-D774-4209-BF33-21FA017D9504} ', NULL, 1, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 451', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(446, 'Петров', 'Сергей', 'Юрьевич', 4, 'I-РА', 589099, '000-000-000 446', 'М', '20.06.2012', NULL, NULL, NULL, NULL, NULL, '4FBDA87418E14F09B84A0DE002CE6544', NULL, NULL, NULL, NULL, '{2CE40AE6-1AD6-4397-8CCB-AAC23FB88141} ', NULL, NULL, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 452', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(447, 'Петров', 'Сергей', 'Юрьевич', 4, 'I-РА', 630436, '000-000-000 447', 'М', '01.11.2012', NULL, 'participant', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 453', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(448, 'Петров', 'Сергей', 'Юрьевич', 4, 'I-РА', 567218, '000-000-000 448', 'М', '19.08.2010', NULL, 'participant', NULL, NULL, NULL, '7CA1E679305643C1B9E607A24A8FF188', NULL, NULL, NULL, NULL, '{CDD5CD2E-D550-410A-8EE0-FED977EACEBE} ', NULL, 1, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 454', 0, NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO `paraticipants` (`PARTICIPANTID`, `SURNAME`, `NAME`, `SECONDNAME`, `DOCUMENTTYPEFK`, `DOCUMENTSERIES`, `DOCUMENTNUMBER`, `SNILS`, `SEX`, `BIRTHDAY`, `EXPINFO`, `ROLEFK`, `RETIRED`, `APPID`, `COMMAND`, `PARTPARENTFK`, `PARTPARENT2FK`, `LEGAL_AGENT`, `BEGDATE`, `JOINTCODE`, `FCTGUID`, `EGECITIZENSHIPFK`, `D_LIMITEDPOTENTFK`, `ADDID`, `PARTICIPANT_INVALID`, `INVALID_EDU`, `ADRESS`, `GONEFLAG`, `CON_REG_ID`, `CON_FED_ID`, `CON_REG_ERR`, `MOBILE`, `DATA_DOC`, `REC_DOC`) VALUES
+(449, 'Петров', 'Сергей', 'Юрьевич', 4, 'I-РА', 550473, '000-000-000 449', 'М', '23.07.2011', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '{458E9DA5-4582-4961-B537-416F910F3FC9} ', NULL, 1, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 455', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(450, 'Петров', 'Сергей', 'Юрьевич', 4, 'I-РА', 717813, '000-000-000 450', 'М', '07.04.2006', NULL, 'participant', NULL, NULL, NULL, '67831AAC40D547DB8E10888B801461E5', NULL, NULL, NULL, NULL, '{26DABCE6-4340-EEAF-8E0E-7A770A643728} ', NULL, NULL, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 456', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(451, 'Петров', 'Сергей', 'Юрьевич', 4, 'I-РА', 573115, '000-000-000 451', 'М', '18.07.2011', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '{8CE5A27F-99B3-4EB5-B5BD-4B532915AD60} ', NULL, 1, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 457', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(452, 'Петров', 'Сергей', 'Юрьевич', 4, 'I-РА', 630133, '000-000-000 452', 'М', '03.07.2012', NULL, NULL, NULL, NULL, NULL, '5B94177532F04C23821A3863C33DB7F4', NULL, NULL, NULL, NULL, '{E1327F2A-DBEF-45D5-A8C8-23A26296D07B} ', NULL, 1, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 458', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(453, 'Петров', 'Сергей', 'Юрьевич', 4, 'I-РА', 693069, '000-000-000 453', 'М', '03.10.2013', NULL, 'participant', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 459', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(454, 'Петров', 'Сергей', 'Юрьевич', 4, 'I-РА', 550077, '000-000-000 454', 'М', '14.01.2011', NULL, NULL, NULL, NULL, NULL, 'DE050164B2694A9F919C9E3D0C8EF15F', NULL, NULL, NULL, NULL, '{4103A3CF-31A6-4F0C-9AC7-C9AC1A51D4C0} ', NULL, 1, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 460', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(455, 'Петров', 'Сергей', 'Юрьевич', 1, 'I-РА', 308745, '000-000-000 455', 'М', '11.12.2002', NULL, 'participant', NULL, NULL, NULL, '7DFE33FCD36F43F3BDFF21CC8ABC0878', NULL, NULL, NULL, NULL, '{67735116-6F30-4CDE-99AC-28B14BF3A5CB} ', NULL, 1, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 461', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(456, 'Петров', 'Сергей', 'Юрьевич', 4, 'I-РА', 630261, '000-000-000 456', 'М', '24.08.2012', NULL, NULL, NULL, NULL, NULL, '8C50D2CBBB2C419BAB54409DD8A276C4', NULL, NULL, NULL, NULL, '{D22AFB75-C633-4128-BDED-89DFF4C6EBCC} ', NULL, 1, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 462', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(457, 'Петров', 'Сергей', 'Юрьевич', 4, 'I-РА', 511780, '000-000-000 457', 'М', '15.02.2010', NULL, 'participant', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 463', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(458, 'Петров', 'Сергей', 'Юрьевич', 4, 'I-РА', 693063, '000-000-000 458', 'М', '16.09.2013', NULL, 'participant', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 464', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(459, 'Петров', 'Сергей', 'Юрьевич', 4, 'I-РА', 578657, '000-000-000 459', 'М', '07.04.2012', NULL, NULL, NULL, NULL, NULL, NULL, '3EBE1B7BC32C48B08DBB1592AE99156B', NULL, NULL, NULL, '{5FB944C8-E069-46DE-978C-DF1BD7648AAF} ', NULL, NULL, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 465', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(460, 'Петров', 'Сергей', 'Юрьевич', 4, 'I-РА', 630038, '000-000-000 460', 'М', '10.04.2009', NULL, 'participant', NULL, NULL, NULL, 'C3B0E68408B04AF090F860EE3DBB543B', NULL, NULL, NULL, NULL, '{1036BE3E-D043-4E82-A7E5-C963C9DFB4B4} ', NULL, 1, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 466', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(461, 'Петров', 'Сергей', 'Юрьевич', 4, 'I-РА', 845799, '000-000-000 461', 'М', '26.04.2011', NULL, 'participant', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 467', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(462, 'Петров', 'Сергей', 'Юрьевич', 4, 'I-РА', 550662, '000-000-000 462', 'М', '29.10.2011', NULL, NULL, NULL, NULL, NULL, '607CC749DEC14D74AEF9264E71246BC9', NULL, NULL, NULL, NULL, '{65F204A5-72FE-4525-BBF9-DA32256F8EBA} ', NULL, 1, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 468', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(463, 'Петров', 'Сергей', 'Юрьевич', 4, 'I-РА', 590103, '000-000-000 463', 'М', '03.08.2011', NULL, NULL, NULL, NULL, NULL, '16667C513B0845C7844B48B0C455D321', NULL, NULL, NULL, NULL, '{63F6C738-65FD-4582-9247-AF87924E81AB} ', NULL, 1, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 469', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(464, 'Петров', 'Сергей', 'Юрьевич', 4, 'I-РА', 573946, '000-000-000 464', 'М', '24.10.2013', NULL, 'participant', NULL, NULL, NULL, '96AD76AE7B9CDD9F904ED369A1CB0FD8', NULL, NULL, NULL, NULL, NULL, NULL, 1, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 470', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(465, 'Петров', 'Сергей', 'Юрьевич', 4, 'I-РА', 573700, '000-000-000 465', 'М', '16.01.2013', NULL, 'participant', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 471', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(466, 'Петров', 'Сергей', 'Юрьевич', 4, 'I-РА', 630551, '000-000-000 466', 'М', '05.01.2013', NULL, NULL, NULL, NULL, NULL, 'C27D8462A27643EDB7880A390CDFA2C0', NULL, NULL, NULL, NULL, '{A05A3F57-3355-406A-911E-BBA10595D255} ', NULL, 1, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 472', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(467, 'Петров', 'Сергей', 'Юрьевич', 4, 'I-РА', 630945, '000-000-000 467', 'М', '06.08.2013', NULL, 'participant', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 473', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(468, 'Петров', 'Сергей', 'Юрьевич', 4, 'I-РА', 630302, '000-000-000 468', 'М', '19.09.2012', NULL, NULL, NULL, NULL, NULL, '8AD9A7BCB5CC4C7086CE4007CF0616CE', NULL, NULL, NULL, NULL, '{CB99FD5F-8CA0-44F8-9778-6AD651C23F64} ', NULL, 1, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 474', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(469, 'Петров', 'Сергей', 'Юрьевич', 4, 'I-РА', 561928, '000-000-000 469', 'М', '21.04.2011', NULL, NULL, NULL, NULL, NULL, '896FB3ED634F448AAF6A20678CFF16BA', NULL, NULL, NULL, NULL, '{D21FAA08-F938-485E-8B91-BFA18A976AFD} ', NULL, 1, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 475', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(470, 'Петров', 'Сергей', 'Юрьевич', 4, 'I-РА', 573842, '000-000-000 470', 'М', '13.05.2011', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '{24216EAC-1957-4DD5-950B-1DA0296F5D05} ', NULL, 1, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 476', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(471, 'Петров', 'Сергей', 'Юрьевич', 4, 'I-РА', 861688, '000-000-000 471', 'М', '22.05.2010', NULL, 'participant', NULL, NULL, NULL, 'B99244655C6C4E8FBCEB5783C7DE43BC', '33949107F9F94AFB9103FDE6362E0A2A', NULL, NULL, NULL, '{C157A43C-16D2-4A59-8548-29F9D1E2EFF3} ', NULL, 1, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 477', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(472, 'Петров', 'Сергей', 'Юрьевич', 4, 'I-РА', 693101, '000-000-000 472', 'М', '13.10.2013', NULL, 'participant', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 478', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(473, 'Петров', 'Сергей', 'Юрьевич', 4, 'I-РА', 573799, '000-000-000 473', 'М', '07.06.2013', NULL, 'participant', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 479', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(474, 'Петров', 'Сергей', 'Юрьевич', 4, 'I-РА', 898771, '000-000-000 474', 'М', '12.06.2011', NULL, 'participant', NULL, NULL, NULL, 'A5823CC25D4745CAAA7C4F7BAC25927C', NULL, NULL, NULL, NULL, '{1003A130-5C58-4801-96BA-59A64E64EF72} ', NULL, 1, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 480', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(475, 'Петров', 'Сергей', 'Юрьевич', 4, 'I-РА', 717744, '000-000-000 475', 'М', '20.02.2006', NULL, 'participant', NULL, NULL, NULL, '4C4FBE8AFAB14DB1980166BFCC9C88CD', NULL, NULL, NULL, NULL, '{CE707368-0D07-9138-E34B-B525E18AB0D6} ', NULL, 1, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 481', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(476, 'Петров', 'Сергей', 'Юрьевич', 4, 'I-РА', 550174, '000-000-000 476', 'М', '09.03.2011', NULL, NULL, NULL, NULL, NULL, 'BE625B8084B64D12A336A13C82E6FE8A', NULL, NULL, NULL, NULL, '{64A79D35-2872-4614-A0D2-FD61DD72AAA6} ', NULL, 1, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 482', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(477, 'Петров', 'Сергей', 'Юрьевич', 4, 'I-РА', 550172, '000-000-000 477', 'М', '08.03.2011', NULL, NULL, NULL, NULL, NULL, '9FFCA6EDA34845A2BC0D47AD2BBFB1DB', NULL, NULL, NULL, NULL, '{9E17A4B7-8717-4E38-A280-3D8E42A1C5C7} ', NULL, 1, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 483', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(478, 'Петров', 'Сергей', 'Юрьевич', 4, 'I-РА', 630369, '000-000-000 478', 'М', '13.10.2012', NULL, NULL, NULL, NULL, NULL, '4242169005B8478C90215E6126EC0814', NULL, NULL, NULL, NULL, '{90C2A316-B667-46DD-B64D-ADE466382149} ', NULL, 1, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 484', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(479, 'Петров', 'Сергей', 'Юрьевич', 4, 'I-РА', 550591, '000-000-000 479', 'М', '29.09.2011', NULL, NULL, NULL, NULL, NULL, 'CFCDC4313F2C4E56B024964A0675FDD7', NULL, NULL, NULL, NULL, '{73C07A47-BD24-43B5-ADA2-E9E1F44F59C3} ', NULL, 1, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 485', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(480, 'Петров', 'Сергей', 'Юрьевич', 4, 'I-РА', 550194, '000-000-000 480', 'М', '21.03.2011', NULL, NULL, NULL, NULL, NULL, '8C9823BADE87441EB5C43C606790FDC7', NULL, NULL, NULL, NULL, '{BC3DCF50-5DBB-429C-B835-52C940AFDB12} ', NULL, 1, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 486', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(481, 'Петров', 'Сергей', 'Юрьевич', 4, 'I-РА', 845407, '000-000-000 481', 'М', '25.05.2011', NULL, NULL, NULL, NULL, NULL, '1E7675F40ABF4EA49CDC9DE802892342', NULL, NULL, NULL, NULL, '{0BB28EF9-C026-4932-B9AB-D5C7BD776F8A} ', NULL, 1, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 487', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(482, 'Петров', 'Сергей', 'Юрьевич', 4, 'I-РА', 158205, '000-000-000 482', 'М', '26.11.2006', NULL, 'participant', NULL, NULL, NULL, '744AEB8D09AA4BD18BC4A04450978500', NULL, NULL, NULL, NULL, '{3BAA70AB-FCD5-D1A2-62CF-E5099FBA7888} ', NULL, 1, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 488', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(483, 'Петров', 'Сергей', 'Юрьевич', 4, 'I-РА', 630458, '000-000-000 483', 'М', '26.11.2012', NULL, 'participant', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 489', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(484, 'Петров', 'Сергей', 'Юрьевич', 4, 'I-РА', 693007, '000-000-000 484', 'М', '03.09.2013', NULL, 'participant', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 490', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(485, 'Петров', 'Сергей', 'Юрьевич', 4, 'I-РА', 826627, '000-000-000 485', 'М', '12.01.2009', NULL, 'participant', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '{546CD3BB-6D55-4F72-A36B-4CEB77A23798} ', NULL, 1, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 491', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(486, 'Петров', 'Сергей', 'Юрьевич', 4, 'I-РА', 762654, '000-000-000 486', 'М', '08.06.2013', NULL, 'participant', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 492', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(487, 'Петров', 'Сергей', 'Юрьевич', 4, 'I-РА', 630497, '000-000-000 487', 'М', '19.12.2012', NULL, 'participant', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 493', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(488, 'Петров', 'Сергей', 'Юрьевич', 4, 'I-РА', 557068, '000-000-000 488', 'М', '09.04.2011', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '{67674F2B-A37F-4FBB-97BF-911842ABFCB7} ', NULL, 1, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 494', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(489, 'Петров', 'Сергей', 'Юрьевич', 4, 'I-РА', 607669, '000-000-000 489', 'М', '13.01.2012', NULL, NULL, NULL, NULL, NULL, '4FBDA87418E14F09B84A0DE002CE6544', NULL, NULL, NULL, NULL, '{B7B99242-CA9F-4469-AF6F-DF27E8F27BA2} ', NULL, NULL, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 495', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(490, 'Петров', 'Сергей', 'Юрьевич', 4, 'I-РА', 550524, '000-000-000 490', 'М', '08.08.2011', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '{0F9A8155-06B9-445B-9D3F-2D1863D0165E} ', NULL, NULL, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 496', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(491, 'Петров', 'Сергей', 'Юрьевич', 4, 'I-РА', 693089, '000-000-000 491', 'М', '07.10.2013', NULL, 'participant', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 497', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(492, 'Петров', 'Сергей', 'Юрьевич', 4, 'I-РА', 693388, '000-000-000 492', 'М', '31.03.2013', NULL, 'participant', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 498', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(493, 'Петров', 'Сергей', 'Юрьевич', 4, 'I-РА', 693261, '000-000-000 493', 'М', '11.01.2014', NULL, 'participant', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 499', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(494, 'Петров', 'Сергей', 'Юрьевич', 4, 'I-РА', 693260, '000-000-000 494', 'М', '11.01.2014', NULL, 'participant', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 500', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(495, 'Петров', 'Сергей', 'Юрьевич', 4, 'I-РА', 630914, '000-000-000 495', 'М', '21.07.2013', NULL, 'participant', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 501', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(496, 'Петров', 'Сергей', 'Юрьевич', 4, 'I-РА', 550456, '000-000-000 496', 'М', '19.07.2011', NULL, NULL, NULL, NULL, NULL, '656B9701405C418AB2ED8EBF5AE1F73A', NULL, NULL, NULL, NULL, '{BF619835-F866-44C0-A47D-31CB57B378D6} ', NULL, 1, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 502', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(497, 'Петров', 'Сергей', 'Юрьевич', 4, 'I-РА', 762059, '000-000-000 497', 'М', '21.04.2012', NULL, NULL, NULL, NULL, NULL, 'DCF3923063F24589829010CF01B7B11E', NULL, NULL, NULL, NULL, '{51ACBF86-9092-40B1-91E1-217FE1BED6E5} ', NULL, 1, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 503', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(498, 'Петров', 'Сергей', 'Юрьевич', 4, 'I-РА', 693008, '000-000-000 498', 'М', '30.08.2011', NULL, NULL, NULL, NULL, NULL, '2E8FEBA2E021443F9E5FDA2067511ED3', NULL, NULL, NULL, NULL, '{8A07D53E-08E7-402B-A3B9-FB0C5B800C83} ', NULL, 1, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 504', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(499, 'Петров', 'Сергей', 'Юрьевич', 4, 'I-РА', 630311, '000-000-000 499', 'М', '17.09.2012', NULL, NULL, NULL, NULL, NULL, 'CB4ADC83BD5E427BBD466CE9D1790ABE', NULL, NULL, NULL, NULL, '{EF7061AF-3620-4FD5-830F-5E0F51526D19} ', NULL, 1, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 505', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(500, 'Петров', 'Сергей', 'Юрьевич', 4, 'I-РА', 550499, '000-000-000 500', 'М', '14.08.2011', NULL, NULL, NULL, NULL, NULL, 'C894DB2B6D5842DDA907BBA6FDA9100B', NULL, NULL, NULL, NULL, '{67A98ADE-5110-44F5-A41F-4D08BD725E0E} ', NULL, 1, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 506', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(501, 'Петров', 'Сергей', 'Юрьевич', 4, 'I-РА', 630956, '000-000-000 501', 'М', '11.08.2013', NULL, NULL, NULL, NULL, NULL, 'A02102D853A37E75EA412C9F7C7920B8', NULL, NULL, NULL, NULL, NULL, NULL, 1, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 507', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(502, 'Петров', 'Сергей', 'Юрьевич', 4, 'I-РА', 630491, '000-000-000 502', 'М', '21.12.2012', NULL, NULL, NULL, NULL, NULL, '18FB246A4AE741CB82961335E68814AD', NULL, NULL, NULL, NULL, '{0C1A2B44-E6DF-4CF5-8526-D928F33CFBDC} ', NULL, NULL, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 508', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(503, 'Петров', 'Сергей', 'Юрьевич', 4, 'I-РА', 550273, '000-000-000 503', 'М', '16.04.2011', NULL, 'participant', NULL, NULL, NULL, '7AC757FF92684D4094D1D62AF0EAD415', NULL, NULL, NULL, NULL, '{E155E2D6-A8A6-4D0D-A8EB-270B91AB740C} ', NULL, NULL, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 509', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(504, 'Петров', 'Сергей', 'Юрьевич', 4, 'I-РА', 758149, '000-000-000 504', 'М', '25.10.2006', NULL, 'participant', NULL, NULL, NULL, 'E350B4B2F16A47DEBE9D71E35EA669F0', NULL, NULL, NULL, NULL, '{23CED24A-0F2D-278D-69A7-59430483DDE1} ', NULL, 1, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 510', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(505, 'Петров', 'Сергей', 'Юрьевич', 4, 'I-РА', 550216, '000-000-000 505', 'М', '20.03.2011', NULL, NULL, NULL, NULL, NULL, 'EB4E4159E8D548D1AA63548F1A881BD3', NULL, NULL, NULL, NULL, '{F7D71394-FA92-44F2-9E2D-8E480EF3B215} ', NULL, 1, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 511', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(506, 'Петров', 'Сергей', 'Юрьевич', 1, 'I-РА', 860234, '000-000-000 506', 'М', '29.08.2004', NULL, 'participant', '14.09.2020', NULL, 'Приказ №49 от14.09.2020', '962F0E757E2942C2BB6A25673B1D7385', NULL, NULL, NULL, NULL, '{273CD8E8-35DF-4D38-A3EF-A59DABCE11AF} ', NULL, NULL, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 512', 1, NULL, NULL, NULL, NULL, NULL, NULL),
+(507, 'Петров', 'Сергей', 'Юрьевич', 4, 'I-РА', 762350, '000-000-000 507', 'М', '28.06.2013', NULL, 'participant', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 513', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(508, 'Петров', 'Сергей', 'Юрьевич', 4, 'I-РА', 822723, '000-000-000 508', 'М', '23.06.2011', NULL, NULL, NULL, NULL, NULL, 'FD07CD92399D4F7AA414223DB528E483', NULL, NULL, NULL, NULL, '{BDDBDD85-C162-43AD-9B6E-4A347497AFB4} ', NULL, 1, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 514', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(509, 'Петров', 'Сергей', 'Юрьевич', 4, 'I-РА', 845297, '000-000-000 509', 'М', '22.09.2008', NULL, 'participant', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '{84432BEA-3CA0-4A94-AAA8-38A3A17A3AE8} ', NULL, 1, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 515', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(510, 'Петров', 'Сергей', 'Юрьевич', 4, 'I-РА', 826112, '000-000-000 510', 'М', '06.04.2008', NULL, 'participant', NULL, NULL, NULL, 'BFE6403D04EF4662B0924CC9D5F30F3B', NULL, NULL, NULL, NULL, '{5EF47895-8E7F-4B3A-9639-88CE2E77244D} ', NULL, 1, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 516', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(511, 'Петров', 'Сергей', 'Юрьевич', 4, 'I-РА', 630997, '000-000-000 511', 'М', '27.08.2013', NULL, 'participant', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 517', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(512, 'Петров', 'Сергей', 'Юрьевич', 4, 'I-РА', 550659, '000-000-000 512', 'М', '28.10.2011', NULL, NULL, NULL, NULL, NULL, '80271461A6AC44AB8297D821C721FE3C', NULL, NULL, NULL, NULL, '{C1342968-2BEE-41A5-94C2-64F3DDAFFB74} ', NULL, 1, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 518', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(513, 'Петров', 'Сергей', 'Юрьевич', 4, 'I-РА', 762302, '000-000-000 513', 'М', '04.01.2011', NULL, NULL, NULL, NULL, NULL, '0FE87044299A48E3A0418F1648686E9F', NULL, NULL, NULL, NULL, '{B704C11B-BD5E-4F32-BCD8-A41DCAB05F73} ', NULL, 1, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 519', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(514, 'Петров', 'Сергей', 'Юрьевич', 4, 'I-РА', 826059, '000-000-000 514', 'М', '05.03.2008', NULL, 'participant', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '{551CF956-8C67-4271-BC80-994C645C1E69} ', NULL, 1, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 520', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(515, 'Петров', 'Сергей', 'Юрьевич', 4, 'I-РА', 573265, '000-000-000 515', 'М', '01.02.2012', NULL, 'participant', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 521', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(516, 'Петров', 'Сергей', 'Юрьевич', 4, 'I-РА', 573203, '000-000-000 516', 'М', '13.11.2011', NULL, NULL, NULL, NULL, NULL, '9A599C61D80647EFA131BCC8ED4C1AF5', NULL, NULL, NULL, NULL, '{1FFA97C5-4E68-4EC5-ABB2-1C6FC4098EA2} ', NULL, 1, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 522', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(517, 'Петров', 'Сергей', 'Юрьевич', 4, 'I-РА', 525757, '000-000-000 517', 'М', '04.07.2013', NULL, 'participant', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 523', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(518, 'Петров', 'Сергей', 'Юрьевич', 4, 'I-РА', 630269, '000-000-000 518', 'М', '16.08.2012', NULL, NULL, NULL, NULL, NULL, '633AF8EDCB7546E5B10CDBB635883255', NULL, NULL, NULL, NULL, '{F028417F-B70A-4FA6-8355-AF251063990A} ', NULL, NULL, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 524', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(519, 'Петров', 'Сергей', 'Юрьевич', 4, 'I-РА', 604003, '000-000-000 519', 'М', '01.01.1970', NULL, NULL, NULL, NULL, NULL, 'CE464732DCC9471182AB5D06C33CF9C4', NULL, NULL, NULL, NULL, '{CCDDF154-5581-4690-8FA4-C6F803039DB4} ', NULL, 1, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 525', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(520, 'Петров', 'Сергей', 'Юрьевич', 4, 'I-РА', 845793, '000-000-000 520', 'М', '10.10.2010', NULL, 'participant', NULL, NULL, NULL, 'E1B4302EBE0C4905B8BF5FEC41BCDCD5', NULL, NULL, NULL, NULL, '{A3DB8BFD-D3F2-471A-B34B-65324EF740C5} ', NULL, 1, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 526', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(521, 'Петров', 'Сергей', 'Юрьевич', 4, 'I-РА', 550224, '000-000-000 521', 'М', '02.04.2011', NULL, NULL, NULL, NULL, NULL, 'A326D7B09DD5430ABAA56E8FB3681F0D', NULL, NULL, NULL, NULL, '{A30C2D5B-0526-4D49-B96D-406B5E4A60F3} ', NULL, 1, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 527', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(522, 'Петров', 'Сергей', 'Юрьевич', 4, 'I-РА', 826026, '000-000-000 522', 'М', '13.02.2008', NULL, 'participant', NULL, NULL, NULL, '656B9701405C418AB2ED8EBF5AE1F73A', NULL, NULL, NULL, NULL, '{8A5C69F1-DC47-40E5-A291-DFC2B48E7692} ', NULL, 1, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 528', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(523, 'Петров', 'Сергей', 'Юрьевич', 4, 'I-РА', 563566, '000-000-000 523', 'М', '15.06.2010', NULL, 'participant', NULL, NULL, NULL, '075A7DE1769D4C1691C4B5D411109BA7', NULL, NULL, NULL, NULL, '{1E86E471-2904-4370-BD53-4B7B4AD9310E} ', NULL, 1, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 529', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(524, 'Петров', 'Сергей', 'Юрьевич', 4, 'I-РА', 550238, '000-000-000 524', 'М', '09.04.2011', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '{3F354FEF-46C7-4F19-9960-5B35E60E031F} ', NULL, 1, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 530', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(525, 'Петров', 'Сергей', 'Юрьевич', 4, 'I-РА', 845571, '000-000-000 525', 'М', '17.03.2010', NULL, 'participant', NULL, NULL, NULL, NULL, '02EF49F242D64FDA97B68C0FED2F31C0', NULL, NULL, NULL, '{99C7419A-AACF-41A9-A84D-E83C0C536D9F} ', NULL, 1, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 531', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(526, 'Петров', 'Сергей', 'Юрьевич', 4, 'I-РА', 525059, '000-000-000 526', 'М', '11.06.2012', NULL, 'participant', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 532', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(527, 'Петров', 'Сергей', 'Юрьевич', 4, 'I-РА', 630109, '000-000-000 527', 'М', '25.06.2012', NULL, NULL, NULL, NULL, NULL, '9B54A3954B434092B7490EF9B6DE4BFE', NULL, NULL, NULL, NULL, '{DEADC5A1-68FB-4AB9-B23F-8C86EF1E6942} ', NULL, NULL, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 533', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(528, 'Петров', 'Сергей', 'Юрьевич', 4, 'I-РА', 675380, '000-000-000 528', 'М', '08.07.2013', NULL, 'participant', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 534', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(529, 'Петров', 'Сергей', 'Юрьевич', 4, 'I-РА', 630115, '000-000-000 529', 'М', '01.07.2012', NULL, 'participant', NULL, NULL, NULL, '8D0F869E706C4E80BD64D97C5B7CE6EE', NULL, NULL, NULL, NULL, '{A662DD56-1D79-4DCC-81B1-728FA1DB629E} ', NULL, 1, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 535', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(530, 'Петров', 'Сергей', 'Юрьевич', 4, 'I-РА', 630722, '000-000-000 530', 'М', '19.04.2013', NULL, 'participant', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 536', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(531, 'Петров', 'Сергей', 'Юрьевич', 4, 'I-РА', 550069, '000-000-000 531', 'М', '14.01.2011', NULL, NULL, NULL, NULL, NULL, '9EE23B45FD75401080BCEC6C60B50002', NULL, NULL, NULL, NULL, '{893E21FA-9626-4284-BD9C-2A83BAF65E28} ', NULL, 1, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 537', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(532, 'Петров', 'Сергей', 'Юрьевич', 4, 'I-РА', 693235, '000-000-000 532', 'М', '20.12.2013', NULL, 'participant', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 538', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(533, 'Петров', 'Сергей', 'Юрьевич', 4, 'I-РА', 550613, '000-000-000 533', 'М', '12.10.2011', NULL, NULL, NULL, NULL, NULL, 'EB252A1150D24B4896624723817C3B08', NULL, NULL, NULL, NULL, '{5BD7DCEB-5B2B-40C6-8B0B-593073D921BA} ', NULL, 1, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 539', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(534, 'Петров', 'Сергей', 'Юрьевич', 4, 'I-РА', 693083, '000-000-000 534', 'М', '05.10.2013', NULL, 'participant', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 540', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(535, 'Петров', 'Сергей', 'Юрьевич', 4, 'I-РА', 630305, '000-000-000 535', 'М', '17.09.2012', NULL, NULL, NULL, NULL, NULL, 'D0BDC981B2B14E3CA5B3A6D68C59E1FE', NULL, NULL, NULL, NULL, '{B4FE5902-6D57-4D7D-854F-D315BA208A14} ', NULL, 1, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 541', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(536, 'Петров', 'Сергей', 'Юрьевич', 1, 'I-РА', 771196, '000-000-000 536', 'М', '11.11.2003', NULL, 'participant', NULL, NULL, NULL, '2298EB3DBAC647D3A65738700974F7D2', NULL, NULL, NULL, NULL, '{682C43A0-4349-45EB-9055-7A903D91EADC} ', NULL, NULL, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 542', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(537, 'Петров', 'Сергей', 'Юрьевич', 4, 'I-РА', 693575, '000-000-000 537', 'М', '05.11.2013', NULL, 'participant', NULL, NULL, NULL, '9F8B9C7186A656745E46859C5B3A09E6', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 543', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(538, 'Петров', 'Сергей', 'Юрьевич', 4, 'I-РА', 550463, '000-000-000 538', 'М', '23.07.2011', NULL, NULL, NULL, NULL, NULL, 'E538DA2745BD4F54B9E6D5C3D5B554A1', NULL, NULL, NULL, NULL, '{2215A012-2D3A-4485-87F1-AD7881412611} ', NULL, 1, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 544', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(539, 'Петров', 'Сергей', 'Юрьевич', 4, 'I-РА', 630999, '000-000-000 539', 'М', '01.08.2013', NULL, 'participant', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 545', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(540, 'Петров', 'Сергей', 'Юрьевич', 4, 'I-РА', 630941, '000-000-000 540', 'М', '12.07.2013', NULL, 'participant', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 546', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(541, 'Петров', 'Сергей', 'Юрьевич', 4, 'I-РА', 630829, '000-000-000 541', 'М', '07.06.2013', NULL, 'participant', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 547', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(542, 'Петров', 'Сергей', 'Юрьевич', 4, 'I-РА', 510754, '000-000-000 542', 'М', '18.03.2009', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '{3583ACBE-6012-4D63-9D53-1F147869D8DA} ', NULL, 1, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 548', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(543, 'Петров', 'Сергей', 'Юрьевич', 4, 'I-РА', 573702, '000-000-000 543', 'М', '29.10.2012', NULL, NULL, NULL, NULL, NULL, '4F88DB2C77B94A318DC0B450CF0FDD86', NULL, NULL, NULL, NULL, '{20BE9877-38C5-429C-B77E-E40D543DF456} ', NULL, NULL, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 549', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(544, 'Петров', 'Сергей', 'Юрьевич', 4, 'I-РА', 630333, '000-000-000 544', 'М', '01.10.2012', NULL, NULL, NULL, NULL, NULL, '1D8973F239384557B28B67D0A02F2993', NULL, NULL, NULL, NULL, '{87F29FB9-DEB7-4620-BAE8-3F8EA01BF65D} ', NULL, 1, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 550', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(545, 'Петров', 'Сергей', 'Юрьевич', 4, 'I-РА', 612574, '000-000-000 545', 'М', '20.11.2013', NULL, 'participant', NULL, NULL, NULL, '5F5FA1BBC9F6A7211931F6FE6FB17A50', NULL, NULL, NULL, NULL, NULL, NULL, 1, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 551', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(546, 'Петров', 'Сергей', 'Юрьевич', 4, 'I-РА', 585879, '000-000-000 546', 'М', '06.03.2013', NULL, 'participant', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 552', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(547, 'Петров', 'Сергей', 'Юрьевич', 4, 'I-РА', 634619, '000-000-000 547', 'М', '15.09.2006', NULL, 'participant', NULL, NULL, NULL, '44D02AD3B35D4EF79AFAB7AE52DDAAE8', NULL, NULL, NULL, NULL, '{5F48A825-A916-7E61-8701-1C24304B8ED5} ', NULL, 1, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 553', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(548, 'Петров', 'Сергей', 'Юрьевич', 4, 'I-РА', 630152, '000-000-000 548', 'М', '07.07.2012', NULL, NULL, NULL, NULL, NULL, '0B7C7503897A4F609FA851EC94EF0344', NULL, NULL, NULL, NULL, '{861E49B5-475C-4FE1-8826-1B93AA793AD0} ', NULL, 1, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 554', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(549, 'Петров', 'Сергей', 'Юрьевич', 4, 'I-РА', 550457, '000-000-000 549', 'М', '25.07.2011', NULL, NULL, NULL, NULL, NULL, 'C0A0230A17F24A35A9089D778636CA5D', NULL, NULL, NULL, NULL, '{2EC07500-21B6-4EA2-B557-25169209324F} ', NULL, 1, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 555', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(550, 'Петров', 'Сергей', 'Юрьевич', 4, 'I-РА', 550782, '000-000-000 550', 'М', '27.12.2011', NULL, NULL, NULL, NULL, NULL, 'A01349D0FD6E49C1ADEEB474D68D245D', NULL, NULL, NULL, NULL, '{21F8E88B-BBF3-44E4-AE75-9CBBB3F5AAFE} ', NULL, 1, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 556', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(551, 'Петров', 'Сергей', 'Юрьевич', 4, 'I-РА', 630490, '000-000-000 551', 'М', '01.01.2013', NULL, 'participant', NULL, NULL, NULL, 'EE58858A440760608478537D43393898', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 557', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(552, 'Петров', 'Сергей', 'Юрьевич', 1, 'I-РА', 697685, '000-000-000 552', 'М', '12.01.2003', NULL, 'participant', NULL, NULL, NULL, '948E500A6B9B4D2CA1646EF747BA7CBF', NULL, 'E605D77B93AE4F508B7592344F76842A', NULL, NULL, '{AF328522-6F20-41B3-A965-8A264B853003} ', NULL, NULL, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 558', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(553, 'Петров', 'Сергей', 'Юрьевич', 4, 'I-РА', 601050, '000-000-000 553', 'М', '27.11.2011', NULL, NULL, NULL, NULL, NULL, 'EF497208DFB84B2C9717E49A277E3580', NULL, NULL, NULL, NULL, '{76AB37A3-7096-4019-BFD5-46BA99ABE6A5} ', NULL, 1, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 559', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(554, 'Петров', 'Сергей', 'Юрьевич', 4, 'I-РА', 634865, '000-000-000 554', 'М', '24.07.2006', NULL, 'participant', NULL, NULL, NULL, 'F5D885CDD1074C1FA7C6527278B165DB', NULL, NULL, NULL, NULL, '{1A6C54AC-99C3-E26E-8AA0-01DEE557F17A} ', NULL, 1, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 560', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(555, 'Петров', 'Сергей', 'Юрьевич', 4, 'I-РА', 630354, '000-000-000 555', 'М', '08.10.2012', NULL, NULL, NULL, NULL, NULL, 'FB3ABC14399A4A358BD16D60A1269828', NULL, NULL, NULL, NULL, '{65450264-1616-4542-A50D-5F5E2CF62890} ', NULL, 1, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 561', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(556, 'Петров', 'Сергей', 'Юрьевич', 4, 'I-РА', 630780, '000-000-000 556', 'М', '16.05.2013', NULL, 'participant', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 562', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(557, 'Петров', 'Сергей', 'Юрьевич', 1, 'I-РА', 726933, '000-000-000 557', 'М', '12.05.2003', NULL, 'participant', NULL, NULL, NULL, '7DCA8B752EBE435FAA32C7596EEB7CC6', NULL, NULL, NULL, NULL, '{84D31B05-854E-488D-8326-931DE34A9EDE} ', NULL, NULL, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 563', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(558, 'Петров', 'Сергей', 'Юрьевич', 4, 'I-РА', 550648, '000-000-000 558', 'М', '20.10.2011', NULL, NULL, NULL, NULL, NULL, 'AFD053E219D14CD1947F23D5AFDA6300', NULL, NULL, NULL, NULL, '{911E9CD6-C2E6-4955-B536-25CE0D2D6D86} ', NULL, 1, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 564', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(559, 'Петров', 'Сергей', 'Юрьевич', 4, 'I-РА', 630376, '000-000-000 559', 'М', '18.10.2012', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '{5ED7C69B-922A-48BD-B9D1-E6AB02691C5C} ', NULL, 1, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 565', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(560, 'Петров', 'Сергей', 'Юрьевич', 4, 'I-РА', 744683, '000-000-000 560', 'М', '16.07.2008', NULL, 'participant', NULL, NULL, NULL, '9A599C61D80647EFA131BCC8ED4C1AF5', NULL, NULL, NULL, NULL, '{326AAD4D-741D-4723-A074-280ECF118CAF} ', NULL, 1, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 566', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(561, 'Петров', 'Сергей', 'Юрьевич', 4, 'I-РА', 845796, '000-000-000 561', 'М', '04.12.2010', NULL, NULL, NULL, NULL, NULL, 'A83CCF06CD6C478C8DED02A9F070491F', NULL, NULL, NULL, NULL, '{88E75304-B968-4D8D-9606-FC00F72B67D5} ', NULL, 1, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 567', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(562, 'Петров', 'Сергей', 'Юрьевич', 4, 'I-РА', 875796, '000-000-000 562', 'М', '24.08.2010', NULL, 'participant', NULL, NULL, NULL, '5FE4292CC92D4F2492A8CD7D5F977064', NULL, NULL, NULL, NULL, '{A499F6CD-AE31-4519-8CE8-432850FB6E27} ', NULL, 1, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 568', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(563, 'Петров', 'Сергей', 'Юрьевич', 4, 'I-РА', 638262, '000-000-000 563', 'М', '05.10.2012', NULL, NULL, NULL, NULL, NULL, '31D25C478BDB450D9DF70406F827510C', NULL, NULL, NULL, NULL, '{E83C1DED-FF3E-4862-8097-FA38F574C8D9} ', NULL, 1, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 569', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(564, 'Петров', 'Сергей', 'Юрьевич', 4, 'I-РА', 674150, '000-000-000 564', 'М', '04.05.2012', NULL, 'participant', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 570', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(565, 'Петров', 'Сергей', 'Юрьевич', 4, 'I-РА', 550274, '000-000-000 565', 'М', '22.03.2011', NULL, NULL, NULL, NULL, NULL, '04C3945B295149529BBC53873FDC727F', NULL, NULL, NULL, NULL, '{4BAF1DE2-BBB9-4EC2-9C36-5D6295FC74B1} ', NULL, NULL, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 571', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(566, 'Петров', 'Сергей', 'Юрьевич', 4, 'I-РА', 630812, '000-000-000 566', 'М', '05.06.2013', NULL, 'participant', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 572', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(567, 'Петров', 'Сергей', 'Юрьевич', 4, 'I-РА', 630095, '000-000-000 567', 'М', '17.06.2012', NULL, NULL, NULL, NULL, NULL, 'AE87DAADD52446C4BEAE9D149E467F42', NULL, NULL, NULL, NULL, '{5C8263D4-70F0-4FB6-AFBD-8D6FC49E9127} ', NULL, 1, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 573', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(568, 'Петров', 'Сергей', 'Юрьевич', 4, 'I-РА', 630598, '000-000-000 568', 'М', '17.09.2010', NULL, 'participant', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '{3DAB7F2A-7F8C-4A8C-9115-D235899C536F} ', NULL, 1, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 574', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(569, 'Петров', 'Сергей', 'Юрьевич', 4, 'I-РА', 630948, '000-000-000 569', 'М', '29.07.2013', NULL, 'participant', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 575', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(570, 'Петров', 'Сергей', 'Юрьевич', 4, 'I-РА', 550153, '000-000-000 570', 'М', '25.02.2011', NULL, NULL, NULL, NULL, NULL, '1365E515A3AF4D92B70DA3878E32E7F8', NULL, NULL, NULL, NULL, '{230A3139-FF4B-45DF-B632-2FD623C7159B} ', NULL, 1, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 576', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(571, 'Петров', 'Сергей', 'Юрьевич', 4, 'I-РА', 693316, '000-000-000 571', 'М', '06.02.2014', NULL, 'participant', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 577', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(572, 'Петров', 'Сергей', 'Юрьевич', 4, 'I-РА', 630128, '000-000-000 572', 'М', '04.07.2012', NULL, NULL, NULL, NULL, NULL, 'EFB2217B0E4048F180FC5BF060D2FC08', NULL, NULL, NULL, NULL, '{D8486A07-E062-4E7B-A9E7-79535B3067A9} ', NULL, NULL, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 578', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(573, 'Петров', 'Сергей', 'Юрьевич', 4, 'I-РА', 848452, '000-000-000 573', 'М', '25.03.2011', NULL, NULL, NULL, NULL, NULL, '443306EA3E2A4877B933EAA52D4DBE5F', NULL, NULL, NULL, NULL, '{D3570E20-F6E7-4590-A412-4EB5282F5EEC} ', NULL, NULL, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 579', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(574, 'Петров', 'Сергей', 'Юрьевич', 4, 'I-РА', 550666, '000-000-000 574', 'М', '06.11.2011', NULL, NULL, NULL, NULL, NULL, 'FFEE5FDA7AEE43C9A96CF43194770F57', NULL, NULL, NULL, NULL, '{F0AB79AB-D714-4750-B098-ECADC457017A} ', NULL, 1, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 580', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(575, 'Петров', 'Сергей', 'Юрьевич', 1, 'I-РА', 771396, '000-000-000 575', 'М', '18.12.2003', NULL, 'participant', NULL, NULL, NULL, '6D3728A89C3D4422B4294F5DD2B8F996', NULL, NULL, NULL, NULL, '{9E54945E-B9BA-4533-907C-2D06C44B8720} ', NULL, NULL, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 581', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(576, 'Петров', 'Сергей', 'Юрьевич', 4, 'I-РА', 630877, '000-000-000 576', 'М', '19.06.2013', NULL, 'participant', NULL, NULL, NULL, 'A881261449810096524B6B2B03203D1F', NULL, NULL, NULL, NULL, NULL, NULL, 1, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 582', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(577, 'Петров', 'Сергей', 'Юрьевич', 4, 'I-РА', 676977, '000-000-000 577', 'М', '26.11.2011', NULL, NULL, NULL, NULL, NULL, '4260D28E87CE45CB8E495CC629DE50FB', NULL, NULL, NULL, NULL, '{7C904C60-7414-43D2-A33D-CE3D4CD96C18} ', NULL, 1, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 583', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(578, 'Петров', 'Сергей', 'Юрьевич', 1, 'I-РА', 697530, '000-000-000 578', 'М', '08.01.2003', NULL, NULL, NULL, NULL, NULL, 'EA5A7E6A67FA49DD866300C86DA0F4C4', NULL, NULL, NULL, NULL, '{4A1B86EE-65C3-4D65-A3E3-39D74C94C43B} ', NULL, NULL, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 584', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(579, 'Петров', 'Сергей', 'Юрьевич', 4, 'I-РА', 826224, '000-000-000 579', 'М', '20.06.2008', NULL, 'participant', NULL, NULL, NULL, '118684505D78460496EDBDB12CBA7A89', NULL, NULL, NULL, NULL, '{05204E3A-A14F-42DD-9B11-E525253F1B7D} ', NULL, 1, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 585', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(580, 'Петров', 'Сергей', 'Юрьевич', 4, 'I-РА', 550612, '000-000-000 580', 'М', '12.10.2011', NULL, NULL, NULL, NULL, NULL, 'F5F960392F3A4BE78C8E455AC8BA311B', NULL, NULL, NULL, NULL, '{EF5FE96F-AF5A-41CF-AF53-88F8AC6BDA81} ', NULL, 1, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 586', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(581, 'Петров', 'Сергей', 'Юрьевич', 4, 'I-РА', 550517, '000-000-000 581', 'М', '19.08.2011', NULL, 'participant', NULL, NULL, NULL, '08016F2443284A9D82ED3D91E8C84BAE', NULL, NULL, NULL, NULL, '{F46EFF9F-ECEF-4D9A-9E2E-E8AAB5E04028} ', NULL, 1, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 587', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(582, 'Петров', 'Сергей', 'Юрьевич', 4, 'I-РА', 573643, '000-000-000 582', 'М', '04.01.2013', NULL, NULL, NULL, NULL, NULL, 'F5D885CDD1074C1FA7C6527278B165DB', NULL, NULL, NULL, NULL, '{CCB7C933-5968-4C27-8AE3-65C2C7352594} ', NULL, NULL, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 588', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(583, 'Петров', 'Сергей', 'Юрьевич', 4, 'I-РА', 630580, '000-000-000 583', 'М', '08.02.2013', NULL, 'participant', NULL, NULL, NULL, 'D687FABCEAA34097A6A49017396BFDBA', NULL, NULL, NULL, NULL, NULL, NULL, 1, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 589', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(584, 'Петров', 'Сергей', 'Юрьевич', 4, 'I-РА', 1254283, '000-000-000 584', 'М', '21.07.2011', NULL, NULL, NULL, NULL, NULL, '0814F2EB1F2247B8A93B0444F7ADEF7A', NULL, NULL, NULL, NULL, '{4F34ACE0-9FA9-447E-A3DD-F285CB194C2B} ', NULL, NULL, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 590', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(585, 'Петров', 'Сергей', 'Юрьевич', 1, 'I-РА', 711353, '000-000-000 585', 'М', '22.03.2003', NULL, NULL, NULL, NULL, NULL, 'BDC1848B8B9D47D899B89122B1C69164', NULL, NULL, NULL, NULL, '{28504F1A-AF6F-446B-B09C-BB1D1ADFA6AC} ', NULL, NULL, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 591', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(586, 'Петров', 'Сергей', 'Юрьевич', 4, 'I-РА', 630430, '000-000-000 586', 'М', '09.11.2013', NULL, 'participant', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 592', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(587, 'Петров', 'Сергей', 'Юрьевич', 1, 'I-РА', 727118, '000-000-000 587', 'М', '05.07.2003', NULL, 'participant', NULL, NULL, NULL, '98B5C28AF9244B1B8D508D0B025DB04D', NULL, NULL, NULL, NULL, '{C69D488D-C362-4DD7-A8C7-D697FA95CCB9} ', NULL, NULL, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 593', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(588, 'Петров', 'Сергей', 'Юрьевич', 4, 'I-РА', 630614, '000-000-000 588', 'М', '19.02.2013', NULL, 'participant', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 594', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(589, 'Петров', 'Сергей', 'Юрьевич', 4, 'I-РА', 7000353, '000-000-000 589', 'М', '13.01.2014', NULL, 'participant', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 595', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(590, 'Петров', 'Сергей', 'Юрьевич', 4, 'I-РА', 766081, '000-000-000 590', 'М', '09.06.2013', NULL, 'participant', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 596', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(591, 'Петров', 'Сергей', 'Юрьевич', 4, 'I-РА', 630822, '000-000-000 591', 'М', '11.06.2013', NULL, 'participant', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 597', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(592, 'Петров', 'Сергей', 'Юрьевич', 4, 'I-РА', 573642, '000-000-000 592', 'М', '23.11.2012', NULL, NULL, NULL, NULL, NULL, 'E1B4302EBE0C4905B8BF5FEC41BCDCD5', NULL, NULL, NULL, NULL, '{AEBB926F-2FD2-4D2D-945D-01AC85EC0600} ', NULL, NULL, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 598', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(593, 'Петров', 'Сергей', 'Юрьевич', 4, 'I-РА', 550688, '000-000-000 593', 'М', '11.11.2011', NULL, NULL, NULL, NULL, NULL, 'C310E7467A5A47F18C2CB4D4B63ADABB', NULL, NULL, NULL, NULL, '{1FC8003A-0741-4039-9AFA-F379CBFC89A6} ', NULL, 1, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 599', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(594, 'Петров', 'Сергей', 'Юрьевич', 4, 'I-РА', 550746, '000-000-000 594', 'М', '12.12.2011', NULL, NULL, NULL, NULL, NULL, '754F9240587748448F9B55994DB4C94F', NULL, NULL, NULL, NULL, '{AF924435-1D0C-49EA-B7F1-F97CF9F52687} ', NULL, 1, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 600', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(595, 'Петров', 'Сергей', 'Юрьевич', 4, 'I-РА', 826203, '000-000-000 595', 'М', '06.06.2008', NULL, 'participant', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '{80BEF055-4479-4FE1-B32D-C59A50C5DD44} ', NULL, NULL, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 601', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(596, 'Петров', 'Сергей', 'Юрьевич', 1, 'I-РА', 799201, '000-000-000 596', 'М', '13.02.2004', NULL, 'participant', NULL, NULL, NULL, 'F85B6B4A578D44A08B499A9DA1AE3453', NULL, NULL, NULL, NULL, '{76F4573B-187C-4FCD-B34C-6FE49F3F6585} ', NULL, NULL, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 602', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(597, 'Петров', 'Сергей', 'Юрьевич', 4, 'I-РА', 550310, '000-000-000 597', 'М', '23.04.2011', NULL, NULL, NULL, NULL, NULL, '41E3EE9D4C504F13BB1EB5335F60F6EF', NULL, NULL, NULL, NULL, '{38B3EFFB-937D-4205-88AA-393FB5911D16} ', NULL, 1, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 603', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(598, 'Петров', 'Сергей', 'Юрьевич', 4, 'I-РА', 550511, '000-000-000 598', 'М', '21.08.2011', NULL, NULL, NULL, NULL, NULL, '63883236460E4F038339B7C434ED8CF3', NULL, NULL, NULL, NULL, '{35A9995C-336B-477F-BA29-50AB4E61DD4B} ', NULL, 1, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 604', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(599, 'Петров', 'Сергей', 'Юрьевич', 4, 'I-РА', 758331, '000-000-000 599', 'М', '29.01.2007', NULL, 'participant', NULL, NULL, NULL, '8B1F6BEC94CF4BD08C8758966886CC8E', NULL, NULL, NULL, NULL, '{1DE60C4D-EBB3-C84E-CA03-352F4323EAFB} ', NULL, 1, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 605', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(600, 'Петров', 'Сергей', 'Юрьевич', 4, 'I-РА', 822533, '000-000-000 600', 'М', '09.03.2011', NULL, NULL, NULL, NULL, NULL, NULL, '74E31D7F398B4F5CBB99BDDC4036E463', NULL, NULL, NULL, '{3852C5E8-8C42-4682-9707-2008629C269B} ', NULL, 1, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 606', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(601, 'Петров', 'Сергей', 'Юрьевич', 1, 'I-РА', 747774, '000-000-000 601', 'М', '27.03.2003', NULL, 'participant', NULL, NULL, NULL, '211007A414C744069C44787FBD56AA26', NULL, NULL, NULL, NULL, '{DB215B74-1BB0-C49C-213F-EE54E7D28E48} ', NULL, 1, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 607', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(602, 'Петров', 'Сергей', 'Юрьевич', 4, 'I-РА', 684455, '000-000-000 602', 'М', '15.09.2013', NULL, 'participant', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 608', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(603, 'Петров', 'Сергей', 'Юрьевич', 4, 'I-РА', 630512, '000-000-000 603', 'М', '11.01.2013', NULL, 'participant', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 609', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(604, 'Петров', 'Сергей', 'Юрьевич', 4, 'I-РА', 630747, '000-000-000 604', 'М', '28.04.2013', NULL, 'participant', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 610', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(605, 'Петров', 'Сергей', 'Юрьевич', 4, 'I-РА', 550610, '000-000-000 605', 'М', '08.10.2011', NULL, NULL, NULL, NULL, NULL, '7A58B8B88E4041E087531D3FDC5DB84F', NULL, NULL, NULL, NULL, '{1349BDA6-1349-4F2F-AE26-598A67640914} ', NULL, NULL, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 611', 0, NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO `paraticipants` (`PARTICIPANTID`, `SURNAME`, `NAME`, `SECONDNAME`, `DOCUMENTTYPEFK`, `DOCUMENTSERIES`, `DOCUMENTNUMBER`, `SNILS`, `SEX`, `BIRTHDAY`, `EXPINFO`, `ROLEFK`, `RETIRED`, `APPID`, `COMMAND`, `PARTPARENTFK`, `PARTPARENT2FK`, `LEGAL_AGENT`, `BEGDATE`, `JOINTCODE`, `FCTGUID`, `EGECITIZENSHIPFK`, `D_LIMITEDPOTENTFK`, `ADDID`, `PARTICIPANT_INVALID`, `INVALID_EDU`, `ADRESS`, `GONEFLAG`, `CON_REG_ID`, `CON_FED_ID`, `CON_REG_ERR`, `MOBILE`, `DATA_DOC`, `REC_DOC`) VALUES
+(606, 'Петров', 'Сергей', 'Юрьевич', 4, 'I-РА', 550933, '000-000-000 606', 'М', '19.03.2012', NULL, NULL, NULL, NULL, NULL, 'FAB7389A3CCB43CBAA7B54603A5E3695', NULL, NULL, NULL, NULL, '{A5B62117-7B2A-48AC-A7C6-8F9FDEEE1451} ', NULL, 1, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 612', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(607, 'Петров', 'Сергей', 'Юрьевич', 4, 'I-РА', 758254, '000-000-000 607', 'М', '23.12.2006', NULL, 'participant', NULL, NULL, NULL, '6356153E46E04860BF9C30A999588C64', '98B116661AB844E8B5B0B1783674DA16', NULL, NULL, NULL, '{9BAA6531-35B8-C20D-BA18-E96EC9B990A6} ', NULL, 1, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 613', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(608, 'Петров', 'Сергей', 'Юрьевич', 4, 'I-РА', 875235, '000-000-000 608', 'М', '31.10.2009', NULL, 'participant', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '{FD9E25F0-11A0-4A8E-87DB-04762A271630} ', NULL, 1, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 614', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(609, 'Петров', 'Сергей', 'Юрьевич', 4, 'I-РА', 550222, '000-000-000 609', 'М', '26.03.2011', NULL, NULL, NULL, NULL, NULL, '3FA64099AD94452BB0C6A4B9605FB29F', NULL, NULL, NULL, NULL, '{0D4D316A-C8D0-4269-97CC-1BD33D30DA22} ', NULL, 1, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 615', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(610, 'Петров', 'Сергей', 'Юрьевич', 1, 'I-РА', 697657, '000-000-000 610', 'М', '31.12.2002', NULL, 'participant', NULL, NULL, NULL, '4689CC89511345C695C5EB7F732714BD', NULL, NULL, NULL, NULL, '{DB56D2AF-9B90-484D-B14E-01B6DA1ADB0F} ', NULL, NULL, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 616', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(611, 'Петров', 'Сергей', 'Юрьевич', 4, 'I-РА', 550514, '000-000-000 611', 'М', '20.08.2011', NULL, NULL, NULL, NULL, NULL, '3FCD284EDCC0475885B5C0BB285A67D8', NULL, NULL, NULL, NULL, '{171FA895-2E16-4CFE-B852-F64029787D8C} ', NULL, NULL, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 617', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(612, 'Петров', 'Сергей', 'Юрьевич', 4, 'I-РА', 693252, '000-000-000 612', 'М', '02.02.2011', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '{232C945F-ECA5-4D1A-9DEB-32D5D1F730C8} ', NULL, 1, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 618', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(613, 'Петров', 'Сергей', 'Юрьевич', 4, 'I-РА', 875955, '000-000-000 613', 'М', '31.10.2010', NULL, 'participant', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '{93161AB5-498D-45FB-B91E-8103BA1021AC} ', NULL, 1, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 619', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(614, 'Петров', 'Сергей', 'Юрьевич', 4, 'I-РА', 630605, '000-000-000 614', 'М', '09.02.2013', NULL, 'participant', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 620', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(615, 'Петров', 'Сергей', 'Юрьевич', 4, 'I-РА', 693055, '000-000-000 615', 'М', '18.09.2013', NULL, 'participant', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 621', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(616, 'Петров', 'Сергей', 'Юрьевич', 4, 'I-РА', 550558, '000-000-000 616', 'М', '17.09.2011', NULL, NULL, NULL, NULL, NULL, NULL, 'F3C26A10DCF54B35ACB60A29D9FC8A01', NULL, NULL, NULL, '{9333D6A6-0103-47B5-94DF-C1F15E43E7B3} ', NULL, 1, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 622', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(617, 'Петров', 'Сергей', 'Юрьевич', 4, 'I-РА', 634547, '000-000-000 617', 'М', '10.05.2005', NULL, 'participant', NULL, NULL, NULL, '5532608D382C4BE6819783C9F989CFB1', NULL, NULL, NULL, NULL, '{E27B500A-ABE8-42ED-A809-D171EC21684B} ', NULL, 1, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 623', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(618, 'Петров', 'Сергей', 'Юрьевич', 1, 'I-РА', 711188, '000-000-000 618', 'М', '09.03.2003', NULL, 'participant', NULL, NULL, NULL, 'B99244655C6C4E8FBCEB5783C7DE43BC', '33949107F9F94AFB9103FDE6362E0A2A', NULL, NULL, NULL, '{7346ABF0-B374-4BBC-8D31-DCADBDBD7AFF} ', NULL, NULL, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 624', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(619, 'Петров', 'Сергей', 'Юрьевич', 4, 'I-РА', 630655, '000-000-000 619', 'М', '10.03.2013', NULL, 'participant', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 625', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(620, 'Петров', 'Сергей', 'Юрьевич', 4, 'I-РА', 550346, '000-000-000 620', 'М', '31.05.2011', NULL, NULL, NULL, NULL, NULL, 'EB18AD7EF67F4BAD8577B56F2FA09BCF', NULL, NULL, NULL, NULL, '{97BD6611-8F87-4548-9A6E-B71F0D0A408B} ', NULL, 1, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 626', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(621, 'Петров', 'Сергей', 'Юрьевич', 4, 'I-РА', 845462, '000-000-000 621', 'М', '27.10.2009', NULL, 'participant', NULL, NULL, NULL, '66914C340FDD41A7B61CED102CBA7D06', NULL, NULL, NULL, NULL, '{A4974C6B-6781-4661-9285-AB573183F127} ', NULL, 1, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 627', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(622, 'Петров', 'Сергей', 'Юрьевич', 4, 'I-РА', 550817, '000-000-000 622', 'М', '18.01.2012', NULL, NULL, NULL, NULL, NULL, 'BB848AB8E767474AAA6D713BA0821505', NULL, NULL, NULL, NULL, '{A71FE49A-E00C-47C4-812E-026F100A8274} ', NULL, 1, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 628', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(623, 'Петров', 'Сергей', 'Юрьевич', 1, 'I-РА', 697868, '000-000-000 623', 'М', '19.02.2003', NULL, NULL, '01.01.1970', NULL, '120', 'ABC9DFFE113F4D1392CB069A4F0F4BB9', NULL, NULL, NULL, NULL, '{1E2970CC-F812-45CA-8C8B-CDB7FB7EE0E7} ', NULL, 1, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 629', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(624, 'Петров', 'Сергей', 'Юрьевич', 4, 'I-РА', 758284, '000-000-000 624', 'М', '08.01.2007', NULL, 'participant', NULL, NULL, NULL, 'B3437B7C5F42468BA1B7DCC9D05CD0DB', NULL, NULL, NULL, NULL, '{A768E779-8CC8-0B2C-EDDC-13F77109C8D1} ', NULL, 1, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 630', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(625, 'Петров', 'Сергей', 'Юрьевич', 4, 'I-РА', 630932, '000-000-000 625', 'М', '30.07.2013', NULL, 'participant', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 631', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(626, 'Петров', 'Сергей', 'Юрьевич', 4, 'I-РА', 630638, '000-000-000 626', 'М', '05.03.2013', NULL, 'participant', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 632', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(627, 'Петров', 'Сергей', 'Юрьевич', 4, 'I-РА', 550883, '000-000-000 627', 'М', '18.02.2012', NULL, NULL, NULL, NULL, NULL, 'F6CCFEEEBFA545AC88371D3718B38594', NULL, NULL, NULL, NULL, '{BCAB0501-66F5-4B23-8F9F-3B2AB8E6F302} ', NULL, NULL, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 633', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(628, 'Петров', 'Сергей', 'Юрьевич', 4, 'I-РА', 717714, '000-000-000 628', 'М', '01.02.2006', NULL, 'participant', NULL, NULL, NULL, 'D5D7450C5FAB4DE5B8B55C1EFCE7AC3E', NULL, NULL, NULL, NULL, '{C2496BDF-816F-43CC-ABA9-740CF4F8B6F4} ', NULL, 1, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 634', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(629, 'Петров', 'Сергей', 'Юрьевич', 4, 'I-РА', 630927, '000-000-000 629', 'М', '24.07.2013', NULL, 'participant', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 635', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(630, 'Петров', 'Сергей', 'Юрьевич', 4, 'I-РА', 630699, '000-000-000 630', 'М', '09.04.2013', NULL, 'participant', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 636', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(631, 'Петров', 'Сергей', 'Юрьевич', 1, 'I-РА', 903698, '000-000-000 631', 'М', '25.01.2005', NULL, 'participant', NULL, NULL, NULL, '9776BB0AB1ED40598790F4532A42AC4F', NULL, NULL, NULL, NULL, '{F757A01B-8EBF-E964-0649-1A213587C3F1} ', NULL, 1, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 637', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(632, 'Петров', 'Сергей', 'Юрьевич', 1, 'I-РА', 860389, '000-000-000 632', 'М', '04.10.2004', NULL, NULL, NULL, NULL, NULL, '46AA27BD01EF493CA1E5D514D465A889', NULL, NULL, NULL, NULL, NULL, NULL, 1, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 638', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(633, 'Петров', 'Сергей', 'Юрьевич', 4, 'I-РА', 630195, '000-000-000 633', 'М', '29.07.2012', NULL, NULL, NULL, NULL, NULL, '74659C410C4845D2B01D5E3A8E5D3205', NULL, NULL, NULL, NULL, '{ABB62730-1C3D-4F8F-8394-290283A6EE3D} ', NULL, NULL, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 639', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(634, 'Петров', 'Сергей', 'Юрьевич', 4, 'I-РА', 875670, '000-000-000 634', 'М', '22.06.2010', NULL, 'participant', NULL, NULL, NULL, 'E70131E38680428C987BA9F65D1278AD', NULL, NULL, NULL, NULL, '{D683FD8F-4B32-4687-B5BA-1AAF4FE563F7} ', NULL, 1, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 640', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(635, 'Петров', 'Сергей', 'Юрьевич', 4, 'I-РА', 826782, '000-000-000 635', 'М', '07.04.2009', NULL, 'participant', NULL, NULL, NULL, 'EB252A1150D24B4896624723817C3B08', NULL, NULL, NULL, NULL, '{F861797C-0957-4CD8-AE1E-D7589250C0DF} ', NULL, 1, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 641', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(636, 'Петров', 'Сергей', 'Юрьевич', 4, 'I-РА', 875804, '000-000-000 636', 'М', '14.08.2010', NULL, 'participant', NULL, NULL, NULL, '3B4C6B3FCFB24853BC5A468419D26B59', NULL, '3CC52A4402F344FAADEABF64647A8C2E', NULL, NULL, '{AA6A029B-F6B6-422E-8515-FA45843D4261} ', NULL, 1, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 642', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(637, 'Петров', 'Сергей', 'Юрьевич', 4, 'I-РА', 550033, '000-000-000 637', 'М', '22.11.2010', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '{33CFECBF-A4AD-4F13-9C53-6B89C9A20E32} ', NULL, 1, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 643', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(638, 'Петров', 'Сергей', 'Юрьевич', 4, 'I-РА', 879031, '000-000-000 638', 'М', '08.09.2009', NULL, 'participant', NULL, NULL, NULL, '0BF5F1F7CCF64100AB2A8791E276B114', NULL, NULL, NULL, NULL, '{30F9DE32-E4F5-4BDF-8F38-F02700F5C1E7} ', NULL, 1, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 644', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(639, 'Петров', 'Сергей', 'Юрьевич', 4, 'I-РА', 875894, '000-000-000 639', 'М', '04.10.2010', NULL, 'participant', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '{BD2EE490-4991-4056-A6CF-695563BFF43E} ', NULL, 1, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 645', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(640, 'Петров', 'Сергей', 'Юрьевич', 4, 'I-РА', 826830, '000-000-000 640', 'М', '17.04.2009', NULL, 'participant', NULL, NULL, NULL, 'CCC47CFB1F1D44308E7B560CD72DE7DC', NULL, NULL, NULL, NULL, '{11063464-FB40-42A0-AE2D-97A8933D7949} ', NULL, 1, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 646', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(641, 'Петров', 'Сергей', 'Юрьевич', 4, 'I-РА', 826902, '000-000-000 641', 'М', '28.05.2009', NULL, 'participant', NULL, NULL, NULL, '4BE8C723DD464D818B91F95C0EEB2566', NULL, NULL, NULL, NULL, '{AFD0563B-DED3-44CB-8155-B6DAAC289D51} ', NULL, 1, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 647', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(642, 'Петров', 'Сергей', 'Юрьевич', 4, 'I-РА', 875845, '000-000-000 642', 'М', '28.08.2010', NULL, 'participant', NULL, NULL, NULL, 'A0BE21251A5540A28F418FFB9BAB5D06', NULL, NULL, NULL, NULL, '{23D55D8C-5507-41F6-88C3-3C18EFDA0BF9} ', NULL, 1, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 648', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(643, 'Петров', 'Сергей', 'Юрьевич', 4, 'I-РА', 717671, '000-000-000 643', 'М', '05.01.2006', NULL, 'participant', NULL, NULL, NULL, 'C894DB2B6D5842DDA907BBA6FDA9100B', NULL, NULL, NULL, NULL, '{061F39E4-DA5C-4D56-9EF8-03CFF2E92313} ', NULL, NULL, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 649', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(644, 'Петров', 'Сергей', 'Юрьевич', 4, 'I-РА', 758014, '000-000-000 644', 'М', '08.08.2006', NULL, 'participant', NULL, NULL, NULL, '44E87E52F119419CA25457590334CC38', NULL, NULL, NULL, NULL, '{5CF2F85C-1577-D692-AD3A-CD893204CFAC} ', NULL, 1, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 650', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(645, 'Петров', 'Сергей', 'Юрьевич', 4, 'I-РА', 744322, '000-000-000 645', 'М', '26.03.2008', NULL, 'participant', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '{36FD7769-C498-4CFF-AAA2-D57FEC8BF942} ', NULL, 1, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 651', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(646, 'Петров', 'Сергей', 'Юрьевич', 4, 'I-РА', 405592, '000-000-000 646', 'М', '09.11.2007', NULL, 'participant', NULL, NULL, NULL, '9744FFDCA8224643ACDCD1C0DE888711', NULL, NULL, NULL, NULL, '{FC3AD505-6D3A-46DA-88B6-7D4AD945F3DA} ', NULL, 1, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 652', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(647, 'Петров', 'Сергей', 'Юрьевич', 1, 'I-РА', 971422, '000-000-000 647', 'М', '23.11.2005', NULL, 'participant', NULL, NULL, NULL, 'A238795DDA964E21980A312B19B388B8', NULL, NULL, NULL, NULL, '{55CC84E7-43E2-47DE-ADDE-D7CFDB8E6DCA} ', NULL, NULL, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 653', 0, NULL, NULL, NULL, NULL, NULL, NULL),
+(648, 'Петров', 'Сергей', 'Юрьевич', 4, 'I-РА', 826239, '000-000-000 648', 'М', '26.06.2008', NULL, 'participant', NULL, NULL, NULL, '7C7A07C340F64DD6B43157F5D7115298', NULL, NULL, NULL, NULL, '{E5AC74CF-4D18-4F03-AFDA-88FF2454ED1B} ', NULL, 1, NULL, NULL, NULL, 'г. Оренбург ул. Оренбргская дом 654', 0, NULL, NULL, NULL, NULL, NULL, NULL);
+
+-- --------------------------------------------------------
+
+--
+-- Структура таблицы `schedule`
+--
+
+CREATE TABLE `schedule` (
+  `DATE_SCHEDULE` date DEFAULT NULL,
+  `NUMBERFK` varchar(32) DEFAULT NULL,
+  `CABINETFK` varchar(10) DEFAULT NULL,
+  `TOPIC` varchar(32) DEFAULT NULL,
+  `TPLFK` varchar(32) DEFAULT NULL,
+  `PERIODFK` varchar(32) DEFAULT NULL,
+  `HOMEWORK` varchar(190) DEFAULT NULL,
+  `GRADETYPEFK` varchar(49) DEFAULT NULL,
+  `LESSONTYPEFK` varchar(10) DEFAULT NULL,
+  `HIDDEN` int(1) DEFAULT NULL,
+  `ISCUSTOM` int(1) DEFAULT NULL,
+  `ISREPLACE` varchar(10) DEFAULT NULL,
+  `TEACHER` varchar(10) DEFAULT NULL,
+  `NEW_TEACHER` varchar(10) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
+-- Структура таблицы `schools`
+--
+
+CREATE TABLE `schools` (
+  `SCHOOLID` int(6) DEFAULT NULL,
+  `SCHOOLNUM` varchar(10) DEFAULT NULL,
+  `SCHOOLNAME` varchar(150) DEFAULT NULL,
+  `SHORTNAME` varchar(13) DEFAULT NULL,
+  `SCHOOLTYPEFK` int(1) DEFAULT NULL,
+  `SCHOOLKINDFK` varchar(3) DEFAULT NULL,
+  `GOVERNMENTFK` int(8) DEFAULT NULL,
+  `UR_POSTINDEX` varchar(10) DEFAULT NULL,
+  `UR_ADDRESS` varchar(10) DEFAULT NULL,
+  `NASPUNKT` varchar(10) DEFAULT NULL,
+  `FAKT_POSTINDEX` varchar(10) DEFAULT NULL,
+  `FAKT_ADDRESS` varchar(10) DEFAULT NULL,
+  `SCPOSITION` varchar(8) DEFAULT NULL,
+  `FIO` varchar(23) DEFAULT NULL,
+  `PHONECODE` int(5) DEFAULT NULL,
+  `PHONES` int(5) DEFAULT NULL,
+  `FAXS` varchar(10) DEFAULT NULL,
+  `MAILS` varchar(18) DEFAULT NULL,
+  `ALLPEOPLE` varchar(10) DEFAULT NULL,
+  `PEOPLE11` varchar(10) DEFAULT NULL,
+  `PEOPLE10` varchar(10) DEFAULT NULL,
+  `TITLESP` varchar(12) DEFAULT NULL,
+  `FIOSP` varchar(25) DEFAULT NULL,
+  `MAILSP` varchar(18) DEFAULT NULL,
+  `PHONESP` int(5) DEFAULT NULL,
+  `URL` varchar(19) DEFAULT NULL,
+  `LICNUMBER` varchar(14) DEFAULT NULL,
+  `LICBEGINDATE` varchar(10) DEFAULT NULL,
+  `LICREGNUMBER` int(4) DEFAULT NULL,
+  `LICENDDATE` varchar(10) DEFAULT NULL,
+  `SVIDAKNUMBER` varchar(14) DEFAULT NULL,
+  `SVIDAKREGNUMBER` int(4) DEFAULT NULL,
+  `SVIDAKBEGINDATE` varchar(10) DEFAULT NULL,
+  `SVIDAKENDDATE` varchar(10) DEFAULT NULL,
+  `DELETEDATE` varchar(10) DEFAULT NULL,
+  `DELETEREASON` varchar(10) DEFAULT NULL,
+  `STATIONCODE` varchar(10) DEFAULT NULL,
+  `PCENTERFK` varchar(10) DEFAULT NULL,
+  `FCTGUID` varchar(38) DEFAULT NULL,
+  `INTOM` int(1) DEFAULT NULL,
+  `OLDEGEPPLS` int(1) DEFAULT NULL,
+  `ISVIRT` int(1) DEFAULT NULL,
+  `HASVIDEO` int(1) DEFAULT NULL,
+  `TOP100` int(1) DEFAULT NULL,
+  `ISFILIAL` int(1) DEFAULT NULL,
+  `PARENTFK` varchar(10) DEFAULT NULL,
+  `GOSREGNUM` bigint(13) DEFAULT NULL,
+  `INN` bigint(10) DEFAULT NULL,
+  `ISCHECKED` int(1) DEFAULT NULL,
+  `NY_ACCEPT_EXCEPTION` int(1) DEFAULT NULL,
+  `FAKT_STREET` varchar(10) DEFAULT NULL,
+  `FAKT_HOUSE` varchar(10) DEFAULT NULL,
+  `FAKT_HOUSING` varchar(10) DEFAULT NULL,
+  `FAKT_ADDRESSCORRECT` int(1) DEFAULT NULL,
+  `APPID` varchar(10) DEFAULT NULL,
+  `AREAFK` int(8) DEFAULT NULL,
+  `LATITUDE` varchar(10) DEFAULT NULL,
+  `LONGITUDE` varchar(10) DEFAULT NULL,
+  `TOWNTYPEFK` varchar(10) DEFAULT NULL,
+  `REGIONFK` varchar(10) DEFAULT NULL,
+  `MINISTRYFK` varchar(10) DEFAULT NULL,
+  `SYS_XXX` varchar(10) DEFAULT NULL,
+  `BRANCH_TYPE` varchar(10) DEFAULT NULL,
+  `SCHOOLPROPERTYFK` varchar(10) DEFAULT NULL,
+  `PKPHONE` varchar(10) DEFAULT NULL,
+  `TERMLESS` varchar(10) DEFAULT NULL,
+  `ADDID` varchar(10) DEFAULT NULL,
+  `ESIA_OID` varchar(10) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Дамп данных таблицы `schools`
+--
+
+INSERT INTO `schools` (`SCHOOLID`, `SCHOOLNUM`, `SCHOOLNAME`, `SHORTNAME`, `SCHOOLTYPEFK`, `SCHOOLKINDFK`, `GOVERNMENTFK`, `UR_POSTINDEX`, `UR_ADDRESS`, `NASPUNKT`, `FAKT_POSTINDEX`, `FAKT_ADDRESS`, `SCPOSITION`, `FIO`, `PHONECODE`, `PHONES`, `FAXS`, `MAILS`, `ALLPEOPLE`, `PEOPLE11`, `PEOPLE10`, `TITLESP`, `FIOSP`, `MAILSP`, `PHONESP`, `URL`, `LICNUMBER`, `LICBEGINDATE`, `LICREGNUMBER`, `LICENDDATE`, `SVIDAKNUMBER`, `SVIDAKREGNUMBER`, `SVIDAKBEGINDATE`, `SVIDAKENDDATE`, `DELETEDATE`, `DELETEREASON`, `STATIONCODE`, `PCENTERFK`, `FCTGUID`, `INTOM`, `OLDEGEPPLS`, `ISVIRT`, `HASVIDEO`, `TOP100`, `ISFILIAL`, `PARENTFK`, `GOSREGNUM`, `INN`, `ISCHECKED`, `NY_ACCEPT_EXCEPTION`, `FAKT_STREET`, `FAKT_HOUSE`, `FAKT_HOUSING`, `FAKT_ADDRESSCORRECT`, `APPID`, `AREAFK`, `LATITUDE`, `LONGITUDE`, `TOWNTYPEFK`, `REGIONFK`, `MINISTRYFK`, `SYS_XXX`, `BRANCH_TYPE`, `SCHOOLPROPERTYFK`, `PKPHONE`, `TERMLESS`, `ADDID`, `ESIA_OID`) VALUES
+(100005, NULL, 'Муниципальное бюджетное общеобразовательное учреждение \"Средняя общеобразовательная школа №5 имени А.Н.Лавкова\" города Сорочинска Оренбургской области', 'МБОУ \"СОШ №5\"', 5, '5.3', 20205610, NULL, NULL, NULL, NULL, NULL, 'Директор', 'Займак Олег Анатольевич', 35346, 60063, NULL, 'sorobr-5@yandex.ru', NULL, NULL, NULL, 'Методист ИКТ', 'Ревун Алевтина Витальевна', 'sorobr-5@yandex.ru', 60063, 'http://sorobr-5.ru/', '56Л01 №0005170', '2017-05-02', 3160, NULL, '56А01 №0004019', 2359, '2017-05-22', '2029-05-22', NULL, NULL, NULL, NULL, '{2ED1625A-CA27-4692-9B47-FB1E9C169346}', 0, 0, 0, 0, 0, 0, NULL, 1165658064945, 5617022518, 0, 0, NULL, NULL, NULL, 0, NULL, 20205610, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
+
+-- --------------------------------------------------------
+
+--
+-- Структура таблицы `specialities`
+--
+
+CREATE TABLE `specialities` (
+  `SPECIALITIESID` int(2) DEFAULT NULL,
+  `VAKCODE` varchar(8) DEFAULT NULL,
+  `SPECIALITIESNAME` varchar(63) DEFAULT NULL,
+  `D` varchar(10) DEFAULT NULL,
+  `E` varchar(10) DEFAULT NULL,
+  `F` varchar(10) DEFAULT NULL,
+  `G` varchar(10) DEFAULT NULL,
+  `H` varchar(10) DEFAULT NULL,
+  `I` varchar(10) DEFAULT NULL,
+  `J` varchar(10) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Дамп данных таблицы `specialities`
+--
+
+INSERT INTO `specialities` (`SPECIALITIESID`, `VAKCODE`, `SPECIALITIESNAME`, `D`, `E`, `F`, `G`, `H`, `I`, `J`) VALUES
+(0, '0', 'Нет', NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(1, '01.00.00', 'Физико-математические науки', NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(10, '10.00.00', 'Филологические науки', NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(11, '11.00.00', 'Географические науки (не имеют внутренней рубрикации)', NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(12, '12.00.00', 'Юридические науки', NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(13, '13.00.00', 'Педагогические науки', NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(14, '14.00.00', 'Медицинские науки', NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(15, '15.00.00', 'Фармацевтические науки', NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(16, '16.00.00', 'Ветеринарные науки', NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(17, '17.00.00', 'Искусствоведение', NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(18, '18.00.00', 'Архитектура', NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(19, '19.00.00', 'Психологические науки', NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(2, '02.00.00', 'Химические науки', NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(20, '20.00.00', 'Военные науки (не имеют внутренней рубрикации)', NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(21, '22.00.00', 'Социологические науки', NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(22, '23.00.00', 'Политические науки', NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(23, '24.00.00', 'Культурология науки', NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(24, '25.00.00', 'Науки о Земле', NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(3, '03.00.00', 'Биологические науки', NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(4, '04.00.00', 'Геолого-минералогические науки (не имеют внутренней рубрикации)', NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(5, '05.00.00', 'Технические науки', NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(6, '06.00.00', 'Сельскохозяйственные науки', NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(7, '07.00.00', 'Исторические науки', NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(8, '08.00.00', 'Экономические науки', NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(9, '09.00.00', 'Философские науки', NULL, NULL, NULL, NULL, NULL, NULL, NULL);
+
+-- --------------------------------------------------------
+
+--
+-- Структура таблицы `teachers`
+--
+
+CREATE TABLE `teachers` (
+  `UI` varchar(10) DEFAULT NULL,
+  `SURNAME` varchar(10) DEFAULT NULL,
+  `NAME` varchar(6) DEFAULT NULL,
+  `SECONDNAME` varchar(10) DEFAULT NULL,
+  `SEX` varchar(1) DEFAULT NULL,
+  `BIRTHDAY` varchar(10) DEFAULT NULL,
+  `BIRTHPLACE` varchar(36) DEFAULT NULL,
+  `DOCUMENTTYPEFK` int(1) DEFAULT NULL,
+  `DOCUMENTSERIES` int(4) DEFAULT NULL,
+  `DOCUMENTNUMBER` int(6) DEFAULT NULL,
+  `PEDSTAG` int(2) DEFAULT NULL,
+  `SENIORITY` int(2) DEFAULT NULL,
+  `NAGR` varchar(10) DEFAULT NULL,
+  `EDULEVELFK` varchar(32) DEFAULT NULL,
+  `DIPSPECIALITY` varchar(62) DEFAULT NULL,
+  `CATEGORYFK` varchar(10) DEFAULT NULL,
+  `DEGREEFK` int(1) DEFAULT NULL,
+  `SPECIALITYFK` varchar(10) DEFAULT NULL,
+  `ACSTATUSFK` varchar(32) DEFAULT NULL,
+  `DATELASTATT` varchar(10) DEFAULT NULL,
+  `NSOTFLAG` int(1) DEFAULT NULL,
+  `NSOTCATEGORY` int(1) DEFAULT NULL,
+  `PDATE` varchar(10) DEFAULT NULL,
+  `PSUBJECTCODE` varchar(10) DEFAULT NULL,
+  `IKTPOVDATE` varchar(10) DEFAULT NULL,
+  `NAGRUZ` varchar(10) DEFAULT NULL,
+  `UCHCOUNT` varchar(10) DEFAULT NULL,
+  `AVGCONT` varchar(10) DEFAULT NULL,
+  `IKTPOVHOURS2` varchar(10) DEFAULT NULL,
+  `SNILS` varchar(14) DEFAULT NULL,
+  `ROLEFK` varchar(7) DEFAULT NULL,
+  `DISMISSED` varchar(10) DEFAULT NULL,
+  `COMMAND` int(3) DEFAULT NULL,
+  `APPID` varchar(10) DEFAULT NULL,
+  `IKTPOVHOUR` varchar(10) DEFAULT NULL,
+  `AGREEMENT` varchar(10) DEFAULT NULL,
+  `EMAIL` varchar(10) DEFAULT NULL,
+  `JOINTCODE` varchar(10) DEFAULT NULL,
+  `RANGEFK` varchar(10) DEFAULT NULL,
+  `ADDID` varchar(10) DEFAULT NULL,
+  `MOBILE` varchar(10) DEFAULT NULL,
+  `AP` varchar(10) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Дамп данных таблицы `teachers`
+--
+
+INSERT INTO `teachers` (`UI`, `SURNAME`, `NAME`, `SECONDNAME`, `SEX`, `BIRTHDAY`, `BIRTHPLACE`, `DOCUMENTTYPEFK`, `DOCUMENTSERIES`, `DOCUMENTNUMBER`, `PEDSTAG`, `SENIORITY`, `NAGR`, `EDULEVELFK`, `DIPSPECIALITY`, `CATEGORYFK`, `DEGREEFK`, `SPECIALITYFK`, `ACSTATUSFK`, `DATELASTATT`, `NSOTFLAG`, `NSOTCATEGORY`, `PDATE`, `PSUBJECTCODE`, `IKTPOVDATE`, `NAGRUZ`, `UCHCOUNT`, `AVGCONT`, `IKTPOVHOURS2`, `SNILS`, `ROLEFK`, `DISMISSED`, `COMMAND`, `APPID`, `IKTPOVHOUR`, `AGREEMENT`, `EMAIL`, `JOINTCODE`, `RANGEFK`, `ADDID`, `MOBILE`, `AP`) VALUES
+(NULL, 'Беззубцева', 'Оксана', 'Паркевовна', 'Ж', '30.06.1981', NULL, 1, 5315, 594667, 15, 16, NULL, 'C45F8872035F4DFCA7A61F9893D8DFE2', 'учитель математики и информатики по специальности \"математика\"', NULL, 0, NULL, '605F272778F24018893EEC5B2A69270B', NULL, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '127-523-091 44', 'zavuch', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(NULL, 'Беззубцева', 'Оксана', 'Паркевовна', 'Ж', '01.07.1981', NULL, 1, 5306, 561955, 3, 13, NULL, 'C45F8872035F4DFCA7A61F9893D8DFE2', 'переводчик', NULL, 0, NULL, '605F272778F24018893EEC5B2A69270B', NULL, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '164-969-915 37', 'teacher', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(NULL, 'Беззубцева', 'Оксана', 'Паркевовна', 'Ж', '02.07.1981', NULL, 1, 9218, 413503, 0, 0, NULL, 'C45F8872035F4DFCA7A61F9893D8DFE2', 'учитель иностранного языка', NULL, 0, NULL, '605F272778F24018893EEC5B2A69270B', NULL, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(NULL, 'Беззубцева', 'Оксана', 'Паркевовна', 'Ж', '03.07.1981', NULL, 1, 5317, 728107, 1, 4, NULL, '5998431F4D7A4C02BEC0AD65FF43C4C7', 'Руководитель любительского творческого коллектива, предователь', NULL, 0, NULL, '605F272778F24018893EEC5B2A69270B', NULL, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(NULL, 'Беззубцева', 'Оксана', 'Паркевовна', 'Ж', '04.07.1981', NULL, 1, 5305, 317810, 31, 36, NULL, 'C45F8872035F4DFCA7A61F9893D8DFE2', 'учитель математики', NULL, 0, NULL, '605F272778F24018893EEC5B2A69270B', NULL, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '056-239-940 79', 'teacher', '21.08.2020', 43, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(NULL, 'Беззубцева', 'Оксана', 'Паркевовна', 'Ж', '05.07.1981', NULL, 1, 5315, 595959, 2, 2, NULL, 'C45F8872035F4DFCA7A61F9893D8DFE2', 'учитель математики', NULL, 0, NULL, '605F272778F24018893EEC5B2A69270B', NULL, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '168-660-265 00', 'teacher', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(NULL, 'Беззубцева', 'Оксана', 'Паркевовна', 'Ж', '06.07.1981', NULL, 1, 5317, 747963, 5, 5, NULL, 'C45F8872035F4DFCA7A61F9893D8DFE2', 'учитель английского языка', NULL, 0, NULL, '605F272778F24018893EEC5B2A69270B', NULL, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '134-370-353 35', 'teacher', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(NULL, 'Беззубцева', 'Оксана', 'Паркевовна', 'Ж', '07.07.1981', NULL, 1, 5307, 652588, 27, 34, NULL, 'C45F8872035F4DFCA7A61F9893D8DFE2', 'учитель русского языка', NULL, 0, NULL, '605F272778F24018893EEC5B2A69270B', NULL, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '056-239-534 69', 'teacher', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(NULL, 'Беззубцева', 'Оксана', 'Паркевовна', 'Ж', '08.07.1981', NULL, 1, 5313, 329534, 30, 30, NULL, 'C45F8872035F4DFCA7A61F9893D8DFE2', 'учитель начальных классов', NULL, 0, NULL, '605F272778F24018893EEC5B2A69270B', NULL, 0, 5, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '056-239-969 92', 'teacher', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(NULL, 'Беззубцева', 'Оксана', 'Паркевовна', 'Ж', '09.07.1981', NULL, 1, 5317, 799179, 22, 22, NULL, 'C45F8872035F4DFCA7A61F9893D8DFE2', 'учитель химии', NULL, 0, NULL, '605F272778F24018893EEC5B2A69270B', NULL, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '137-710-100 31', 'teacher', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(NULL, 'Беззубцева', 'Оксана', 'Паркевовна', 'Ж', '10.07.1981', NULL, 1, 5309, 838943, 11, 1, NULL, 'C45F8872035F4DFCA7A61F9893D8DFE2', 'учитель математики', NULL, 0, NULL, '605F272778F24018893EEC5B2A69270B', NULL, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '129-846-678 18', 'teacher', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(NULL, 'Беззубцева', 'Оксана', 'Паркевовна', 'Ж', '11.07.1981', NULL, 1, 5316, 637943, 30, 30, NULL, 'C45F8872035F4DFCA7A61F9893D8DFE2', 'Учитель начальных классов', NULL, 0, NULL, '605F272778F24018893EEC5B2A69270B', NULL, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '056-234-576 59', 'zavuch', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(NULL, 'Беззубцева', 'Оксана', 'Паркевовна', 'Ж', '12.07.1981', NULL, 1, 5300, 274375, 21, 25, NULL, 'C45F8872035F4DFCA7A61F9893D8DFE2', 'учитель начальных классов', NULL, 0, NULL, '605F272778F24018893EEC5B2A69270B', NULL, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '108-074-557 47', 'teacher', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(NULL, 'Беззубцева', 'Оксана', 'Паркевовна', 'Ж', '13.07.1981', NULL, 1, 5304, 101268, 42, 42, NULL, 'C45F8872035F4DFCA7A61F9893D8DFE2', 'учитель истории', NULL, 0, NULL, '605F272778F24018893EEC5B2A69270B', NULL, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '056-240-014 19', 'teacher', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(NULL, 'Беззубцева', 'Оксана', 'Паркевовна', 'Ж', '14.07.1981', NULL, 1, 5314, 497666, 3, 1, NULL, 'C45F8872035F4DFCA7A61F9893D8DFE2', 'учитель начальных классов', NULL, NULL, NULL, '605F272778F24018893EEC5B2A69270B', NULL, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '07.08.2020', 148, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(NULL, 'Беззубцева', 'Оксана', 'Паркевовна', 'Ж', '15.07.1981', NULL, 1, 5303, 742945, 19, 1, NULL, 'C45F8872035F4DFCA7A61F9893D8DFE2', 'учитель начальных классов', NULL, 0, NULL, '605F272778F24018893EEC5B2A69270B', NULL, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '081-231-945 41', 'teacher', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(NULL, 'Беззубцева', 'Оксана', 'Паркевовна', 'М', '16.07.1981', NULL, 1, 5301, 679330, 30, 30, NULL, 'C45F8872035F4DFCA7A61F9893D8DFE2', 'учитель физической культуры', NULL, 0, NULL, '605F272778F24018893EEC5B2A69270B', NULL, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '056-234-428 48', 'zavuch', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(NULL, 'Беззубцева', 'Оксана', 'Паркевовна', 'Ж', '17.07.1981', NULL, 1, 5311, 35879, 7, 7, NULL, 'C45F8872035F4DFCA7A61F9893D8DFE2', 'Учитель русского языка и литературы', NULL, 0, NULL, '605F272778F24018893EEC5B2A69270B', NULL, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '143-352-850 46', 'teacher', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(NULL, 'Беззубцева', 'Оксана', 'Паркевовна', 'Ж', '18.07.1981', NULL, 1, 5300, 226077, 23, 23, NULL, 'C45F8872035F4DFCA7A61F9893D8DFE2', 'учитель начальных классов', NULL, 0, NULL, '605F272778F24018893EEC5B2A69270B', NULL, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '103-290-857 27', 'teacher', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(NULL, 'Беззубцева', 'Оксана', 'Паркевовна', 'Ж', '19.07.1981', 'город Сорочинск Оренбургская область', 1, 5302, 892448, 13, 19, NULL, 'C45F8872035F4DFCA7A61F9893D8DFE2', 'учитель географии', NULL, 0, NULL, '605F272778F24018893EEC5B2A69270B', NULL, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '056-240-072 29', 'teacher', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(NULL, 'Беззубцева', 'Оксана', 'Паркевовна', 'М', '20.07.1981', NULL, 1, 5316, 675303, 12, 12, NULL, 'C45F8872035F4DFCA7A61F9893D8DFE2', 'учитель физической культуры', NULL, 0, NULL, '605F272778F24018893EEC5B2A69270B', NULL, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '190-105-649 41', 'teacher', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(NULL, 'Беззубцева', 'Оксана', 'Паркевовна', 'Ж', '21.07.1981', NULL, 1, 5303, 961125, 14, 14, NULL, 'C45F8872035F4DFCA7A61F9893D8DFE2', 'Учитель', NULL, 0, NULL, '605F272778F24018893EEC5B2A69270B', NULL, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '116-015-998 36', 'teacher', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(NULL, 'Беззубцева', 'Оксана', 'Паркевовна', 'Ж', '22.07.1981', NULL, 1, 5305, 381446, 18, 18, NULL, 'C45F8872035F4DFCA7A61F9893D8DFE2', 'учитель начальных классов', NULL, 0, NULL, '605F272778F24018893EEC5B2A69270B', NULL, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '077-203-488 64', 'teacher', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(NULL, 'Беззубцева', 'Оксана', 'Паркевовна', 'Ж', '23.07.1981', NULL, 1, 5315, 580544, 1, 1, NULL, 'C45F8872035F4DFCA7A61F9893D8DFE2', 'Психолого-педагогическое образование', NULL, 0, NULL, '605F272778F24018893EEC5B2A69270B', NULL, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(NULL, 'Беззубцева', 'Оксана', 'Паркевовна', 'Ж', '24.07.1981', NULL, 1, 5316, 675302, 6, 6, NULL, 'C45F8872035F4DFCA7A61F9893D8DFE2', 'учитель физической культуры', NULL, 0, NULL, '605F272778F24018893EEC5B2A69270B', NULL, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '190-105-650 34', 'teacher', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(NULL, 'Беззубцева', 'Оксана', 'Паркевовна', 'Ж', '25.07.1981', NULL, 1, 5300, 296356, 23, 23, NULL, 'C45F8872035F4DFCA7A61F9893D8DFE2', 'учитель начальных классов', NULL, 0, NULL, '605F272778F24018893EEC5B2A69270B', NULL, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '056-239-975 90', 'teacher', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(NULL, 'Беззубцева', 'Оксана', 'Паркевовна', 'Ж', '26.07.1981', NULL, 1, 5303, 824394, 23, 23, NULL, '5998431F4D7A4C02BEC0AD65FF43C4C7', 'библиотекарь', NULL, 0, NULL, '605F272778F24018893EEC5B2A69270B', NULL, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(NULL, 'Беззубцева', 'Оксана', 'Паркевовна', 'Ж', '27.07.1981', NULL, 1, 5303, 955759, 33, 33, NULL, 'C45F8872035F4DFCA7A61F9893D8DFE2', 'учитель математики', NULL, 0, NULL, '605F272778F24018893EEC5B2A69270B', NULL, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '072-587-993 14', 'teacher', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(NULL, 'Беззубцева', 'Оксана', 'Паркевовна', 'Ж', '28.07.1981', NULL, 1, 5312, 229381, 11, 11, NULL, 'C45F8872035F4DFCA7A61F9893D8DFE2', 'учитель математики', NULL, 0, NULL, '605F272778F24018893EEC5B2A69270B', NULL, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '112-672-461 34', 'teacher', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(NULL, 'Беззубцева', 'Оксана', 'Паркевовна', 'Ж', '29.07.1981', NULL, 1, 5307, 652228, 37, 37, NULL, 'C45F8872035F4DFCA7A61F9893D8DFE2', 'учитель русского языка и литературы', NULL, 0, NULL, '605F272778F24018893EEC5B2A69270B', NULL, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '056-239-565 76', 'teacher', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(NULL, 'Беззубцева', 'Оксана', 'Паркевовна', 'Ж', '30.07.1981', NULL, 1, 5305, 323009, 22, 22, NULL, 'C45F8872035F4DFCA7A61F9893D8DFE2', 'учитель начальных классов', NULL, 0, NULL, '605F272778F24018893EEC5B2A69270B', NULL, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '056-239-598 85', 'teacher', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(NULL, 'Беззубцева', 'Оксана', 'Паркевовна', 'Ж', '31.07.1981', NULL, 1, 5306, 565079, 22, 33, NULL, 'C45F8872035F4DFCA7A61F9893D8DFE2', 'учитель истории и обществознания', NULL, 0, NULL, '605F272778F24018893EEC5B2A69270B', NULL, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '056-239-595 82', 'teacher', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(NULL, 'Беззубцева', 'Оксана', 'Паркевовна', 'Ж', '01.08.1981', NULL, 1, 5310, 990377, 33, 33, NULL, '5998431F4D7A4C02BEC0AD65FF43C4C7', 'учитель музыки', NULL, 0, NULL, '605F272778F24018893EEC5B2A69270B', NULL, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '069-978-349 56', 'teacher', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(NULL, 'Беззубцева', 'Оксана', 'Паркевовна', 'Ж', '02.08.1981', NULL, 1, 5302, 834178, 25, 25, NULL, 'C45F8872035F4DFCA7A61F9893D8DFE2', 'учитель физики', NULL, 0, NULL, '605F272778F24018893EEC5B2A69270B', NULL, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '056-234-413 41', 'teacher', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(NULL, 'Беззубцева', 'Оксана', 'Паркевовна', 'Ж', '03.08.1981', NULL, 1, 5316, 697574, 2, 4, NULL, '5998431F4D7A4C02BEC0AD65FF43C4C7', 'Экономика и бухгалтерский учет', NULL, 0, NULL, '605F272778F24018893EEC5B2A69270B', NULL, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '135-476-348 75', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(NULL, 'Беззубцева', 'Оксана', 'Паркевовна', 'Ж', '04.08.1981', NULL, 1, 5306, 561666, 11, 1, NULL, 'C45F8872035F4DFCA7A61F9893D8DFE2', 'учитель русского языка и литературы', NULL, NULL, NULL, '605F272778F24018893EEC5B2A69270B', NULL, 0, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '127-490-703 66', 'teacher', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(NULL, 'Беззубцева', 'Оксана', 'Паркевовна', 'Ж', '05.08.1981', NULL, 1, 5317, 771379, 22, 28, NULL, 'C45F8872035F4DFCA7A61F9893D8DFE2', 'учитель географии', NULL, 0, NULL, '605F272778F24018893EEC5B2A69270B', NULL, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '056-234-429 49', 'zavuch', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(NULL, 'Беззубцева', 'Оксана', 'Паркевовна', 'Ж', '06.08.1981', NULL, 1, 5313, 337275, 3, 3, NULL, 'C45F8872035F4DFCA7A61F9893D8DFE2', 'учитель немецкого языка', NULL, 0, NULL, '605F272778F24018893EEC5B2A69270B', NULL, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '151-586-021 54', 'teacher', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(NULL, 'Беззубцева', 'Оксана', 'Паркевовна', 'Ж', '07.08.1981', NULL, 1, 5304, 88325, 25, 25, NULL, 'C45F8872035F4DFCA7A61F9893D8DFE2', 'учитель биологии', NULL, 0, NULL, '605F272778F24018893EEC5B2A69270B', NULL, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '081-231-961 41', 'teacher', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(NULL, 'Беззубцева', 'Оксана', 'Паркевовна', 'Ж', '08.08.1981', NULL, 1, 5303, 449251, 20, 20, NULL, 'C45F8872035F4DFCA7A61F9893D8DFE2', 'учитель начальных классов', NULL, NULL, NULL, '605F272778F24018893EEC5B2A69270B', NULL, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '103-290-874 28', 'teacher', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(NULL, 'Беззубцева', 'Оксана', 'Паркевовна', 'Ж', '09.08.1981', NULL, 1, 5305, 390040, 13, 13, NULL, 'C45F8872035F4DFCA7A61F9893D8DFE2', 'учитель начальных классов', NULL, 0, NULL, '605F272778F24018893EEC5B2A69270B', NULL, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '078-059-760 04', 'teacher', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(NULL, 'Беззубцева', 'Оксана', 'Паркевовна', 'Ж', '10.08.1981', NULL, 1, 5317, 799152, 2, 1, NULL, '5998431F4D7A4C02BEC0AD65FF43C4C7', 'учитель русского языка и литературы', NULL, NULL, NULL, '605F272778F24018893EEC5B2A69270B', NULL, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '163-763-281 84', 'teacher', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(NULL, 'Беззубцева', 'Оксана', 'Паркевовна', 'Ж', '11.08.1981', NULL, 1, 5308, 734816, 34, 36, NULL, 'C45F8872035F4DFCA7A61F9893D8DFE2', 'учитель начальных классов', NULL, 0, NULL, '605F272778F24018893EEC5B2A69270B', NULL, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '056-239-974 89', 'teacher', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
 
 --
 -- Индексы сохранённых таблиц
 --
 
 --
--- Индексы таблицы `class`
+-- Индексы таблицы `paraticipants`
 --
-ALTER TABLE `class`
-  ADD PRIMARY KEY (`id`);
-
---
--- Индексы таблицы `group_1`
---
-ALTER TABLE `group_1`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `FK_group_1_class` (`class_id`);
-
---
--- Индексы таблицы `group_2`
---
-ALTER TABLE `group_2`
-  ADD PRIMARY KEY (`id`);
-
---
--- Индексы таблицы `group_3`
---
-ALTER TABLE `group_3`
-  ADD PRIMARY KEY (`id`);
-
---
--- Индексы таблицы `schedule_1`
---
-ALTER TABLE `schedule_1`
-  ADD PRIMARY KEY (`id`);
-
---
--- Индексы таблицы `schedule_2`
---
-ALTER TABLE `schedule_2`
-  ADD PRIMARY KEY (`id`);
-
---
--- Индексы таблицы `users`
---
-ALTER TABLE `users`
-  ADD PRIMARY KEY (`id`);
+ALTER TABLE `paraticipants`
+  ADD PRIMARY KEY (`PARTICIPANTID`);
 
 --
 -- AUTO_INCREMENT для сохранённых таблиц
 --
 
 --
--- AUTO_INCREMENT для таблицы `class`
+-- AUTO_INCREMENT для таблицы `paraticipants`
 --
-ALTER TABLE `class`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
-
---
--- AUTO_INCREMENT для таблицы `group_1`
---
-ALTER TABLE `group_1`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
-
---
--- AUTO_INCREMENT для таблицы `group_2`
---
-ALTER TABLE `group_2`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
-
---
--- AUTO_INCREMENT для таблицы `group_3`
---
-ALTER TABLE `group_3`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
-
---
--- AUTO_INCREMENT для таблицы `schedule_1`
---
-ALTER TABLE `schedule_1`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
-
---
--- AUTO_INCREMENT для таблицы `schedule_2`
---
-ALTER TABLE `schedule_2`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
-
---
--- AUTO_INCREMENT для таблицы `users`
---
-ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
-
---
--- Ограничения внешнего ключа сохраненных таблиц
---
-
---
--- Ограничения внешнего ключа таблицы `group_1`
---
-ALTER TABLE `group_1`
-  ADD CONSTRAINT `FK_group_1_class` FOREIGN KEY (`class_id`) REFERENCES `class` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+ALTER TABLE `paraticipants`
+  MODIFY `PARTICIPANTID` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=649;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
