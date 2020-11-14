@@ -1,4 +1,4 @@
-const cacheName = 'v1';
+const cacheName = 'v2';
 const cacheAssets = [
   'index.php',
   'css/main.css',
@@ -46,13 +46,16 @@ self.addEventListener('fetch', e => {
     fetch(e.request)
     .then(res => {
       //Копия ответа
-      const resClone = res.clone();
-      caches
-      .open(cacheName)
-      .then(cache => {
-        // Добавить ответ к кэшу
-        cache.put(e.request, resClone)
-      })
+      if(!(e.request.method == 'POST')){
+        const resClone = res.clone();
+        caches
+        .open(cacheName)
+        .then(cache => {
+          // Добавить ответ к кэшу
+          cache.put(e.request, resClone)
+        })
+      }
+
       return res;
     }).catch(err => caches.match(e.request).then(res => res))
   )
