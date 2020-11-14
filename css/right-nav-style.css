@@ -1,5 +1,10 @@
 @charset "UTF-8";
 
+@font-face {
+    font-family: Panton-Regular; /* Имя шрифта */
+    src: url(../fonts/Panton-Regular.ttf); /* Путь к файлу со шрифтом */
+  }
+
 /**
  * Переключаемая боковая панель навигации
  * выдвигающаяся справа
@@ -39,17 +44,13 @@
     /* абсолютно позиционируем */
     position: absolute;
     /* относительно правого края панели */
-    right: 320px;
+    right: 330px;
     /* отступ от верхнего края панели */
-    top: 1%;
-    /* внутренние отступы */
-    padding: 0.5em;
+    top: 2%;
     /* определяем цвет фона переключателя
      * чаще вчего в соответствии с цветом фона панели
     */
     background: inherit;
-    /* цвет текста */
-    color: #dadada;
     /* вид курсора */
     cursor: pointer;
     /* размер шрифта */
@@ -69,7 +70,7 @@
 */
 
 .nav-toggle:after {
-    content: '\2630';
+    content: url('../img/burger.png');
     text-decoration: none;
 }
 
@@ -101,7 +102,7 @@
 
 [id='nav-toggle']:checked ~ .nav > .nav-toggle {
     left: auto;
-    right: 2px;
+    right: 10px;
     top: 1em;
 }
 
@@ -140,7 +141,7 @@
 */
 
 [id='nav-toggle']:checked ~ .nav > .nav-toggle:after {
-    content: '\2715';
+    content: url('../img/cross burger.png');
 }
 
 
@@ -255,6 +256,7 @@ body {
     -moz-transition: opacity .5s .1s, -moz-transform .5s .1s;
     -ms-transition: opacity .5s .1s, -ms-transform .5s .1s;
     transition: opacity .5s .1s, transform .5s .1s;
+    font-family: Panton-Regular;
 }
 
 [id='nav-toggle']:checked ~ .nav > ul > li {
@@ -307,7 +309,7 @@ body {
     display: inline-block;
     position: relative;
     padding: 0;
-    font-family: 'Open Sans', sans-serif;
+    font-family: Panton-Regular;
     font-weight: 300;
     font-size: 1.2em;
     color: #000;
@@ -355,7 +357,7 @@ body {
     bottom: 0;
     height: 1px;
     width: 100%;
-    background: #3bc1a0;
+    background: #fc346c;
     -webkit-transition: width .5s ease;
     transition: width .5s ease;
 }
@@ -368,7 +370,7 @@ body {
 
 .nav > ul > li > a:hover:before {
     width: 0%;
-    background: #3bc1a0;
+    background: #fa6555;
     -webkit-transition: width .5s ease;
     transition: width .5s ease;
 }
@@ -378,4 +380,5 @@ body {
     background: transparent;
     -webkit-transition: width 0s ease;
     transition: width 0s ease;
+    background: #fa6555;
 }

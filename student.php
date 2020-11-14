@@ -38,7 +38,9 @@ if(isset($_COOKIE['SSSIDH'])){
         <div class="burger">
           <input type="checkbox" id="nav-toggle" hidden>
           <nav class="nav">
-            <label for="nav-toggle" class="nav-toggle" onclick></label>
+            <label for="nav-toggle" class="nav-toggle" onclick>
+              <!-- <img src="img/cross burger.png" class="cross"> -->
+            </label>
             <h2 class="logo">
               <a href="#"></a>
             </h2>
