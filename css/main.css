@@ -14,7 +14,10 @@
   font-family: Panton-Regular; /* Имя шрифта */
   src: url(../fonts/Panton-Regular.ttf); /* Путь к файлу со шрифтом */
 }
-
+@font-face {
+  font-family: Panton-ExtraLight; /* Имя шрифта */
+  src: url(../fonts/Panton-Regular.ttf); /* Путь к файлу со шрифтом */
+}
 ul{
   display:flex;
   align-items:center;
@@ -130,6 +133,7 @@ a {
 
 .eljour {
   margin: auto 0 auto 0;
+  font-family: Panton-ExtraLight;
 }
 
 .nav {

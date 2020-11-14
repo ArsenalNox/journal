@@ -16,7 +16,7 @@ if(isset($_COOKIE['SSSIDH'])){
     <link rel="apple-touch-icon" sizes="192x192" href="img/192.png">
     <link rel="apple-touch-icon" sizes="48x48" href="img/48.png">
     <link rel="apple-touch-icon" sizes="57x57" href="img/57.png">
-    <link rel="apple-touch-icon" sizes="114x114" href="img/114.png">
+    <!-- <link rel="apple-touch-icon" sizes="114x114" href="img/114.png"> -->
     <link rel="apple-touch-icon" sizes="512x512" href="img/512.png">
     <link rel="apple-touch-icon" sizes="1024x1024" href="img/1024.png">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -38,7 +38,9 @@ if(isset($_COOKIE['SSSIDH'])){
         <div class="burger">
           <input type="checkbox" id="nav-toggle" hidden>
           <nav class="nav">
-            <label for="nav-toggle" class="nav-toggle" onclick></label>
+            <label for="nav-toggle" class="nav-toggle" onclick>
+              <!-- <img src="img/cross burger.png" class="cross"> -->
+            </label>
             <h2 class="logo">
               <a href="#"></a>
             </h2>
