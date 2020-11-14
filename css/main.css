@@ -1,0 +1,142 @@
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  list-style:none;
+  text-decoration:none;
+}
+
+@font-face {
+  font-family: Panton-Bold; /* Имя шрифта */
+  src: url(../fonts/Panton-Bold.ttf); /* Путь к файлу со шрифтом */
+}
+@font-face {
+  font-family: Panton-Regular; /* Имя шрифта */
+  src: url(../fonts/Panton-Regular.ttf); /* Путь к файлу со шрифтом */
+}
+
+ul{
+  display:flex;
+  align-items:center;
+  height:50px;
+}
+ul a{
+  margin-left:10px;
+}
+
+@media screen {
+  .menu{display:none;}
+  .trigger{
+    display:inline-block;
+    margin:3px;
+    cursor:pointer;
+   }
+   .trigger i{
+     display:block;
+     width:30px;
+     height:6px;
+     margin:4px auto;
+     background: linear-gradient(to bottom right, #fc346c, #fa6555);
+     border-radius: 3px;
+   }
+   .show{
+     display:block;
+   }
+}
+
+
+span {
+  font-family: Panton-Regular;
+}
+
+body {
+  background: #fff;
+  height: 100vh;
+}
+
+li {
+  list-style-type: none;
+}
+
+a {
+  text-decoration: none;
+}
+
+/* LOGIN */
+
+.login-title{
+  text-align: center;
+}
+
+.login-form{
+  position: absolute;
+  display: grid;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  font-size: larger;
+  padding: 50px 30px 50px 30px;
+  background: #fff;
+  box-shadow: 0 0 0 3px #f0f0f0;
+}
+
+.login-form input{
+  width: 200px;
+  margin: 12px;
+  height: 31px;
+  padding: 15px 15px 3px 15px;
+  border: 1px solid #cdd1d4;
+  font-size: 25px;
+  font-family: Panton-Regular;
+}
+
+.login-form input:-webkit-autofill::first-line{
+  font-size: 25px;
+  font-family: Panton-Regular;
+}
+
+.entry {
+  height: 48px;
+  background: linear-gradient(to bottom right, #fc346c, #fa6555);
+  border: 0;
+  border-radius: 3px;
+  width: 90%;
+  margin: auto;
+}
+
+.entryText {
+  color: #fff;
+  font-size: 25px;
+}
+
+.entryh1 {
+  margin: auto;
+  font-family: Panton-Bold;
+  font-size: 45px;
+}
+
+/* STUDENT */
+
+.logo {
+  width: 75px;
+  height: 50px;
+  padding: 10px;
+}
+
+.footer {
+  background: #fbfbfb;
+  display: flex;
+}
+
+.eljour {
+  margin: auto 0 auto 0;
+}
+
+.nav {
+  margin:  auto 5px auto auto;
+}
+
+.burgerimg {
+  width: 40px;
+  height: 30px;
+}

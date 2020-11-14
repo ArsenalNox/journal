@@ -1,0 +1,31 @@
+{
+  "name": "Электронный Журнал",
+  "short_name": "ЭлЖур",
+  "start_url": "index.php?source=pwa",
+  "theme_color": "#FFFFFF",
+  "background_color": "#FFFFFF",
+  "display": "fullscreen",
+  "icons": [
+    {
+      "src": "img/192.png",
+      "type": "image/png",
+      "sizes": "192x192"
+    },
+    {
+      "src": "img/512.png",
+      "type": "image/png",
+      "sizes": "512x512"
+    },
+    {
+      "src": "img/114.png",
+      "type": "image/png",
+      "sizes": "114x114"
+    },
+    {
+      "src": "1img/92.png",
+      "sizes": "196x196",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}
