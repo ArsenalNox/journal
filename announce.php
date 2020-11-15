@@ -1,3 +1,6 @@
+<?php
+include_once 'php/dtb/dtb.php';
+?>
 <!DOCTYPE html>
 <html lang="ru" dir="ltr">
   <head>
@@ -22,7 +25,7 @@
         margin-bottom: 1rem;
     }
   </style>
-  <body onload='GetGroupNamesParent()'>
+  <body>
     <nav id='nav1'>
       <div class="footer">
         <img src="./img/logo.png" class="logo">
@@ -76,10 +79,18 @@
         </div>
       </div>
     </nav>
-    <section class="main">
-      <div class="curriculum-container" id='ct1'> </div>
+  <section class="main">
 
-    </section>
+<h2>Объявления школы</h2>
+<?php
+$id = $_COOKIE['SSSCLS'];
+$sql = "SELECT * FROM class_comment WHERE class_id ='$id'";
+$result = mysqli_query($conn, $sql);
+while ($row = mysqli_fetch_assoc($result)) {
+  echo "<p>".$row['date'].": ".$row['comment']."</p>";
+}
+ ?>
+</section>
   </body>
   <script src="js/main.js" charset="utf-8"></script>
   <script src="js/requests.js" charset="utf-8"></script>
