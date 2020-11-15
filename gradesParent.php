@@ -25,6 +25,15 @@ if(isset($_COOKIE['SSSIDH'])){
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="shortcut icon" href="img/114.png" />
     <title>Статистика оценок</title>
+    <style media="screen">
+      table{
+        border: 1px solid black;
+      }
+      tr td{
+        border: 1px solid black;
+
+      }
+    </style>
   </head>
   <body onload='getGraphDataParent(false)'>
     <nav>
@@ -137,8 +146,14 @@ if(isset($_COOKIE['SSSIDH'])){
     </section>
     <section>
       Средние оценки за четверти: <br>
+      <table>
+        <tr> <td> Средний балл за 1 четверть: </td> </tr>
+        <tr> <td> Математика : 4.32 </td> </tr>
+        <tr> <td> Русский Язык : 3.56 </td> </tr>
+        <tr> <td> Информатика и ИКТ : 4.93 </td> </tr>
+        <tr> <td> Ангийский язык : 5 </td> </tr>
+      </table>
       <?php
-      echo "Средний балл за 2 четверть";
       $sql = "SELECT * FROM marksall WHERE studid='$id' AND date >= '2020-10-25' and date <= '2020-12-30' ORDER BY lessonName";
       $result = mysqli_query($conn, $sql);
       $currLess = 0;
@@ -146,7 +161,7 @@ if(isset($_COOKIE['SSSIDH'])){
       $marksQ = 0;
       $marksV = 0;
       $i = 0;
-      echo "<table>";
+      echo "<table> <tr> <td> Средний балл за 2 четверть </td>";
       while ($row = mysqli_fetch_assoc($result)) {
         $i++;
         if($currLess === 0){
@@ -154,7 +169,7 @@ if(isset($_COOKIE['SSSIDH'])){
         } else if( !($currLess === $row['lessonName']) ){
           $marksV = round(($marksV/$marksQ),2);
           $ss[$i] = array('name' => $currLess, 'value' => round(($marksV/$marksQ), 2));
-          echo "<tr> <td> $currLess : $marksV </td> </tr>";
+          echo " <tr> <td> $currLess : $marksV </td> </tr> ";
           $currLess = $row['lessonName'];
           $marksV = 0;
           $marksQ = 0;
@@ -163,7 +178,7 @@ if(isset($_COOKIE['SSSIDH'])){
         $marksQ++;
         // echo " $currLess ОБЩИЙ БАЛЛ $marksV, КОЛ-ВО $marksQ  ". round(($marksV/$marksQ), 2). ' |';
       }
-      echo "</table>";
+      echo " </table>";
        ?>
     </section>
         </div>
