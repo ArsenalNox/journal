@@ -53,25 +53,27 @@ if(isset($_COOKIE['SSSIDH'])){
       </div>
     </nav>
     <section class="marks-wrap">
-      <div class="graph-cont" id='g1-all'>
-      <svg width="300px" height="300px" viewBox="0 0 42 42" class="donut">
-        <circle class="donut-hole" cx="21" cy="21" r="15.91549430918954" fill="#fff"></circle>
-        <circle class="donut-ring" cx="21" cy="21" r="15.91549430918954" fill="transparent" stroke="#d2d3d4" stroke-width="3"></circle>
-        <circle class="donut-segment" cx="21" cy="21" r="15.91549430918954" fill="transparent" stroke="#ce4b99" stroke-width="3" stroke-dasharray="40 60" stroke-dashoffset="25"></circle>
-        <circle class="donut-segment" cx="21" cy="21" r="15.91549430918954" fill="transparent" stroke="#b1c94e" stroke-width="3" stroke-dasharray="20 80" stroke-dashoffset="85"></circle>
-        <circle class="donut-segment" cx="21" cy="21" r="15.91549430918954" fill="transparent" stroke="#377bbc" stroke-width="3" stroke-dasharray="30 70" stroke-dashoffset="65"></circle>
-        <!-- unused 10% -->
-        <g class="chart-text">
-          <text x="50%" y="50%" class="chart-number">
-            10
-          </text>
-          <text x="50%" y="50%" class="chart-label">
-            Beers
-          </text>
-        </g>
+    <div class="canvas">  
+      <!-- <div class="legend">
+        <p class="title">Что мешает во время работы дома?</p>    
+        <ul class="caption-list">
+          <li class="caption-item">еда</li>
+          <li class="caption-item">соседи</li>
+          <li class="caption-item">отсутствие рабочего места</li>
+          <li class="caption-item">мало двигаюсь</li>
+          <li class="caption-item">отсутствие чёткого графика работы</li>
+          <li class="caption-item">неудобная коммуникация с коллегами</li>
+          <li class="caption-item">много ленюсь</li>
+        </ul>
+      </div> -->
+      
+      <svg class="chart" width="300" height="300" viewBox="0 0 50 50">
+        <circle id="circle1" class="unit" r="15.9" cx="50%" cy="50%"></circle>
+        <circle id="circle2" class="unit" r="15.9" cx="50%" cy="50%"></circle>
+        <circle id="circle3" class="unit" r="15.9" cx="50%" cy="50%"></circle>
+        <circle id="circle4" class="unit" r="15.9" cx="50%" cy="50%"></circle>
       </svg>
-
-      </div>
+    </div>
     </section>
 
     <div id='costil'>
