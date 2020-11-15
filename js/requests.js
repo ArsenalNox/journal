@@ -21,9 +21,7 @@ function getGraphData(selection){
     if (this.readyState == 4 && this.status == 200) {
       let occipuiedpercent = 0;
       graphData = JSON.parse(this.responseText);
-      console.log(graphData);
       el = (Number(graphData[0].value) + Number(graphData[1].value) + Number(graphData[2].value) + Number(graphData[3].value))
-      console.log(el+' 12');
       el1Value = graphData[0].value
       circle1 = Number((el1Value/el*100).toFixed(0))
       var el1 = document.getElementById("circle1");
@@ -31,15 +29,11 @@ function getGraphData(selection){
       occipuiedpercent+=circle1
       //
 
-      console.log(occipuiedpercent);
-      console.log((360/100)*occipuiedpercent);
       el2Value = graphData[1].value
       circle2 = Number((el2Value/el*100).toFixed(0))
       var el2 = document.getElementById("circle2");
       el2.setAttribute("style", "stroke-dasharray: " + circle2 + " 100; stroke-dashoffset:  " + -(circle1) + " ;");
       occipuiedpercent+=circle2;
-      console.log(occipuiedpercent);
-      console.log((360/100)*occipuiedpercent);
       //
 
       el3Value = graphData[2].value
@@ -47,8 +41,6 @@ function getGraphData(selection){
       var el3 = document.getElementById("circle3");
       el3.setAttribute("style", "stroke-dasharray: " + circle3 + " 100; stroke-dashoffset: " + -(circle1 + circle2) +";");
       occipuiedpercent+=circle3;
-      console.log(occipuiedpercent);
-      console.log((360/100)*occipuiedpercent);
 
       //
       el4Value = graphData[3].value
@@ -65,7 +57,7 @@ function showLowPerformace(){
   var xhttp = new XMLHttpRequest();
   xhttp.onreadystatechange = function() {
     if (this.readyState == 4 && this.status == 200) {
-      let marquee = document.createElement('marquee');
+      let marquee = document.createElement('p');
       marquee.innerHTML = this.responseText;
       document.getElementById('nav1').append(marquee);
     }
@@ -85,8 +77,24 @@ function showCurrentLesson() {
     xhttp.open("GET", "php/functions/get_current_lesson.php", true);
     xhttp.send();
 }
-//код для графика
 
+function getGradesBt(){
+  var date1 = document.getElementById('fd1').value;
+  var date2 = document.getElementById('sd1').value;
+  console.log(date1, date2);
+  var xhttp = new XMLHttpRequest();
+  xhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+        document.getElementById('costil').innerHTML = this.responseText;
+    }
+  };
+  xhttp.open("POST", "php/functions/get_grades_table.php", true);
+  xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+  xhttp.send("date1="+date1+"&date2="+date2);
+}
+
+
+//код для графика
 var el1 = document.getElementById("circle1");
 el1.setAttribute("style", "stroke-dasharray: 8 100; stroke-dashoffset: -75;");
 var el2 = document.getElementById("circle2");

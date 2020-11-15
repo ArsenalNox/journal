@@ -50,7 +50,7 @@ if(isset($_COOKIE['SSSIDH'])){
             <div class="button-icon" onclick='ShowMenu()'></div>
               <ul class='menu'>
                 <li> <a href="grades.php"> Смотреть свои оценки </a> </li>
-                <li> <a href="#"> Смотреть </a> </li>
+                <li> <a href="#"> Смотреть расписание  </a> </li>
                 <li> <a href="#"> Общение с преподавателями </a> </li>
                 <li> <a href="#"> Объявления школы </a> </li>
                 <li> <a href="php/functions/logout.php">Выйти из аккаунта</a>  </li>
