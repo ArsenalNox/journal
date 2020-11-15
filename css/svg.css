@@ -1,29 +1,70 @@
-<style>
-@import url(https://fonts.googleapis.com/css?family=Montserrat:400);
-.chart-text {
-  font: 16px/1.4em "Montserrat", Arial, sans-serif;
-  fill: #000;
-  -moz-transform: translateY(0.25em);
-  -ms-transform: translateY(0.25em);
-  -webkit-transform: translateY(0.25em);
-  transform: translateY(0.25em);
+@keyframes render {
+    0% {
+    stroke-dasharray: 0 100;
+    }
 }
-.chart-number {
-  font-size: 0.6em;
-  line-height: 1;
-  text-anchor: middle;
-  -moz-transform: translateY(-0.25em);
-  -ms-transform: translateY(-0.25em);
-  -webkit-transform: translateY(-0.25em);
-  transform: translateY(-0.25em);
-}
-.chart-label {
-  font-size: 0.2em;
-  text-transform: uppercase;
-  text-anchor: middle;
-  -moz-transform: translateY(0.7em);
-  -ms-transform: translateY(0.7em);
-  -webkit-transform: translateY(0.7em);
-  transform: translateY(0.7em);
-}
-</style>
+
+  
+  .canvas {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 800px;
+  }
+  
+  .caption-item:nth-child(1)::before {
+    background-color: #86cfa3;
+  }
+  
+  .caption-item:nth-child(2)::before {
+    background-color: #a2c6e0;
+  }
+  
+  .caption-item:nth-child(3)::before {
+    background-color: #ffc7ec;
+  }
+  
+  .caption-item:nth-child(4)::before {
+    background-color: #f8faa0;
+  }
+  
+  .caption-item:nth-child(5)::before {
+    background-color: #adffd8;
+  }
+  
+  /* .chart {
+    min-width: 300px;
+  } */
+  
+  .unit {
+    fill: none;
+    stroke-width: 5;
+    cursor: pointer;
+    
+    animation-name: render;
+    animation-duration: 1.5s;
+    transition-property: all; 
+    transition-duration: 1.5s;
+  }
+  
+  /* .unit:hover,
+  .hovered {
+    opacity: 0.8;
+    stroke-width: 12;
+  } */
+  
+  .unit:nth-child(1) {
+    stroke: #2ba02d;
+  }
+  
+  .unit:nth-child(2) {
+    stroke: #1f78b0;
+  }
+  
+  .unit:nth-child(3) {
+    stroke: #f98110;
+  }
+  
+  .unit:nth-child(4) {
+    stroke: #cd2c22;
+  }
