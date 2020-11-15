@@ -129,42 +129,11 @@ if(isset($_COOKIE['SSSIDH'])){
         }else{ $a2 = 'N/A'; }
 
 
-        echo " <tr> <td> ".$row['lesson_name'].": ".$first."; ".$second."; ".$third."; ".$fourth."; $a1; $a2 ";
+        echo " <tr> <td> ".$row['lesson_name'].": <td>".$first."</td> <td>".$second."</td> <td>".$third."</td> <td>".$fourth."</td> <td>$a1</td> <td>$a2</td> ";
       }
       echo "</table>";
         ?>
 
-    </section>
-    <section>
-      Средние оценки за четверти: <br>
-      <?php
-      echo "Средний балл за 2 четверть";
-      $sql = "SELECT * FROM marksall WHERE studid='$id' AND date >= '2020-10-25' and date <= '2020-12-30' ORDER BY lessonName";
-      $result = mysqli_query($conn, $sql);
-      $currLess = 0;
-      $ss = [];
-      $marksQ = 0;
-      $marksV = 0;
-      $i = 0;
-      echo "<table>";
-      while ($row = mysqli_fetch_assoc($result)) {
-        $i++;
-        if($currLess === 0){
-          $currLess = $row['lessonName'];
-        } else if( !($currLess === $row['lessonName']) ){
-          $marksV = round(($marksV/$marksQ),2);
-          $ss[$i] = array('name' => $currLess, 'value' => round(($marksV/$marksQ), 2));
-          echo "<tr> <td> $currLess : $marksV </td> </tr>";
-          $currLess = $row['lessonName'];
-          $marksV = 0;
-          $marksQ = 0;
-        }
-        $marksV+=$row['mark'];
-        $marksQ++;
-        // echo " $currLess ОБЩИЙ БАЛЛ $marksV, КОЛ-ВО $marksQ  ". round(($marksV/$marksQ), 2). ' |';
-      }
-      echo "</table>";
-       ?>
     </section>
         </div>
 
