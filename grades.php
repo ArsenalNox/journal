@@ -41,16 +41,17 @@ if(isset($_COOKIE['SSSIDH'])){
               <a href="#"></a>
             </h2>
             <div class="button-icon" onclick='ShowMenu()'></div>
-              <ul class='menu'>
-                <li><a href="student.php">Главная</a></li>
+            <ul class='menu'>
+                <li> <a href="student.php">Главная</a></li>
+                <li> <a href="grades.php"> Смотреть свои оценки </a> </li>
                 <li> <a href="communication.php"> Общение с преподавателями </a> </li>
                 <li> <a href="#"> Объявления школы </a> </li>
                 <li> <a href="php/functions/logout.php">Выйти из аккаунта</a>  </li>
                 <br>
                 <li> <span id='current-lesson'> </span> </li>
-                <table>
+                <table class="callschedule">
                   <tr>
-                    <th colspan="2">Расписание звонокв</th>
+                    <th>Расписание звонокв</th>
                   <tr>
                     <td>8:30:00</td>
                     <td>9:15:00</td>
@@ -84,7 +85,7 @@ if(isset($_COOKIE['SSSIDH'])){
     </nav>
     <section class="marks-wrap">
       <div>
-        <svg class="chart" width="300" height="300" viewBox="0 0 40 40">
+        <svg class="chart" width="270" height="270" viewBox="0 0 40 40">
           <circle id="circle1" class="unit" r="15.9" cx="50%" cy="50%"></circle>
           <circle id="circle2" class="unit" r="15.9" cx="50%" cy="50%"></circle>
           <circle id="circle3" class="unit" r="15.9" cx="50%" cy="50%"></circle>
@@ -109,8 +110,7 @@ if(isset($_COOKIE['SSSIDH'])){
         <input type="date" name="first-date" id='fd1'> по <input type="date" name="second-date" id='sd1'>
         <button onclick='getGradesBt()'>Показать оценки за период</button>
       </div>
-    </section>
-    <div id='costil'>
+      <div id='costil'>
 
     </div>
 

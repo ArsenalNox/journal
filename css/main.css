@@ -222,3 +222,73 @@ p {
   position: relative;
   top: 11%;
 }
+
+/* communication */
+
+.message {
+  width: 90%;
+  margin: 0 auto 0 auto;
+  padding-top: 50px;
+  background: #ccc;
+}
+
+.search {
+  width: 30px;
+  height: 30px;
+}
+
+.footermas {
+  display: flex;
+  padding: 10px;
+}
+
+.searchtext {
+  margin: 0 auto 0 auto;
+}
+
+.circle {
+  background: linear-gradient(to bottom right, #fc346c, #fa6555);
+  border-radius: 50%;
+  height: 4em;
+  width: 4em;
+  margin-left: 20px;
+  margin-top: 10px;
+}
+
+.circle2 {
+  background: linear-gradient(to bottom right, #fc346c, #fa6555);
+  border-radius: 50%;
+  height: 2em;
+  width: 2em;
+  margin-left: 20px;
+  margin-top: 10px;
+  position: relative;
+  top: 30px;
+  left: -120px;
+}
+
+.chat {
+  display: flex;
+  padding: 10px;
+}
+
+.name {
+  margin-top: 10px;
+  margin-left: 5px;
+}
+
+.name2 {
+  display: flex
+}
+
+.name3 {
+  position: relative;
+  top: 45px;
+  left: -110px;
+  height: 20px;
+  padding-bottom: 0;
+}
+
+.callschedule {
+  margin: 0 auto 0 auto;
+}

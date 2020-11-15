@@ -39,7 +39,6 @@
             <div class="button-icon" onclick='ShowMenu()'></div>
               <ul class='menu'>
                 <li> <a href="gradesParent.php"> Успеваемость </a> </li>
-                <li> <a href="#"> Общение с преподавателями </a> </li>
                 <li> <a href="#"> Объявления школы </a> </li>
                 <li> <a href="php/functions/logout.php">Выйти из аккаунта</a>  </li>
                 <br> <hr>
