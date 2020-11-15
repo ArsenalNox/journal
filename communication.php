@@ -32,13 +32,40 @@
             </h2>
             <div class="button-icon" onclick='ShowMenu()'></div>
               <ul class='menu'>
+                <li> <a href="student.php">Главная</a></li>
                 <li> <a href="grades.php"> Смотреть свои оценки </a> </li>
-                <li> <a href="#"> Смотреть </a> </li>
                 <li> <a href="communication.php"> Общение с преподавателями </a> </li>
                 <li> <a href="#"> Объявления школы </a> </li>
                 <li> <a href="php/functions/logout.php">Выйти из аккаунта</a>  </li>
                 <br>
                 <li> <span id='current-lesson'> </span> </li>
+                <table class="callschedule">
+                  <tr>
+                    <th>Расписание звонокв</th>
+                  <tr>
+                    <td>8:30:00</td>
+                    <td>9:15:00</td>
+                  </tr>
+                  <tr>
+                    <td>9:20:00</td>
+                    <td>10:05:00</td>
+                  </tr>
+                  <tr>
+                    <td>10:15:00</td>
+                    <td>10:50:00</td>
+                  </tr>
+                  <tr>
+                    <td>11:10:00</td>
+                    <td>11:55:00</td>
+                  </tr>
+                  <tr>
+                    <td>12:10:00</td>
+                    <td>12:55:00</td>
+                  </tr>
+                    <td>13:00:00</td>
+                    <td>13:45:00</td>
+                  </tr>
+                </table>
                 <?php echo '<li class="entrance"> Вы вошли как: '.$_COOKIE['SSSIDH'].'</li>'; ?>
               </ul>
           </div>
@@ -46,5 +73,86 @@
         </div>
       </div>
     </nav>
+    <section>
+      <div class="message">
+        <div class="footermas">
+         <img class="search" src="img/search.png">
+         <h1 class="searchtext">Чат</h1>
+        </div>
+        <hr>
+        <div class="chat">
+          <div class="circle"></div>
+          <p class="name">Анна Костенская</p>
+            <div class="name2">
+              <div class="circle2"></div>
+              <p class="name3">Анна Костенская</p>
+            </div>
+        </div>
+        <hr>
+        <div class="chat">
+          <div class="circle"></div>
+          <p class="name">Анна Костенская</p>
+            <div class="name2">
+              <div class="circle2"></div>
+              <p class="name3">Анна Костенская</p>
+            </div>
+        </div>
+        <hr>
+        <div class="chat">
+          <div class="circle"></div>
+          <p class="name">Анна Костенская</p>
+            <div class="name2">
+              <div class="circle2"></div>
+              <p class="name3">Анна Костенская</p>
+            </div>
+        </div>
+        <hr>
+        <div class="chat">
+          <div class="circle"></div>
+          <p class="name">Анна Костенская</p>
+            <div class="name2">
+              <div class="circle2"></div>
+              <p class="name3">Анна Костенская</p>
+            </div>
+        </div>
+        <hr>
+        <div class="chat">
+          <div class="circle"></div>
+          <p class="name">Анна Костенская</p>
+            <div class="name2">
+              <div class="circle2"></div>
+              <p class="name3">Анна Костенская</p>
+            </div>
+        </div>
+        <hr>
+        <div class="chat">
+          <div class="circle"></div>
+          <p class="name">Анна Костенская</p>
+            <div class="name2">
+              <div class="circle2"></div>
+              <p class="name3">Анна Костенская</p>
+            </div>
+        </div>
+        <hr>
+        <div class="chat">
+          <div class="circle"></div>
+          <p class="name">Анна Костенская</p>
+            <div class="name2">
+              <div class="circle2"></div>
+              <p class="name3">Анна Костенская</p>
+            </div>
+        </div>
+        <hr>
+        <div class="chat">
+          <div class="circle"></div>
+          <p class="name">Анна Костенская</p>
+            <div class="name2">
+              <div class="circle2"></div>
+              <p class="name3">Анна Костенская</p>
+            </div>
+        </div>
+        <hr>
+      </div>
+    </section>
 </body>
 </html>

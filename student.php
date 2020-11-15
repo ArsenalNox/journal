@@ -61,39 +61,41 @@ if(isset($_COOKIE['SSSIDH'])){
               <a href="#"></a>
             </h2>
             <div class="button-icon" onclick='ShowMenu()'></div>
-              <ul class='menu'>
+            <ul class='menu'>
+                <li> <a href="student.php">Главная</a></li>
                 <li> <a href="grades.php"> Смотреть свои оценки </a> </li>
                 <li> <a href="communication.php"> Общение с преподавателями </a> </li>
                 <li> <a href="#"> Объявления школы </a> </li>
                 <li> <a href="php/functions/logout.php">Выйти из аккаунта</a>  </li>
                 <br>
-                <li> <span id='current-lesson'> </span> </li>		<table>
-                			<tr>
-                				<th colspan="2">Расписание звонокв</th>
-                			<tr>
-                				<td>8:30</td>
-                				<td>9:15</td>
-                			</tr>
-                			<tr>
-                				<td>9:20</td>
-                				<td>10:05</td>
-                			</tr>
-                			<tr>
-                				<td>10:15</td>
-                				<td>10:50</td>
-                			</tr>
-                			<tr>
-                				<td>11:10</td>
-                				<td>11:55</td>
-                			</tr>
-                			<tr>
-                				<td>12:10</td>
-                				<td>12:55</td>
-                			</tr>
-                				<td>13:00</td>
-                				<td>13:45</td>
-                			</tr>
-                		</table>
+                <li> <span id='current-lesson'> </span> </li>
+                <table class="callschedule">
+                  <tr>
+                    <th>Расписание звонокв</th>
+                  <tr>
+                    <td>8:30:00</td>
+                    <td>9:15:00</td>
+                  </tr>
+                  <tr>
+                    <td>9:20:00</td>
+                    <td>10:05:00</td>
+                  </tr>
+                  <tr>
+                    <td>10:15:00</td>
+                    <td>10:50:00</td>
+                  </tr>
+                  <tr>
+                    <td>11:10:00</td>
+                    <td>11:55:00</td>
+                  </tr>
+                  <tr>
+                    <td>12:10:00</td>
+                    <td>12:55:00</td>
+                  </tr>
+                    <td>13:00:00</td>
+                    <td>13:45:00</td>
+                  </tr>
+                </table>
                 <?php echo '<li class="entrance"> Вы вошли как: '.$_COOKIE['SSSIDH'].'</li>'; ?>
               </ul>
           </div>

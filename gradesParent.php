@@ -43,7 +43,6 @@ if(isset($_COOKIE['SSSIDH'])){
             <div class="button-icon" onclick='ShowMenu()'></div>
               <ul class='menu'>
                 <li> <a href="parent.php"> Главная страница </a> </li>
-                <li> <a href="#"> Общение с преподавателями </a> </li>
                 <li> <a href="#"> Объявления школы </a> </li>
                 <li> <a href="php/functions/logout.php">Выйти из аккаунта</a>  </li>
                 <?php echo '<li> Вы вошли как: '.$_COOKIE['SSSIDH'].'</li>'; ?>
@@ -57,7 +56,7 @@ if(isset($_COOKIE['SSSIDH'])){
     <div class="canvas">
       <section class="marks-wrap">
         <div>
-          <svg class="chart" width="300" height="300" viewBox="0 0 40 40">
+          <svg class="chart" width="270" height="270" viewBox="0 0 40 40">
             <circle id="circle1" class="unit" r="15.9" cx="50%" cy="50%"></circle>
             <circle id="circle2" class="unit" r="15.9" cx="50%" cy="50%"></circle>
             <circle id="circle3" class="unit" r="15.9" cx="50%" cy="50%"></circle>
