@@ -155,7 +155,7 @@ if(isset($_COOKIE['SSSIDH'])){
             }else{ $a2 = 'N/A'; }
 
 
-            echo " <tr> <td> ".$row['lesson_name'].": ".$first."; ".$second."; ".$third."; ".$fourth."; $a1; $a2 ";
+            echo " <tr> <td> ".$row['lesson_name'].": <td>".$first."</td> <td>".$second."</td> <td>".$third."</td> <td>".$fourth."</td> <td>$a1</td> <td>$a2</td> ";
           }
           echo "</table>";
             ?>
