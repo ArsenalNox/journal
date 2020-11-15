@@ -32,10 +32,10 @@
             </h2>
             <div class="button-icon" onclick='ShowMenu()'></div>
               <ul class='menu'>
-                <li> <a href="student.php">Главная</a></li>
+              <li> <a href="student.php">Главная</a></li>
                 <li> <a href="grades.php"> Смотреть свои оценки </a> </li>
                 <li> <a href="communication.php"> Общение с преподавателями </a> </li>
-                <li> <a href="#"> Объявления школы </a> </li>
+                <li> <a href="announce.php"> Объявления школы </a> </li>
                 <li> <a href="php/functions/logout.php">Выйти из аккаунта</a>  </li>
                 <br>
                 <li> <span id='current-lesson'> </span> </li>
