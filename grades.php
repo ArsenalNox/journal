@@ -103,7 +103,7 @@ if(isset($_COOKIE['SSSIDH'])){
           <li id="chart3" class="caption-item">3</li>
           <li id="chart2" class="caption-item">2</li>
         </ul>
-        <div id='123'> </div>
+        <div id='pow'> </div>
       </div>
     
       <hr>
@@ -130,11 +130,20 @@ if(isset($_COOKIE['SSSIDH'])){
         </section>
         <section style='padding: 1rem;'>
           Оценки за четверь/полугодие: <br>
+          <table>
+          <tr>
+            <td class="dsa">Наименование</td>
+            <td class="dsa">1 четв</td>
+            <td class="dsa">2 четв</td>
+            <td class="dsa">3 четв</td>
+            <td class="dsa">4 четв</td>
+            <td class="dsa">1 п.год</td>
+            <td class="dsa">2 п.год</td>
+          </tr>
           <?php
           $id = $_COOKIE['SSSUIDH'];
           $sql = "SELECT * FROM quaters WHERE student_id='$id'";
           $result = mysqli_query($conn, $sql);
-          echo "<table>";
           while ($row = mysqli_fetch_assoc($result)) {
             if( !empty($row['first_quarter']) ){
               $first = $row['first_quarter'];
@@ -156,10 +165,10 @@ if(isset($_COOKIE['SSSIDH'])){
             }else{ $a2 = 'N/A'; }
 
 
-            echo " <tr> <td> ".$row['lesson_name'].": <td>".$first."</td> <td>".$second."</td> <td>".$third."</td> <td>".$fourth."</td> <td>$a1</td> <td>$a2</td> ";
+            echo " <tr> <td class='dsa'> ".$row['lesson_name'].": <td class='dsa'>".$first."</td> <td class='dsa'>".$second."</td> <td class='dsa'>".$third."</td> <td class='dsa'>".$fourth."</td> <td class='dsa'>$a1</td> <td class='dsa'>$a2</td> ";
           }
-          echo "</table>";
             ?>
+            </table>
         </section>
 
         <hr>
