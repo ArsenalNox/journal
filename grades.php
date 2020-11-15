@@ -14,6 +14,7 @@ if(isset($_COOKIE['SSSIDH'])){
     <meta charset="utf-8">
     <meta name="theme-color" content="#FFFFFF"/>
     <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/svg.css">
     <link rel="stylesheet" href="css/right-nav-style.css">
     <link rel="apple-touch-icon" sizes="192x192" href="img/192.png">
     <link rel="apple-touch-icon" sizes="48x48" href="img/48.png">
@@ -26,7 +27,6 @@ if(isset($_COOKIE['SSSIDH'])){
     <title>Статистика оценок</title>
   </head>
   <body onload='getGraphData("all")'>
-    <h3>Статистика оценок</h3>
     <nav>
       <div class="footer">
         <img src="./img/logo.png" class="logo">
@@ -54,7 +54,23 @@ if(isset($_COOKIE['SSSIDH'])){
     </nav>
     <section class="marks-wrap">
       <div class="graph-cont" id='g1-all'>
-        <p> Загрузка графика оценок...</p>
+      <svg width="300px" height="300px" viewBox="0 0 42 42" class="donut">
+        <circle class="donut-hole" cx="21" cy="21" r="15.91549430918954" fill="#fff"></circle>
+        <circle class="donut-ring" cx="21" cy="21" r="15.91549430918954" fill="transparent" stroke="#d2d3d4" stroke-width="3"></circle>
+        <circle class="donut-segment" cx="21" cy="21" r="15.91549430918954" fill="transparent" stroke="#ce4b99" stroke-width="3" stroke-dasharray="40 60" stroke-dashoffset="25"></circle>
+        <circle class="donut-segment" cx="21" cy="21" r="15.91549430918954" fill="transparent" stroke="#b1c94e" stroke-width="3" stroke-dasharray="20 80" stroke-dashoffset="85"></circle>
+        <circle class="donut-segment" cx="21" cy="21" r="15.91549430918954" fill="transparent" stroke="#377bbc" stroke-width="3" stroke-dasharray="30 70" stroke-dashoffset="65"></circle>
+        <!-- unused 10% -->
+        <g class="chart-text">
+          <text x="50%" y="50%" class="chart-number">
+            10
+          </text>
+          <text x="50%" y="50%" class="chart-label">
+            Beers
+          </text>
+        </g>
+      </svg>
+
       </div>
     </section>
 
