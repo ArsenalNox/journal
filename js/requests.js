@@ -127,6 +127,7 @@ function getGradesBt(){
   xhttp.open("POST", "php/functions/get_grades_table.php", true);
   xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
   xhttp.send("date1="+date1+"&date2="+date2);
+  getGraphDataParent(true)
 }
 
 function getGradesBtParent(){
