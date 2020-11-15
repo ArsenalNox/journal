@@ -4,7 +4,7 @@ include_once 'php/dtb/dtb.php';
 //// TODO: Теоретическая проверка токена
 if(isset($_COOKIE['SSSIDH'])){
   $status = "VALIDATED";
-
+  date_default_timezone_set('Asia/Yekaterinburg');
 } else {
   header("Location: index.php");
 }
@@ -16,7 +16,7 @@ if(isset($_COOKIE['SSSIDH'])){
     <meta name="theme-color" content="#FFFFFF"/>
     <link rel="stylesheet" href="css/main.css">
     <link rel="stylesheet" href="css/right-nav-style.css">
-    <link rel="apple-touch-icon" sizes="192x192" href="img/192.png">
+    <link rel="apple-touch-icon" sizes="192x19Asia/Yekaterinburg	2" href="img/192.png">
     <link rel="apple-touch-icon" sizes="48x48" href="img/48.png">
     <link rel="apple-touch-icon" sizes="57x57" href="img/57.png">
     <!-- <link rel="apple-touch-icon" sizes="114x114" href="img/114.png"> -->
@@ -49,10 +49,11 @@ if(isset($_COOKIE['SSSIDH'])){
             </h2>
             <div class="button-icon" onclick='ShowMenu()'></div>
               <ul class='menu'>
-                <li> <a href="№"> Текущй урок <span id='current-lesson'> </span> </a> </li>
                 <li> <a href="grades.php"> Смотреть свои оценки </a> </li>
                 <li> <a href="#"> Общение с преподавателями </a> </li>
                 <li> <a href="php/functions/logout.php">Выйти из аккаунта</a>  </li>
+                <br> <hr>
+                <li> <span id='current-lesson'> </span> </li>
                 <?php echo '<li> Вы вошли как: '.$_COOKIE['SSSIDH'].'</li>'; ?>
               </ul>
           </div>

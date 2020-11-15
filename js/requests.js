@@ -7,7 +7,8 @@ function GetGroupNames() {
   xhttp.onreadystatechange = function() {
     if (this.readyState == 4 && this.status == 200) {
       document.getElementById('ct1').innerHTML = this.responseText;
-      showLowPerformace()
+      showLowPerformace();
+      showCurrentLesson();
     }
   };
   xhttp.open("GET", "php/functions/show_schedule.php", true);
@@ -50,8 +51,6 @@ function showCurrentLesson() {
     xhttp.open("GET", "php/functions/get_current_lesson.php", true);
     xhttp.send();
 }
-
-
 
 //
 // var el1 = document.getElementById("circle1");

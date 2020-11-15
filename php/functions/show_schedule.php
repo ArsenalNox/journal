@@ -1,4 +1,5 @@
 <?php
+session_start();
 include_once '../dtb/dtb.php';
     if(isset($_COOKIE['SSSIDH'])){
         $uid = $_COOKIE['SSSIDH'];
@@ -9,6 +10,7 @@ include_once '../dtb/dtb.php';
         $this_monday = str_replace('-','.',$this_monday);
         $day = array('Понедельник','Вторник','Среда','Четверг','Пятница','Суббота','Воскресенье');
         $sch = "schedule_".$this_monday."_".$class;
+        $_SESSION['sch'] = $sch;
         $sql = "SELECT * FROM `$sch` ORDER BY DATE_SCHEDULE";
         $result = mysqli_query($conn, $sql);
         if($result){
