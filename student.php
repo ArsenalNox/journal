@@ -29,7 +29,7 @@ if(isset($_COOKIE['SSSIDH'])){
   <style media="screen">
     .day-table{
         display: grid;
-        border: 1px solid black;
+        border: 3px solid linear-gradient(to bottom right, #fc346c, #fa6555);;
         margin-bottom: 1rem;
     }
   </style>
