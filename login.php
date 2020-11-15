@@ -14,8 +14,10 @@ if($_SERVER['REQUEST_METHOD'] === "POST"){
       if(mysqli_num_rows($result)>0){
           $row = mysqli_fetch_assoc($result);
           $hased = $uid;
+          //Получить айди ученика в таблице участников
           setcookie('SSSIDH', $hased, time()+60*60*24*30, '/');
-          setcookie('SSSCLS', $row['userId'], time()+60*60*24*30, '/');
+          setcookie('SSSCLS', $row['classId'], time()+60*60*24*30, '/');
+          setcookie('SSSUIDH', $row['userId'], time()+60*60*24*30, '/');
           switch ($row['who']) {
             case 'student':
               //Желательно передавать GET'ом токен, подтверждающий авторизацию, но пока что так

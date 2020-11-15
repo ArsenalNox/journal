@@ -17,8 +17,8 @@ function getGraphData(selection){
   var xhttp = new XMLHttpRequest();
   xhttp.onreadystatechange = function() {
     if (this.readyState == 4 && this.status == 200) {
+      console.log(this.responseText);
       graphData = JSON.parse(this.responseText);
-      console.log(graphData);
     }
   };
   xhttp.open("GET", "php/functions/get_graph_information.php", true);
