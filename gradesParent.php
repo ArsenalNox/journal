@@ -87,7 +87,52 @@ if(isset($_COOKIE['SSSIDH'])){
       </div>
     <div id='costil'>
 
-    </div>
+    <section style='padding: 1rem;'>
+     <label for="select-pr">Показ оценок по предмету <?php
+     $sql = "SELECT DISTINCT lessonName FROM marksall";
+     $result = mysqli_query($conn, $sql);
+     echo "<select name='select-pr'>";
+     while ($row = mysqli_fetch_assoc($result)) {
+       echo "<option> ". $row['lessonName'] ." </option>";
+     }
+     echo "</select>";
+     ?>
+     <button onclick='getGradesByLesBt()'>Показать оценки за период</button>
+   </section>
+    <section style='padding: 1rem;'>
+      Оценки за четверь/полугодие: <br>
+      <?php
+      $id = $_COOKIE['SSSUIDH'];
+      $sql = "SELECT * FROM quaters WHERE student_id='$id'";
+      $result = mysqli_query($conn, $sql);
+      echo "<table>";
+      while ($row = mysqli_fetch_assoc($result)) {
+        if( !empty($row['first_quarter']) ){
+          $first = $row['first_quarter'];
+        }else{ $first = 'N/A'; }
+        if( !empty($row['second_quarter']) ){
+          $second = $row['second_quarter'];
+        }else{ $second = 'N/A'; }
+        if( !empty($row['third_quarter']) ){
+          $third = $row['third_quarter'];
+        }else{ $third = 'N/A'; }
+        if( !empty($row['fourth_quarter']) ){
+          $fourth = $row['fourth_quarter'];
+        }else{ $fourth = 'N/A'; }
+        if( !empty($row['fourth_quarter']) ){
+          $a1 = $row['fhy'];
+        }else{ $a1 = 'N/A'; }
+        if( !empty($row['fourth_quarter']) ){
+          $a2 = $row['shy'];
+        }else{ $a2 = 'N/A'; }
+
+
+        echo " <tr> <td> ".$row['lesson_name'].": ".$first."; ".$second."; ".$third."; ".$fourth."; $a1; $a2 ";
+      }
+      echo "</table>";
+        ?>
+    </section>
+        </div>
 
     <div id="my_dataviz"></div>
 

@@ -7,6 +7,7 @@ if(isset($_COOKIE['SSSIDH'])){
   $mark4q = 0;
   $mark3q = 0;
   $mark2q = 0;
+  $abscentee = 0;
   $son = [];
   $uqid = $_COOKIE['SSSUIDH'];
   $sql = "SELECT * FROM marksall WHERE studid='$uqid'";
@@ -32,6 +33,9 @@ if(isset($_COOKIE['SSSIDH'])){
           case '2':
             $mark2q++;
             break;
+          case '':
+            $abscentee++;
+            break;
         }
       }
     }
@@ -40,6 +44,7 @@ if(isset($_COOKIE['SSSIDH'])){
   $son[] = array('name' => '4', 'value' => "$mark4q");
   $son[] = array('name' => '3', 'value' => "$mark3q");
   $son[] = array('name' => '2', 'value' => "$mark2q");
+  $son[] = array('name' => 'abs', 'value' => "$abscentee");
   //Для дебага $son[] = array('name' => 'info', 'value' => "$sql");
   echo json_encode($son);
 }

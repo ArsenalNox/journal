@@ -21,6 +21,7 @@ if($_SERVER['REQUEST_METHOD'] === "POST"){
           switch ($row['who']) {
             case 'student':
               //Желательно передавать GET'ом токен, подтверждающий авторизацию, но пока что так
+              setcookie('SSSUIDH', $row['userId'], time()+60*60*24*30, '/');
               header("Location: student.php?taas=true");
               $_SESSION['LOGIN_STATUS'] = 'auth';
               die();

@@ -26,7 +26,7 @@ if(isset($_COOKIE['SSSIDH'])){
     <link rel="shortcut icon" href="img/114.png" />
     <title>Статистика оценок</title>
   </head>
-  <body onload='getGraphData("all")'>
+  <body onload='getGraphData(false)'>
     <nav>
       <div class="footer">
         <img src="./img/logo.png" class="logo">
@@ -102,12 +102,65 @@ if(isset($_COOKIE['SSSIDH'])){
           <li id="chart3" class="caption-item">3</li>
           <li id="chart2" class="caption-item">2</li>
         </ul>
+        <div id='123'> </div>
       </div>
       <hr>
       <div class="input-search-form" id='dform'>
+        <section style='padding: 1rem;'>
+
         <label for="first-date">Показ оценок с</label>
-        <input type="date" name="first-date" id='fd1'> по <input type="date" name="second-date" id='sd1'>
-        <button onclick='getGradesBt()'>Показать оценки за период</button>
+          <input type="date" name="first-date" id='fd1'> по <input type="date" name="second-date" id='sd1'>
+          <button onclick='getGradesBt()'>Показать оценки за период</button>
+        </section>
+         <hr>
+
+         <section style='padding: 1rem;'>
+          <label for="select-pr">Показ оценок по предмету <?php
+          $sql = "SELECT DISTINCT lessonName FROM marksall";
+          $result = mysqli_query($conn, $sql);
+          echo "<select name='select-pr'>";
+          while ($row = mysqli_fetch_assoc($result)) {
+            echo "<option> ". $row['lessonName'] ." </option>";
+          }
+          echo "</select>";
+          ?>
+          <button onclick='getGradesByLesBt()'>Показать оценки за период</button>
+        </section>
+        <section style='padding: 1rem;'>
+          Оценки за четверь/полугодие: <br>
+          <?php
+          $id = $_COOKIE['SSSUIDH'];
+          $sql = "SELECT * FROM quaters WHERE student_id='$id'";
+          $result = mysqli_query($conn, $sql);
+          echo "<table>";
+          while ($row = mysqli_fetch_assoc($result)) {
+            if( !empty($row['first_quarter']) ){
+              $first = $row['first_quarter'];
+            }else{ $first = 'N/A'; }
+            if( !empty($row['second_quarter']) ){
+              $second = $row['second_quarter'];
+            }else{ $second = 'N/A'; }
+            if( !empty($row['third_quarter']) ){
+              $third = $row['third_quarter'];
+            }else{ $third = 'N/A'; }
+            if( !empty($row['fourth_quarter']) ){
+              $fourth = $row['fourth_quarter'];
+            }else{ $fourth = 'N/A'; }
+            if( !empty($row['fourth_quarter']) ){
+              $a1 = $row['fhy'];
+            }else{ $a1 = 'N/A'; }
+            if( !empty($row['fourth_quarter']) ){
+              $a2 = $row['shy'];
+            }else{ $a2 = 'N/A'; }
+
+
+            echo " <tr> <td> ".$row['lesson_name'].": ".$first."; ".$second."; ".$third."; ".$fourth."; $a1; $a2 ";
+          }
+          echo "</table>";
+            ?>
+        </section>
+
+        <hr>
       </div>
     </section>
     <div id='costil'>
