@@ -53,27 +53,27 @@ if(isset($_COOKIE['SSSIDH'])){
                   <tr>
                     <th>Расписание звонокв</th>
                   <tr>
-                    <td>8:30:00</td>
-                    <td>9:15:00</td>
+                    <td>8:30</td>
+                    <td>9:15</td>
                   </tr>
                   <tr>
-                    <td>9:20:00</td>
-                    <td>10:05:00</td>
+                    <td>9:20</td>
+                    <td>10:05</td>
                   </tr>
                   <tr>
-                    <td>10:15:00</td>
-                    <td>10:50:00</td>
+                    <td>10:15</td>
+                    <td>10:50</td>
                   </tr>
                   <tr>
-                    <td>11:10:00</td>
-                    <td>11:55:00</td>
+                    <td>11:10</td>
+                    <td>11:55</td>
                   </tr>
                   <tr>
-                    <td>12:10:00</td>
-                    <td>12:55:00</td>
+                    <td>12:10</td>
+                    <td>12:55</td>
                   </tr>
-                    <td>13:00:00</td>
-                    <td>13:45:00</td>
+                    <td>13:00</td>
+                    <td>13:45</td>
                   </tr>
                 </table>
                 <?php echo '<li class="entrance"> Вы вошли как: '.$_COOKIE['SSSIDH'].'</li>'; ?>
@@ -105,14 +105,14 @@ if(isset($_COOKIE['SSSIDH'])){
         </ul>
         <div id='123'> </div>
       </div>
-    
+
       <hr>
       <div class="input-search-form" id='dform'>
         <section style='padding: 1rem;'>
 
         <label for="first-date">Показ оценок с</label>
           <input type="date" name="first-date" id='fd1'> по <input type="date" name="second-date" id='sd1'>
-          <button onclick='getGradesBt()'>Показать оценки за период</button>
+          <button onclick='getGradesBt(true)'>Показать оценки за период</button>
         </section>
          <hr>
 
@@ -124,7 +124,7 @@ if(isset($_COOKIE['SSSIDH'])){
           while ($row = mysqli_fetch_assoc($result)) {
             echo "<option> ". $row['lessonName'] ." </option>";
           }
-          echo "</select>"123;
+          echo "</select>";
           ?>
           <button onclick='getGradesByLesBt()'>Показать оценки за период</button>
         </section>
