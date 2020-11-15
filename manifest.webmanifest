@@ -5,6 +5,7 @@
   "theme_color": "#FFFFFF",
   "background_color": "#FFFFFF",
   "display": "fullscreen",
+  "orientation": "portrait",
   "icons": [
     {
       "src": "img/192.png",
