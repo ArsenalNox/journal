@@ -185,6 +185,10 @@ function getGraphDataParent(date){
       document.getElementById('chart2').innerText = '2: ' + graphData[3].value + ' Шт'
       var el4 = document.getElementById("circle4");
       el4.setAttribute("style", "stroke-dasharray: " + circle4 + " 100; stroke-dashoffset: "+ -(circle1 + circle2 + circle3) +";");
+      var el4 = document.getElementById("123");
+      var med = ( (graphData[0].value*5 + graphData[1].value*4 + graphData[2].value*3 + graphData[3].value*2))/(parseFloat(graphData[0].value) + parseFloat(graphData[1].value) + parseFloat(graphData[2].value) + parseFloat(graphData[3].value))
+      el4.innerHTML = " <p> Пропуски за период: " + graphData[4].value + "</p> <p> Средний балл за период: "+ med.toFixed(2) +"</p>";
+  
     }
   };
   xhttp.open("POST", "php/functions/get_graph_information.php", true);

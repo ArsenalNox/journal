@@ -45,7 +45,7 @@ if(isset($_COOKIE['SSSIDH'])){
                 <li> <a href="student.php">Главная</a></li>
                 <li> <a href="grades.php"> Смотреть свои оценки </a> </li>
                 <li> <a href="communication.php"> Общение с преподавателями </a> </li>
-                <li> <a href="#"> Объявления школы </a> </li>
+                <li> <a href="announce.php"> Объявления школы </a> </li>
                 <li> <a href="php/functions/logout.php">Выйти из аккаунта</a>  </li>
                 <br>
                 <li> <span id='current-lesson'> </span> </li>
@@ -105,6 +105,7 @@ if(isset($_COOKIE['SSSIDH'])){
         </ul>
         <div id='123'> </div>
       </div>
+    
       <hr>
       <div class="input-search-form" id='dform'>
         <section style='padding: 1rem;'>
@@ -123,7 +124,7 @@ if(isset($_COOKIE['SSSIDH'])){
           while ($row = mysqli_fetch_assoc($result)) {
             echo "<option> ". $row['lessonName'] ." </option>";
           }
-          echo "</select>";
+          echo "</select>"123;
           ?>
           <button onclick='getGradesByLesBt()'>Показать оценки за период</button>
         </section>
