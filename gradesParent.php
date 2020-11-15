@@ -26,7 +26,7 @@ if(isset($_COOKIE['SSSIDH'])){
     <link rel="shortcut icon" href="img/114.png" />
     <title>Статистика оценок</title>
   </head>
-  <body onload='getGraphData("all")'>
+  <body onload='getGraphDataParent(false)'>
     <nav>
       <div class="footer">
         <img src="./img/logo.png" class="logo">
@@ -83,7 +83,7 @@ if(isset($_COOKIE['SSSIDH'])){
       <div class="input-search-form" id='dform'>
         <label for="first-date">Показ оценок с</label>
         <input type="date" name="first-date" id='fd1'> по <input type="date" name="second-date" id='sd1'>
-        <button onclick='getGradesBt()'>Показать оценки за период</button>
+        <button onclick='getGradesBtParent()'>Показать оценки за период</button>
       </div>
     <div id='costil'>
 

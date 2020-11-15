@@ -10,7 +10,7 @@ include_once '../dtb/dtb.php';
         $this_monday = date('Y-m-d', $this_monday);
         $this_monday = str_replace('-','.',$this_monday);
 
-        $this_day = date('Y-m-d',strtotime('next day'));
+        $this_day = date('Y-m-d',strtotime("next day"));
         $next_day = date('Y-m-d',strtotime("+2 day"));
 
 echo "$this_day, $next_day";
@@ -59,7 +59,6 @@ echo "$this_day, $next_day";
                   <p>Домашнее задание:". $row['HOMEWORK']."</p>
                   $markcom
                 </div>
-
               <div class='mark2'> $markstat </div>
               </div>
               <hr>

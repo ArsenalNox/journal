@@ -51,11 +51,36 @@ if(isset($_COOKIE['SSSIDH'])){
               <ul class='menu'>
                 <li> <a href="grades.php"> Смотреть свои оценки </a> </li>
                 <li> <a href="communication.php"> Общение с преподавателями </a> </li>
-                <li> <a href="#"> Смотреть расписание  </a> </li>
                 <li> <a href="#"> Объявления школы </a> </li>
                 <li> <a href="php/functions/logout.php">Выйти из аккаунта</a>  </li>
                 <br>
-                <li> <span id='current-lesson'> </span> </li>
+                <li> <span id='current-lesson'> </span> </li>		<table>
+                			<tr>
+                				<th colspan="2">Расписание звонокв</th>
+                			<tr>
+                				<td>8:30</td>
+                				<td>9:15</td>
+                			</tr>
+                			<tr>
+                				<td>9:20</td>
+                				<td>10:05</td>
+                			</tr>
+                			<tr>
+                				<td>10:15</td>
+                				<td>10:50</td>
+                			</tr>
+                			<tr>
+                				<td>11:10</td>
+                				<td>11:55</td>
+                			</tr>
+                			<tr>
+                				<td>12:10</td>
+                				<td>12:55</td>
+                			</tr>
+                				<td>13:00</td>
+                				<td>13:45</td>
+                			</tr>
+                		</table>
                 <?php echo '<li class="entrance"> Вы вошли как: '.$_COOKIE['SSSIDH'].'</li>'; ?>
               </ul>
           </div>

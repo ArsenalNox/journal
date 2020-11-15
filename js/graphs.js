@@ -8,4 +8,3 @@ var el3 = document.getElementById("circle3");
 el3.setAttribute("style", "stroke-dasharray: 11 100; stroke-dashoffset: -94;");
 var el4 = document.getElementById("circle4");
 el4.setAttribute("style", "stroke-dasharray: 14 100; stroke-dashoffset: 0;");
-console.log(el1.style.strokeDasharray)

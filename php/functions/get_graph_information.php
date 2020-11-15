@@ -1,6 +1,7 @@
 <?php
 //Возвращает статистику (кол-во оценок) для составления графика
 include_once "../dtb/dtb.php";
+
 if(isset($_COOKIE['SSSIDH'])){
   $mark5q = 0;
   $mark4q = 0;
@@ -9,6 +10,11 @@ if(isset($_COOKIE['SSSIDH'])){
   $son = [];
   $uqid = $_COOKIE['SSSUIDH'];
   $sql = "SELECT * FROM marksall WHERE studid='$uqid'";
+  if(isset($_POST['date1'])){
+    $date_start = $_POST['date1'];
+    $date_end = $_POST['date2'];
+    $sql = "SELECT * FROM marksall WHERE studid='$uqid' AND date >= '$date_start' and date <= '$date_end' ORDER BY date ";
+  }
   $result = mysqli_query($conn, $sql);
   if($result){
     if( mysqli_num_rows($result) > 0 ){
