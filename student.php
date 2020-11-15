@@ -49,6 +49,7 @@ if(isset($_COOKIE['SSSIDH'])){
             </h2>
             <div class="button-icon" onclick='ShowMenu()'></div>
               <ul class='menu'>
+                <li> <a href="№"> Текущй урок <span id='current-lesson'> </span> </a> </li>
                 <li> <a href="grades.php"> Смотреть свои оценки </a> </li>
                 <li> <a href="#"> Общение с преподавателями </a> </li>
                 <li> <a href="php/functions/logout.php">Выйти из аккаунта</a>  </li>

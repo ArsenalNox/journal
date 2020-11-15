@@ -17,12 +17,13 @@ include_once '../dtb/dtb.php';
             $currentDate = 0;
             echo "<table> <tr class='day-table'>";
             while ($row = mysqli_fetch_assoc($result)) {
+              // echo "LESSON ID ".$row['UNUIQE_ID'].' ;';
               $marksql = "SELECT mark, comment FROM marksall WHERE studid=".$_COOKIE['SSSUIDH']." AND lessonId = ".$row['UNUIQE_ID'].";";
               $checkmark = mysqli_query($conn, $marksql);
               if($checkmark){
                 if(mysqli_num_rows($checkmark) > 0){
                   $markRow = mysqli_fetch_assoc($checkmark);
-                  $markstat = "Оценка: ".$markRow['mark'];
+                  $markstat = " <span>".$markRow['mark']."</span>";
                   if(!($markRow['comment']=='')){
                     $markstat .= '<p> Комментарий к оценке: '.$markRow['comment']."</p>";
                   }
@@ -30,11 +31,11 @@ include_once '../dtb/dtb.php';
               }
               if($currentDate == 0){
                   $currentDate = $row['DATE_SCHEDULE'];
-                  echo "<td> ".$day[$dateCounter]." $currentDate </td>";
+                  echo "<td class='date-label'> ".$day[$dateCounter]." $currentDate </td>";
                   $dateCounter++;
               } else if( !($currentDate === $row['DATE_SCHEDULE']) ){
                 $currentDate = $row['DATE_SCHEDULE'];
-                echo " </tr> <tr class='day-table'> <td> ".$day[$dateCounter]." $currentDate </td> ";
+                echo " </tr> <tr class='day-table'> <td class='date-label'> ".$day[$dateCounter]." $currentDate </td> ";
                 $dateCounter++;
               }
               $lessonName = $row['lessonName'];
@@ -42,12 +43,14 @@ include_once '../dtb/dtb.php';
               $date = $row['DATE_SCHEDULE'];
               echo "
               <td> $lessonNumber: $lessonName
-              Кабинет: ".$row['CABINETFK']."
-              <br> Тема занятия: ".$row['TOPIC']."
-              <br> Домашнее задание:". $row['HOMEWORK']."
-              $markstat
-              <hr>
-              </td>";
+              Каб.".$row['CABINETFK'];
+              if (!($row['TOPIC']=='')) {
+                echo "<br> Тема занятия: ".$row['TOPIC'];
+              }
+              if (!($row['TOPIC']=='')) {
+                echo "<br> Домашнее задание:". $row['HOMEWORK'];
+              }
+              echo "$markstat <hr> </td>";
               }
               if($dateCounter < 6){
                 for ($i=$dateCounter; $i < 6 ; $i++) {
