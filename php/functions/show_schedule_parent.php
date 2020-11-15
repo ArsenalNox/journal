@@ -11,7 +11,7 @@ include_once '../dtb/dtb.php';
         $this_monday = str_replace('-','.',$this_monday);
 
         $this_day = date('Y-m-d',strtotime('next day'));
-        $next_day = date('Y-m-d',strtotime("+1 day");
+        $next_day = date('Y-m-d',strtotime("+2 day"));
 
 echo "$this_day, $next_day";
         $day = array('Понедельник','Вторник','Среда','Четверг','Пятница','Суббота','Воскресенье');

@@ -55,28 +55,31 @@ if(isset($_COOKIE['SSSIDH'])){
     </nav>
     <section class="marks-wrap">
     <div class="canvas">
-      <!-- <div class="legend">
-        <p class="title">Что мешает веремония закрытия Хакатона 2.0. Подведение итогов и объявление победителей по двум трекамо время работы дома?</p>
-        <ul class="caption-list">
-          <li class="caption-item">еда</li>
-          <li class="caption-item">соседи</li>
-          <li class="caption-item">отсутствие рабочего места</li>
-          <li class="caption-item">мало двигаюсь</li>
-          <li class="caption-item">отсутствие чёткого графика работы</li>
-          <li class="caption-item">неудобная коммуникация с коллегами</li>
-          <li class="caption-item">много ленюсь</li>
-        </ul>
-      </div> -->
-
-      <svg class="chart" width="300" height="300" viewBox="0 0 50 50">
-        <circle id="circle1" class="unit" r="15.9" cx="50%" cy="50%"></circle>
-        <circle id="circle2" class="unit" r="15.9" cx="50%" cy="50%"></circle>
-        <circle id="circle3" class="unit" r="15.9" cx="50%" cy="50%"></circle>
-        <circle id="circle4" class="unit" r="15.9" cx="50%" cy="50%"></circle>
-      </svg>
+      <section class="marks-wrap">
+        <div>
+          <svg class="chart" width="300" height="300" viewBox="0 0 40 40">
+            <circle id="circle1" class="unit" r="15.9" cx="50%" cy="50%"></circle>
+            <circle id="circle2" class="unit" r="15.9" cx="50%" cy="50%"></circle>
+            <circle id="circle3" class="unit" r="15.9" cx="50%" cy="50%"></circle>
+            <circle id="circle4" class="unit" r="15.9" cx="50%" cy="50%"></circle>
+            <ul class="caption-list">
+              <li id="5" class="caption-item">5</li>
+              <li id="4" class="caption-item">4</li>
+              <li id="3" class="caption-item">3</li>
+              <li id="2" class="caption-item">2</li>
+            </ul>
+          </svg>
+          <ul class="list">
+            <li id="chart5" class="caption-item">5</li>
+            <li id="chart4" class="caption-item">4</li>
+            <li id="chart3" class="caption-item">3</li>
+            <li id="chart2" class="caption-item">2</li>
+          </ul>
+        </div>
+      </section>
     </div>
-    </section>
     <hr>
+    <br>
       <div class="input-search-form" id='dform'>
         <label for="first-date">Показ оценок с</label>
         <input type="date" name="first-date" id='fd1'> по <input type="date" name="second-date" id='sd1'>
@@ -87,8 +90,6 @@ if(isset($_COOKIE['SSSIDH'])){
     </div>
 
     <div id="my_dataviz"></div>
-
-
 
     <script src="js/index.js" charset="utf-8"></script>
     <script src="js/requests.js" charset="utf-8"></script>
