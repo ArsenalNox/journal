@@ -29,6 +29,8 @@ function getGraphData(selection){
       var el1 = document.getElementById("circle1");
       el1.setAttribute("style", "stroke-dasharray: " +  circle1 + " 100; stroke-dashoffset: 0;");
       occipuiedpercent+=circle1
+      document.getElementById('5').append(': ' + circle1 + '%');
+      document.getElementById('chart5').append(': ' + graphData[0].value + ' Шт')
       //
 
       console.log(occipuiedpercent);
@@ -40,6 +42,8 @@ function getGraphData(selection){
       occipuiedpercent+=circle2;
       console.log(occipuiedpercent);
       console.log((360/100)*occipuiedpercent);
+      document.getElementById('4').append(': ' + circle2 + '%')
+      document.getElementById('chart4').append(': ' + graphData[1].value + ' Шт')
       //
 
       el3Value = graphData[2].value
@@ -49,10 +53,14 @@ function getGraphData(selection){
       occipuiedpercent+=circle3;
       console.log(occipuiedpercent);
       console.log((360/100)*occipuiedpercent);
+      document.getElementById('3').append(': ' + circle3 + '%')
+      document.getElementById('chart3').append(': ' + graphData[2].value + ' Шт')
 
       //
       el4Value = graphData[3].value
       circle4 = Number((el4Value/el*100).toFixed(0))
+      document.getElementById('2').append(': ' + circle4 + '%')
+      document.getElementById('chart2').append(': ' + graphData[3].value + ' Шт')
       var el4 = document.getElementById("circle4");
       el4.setAttribute("style", "stroke-dasharray: " + circle4 + " 100; stroke-dashoffset: "+ -(circle1 + circle2 + circle3) +";");
     }
@@ -85,14 +93,3 @@ function showCurrentLesson() {
     xhttp.open("GET", "php/functions/get_current_lesson.php", true);
     xhttp.send();
 }
-//код для графика
-
-var el1 = document.getElementById("circle1");
-el1.setAttribute("style", "stroke-dasharray: 8 100; stroke-dashoffset: -75;");
-var el2 = document.getElementById("circle2");
-el2.setAttribute("style", "stroke-dasharray: 11 100; stroke-dashoffset: -83;");
-var el3 = document.getElementById("circle3");
-el3.setAttribute("style", "stroke-dasharray: 11 100; stroke-dashoffset: -94;");
-var el4 = document.getElementById("circle4");
-el4.setAttribute("style", "stroke-dasharray: 14 100; stroke-dashoffset: 0;");
-console.log(el1.style.strokeDasharray)
