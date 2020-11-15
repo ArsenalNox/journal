@@ -13,7 +13,6 @@ include_once '../dtb/dtb.php';
         $this_day = date('Y-m-d',strtotime("next day"));
         $next_day = date('Y-m-d',strtotime("+2 day"));
 
-echo "$this_day, $next_day";
         $day = array('Понедельник','Вторник','Среда','Четверг','Пятница','Суббота','Воскресенье');
         $sch = "schedule_".$this_monday."_".$class;
         $_SESSION['sch'] = $sch;

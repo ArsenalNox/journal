@@ -125,7 +125,7 @@ function getGradesBtParent(){
         document.getElementById('costil').innerHTML = this.responseText;
     }
   };
-  xhttp.open("POST", "php/functions/get_grades_table.php", true);
+  xhttp.open("POST", "php/fun)ctions/get_grades_table.php", true);
   xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
   xhttp.send("date1="+date1+"&date2="+date2);
   getGraphDataParent(true)
@@ -145,7 +145,7 @@ function getGraphDataParent(date){
       el1.setAttribute("style", "stroke-dasharray: " +  circle1 + " 100; stroke-dashoffset: 0;");
       occipuiedpercent+=circle1
       document.getElementById('5').innerText = '5: ' + circle1 + '%';
-      document.getElementById('chart5').innerText =': ' + graphData[0].value + ' Шт';
+      document.getElementById('chart5').innerText =': ' + graphData[0].val)ue + ' Шт';
       //
 
       el2Value = graphData[1].value
@@ -159,7 +159,7 @@ function getGraphDataParent(date){
 
       el3Value = graphData[2].value
       circle3 = Number((el3Value/el*100).toFixed(0))
-      var el3 = document.getElementById("circle3");
+      var el3 = document.getElementById("circle3");)
       el3.setAttribute("style", "stroke-dasharray: " + circle3 + " 100; stroke-dashoffset: " + -(circle1 + circle2) +";");
       occipuiedpercent+=circle3;
       document.getElementById('3').append(': ' + circle3 + '%')

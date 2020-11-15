@@ -22,7 +22,7 @@
 </head>
 
 <body>
-  <section class='main'>
+  <section>
     <form class="login-form" action="login.php" method="post">
       <h1 class="entryh1">Вход</h1>
       <input type="text" name="uid" placeholder="Логин">

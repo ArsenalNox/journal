@@ -32,6 +32,19 @@ if(isset($_COOKIE['SSSIDH'])){
         border: 3px solid linear-gradient(to bottom right, #fc346c, #fa6555);;
         margin-bottom: 1rem;
     }
+    .nav1{
+      width: 100%;
+      background-color: #00d2ad;
+      padding: 20px 0;
+    }
+    .nav1_fixed{
+      position: fixed;
+      top: 0;
+      left: 0;
+      padding: 10px 0;
+      animation: showElement;
+      animation-duration: 1s;
+    }
   </style>
   <body onload='GetGroupNames()'>
     <nav id='nav1'>
@@ -88,11 +101,12 @@ if(isset($_COOKIE['SSSIDH'])){
         </div>
       </div>
     </nav>
+  </div>
     <section class="main">
       <div class="curriculum-container" id='ct1'> </div>
 
     </section>
-  </body>
+  </body> 
   <script src="js/main.js" charset="utf-8"></script>
   <script src="js/requests.js" charset="utf-8"></script>
 </html>

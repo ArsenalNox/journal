@@ -211,3 +211,14 @@ p {
   top: 90%;
   padding-left: 25%;
 }
+
+#nav1, .footer {
+  position: absolute;
+  width: 100%;
+  z-index: 2000;
+}
+
+.marks-wrap, .main {
+  position: relative;
+  top: 11%;
+}

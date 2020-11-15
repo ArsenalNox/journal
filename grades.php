@@ -48,33 +48,33 @@ if(isset($_COOKIE['SSSIDH'])){
                 <li> <a href="php/functions/logout.php">Выйти из аккаунта</a>  </li>
                 <br>
                 <li> <span id='current-lesson'> </span> </li>
-		<table>
-			<tr>
-				<th colspan="2">Расписание звонокв</th>
-			<tr>
-				<td>8:30:00</td>
-				<td>9:15:00</td>
-			</tr>
-			<tr>
-				<td>9:20:00</td>
-				<td>10:05:00</td>
-			</tr>
-			<tr>
-				<td>10:15:00</td>
-				<td>10:50:00</td>
-			</tr>
-			<tr>
-				<td>11:10:00</td>
-				<td>11:55:00</td>
-			</tr>
-			<tr>
-				<td>12:10:00</td>
-				<td>12:55:00</td>
-			</tr>
-				<td>13:00:00</td>
-				<td>13:45:00</td>
-			</tr>
-		</table>
+                <table>
+                  <tr>
+                    <th colspan="2">Расписание звонокв</th>
+                  <tr>
+                    <td>8:30:00</td>
+                    <td>9:15:00</td>
+                  </tr>
+                  <tr>
+                    <td>9:20:00</td>
+                    <td>10:05:00</td>
+                  </tr>
+                  <tr>
+                    <td>10:15:00</td>
+                    <td>10:50:00</td>
+                  </tr>
+                  <tr>
+                    <td>11:10:00</td>
+                    <td>11:55:00</td>
+                  </tr>
+                  <tr>
+                    <td>12:10:00</td>
+                    <td>12:55:00</td>
+                  </tr>
+                    <td>13:00:00</td>
+                    <td>13:45:00</td>
+                  </tr>
+                </table>
                 <?php echo '<li class="entrance"> Вы вошли как: '.$_COOKIE['SSSIDH'].'</li>'; ?>
               </ul>
           </div>
@@ -103,13 +103,13 @@ if(isset($_COOKIE['SSSIDH'])){
           <li id="chart2" class="caption-item">2</li>
         </ul>
       </div>
-    </section>
-    <hr>
+      <hr>
       <div class="input-search-form" id='dform'>
         <label for="first-date">Показ оценок с</label>
         <input type="date" name="first-date" id='fd1'> по <input type="date" name="second-date" id='sd1'>
         <button onclick='getGradesBt()'>Показать оценки за период</button>
       </div>
+    </section>
     <div id='costil'>
 
     </div>
