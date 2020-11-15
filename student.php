@@ -53,7 +53,6 @@ if(isset($_COOKIE['SSSIDH'])){
                 <li> <a href="#"> Смотреть </a> </li>
                 <li> <a href="communication.php"> Общение с преподавателями </a> </li>
                 <li> <a href="#"> Смотреть расписание  </a> </li>
-                <li> <a href="#"> Общение с преподавателями </a> </li>
                 <li> <a href="#"> Объявления школы </a> </li>
                 <li> <a href="php/functions/logout.php">Выйти из аккаунта</a>  </li>
                 <br> 
