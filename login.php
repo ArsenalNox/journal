@@ -17,7 +17,7 @@ if($_SERVER['REQUEST_METHOD'] === "POST"){
           //Получить айди ученика в таблице участников
           setcookie('SSSIDH', $hased, time()+60*60*24*30, '/');
           setcookie('SSSCLS', $row['classId'], time()+60*60*24*30, '/');
-          setcookie('SSSUIDH', $row['userId'], time()+60*60*24*30, '/');
+          setcookie('SSSUIDH', '1', time()+60*60*24*30, '/');
           switch ($row['who']) {
             case 'student':
               //Желательно передавать GET'ом токен, подтверждающий авторизацию, но пока что так
@@ -26,6 +26,7 @@ if($_SERVER['REQUEST_METHOD'] === "POST"){
               die();
               break;
             case 'parent':
+              setcookie('WHO', '1', time()+60*60*24*30, '/');
               header("Location: parent.php?taas=true");
               $_SESSION['LOGIN_STATUS'] = 'auth';
               die();

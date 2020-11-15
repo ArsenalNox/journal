@@ -31,7 +31,7 @@ if(isset($_COOKIE['SSSIDH'])){
           $as++;
         }
         if($median<4){
-          $response .= $lessons[$i].' '.$median;
+          $response .= " ".$lessons[$i].' '.$median;
         }
       }
     } else {

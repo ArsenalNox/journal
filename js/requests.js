@@ -15,6 +15,22 @@ function GetGroupNames() {
   xhttp.send();
 }
 
+
+function GetGroupNamesParent() {
+  //Получает все имена класса
+  var n1 = '1'
+  var xhttp = new XMLHttpRequest();
+  xhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+      document.getElementById('ct1').innerHTML = this.responseText;
+      showLowPerformace();
+      showCurrentLesson();
+    }
+  };
+  xhttp.open("GET", "php/functions/show_schedule_parent.php", true);
+  xhttp.send();
+}
+
 function getGraphData(selection){
   var xhttp = new XMLHttpRequest();
   xhttp.onreadystatechange = function() {
@@ -92,15 +108,3 @@ function getGradesBt(){
   xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
   xhttp.send("date1="+date1+"&date2="+date2);
 }
-
-
-//код для графика
-var el1 = document.getElementById("circle1");
-el1.setAttribute("style", "stroke-dasharray: 8 100; stroke-dashoffset: -75;");
-var el2 = document.getElementById("circle2");
-el2.setAttribute("style", "stroke-dasharray: 11 100; stroke-dashoffset: -83;");
-var el3 = document.getElementById("circle3");
-el3.setAttribute("style", "stroke-dasharray: 11 100; stroke-dashoffset: -94;");
-var el4 = document.getElementById("circle4");
-el4.setAttribute("style", "stroke-dasharray: 14 100; stroke-dashoffset: 0;");
-console.log(el1.style.strokeDasharray)
