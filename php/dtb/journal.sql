@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Nov 15, 2020 at 06:04 AM
+-- Generation Time: Nov 15, 2020 at 06:51 AM
 -- Server version: 10.4.14-MariaDB
 -- PHP Version: 7.4.10
 
@@ -119,8 +119,8 @@ CREATE TABLE `marksall` (
 
 INSERT INTO `marksall` (`UNUIQE_ID`, `date`, `lessonName`, `teacher`, `mark`, `comment`, `studid`, `lessonId`) VALUES
 (1, '2020-11-16', 'Информатика и ИКТ', '1', '5', 'Лучший ответ в классе!', 1, 1),
-(2, '2020-11-16', 'Информатика и ИКТ', '1', '5', 'Лучший ответ в классе!', 1, 2),
-(3, '2020-11-16', 'Информатика и ИКТ', '1', '5', 'Лучший ответ в классе!', 1, 3),
+(2, '2020-11-16', 'Информатика и ИКТ', '1', '4', 'Хороший ответ!', 1, 2),
+(3, '2020-11-16', 'Информатика и ИКТ', '3', '5', 'Нужно подучить!\r\n\r\n', 1, 3),
 (4, '2020-11-16', 'Информатика и ИКТ', '1', '5', 'Лучший ответ в классе!', 1, 4),
 (5, '2020-11-16', 'Информатика и ИКТ', '1', '5', 'Лучший ответ в классе!', 1, 5);
 
@@ -1150,7 +1150,7 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`userId`, `classId`, `uid`, `pwd`, `userOpGroup`, `who`) VALUES
-(1, 1, 'PetrovSergeyLK09$', 'zsefb!@#$', 0, 'student');
+(1, 1, 'uid', 'pwd', 0, 'student');
 
 --
 -- Indexes for dumped tables

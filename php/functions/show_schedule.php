@@ -17,6 +17,18 @@ include_once '../dtb/dtb.php';
             $currentDate = 0;
             echo "<table> <tr class='day-table'>";
             while ($row = mysqli_fetch_assoc($result)) {
+              $marksql = "SELECT mark, comment FROM marksall WHERE studid=".$_COOKIE['SSSUIDH']." AND lessonId = ".$row['UNUIQE_ID'].";";
+              $checkmark = mysqli_query($conn, $marksql);
+              if($checkmark){
+                if(mysqli_num_rows($checkmark) > 0){
+                  $markRow = mysqli_fetch_assoc($checkmark);
+                  $markstat = "Оценка: ".$markRow['mark'];
+                  if(!($markRow['comment']=='')){
+                    $markstat .= '<p> Комментарий к оценке: '.$markRow['comment']."</p>";
+                  }
+                }
+              }
+
               if($currentDate == 0){
                   $currentDate = $row['DATE_SCHEDULE'];
                   echo "<td> ".$day[$dateCounter]." $currentDate </td>";
@@ -29,9 +41,21 @@ include_once '../dtb/dtb.php';
               $lessonName = $row['lessonName'];
               $lessonNumber = $row['NUMBERFK'];
               $date = $row['DATE_SCHEDULE'];
-              echo "<td> $lessonNumber: $lessonName <br> Домашнее задание:". $row['HOMEWORK']." <hr> </td>";
+              echo "
+              <td> $lessonNumber: $lessonName
+              Кабинет: ".$row['CABINETFK']."
+              <br> Тема занятия: ".$row['TOPIC']."
+              <br> Домашнее задание:". $row['HOMEWORK']."
+              $markstat
+              <hr>
+              </td>";
               }
-            echo "</tr> </table";
+              if($dateCounter < 6){
+                for ($i=$dateCounter; $i < 6 ; $i++) {
+                  echo " </tr> <tr class='day-table'> <td> ".$day[$i]." $currentDate <br> Расписание Отсутсвует </td> ";
+                }
+              }
+            echo "</tr> </table>";
           } else {
             echo "<p> Отсутсвует результат </p>";
           }
