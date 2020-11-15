@@ -28,7 +28,6 @@ include_once '../dtb/dtb.php';
                   }
                 }
               }
-
               if($currentDate == 0){
                   $currentDate = $row['DATE_SCHEDULE'];
                   echo "<td> ".$day[$dateCounter]." $currentDate </td>";

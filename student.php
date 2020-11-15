@@ -4,7 +4,7 @@ include_once 'php/dtb/dtb.php';
 //// TODO: Теоретическая проверка токена
 if(isset($_COOKIE['SSSIDH'])){
   $status = "VALIDATED";
- 
+
 } else {
   header("Location: index.php");
 }
@@ -34,7 +34,7 @@ if(isset($_COOKIE['SSSIDH'])){
     }
   </style>
   <body onload='GetGroupNames()'>
-    <nav>
+    <nav id='nav1'>
       <div class="footer">
         <img src="./img/logo.png" class="logo">
         <h1 class="eljour">Электронный дневник</h1>

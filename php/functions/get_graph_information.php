@@ -1,4 +1,5 @@
 <?php
+//Возвращает статистику (кол-во оценок) для составления графика
 include_once "../dtb/dtb.php";
 if(isset($_COOKIE['SSSIDH'])){
   $mark5q = 0;
