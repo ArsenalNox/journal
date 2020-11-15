@@ -1,45 +1,3 @@
-<?php
-include_once "php/dtb/dtb.php";
-if(isset($_COOKIE['SSSIDH'])){
-  $sql = 'SELECT `group` FROM users WHERE uid="'.$_COOKIE['SSSIDH'].'";';
-  $check = mysqli_query($conn,$sql);
-  if($check){
-    if(mysqli_num_rows($check)>0){
-      $row = mysqli_fetch_assoc($check);
-      switch ($row['group']) {
-        case '0':
-          header('Location: student.php?gr=0');
-          break;
-        case '1':
-          header('Location: student.php?gr=1');
-          break;
-        case '2':
-          header('Location: student.php?gr=2');
-          break;
-        }
-    }
-  }
-}
-if($_SERVER['REQUEST_METHOD'] == "POST"){
-  if(isset($_POST['submit'])){
-    $uid = $_POST['uid'];
-    $pwd = $_POST['pwd'];
-    $sql = "SELECT `group` FROM users WHERE uid='$uid' AND pwd ='$pwd';";
-    $result = mysqli_query($conn, $sql);
-    if($result){
-      if(mysqli_num_rows($result)>0){
-          $hased = $uid;
-          setcookie('SSSIDH', $hased, time()+60*60*24*30, '/');
-          header("Location: student.php");
-          exit;
-        }
-      } else {
-        echo "$sql Произошла ошибка";
-      }
-    }
-}
-?>
-
 <!DOCTYPE html>
 <html lang="ru" dir="ltr">
 
@@ -65,7 +23,7 @@ if($_SERVER['REQUEST_METHOD'] == "POST"){
 
 <body>
   <section class='main'>
-    <form class="login-form" action="index.php" method="post">
+    <form class="login-form" action="login.php" method="post">
       <h1 class="entryh1">Вход</h1>
       <input type="text" name="uid" placeholder="Логин">
       <input type="password" name="pwd" placeholder="Пароль">

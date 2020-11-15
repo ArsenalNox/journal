@@ -1,7 +1,10 @@
 <?php
+session_start();
 include_once 'php/dtb/dtb.php';
+//// TODO: Теоретическая проверка токена
 if(isset($_COOKIE['SSSIDH'])){
   $status = "VALIDATED";
+ 
 } else {
   header("Location: index.php");
 }
@@ -31,7 +34,7 @@ if(isset($_COOKIE['SSSIDH'])){
     }
   </style>
   <body onload='GetGroupNames()'>
-    <footer>
+    <nav>
       <div class="footer">
         <img src="./img/logo.png" class="logo">
         <h1 class="eljour">Электронный дневник</h1>
@@ -46,7 +49,7 @@ if(isset($_COOKIE['SSSIDH'])){
             </h2>
             <div class="button-icon" onclick='ShowMenu()'></div>
               <ul class='menu'>
-                <li> <a href="#"> Смотреть свои оценки </a> </li>
+                <li> <a href="grades.php"> Смотреть свои оценки </a> </li>
                 <li> <a href="#"> Общение с преподавателями </a> </li>
                 <li> <a href="php/functions/logout.php">Выйти из аккаунта</a>  </li>
                 <?php echo '<li> Вы вошли как: '.$_COOKIE['SSSIDH'].'</li>'; ?>
@@ -55,7 +58,7 @@ if(isset($_COOKIE['SSSIDH'])){
           </nav>
         </div>
       </div>
-    </footer>
+    </nav>
     <section class="main">
       <div class="curriculum-container" id='ct1'> </div>
 

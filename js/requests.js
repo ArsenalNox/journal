@@ -1,3 +1,4 @@
+var graphData = [];
 
 function GetGroupNames() {
   //Получает все имена класса
@@ -9,5 +10,17 @@ function GetGroupNames() {
     }
   };
   xhttp.open("GET", "php/functions/show_schedule.php", true);
+  xhttp.send();
+}
+
+function getGraphData(selection){
+  var xhttp = new XMLHttpRequest();
+  xhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+      graphData = JSON.parse(this.responseText);
+      console.log(graphData);
+    }
+  };
+  xhttp.open("GET", "php/functions/get_graph_information.php", true);
   xhttp.send();
 }
