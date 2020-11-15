@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.0.3
+-- version 5.0.2
 -- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1
--- Generation Time: Nov 14, 2020 at 06:10 PM
+-- Host: localhost
+-- Generation Time: Nov 15, 2020 at 06:04 AM
 -- Server version: 10.4.14-MariaDB
--- PHP Version: 7.2.34
+-- PHP Version: 7.4.10
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -1138,6 +1138,7 @@ INSERT INTO `teachers` (`UI`, `SURNAME`, `NAME`, `SECONDNAME`, `SEX`, `BIRTHDAY`
 
 CREATE TABLE `users` (
   `userId` int(11) NOT NULL,
+  `classId` int(11) NOT NULL,
   `uid` varchar(120) NOT NULL,
   `pwd` varchar(120) NOT NULL,
   `userOpGroup` int(11) NOT NULL,
@@ -1148,8 +1149,8 @@ CREATE TABLE `users` (
 -- Dumping data for table `users`
 --
 
-INSERT INTO `users` (`userId`, `uid`, `pwd`, `userOpGroup`, `who`) VALUES
-(1, 'PetrovSergeyLK09$', 'zsefb!@#$', 0, 'student');
+INSERT INTO `users` (`userId`, `classId`, `uid`, `pwd`, `userOpGroup`, `who`) VALUES
+(1, 1, 'PetrovSergeyLK09$', 'zsefb!@#$', 0, 'student');
 
 --
 -- Indexes for dumped tables
