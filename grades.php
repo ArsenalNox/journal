@@ -53,9 +53,9 @@ if(isset($_COOKIE['SSSIDH'])){
       </div>
     </nav>
     <section class="marks-wrap">
-    <div class="canvas">  
+    <div class="canvas">
       <!-- <div class="legend">
-        <p class="title">Что мешает во время работы дома?</p>    
+        <p class="title">Что мешает веремония закрытия Хакатона 2.0. Подведение итогов и объявление победителей по двум трекамо время работы дома?</p>
         <ul class="caption-list">
           <li class="caption-item">еда</li>
           <li class="caption-item">соседи</li>
@@ -66,7 +66,7 @@ if(isset($_COOKIE['SSSIDH'])){
           <li class="caption-item">много ленюсь</li>
         </ul>
       </div> -->
-      
+
       <svg class="chart" width="300" height="300" viewBox="0 0 50 50">
         <circle id="circle1" class="unit" r="15.9" cx="50%" cy="50%"></circle>
         <circle id="circle2" class="unit" r="15.9" cx="50%" cy="50%"></circle>
@@ -77,7 +77,7 @@ if(isset($_COOKIE['SSSIDH'])){
     </section>
 
     <div id='costil'>
-      
+
     </div>
     <script src="js/index.js" charset="utf-8"></script>
     <script src="js/requests.js" charset="utf-8"></script>
