@@ -43,7 +43,7 @@ if(isset($_COOKIE['SSSIDH'])){
             <div class="button-icon" onclick='ShowMenu()'></div>
               <ul class='menu'>
                 <li> <a href="parent.php"> Главная страница </a> </li>
-                <li> <a href="#"> Объявления школы </a> </li>
+                <li> <a href="announce.php"> Объявления школы </a> </li>
                 <li> <a href="php/functions/logout.php">Выйти из аккаунта</a>  </li>
                 <?php echo '<li> Вы вошли как: '.$_COOKIE['SSSIDH'].'</li>'; ?>
               </ul>

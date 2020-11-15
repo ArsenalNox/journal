@@ -80,16 +80,18 @@ include_once 'php/dtb/dtb.php';
       </div>
     </nav>
   <section class="main">
-
+ 
+<div class="block">
 <h2>Объявления школы</h2>
 <?php
 $id = $_COOKIE['SSSCLS'];
 $sql = "SELECT * FROM class_comment WHERE class_id ='$id'";
 $result = mysqli_query($conn, $sql);
 while ($row = mysqli_fetch_assoc($result)) {
-  echo "<p>".$row['date'].": ".$row['comment']."</p>";
+  echo "<p class='ads'>".$row['date'].": ".$row['comment']."</p>";
 }
  ?>
+</div>
 </section>
   </body>
   <script src="js/main.js" charset="utf-8"></script>
