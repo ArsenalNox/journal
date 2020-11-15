@@ -40,7 +40,7 @@ li {
   padding: 0;
   list-style: none;
   position: absolute;
-  top: 110px;
+  top: 60px;
   /* left: 17%; */
 }
 
@@ -138,6 +138,6 @@ li {
 
 .list {
     position: absolute;
-    top: 110px;
+    top: 60px;
     left: 300px;
 }
