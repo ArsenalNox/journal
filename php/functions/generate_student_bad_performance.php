@@ -7,7 +7,7 @@ if(isset($_COOKIE['SSSIDH'])){
   $lessons = [];
   $sql = "SELECT DISTINCT lessonName FROM marksall WHERE studid='$uqid'";
   $result = mysqli_query($conn, $sql);
-
+  $response = '';
   if($result){
     if( mysqli_num_rows($result) > 0 ){
       while ($row = mysqli_fetch_assoc($result)) {
@@ -15,7 +15,8 @@ if(isset($_COOKIE['SSSIDH'])){
       }
     }
   }
-
+  $response .= "Низкий средний балл у предметов: ";
+  $as = 0;
   for ($i=0; $i < sizeof($lessons); $i++) {
     $sql = "SELECT * FROM marksall WHERE studid='$uqid' AND lessonName='".$lessons[$i]."'";
     $result = mysqli_query($conn, $sql);
@@ -26,13 +27,19 @@ if(isset($_COOKIE['SSSIDH'])){
         while ($row = mysqli_fetch_assoc($result)) {
           $mm += $row['mark'];
           $mq++;
-          $median = ($mm/$mq);
+          $median = round(($mm/$mq),2);
+          $as++;
         }
-        echo "Средний балл ".$lessons[$i].' '.$median;
+        if($median<4){
+          $response .= $lessons[$i].' '.$median;
+        }
       }
     } else {
       echo "Ошибка запроса";
     }
+  }
+  if($as > 0){
+    echo "$response";
   }
 }
 

@@ -78,10 +78,18 @@ if(isset($_COOKIE['SSSIDH'])){
         </ul>
       </div>
     </section>
-
+    <hr>
+      <div class="input-search-form" id='dform'>
+        <label for="first-date">Показ оценок с</label>
+        <input type="date" name="first-date" id='fd1'> по <input type="date" name="second-date" id='sd1'>
+        <button onclick='getGradesBt()'>Показать оценки за период</button>
+      </div>
     <div id='costil'>
 
     </div>
+
+
+
     <script src="js/index.js" charset="utf-8"></script>
     <script src="js/requests.js" charset="utf-8"></script>
     <script src="js/main.js" charset="utf-8"></script>

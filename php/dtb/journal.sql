@@ -2,10 +2,10 @@
 -- version 5.0.2
 -- https://www.phpmyadmin.net/
 --
--- Host: localhost
--- Generation Time: Nov 15, 2020 at 08:24 AM
--- Server version: 10.4.14-MariaDB
--- PHP Version: 7.4.10
+-- Хост: 127.0.0.1
+-- Время создания: Ноя 15 2020 г., 12:13
+-- Версия сервера: 10.4.14-MariaDB
+-- Версия PHP: 7.2.33
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -18,13 +18,43 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `journal`
+-- База данных: `journal`
 --
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `grades`
+-- Структура таблицы `evakuator`
+--
+
+CREATE TABLE `evakuator` (
+  `id` int(11) NOT NULL,
+  `student_id` int(11) NOT NULL,
+  `lesson_name` varchar(20) NOT NULL,
+  `first_quarter` int(1) DEFAULT NULL,
+  `second_quarter` int(1) DEFAULT NULL,
+  `third_quarter` int(1) DEFAULT NULL,
+  `fourth_quarter` int(1) DEFAULT NULL,
+  `fhy` int(1) DEFAULT NULL,
+  `shy` int(1) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Дамп данных таблицы `evakuator`
+--
+
+INSERT INTO `evakuator` (`id`, `student_id`, `lesson_name`, `first_quarter`, `second_quarter`, `third_quarter`, `fourth_quarter`, `fhy`, `shy`) VALUES
+(1, 1, 'Физика', 4, NULL, NULL, NULL, NULL, NULL),
+(2, 1, 'Биологие', 4, NULL, NULL, NULL, NULL, NULL),
+(3, 1, 'Информатика', 5, NULL, NULL, NULL, NULL, NULL),
+(4, 1, 'Математика', 5, NULL, NULL, NULL, NULL, NULL),
+(5, 1, 'История', 4, NULL, NULL, NULL, NULL, NULL),
+(6, 1, 'Физкультура', 4, NULL, NULL, NULL, NULL, NULL);
+
+-- --------------------------------------------------------
+
+--
+-- Структура таблицы `grades`
 --
 
 CREATE TABLE `grades` (
@@ -41,7 +71,7 @@ CREATE TABLE `grades` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `grades`
+-- Дамп данных таблицы `grades`
 --
 
 INSERT INTO `grades` (`id`, `GRADEGROUPFK`, `LITER`, `GRADENAME`, `GRADEMARK`, `LEARNINGORDER`, `STUDYDURATION`, `GRADEHEAD`, `EDUPERIODFK`, `ADDID`) VALUES
@@ -50,7 +80,7 @@ INSERT INTO `grades` (`id`, `GRADEGROUPFK`, `LITER`, `GRADENAME`, `GRADEMARK`, `
 -- --------------------------------------------------------
 
 --
--- Table structure for table `lessontimes`
+-- Структура таблицы `lessontimes`
 --
 
 CREATE TABLE `lessontimes` (
@@ -62,7 +92,7 @@ CREATE TABLE `lessontimes` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `lessontimes`
+-- Дамп данных таблицы `lessontimes`
 --
 
 INSERT INTO `lessontimes` (`lessonNumber`, `lessonTime`, `lessonDuration`, `lessonTimeShort`, `lessonShortDur`) VALUES
@@ -81,7 +111,7 @@ INSERT INTO `lessontimes` (`lessonNumber`, `lessonTime`, `lessonDuration`, `less
 -- --------------------------------------------------------
 
 --
--- Table structure for table `marksall`
+-- Структура таблицы `marksall`
 --
 
 CREATE TABLE `marksall` (
@@ -96,7 +126,7 @@ CREATE TABLE `marksall` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `marksall`
+-- Дамп данных таблицы `marksall`
 --
 
 INSERT INTO `marksall` (`UNUIQE_ID`, `date`, `lessonName`, `teacher`, `mark`, `comment`, `studid`, `lessonId`) VALUES
@@ -125,7 +155,7 @@ INSERT INTO `marksall` (`UNUIQE_ID`, `date`, `lessonName`, `teacher`, `mark`, `c
 -- --------------------------------------------------------
 
 --
--- Table structure for table `paraticipants`
+-- Структура таблицы `paraticipants`
 --
 
 CREATE TABLE `paraticipants` (
@@ -167,7 +197,7 @@ CREATE TABLE `paraticipants` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `paraticipants`
+-- Дамп данных таблицы `paraticipants`
 --
 
 INSERT INTO `paraticipants` (`classid`, `PARTICIPANTID`, `SURNAME`, `NAME`, `SECONDNAME`, `DOCUMENTTYPEFK`, `DOCUMENTSERIES`, `DOCUMENTNUMBER`, `SNILS`, `SEX`, `BIRTHDAY`, `EXPINFO`, `ROLEFK`, `RETIRED`, `APPID`, `COMMAND`, `PARTPARENTFK`, `PARTPARENT2FK`, `LEGAL_AGENT`, `BEGDATE`, `JOINTCODE`, `FCTGUID`, `EGECITIZENSHIPFK`, `D_LIMITEDPOTENTFK`, `ADDID`, `PARTICIPANT_INVALID`, `INVALID_EDU`, `ADRESS`, `GONEFLAG`, `CON_REG_ID`, `CON_FED_ID`, `CON_REG_ERR`, `MOBILE`, `DATA_DOC`, `REC_DOC`) VALUES
@@ -176,7 +206,7 @@ INSERT INTO `paraticipants` (`classid`, `PARTICIPANTID`, `SURNAME`, `NAME`, `SEC
 -- --------------------------------------------------------
 
 --
--- Table structure for table `parents`
+-- Структура таблицы `parents`
 --
 
 CREATE TABLE `parents` (
@@ -202,7 +232,7 @@ CREATE TABLE `parents` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `parents`
+-- Дамп данных таблицы `parents`
 --
 
 INSERT INTO `parents` (`PARTICIPANTID`, `SURNAME`, `NAME`, `SECONDNAME`, `DOCUMENTTYPEFK`, `DOCUMENTSERIES`, `DOCUMENTNUMBER`, `SNILS`, `SEX`, `BIRTHDAY`, `ROLEFK`, `APPID`, `AGREEMENT`, `EMAIL`, `PHONE`, `ADDID`, `WORKPLACE`, `WORKSTATE`, `MOBILE`) VALUES
@@ -211,7 +241,7 @@ INSERT INTO `parents` (`PARTICIPANTID`, `SURNAME`, `NAME`, `SECONDNAME`, `DOCUME
 -- --------------------------------------------------------
 
 --
--- Table structure for table `schedule_2020.11.16_1`
+-- Структура таблицы `schedule_2020.11.16_1`
 --
 
 CREATE TABLE `schedule_2020.11.16_1` (
@@ -230,40 +260,41 @@ CREATE TABLE `schedule_2020.11.16_1` (
   `ISCUSTOM` int(1) DEFAULT NULL,
   `ISREPLACE` varchar(10) DEFAULT NULL,
   `TEACHER` varchar(10) DEFAULT NULL,
-  `NEW_TEACHER` varchar(10) DEFAULT NULL
+  `NEW_TEACHER` varchar(10) DEFAULT NULL,
+  `url` varchar(300) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `schedule_2020.11.16_1`
+-- Дамп данных таблицы `schedule_2020.11.16_1`
 --
 
-INSERT INTO `schedule_2020.11.16_1` (`UNUIQE_ID`, `DATE_SCHEDULE`, `NUMBERFK`, `CABINETFK`, `lessonName`, `TOPIC`, `TPLFK`, `PERIODFK`, `HOMEWORK`, `GRADETYPEFK`, `LESSONTYPEFK`, `HIDDEN`, `ISCUSTOM`, `ISREPLACE`, `TEACHER`, `NEW_TEACHER`) VALUES
-(1, '2020-11-16', '1', '30', 'Информатика и ИКТ', 'Кибербезопасность в сети интерне', '2020-2021', '19', 'Составить список базовых правил ', NULL, 'Очный', 0, 1, '0', '1', '0'),
-(2, '2020-11-16', '2', '30', 'Физика', 'Движение', '2020-2021', '19', 'Подготовиться к тестированию по прошлой теме', NULL, 'Очный', 0, 1, '0', '3', '0'),
-(3, '2020-11-16', '3', '30', 'Физкультура', '', '2020-2021', '19', '', NULL, 'Очный', 0, 1, '0', '2', '0'),
-(4, '2020-11-16', '4', '30', 'Биология', 'Клетки и эукариоты', '2020-2021', '19', 'пф. 23 стр 32', NULL, 'Очный', 0, 1, '0', '4', '0'),
-(5, '2020-11-17', '1', '30', 'История', 'Методы истории', '2020-2021', '19', 'пф. 16 стр 45', NULL, 'Очный', 0, 1, '0', '5', '0'),
-(6, '2020-11-17', '2', '30', 'Физика', 'Ток и его законы', '2020-2021', '19', 'пф. 10 стр 23', NULL, 'Очный', 0, 1, '0', '3', '0'),
-(7, '2020-11-17', '3', '30', 'Биология', 'Грибы', '2020-2021', '19', 'пф. 10 стр 63', NULL, 'Очный', 0, 1, '0', '4', '0'),
-(8, '2020-11-18', '1', '30', 'Физкультура', '', '2020-2021', '19', '', NULL, 'Очный', 0, 1, '0', '2', '0'),
-(9, '2020-11-18', '2', '30', 'Математика', 'Исследование функции', '2020-2021', '19', 'пф. 14 стр 32', NULL, 'Очный', 0, 1, '0', '2', '0'),
-(10, '2020-11-18', '3', '30', 'История', 'История древнего Египта', '2020-2021', '19', '', NULL, 'Очный', 0, 1, '0', '5', '0'),
-(11, '2020-11-18', '4', '30', 'Физкультура', '', '2020-2021', '19', '', NULL, 'Очный', 0, 1, '0', '2', '0'),
-(12, '2020-11-19', '1', '30', 'История', 'История древней Греции', '2020-2021', '19', '', NULL, 'Очный', 0, 1, '0', '5', '0'),
-(13, '2020-11-19', '2', '30', 'Биология', 'Деление клеток', '2020-2021', '19', '', NULL, 'Очный', 0, 1, '0', '4', '0'),
-(14, '2020-11-19', '3', '30', 'Физкультура', '', '2020-2021', '19', '', NULL, 'Очный', 0, 1, '0', '2', '0'),
-(15, '2020-11-20', '1', '30', 'Физика', 'История древнего Египта', '2020-2021', '19', '', NULL, 'Очный', 0, 1, '0', '3', '0'),
-(16, '2020-11-20', '2', '30', 'Физкультура', '', '2020-2021', '19', '', NULL, 'Очный', 0, 1, '0', '2', '0'),
-(17, '2020-11-20', '3', '30', 'Математика', 'Решение логарифмов', '2020-2021', '19', '', NULL, 'Очный', 0, 1, '0', '1', '0'),
-(18, '2020-11-20', '4', '30', 'Информатика', 'Язык программирования python', '2020-2021', '19', '', NULL, 'Очный', 0, 1, '0', '1', '0'),
-(19, '2020-11-21', '1', '30', 'История', 'Первая мировая война', '2020-2021', '19', '', NULL, 'Очный', 0, 1, '0', '5', '0'),
-(20, '2020-11-21', '2', '30', 'Физика', 'Закон Ньютона', '2020-2021', '19', '', NULL, 'Очный', 0, 1, '0', '3', '0'),
-(21, '2020-11-21', '3', '30', 'Физкультура', '', '2020-2021', '19', '', NULL, 'Очный', 0, 1, '0', '2', '0');
+INSERT INTO `schedule_2020.11.16_1` (`UNUIQE_ID`, `DATE_SCHEDULE`, `NUMBERFK`, `CABINETFK`, `lessonName`, `TOPIC`, `TPLFK`, `PERIODFK`, `HOMEWORK`, `GRADETYPEFK`, `LESSONTYPEFK`, `HIDDEN`, `ISCUSTOM`, `ISREPLACE`, `TEACHER`, `NEW_TEACHER`, `url`) VALUES
+(1, '2020-11-16', '1', '30', 'Информатика и ИКТ', 'Кибербезопасность в сети интерне', '2020-2021', '19', 'Составить список базовых правил ', NULL, 'Очный', 0, 1, '0', '1', '0', NULL),
+(2, '2020-11-16', '2', '30', 'Физика', 'Движение', '2020-2021', '19', 'Подготовиться к тестированию по прошлой теме', NULL, 'Очный', 0, 1, '0', '3', '0', NULL),
+(3, '2020-11-16', '3', '30', 'Физкультура', '', '2020-2021', '19', '', NULL, 'Очный', 0, 1, '0', '2', '0', NULL),
+(4, '2020-11-16', '4', '30', 'Биология', 'Клетки и эукариоты', '2020-2021', '19', 'пф. 23 стр 32', NULL, 'Очный', 0, 1, '0', '4', '0', NULL),
+(5, '2020-11-17', '1', '30', 'История', 'Методы истории', '2020-2021', '19', 'пф. 16 стр 45', NULL, 'Очный', 0, 1, '0', '5', '0', 'https://zoom.us/ru-ru/meetings.html'),
+(6, '2020-11-17', '2', '30', 'Физика', 'Ток и его законы', '2020-2021', '19', 'пф. 10 стр 23', NULL, 'Очный', 0, 1, '0', '3', '0', NULL),
+(7, '2020-11-17', '3', '30', 'Биология', 'Грибы', '2020-2021', '19', 'пф. 10 стр 63', NULL, 'Очный', 0, 1, '0', '4', '0', NULL),
+(8, '2020-11-18', '1', '30', 'Физкультура', '', '2020-2021', '19', '', NULL, 'Очный', 0, 1, '0', '2', '0', NULL),
+(9, '2020-11-18', '2', '30', 'Математика', 'Исследование функции', '2020-2021', '19', 'пф. 14 стр 32', NULL, 'Очный', 0, 1, '0', '2', '0', NULL),
+(10, '2020-11-18', '3', '30', 'История', 'История древнего Египта', '2020-2021', '19', '', NULL, 'Очный', 0, 1, '0', '5', '0', NULL),
+(11, '2020-11-18', '4', '30', 'Физкультура', '', '2020-2021', '19', '', NULL, 'Очный', 0, 1, '0', '2', '0', NULL),
+(12, '2020-11-19', '1', '30', 'История', 'История древней Греции', '2020-2021', '19', '', NULL, 'Очный', 0, 1, '0', '5', '0', NULL),
+(13, '2020-11-19', '2', '30', 'Биология', 'Деление клеток', '2020-2021', '19', '', NULL, 'Очный', 0, 1, '0', '4', '0', NULL),
+(14, '2020-11-19', '3', '30', 'Физкультура', '', '2020-2021', '19', '', NULL, 'Очный', 0, 1, '0', '2', '0', NULL),
+(15, '2020-11-20', '1', '30', 'Физика', 'История древнего Египта', '2020-2021', '19', '', NULL, 'Очный', 0, 1, '0', '3', '0', NULL),
+(16, '2020-11-20', '2', '30', 'Физкультура', '', '2020-2021', '19', '', NULL, 'Очный', 0, 1, '0', '2', '0', NULL),
+(17, '2020-11-20', '3', '30', 'Математика', 'Решение логарифмов', '2020-2021', '19', '', NULL, 'Очный', 0, 1, '0', '1', '0', NULL),
+(18, '2020-11-20', '4', '30', 'Информатика', 'Язык программирования python', '2020-2021', '19', '', NULL, 'Очный', 0, 1, '0', '1', '0', NULL),
+(19, '2020-11-21', '1', '30', 'История', 'Первая мировая война', '2020-2021', '19', '', NULL, 'Очный', 0, 1, '0', '5', '0', NULL),
+(20, '2020-11-21', '2', '30', 'Физика', 'Закон Ньютона', '2020-2021', '19', '', NULL, 'Очный', 0, 1, '0', '3', '0', NULL),
+(21, '2020-11-21', '3', '30', 'Физкультура', '', '2020-2021', '19', '', NULL, 'Очный', 0, 1, '0', '2', '0', NULL);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `schools`
+-- Структура таблицы `schools`
 --
 
 CREATE TABLE `schools` (
@@ -338,7 +369,7 @@ CREATE TABLE `schools` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `schools`
+-- Дамп данных таблицы `schools`
 --
 
 INSERT INTO `schools` (`SCHOOLID`, `SCHOOLNUM`, `SCHOOLNAME`, `SHORTNAME`, `SCHOOLTYPEFK`, `SCHOOLKINDFK`, `GOVERNMENTFK`, `UR_POSTINDEX`, `UR_ADDRESS`, `NASPUNKT`, `FAKT_POSTINDEX`, `FAKT_ADDRESS`, `SCPOSITION`, `FIO`, `PHONECODE`, `PHONES`, `FAXS`, `MAILS`, `ALLPEOPLE`, `PEOPLE11`, `PEOPLE10`, `TITLESP`, `FIOSP`, `MAILSP`, `PHONESP`, `URL`, `LICNUMBER`, `LICBEGINDATE`, `LICREGNUMBER`, `LICENDDATE`, `SVIDAKNUMBER`, `SVIDAKREGNUMBER`, `SVIDAKBEGINDATE`, `SVIDAKENDDATE`, `DELETEDATE`, `DELETEREASON`, `STATIONCODE`, `PCENTERFK`, `FCTGUID`, `INTOM`, `OLDEGEPPLS`, `ISVIRT`, `HASVIDEO`, `TOP100`, `ISFILIAL`, `PARENTFK`, `GOSREGNUM`, `INN`, `ISCHECKED`, `NY_ACCEPT_EXCEPTION`, `FAKT_STREET`, `FAKT_HOUSE`, `FAKT_HOUSING`, `FAKT_ADDRESSCORRECT`, `APPID`, `AREAFK`, `LATITUDE`, `LONGITUDE`, `TOWNTYPEFK`, `REGIONFK`, `MINISTRYFK`, `SYS_XXX`, `BRANCH_TYPE`, `SCHOOLPROPERTYFK`, `PKPHONE`, `TERMLESS`, `ADDID`, `ESIA_OID`) VALUES
@@ -347,7 +378,7 @@ INSERT INTO `schools` (`SCHOOLID`, `SCHOOLNUM`, `SCHOOLNAME`, `SHORTNAME`, `SCHO
 -- --------------------------------------------------------
 
 --
--- Table structure for table `specialities`
+-- Структура таблицы `specialities`
 --
 
 CREATE TABLE `specialities` (
@@ -364,7 +395,7 @@ CREATE TABLE `specialities` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `specialities`
+-- Дамп данных таблицы `specialities`
 --
 
 INSERT INTO `specialities` (`SPECIALITIESID`, `VAKCODE`, `SPECIALITIESNAME`, `D`, `E`, `F`, `G`, `H`, `I`, `J`) VALUES
@@ -397,7 +428,7 @@ INSERT INTO `specialities` (`SPECIALITIESID`, `VAKCODE`, `SPECIALITIESNAME`, `D`
 -- --------------------------------------------------------
 
 --
--- Table structure for table `teachers`
+-- Структура таблицы `teachers`
 --
 
 CREATE TABLE `teachers` (
@@ -439,7 +470,7 @@ CREATE TABLE `teachers` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `teachers`
+-- Дамп данных таблицы `teachers`
 --
 
 INSERT INTO `teachers` (`UI`, `SURNAME`, `NAME`, `SECONDNAME`, `SEX`, `BIRTHDAY`, `BIRTHPLACE`, `DOCUMENTTYPEFK`, `DOCUMENTSERIES`, `DOCUMENTNUMBER`, `PEDSTAG`, `SENIORITY`, `NAGR`, `EDULEVELFK`, `DIPSPECIALITY`, `CATEGORYFK`, `DEGREEFK`, `SPECIALITYFK`, `ACSTATUSFK`, `DATELASTATT`, `NSOTFLAG`, `NSOTCATEGORY`, `PDATE`, `PSUBJECTCODE`, `IKTPOVDATE`, `NAGRUZ`, `UCHCOUNT`, `AVGCONT`, `IKTPOVHOURS2`, `SNILS`, `ROLEFK`, `DISMISSED`, `COMMAND`, `ADDID`, `MOBILE`) VALUES
@@ -452,7 +483,7 @@ INSERT INTO `teachers` (`UI`, `SURNAME`, `NAME`, `SECONDNAME`, `SEX`, `BIRTHDAY`
 -- --------------------------------------------------------
 
 --
--- Table structure for table `users`
+-- Структура таблицы `users`
 --
 
 CREATE TABLE `users` (
@@ -464,109 +495,132 @@ CREATE TABLE `users` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `users`
+-- Дамп данных таблицы `users`
 --
 
 INSERT INTO `users` (`userId`, `uid`, `pwd`, `userOpGroup`, `who`) VALUES
 (1, 'PetrovSergeyLK09$', 'zsefb!@#$', 0, 'student');
 
 --
--- Indexes for dumped tables
+-- Индексы сохранённых таблиц
 --
 
 --
--- Indexes for table `grades`
+-- Индексы таблицы `evakuator`
+--
+ALTER TABLE `evakuator`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `fk` (`student_id`);
+
+--
+-- Индексы таблицы `grades`
 --
 ALTER TABLE `grades`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `lessontimes`
+-- Индексы таблицы `lessontimes`
 --
 ALTER TABLE `lessontimes`
   ADD PRIMARY KEY (`lessonNumber`);
 
 --
--- Indexes for table `marksall`
+-- Индексы таблицы `marksall`
 --
 ALTER TABLE `marksall`
   ADD PRIMARY KEY (`UNUIQE_ID`);
 
 --
--- Indexes for table `paraticipants`
+-- Индексы таблицы `paraticipants`
 --
 ALTER TABLE `paraticipants`
   ADD PRIMARY KEY (`PARTICIPANTID`);
 
 --
--- Indexes for table `parents`
+-- Индексы таблицы `parents`
 --
 ALTER TABLE `parents`
   ADD PRIMARY KEY (`PARTICIPANTID`);
 
 --
--- Indexes for table `schedule_2020.11.16_1`
+-- Индексы таблицы `schedule_2020.11.16_1`
 --
 ALTER TABLE `schedule_2020.11.16_1`
   ADD PRIMARY KEY (`UNUIQE_ID`);
 
 --
--- Indexes for table `teachers`
+-- Индексы таблицы `teachers`
 --
 ALTER TABLE `teachers`
   ADD PRIMARY KEY (`UI`);
 
 --
--- Indexes for table `users`
+-- Индексы таблицы `users`
 --
 ALTER TABLE `users`
   ADD PRIMARY KEY (`userId`);
 
 --
--- AUTO_INCREMENT for dumped tables
+-- AUTO_INCREMENT для сохранённых таблиц
 --
 
 --
--- AUTO_INCREMENT for table `grades`
+-- AUTO_INCREMENT для таблицы `evakuator`
+--
+ALTER TABLE `evakuator`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+
+--
+-- AUTO_INCREMENT для таблицы `grades`
 --
 ALTER TABLE `grades`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
 
 --
--- AUTO_INCREMENT for table `marksall`
+-- AUTO_INCREMENT для таблицы `marksall`
 --
 ALTER TABLE `marksall`
   MODIFY `UNUIQE_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
 
 --
--- AUTO_INCREMENT for table `paraticipants`
+-- AUTO_INCREMENT для таблицы `paraticipants`
 --
 ALTER TABLE `paraticipants`
   MODIFY `PARTICIPANTID` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=649;
 
 --
--- AUTO_INCREMENT for table `parents`
+-- AUTO_INCREMENT для таблицы `parents`
 --
 ALTER TABLE `parents`
   MODIFY `PARTICIPANTID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
--- AUTO_INCREMENT for table `schedule_2020.11.16_1`
+-- AUTO_INCREMENT для таблицы `schedule_2020.11.16_1`
 --
 ALTER TABLE `schedule_2020.11.16_1`
   MODIFY `UNUIQE_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
 
 --
--- AUTO_INCREMENT for table `teachers`
+-- AUTO_INCREMENT для таблицы `teachers`
 --
 ALTER TABLE `teachers`
   MODIFY `UI` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=44;
 
 --
--- AUTO_INCREMENT for table `users`
+-- AUTO_INCREMENT для таблицы `users`
 --
 ALTER TABLE `users`
   MODIFY `userId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- Ограничения внешнего ключа сохраненных таблиц
+--
+
+--
+-- Ограничения внешнего ключа таблицы `evakuator`
+--
+ALTER TABLE `evakuator`
+  ADD CONSTRAINT `fk` FOREIGN KEY (`student_id`) REFERENCES `paraticipants` (`PARTICIPANTID`) ON UPDATE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
