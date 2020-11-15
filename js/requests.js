@@ -125,7 +125,7 @@ function getGradesBtParent(){
         document.getElementById('costil').innerHTML = this.responseText;
     }
   };
-  xhttp.open("POST", "php/fun)ctions/get_grades_table.php", true);
+  xhttp.open("POST", "php/functions/get_grades_table.php", true);
   xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
   xhttp.send("date1="+date1+"&date2="+date2);
   getGraphDataParent(true)
@@ -162,14 +162,14 @@ function getGraphDataParent(date){
       var el3 = document.getElementById("circle3");
       el3.setAttribute("style", "stroke-dasharray: " + circle3 + " 100; stroke-dashoffset: " + -(circle1 + circle2) +";");
       occipuiedpercent+=circle3;
-      document.getElementById('3').append(': ' + circle3 + '%')
-      document.getElementById('chart3').append(': ' + graphData[2].value + ' Шт')
+      document.getElementById('3').innerText = '3: ' + circle3 + '%'
+      document.getElementById('chart3').innerText = '3: ' + graphData[2].value + ' Шт'
 
       //
       el4Value = graphData[3].value
       circle4 = Number((el4Value/el*100).toFixed(0))
-      document.getElementById('2').append(': ' + circle4 + '%')
-      document.getElementById('chart2').append(': ' + graphData[3].value + ' Шт')
+      document.getElementById('2').innerText = '2: ' + circle4 + '%'
+      document.getElementById('chart2').innerText = '2: ' + graphData[3].value + ' Шт'
       var el4 = document.getElementById("circle4");
       el4.setAttribute("style", "stroke-dasharray: " + circle4 + " 100; stroke-dashoffset: "+ -(circle1 + circle2 + circle3) +";");
     }
