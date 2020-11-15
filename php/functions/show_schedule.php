@@ -26,6 +26,7 @@ include_once '../dtb/dtb.php';
                 if(mysqli_num_rows($checkmark) > 0){
                   $markRow = mysqli_fetch_assoc($checkmark);
                   $markstat = " <p style='padding-left: 3px;'>".$markRow['mark']."</p>";
+		    
                   if(!($markRow['comment']=='')){
                     $markcom = '<p> Комментарий к оценке: '.$markRow['comment']."</p>";
                   }
