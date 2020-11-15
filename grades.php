@@ -42,10 +42,14 @@ if(isset($_COOKIE['SSSIDH'])){
             </h2>
             <div class="button-icon" onclick='ShowMenu()'></div>
               <ul class='menu'>
-                <li> <a href="student.php"> Главная страница </a> </li>
-                <li> <a href="#"> Общение с преподавателями </a> </li>
+                <li> <a href="grades.php"> Смотреть свои оценки </a> </li>
+                <li> <a href="#"> Смотреть </a> </li>
+                <li> <a href="communication.php"> Общение с преподавателями </a> </li>
+                <li> <a href="#"> Объявления школы </a> </li>
                 <li> <a href="php/functions/logout.php">Выйти из аккаунта</a>  </li>
-                <?php echo '<li> Вы вошли как: '.$_COOKIE['SSSIDH'].'</li>'; ?>
+                <br>
+                <li> <span id='current-lesson'> </span> </li>
+                <?php echo '<li class="entrance"> Вы вошли как: '.$_COOKIE['SSSIDH'].'</li>'; ?>
               </ul>
           </div>
           </nav>
@@ -53,27 +57,26 @@ if(isset($_COOKIE['SSSIDH'])){
       </div>
     </nav>
     <section class="marks-wrap">
-    <div class="canvas">
-      <!-- <div class="legend">
-        <p class="title">Что мешает веремония закрытия Хакатона 2.0. Подведение итогов и объявление победителей по двум трекамо время работы дома?</p>
-        <ul class="caption-list">
-          <li class="caption-item">еда</li>
-          <li class="caption-item">соседи</li>
-          <li class="caption-item">отсутствие рабочего места</li>
-          <li class="caption-item">мало двигаюсь</li>
-          <li class="caption-item">отсутствие чёткого графика работы</li>
-          <li class="caption-item">неудобная коммуникация с коллегами</li>
-          <li class="caption-item">много ленюсь</li>
+      <div>
+        <svg class="chart" width="300" height="300" viewBox="0 0 40 40">
+          <circle id="circle1" class="unit" r="15.9" cx="50%" cy="50%"></circle>
+          <circle id="circle2" class="unit" r="15.9" cx="50%" cy="50%"></circle>
+          <circle id="circle3" class="unit" r="15.9" cx="50%" cy="50%"></circle>
+          <circle id="circle4" class="unit" r="15.9" cx="50%" cy="50%"></circle>
+          <ul class="caption-list">
+            <li id="5" class="caption-item">5</li>
+            <li id="4" class="caption-item">4</li>
+            <li id="3" class="caption-item">3</li>
+            <li id="2" class="caption-item">2</li>
+          </ul>
+        </svg>
+        <ul class="list">
+          <li id="chart5" class="caption-item">5</li>
+          <li id="chart4" class="caption-item">4</li>
+          <li id="chart3" class="caption-item">3</li>
+          <li id="chart2" class="caption-item">2</li>
         </ul>
-      </div> -->
-
-      <svg class="chart" width="300" height="300" viewBox="0 0 50 50">
-        <circle id="circle1" class="unit" r="15.9" cx="50%" cy="50%"></circle>
-        <circle id="circle2" class="unit" r="15.9" cx="50%" cy="50%"></circle>
-        <circle id="circle3" class="unit" r="15.9" cx="50%" cy="50%"></circle>
-        <circle id="circle4" class="unit" r="15.9" cx="50%" cy="50%"></circle>
-      </svg>
-    </div>
+      </div>
     </section>
     <hr>
       <div class="input-search-form" id='dform'>

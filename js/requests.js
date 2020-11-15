@@ -37,19 +37,29 @@ function getGraphData(selection){
     if (this.readyState == 4 && this.status == 200) {
       let occipuiedpercent = 0;
       graphData = JSON.parse(this.responseText);
+      console.log(graphData);
       el = (Number(graphData[0].value) + Number(graphData[1].value) + Number(graphData[2].value) + Number(graphData[3].value))
+      console.log(el+' 12');
       el1Value = graphData[0].value
       circle1 = Number((el1Value/el*100).toFixed(0))
       var el1 = document.getElementById("circle1");
       el1.setAttribute("style", "stroke-dasharray: " +  circle1 + " 100; stroke-dashoffset: 0;");
       occipuiedpercent+=circle1
+      document.getElementById('5').append(': ' + circle1 + '%');
+      document.getElementById('chart5').append(': ' + graphData[0].value + ' Шт')
       //
 
+      console.log(occipuiedpercent);
+      console.log((360/100)*occipuiedpercent);
       el2Value = graphData[1].value
       circle2 = Number((el2Value/el*100).toFixed(0))
       var el2 = document.getElementById("circle2");
       el2.setAttribute("style", "stroke-dasharray: " + circle2 + " 100; stroke-dashoffset:  " + -(circle1) + " ;");
       occipuiedpercent+=circle2;
+      console.log(occipuiedpercent);
+      console.log((360/100)*occipuiedpercent);
+      document.getElementById('4').append(': ' + circle2 + '%')
+      document.getElementById('chart4').append(': ' + graphData[1].value + ' Шт')
       //
 
       el3Value = graphData[2].value
@@ -57,10 +67,16 @@ function getGraphData(selection){
       var el3 = document.getElementById("circle3");
       el3.setAttribute("style", "stroke-dasharray: " + circle3 + " 100; stroke-dashoffset: " + -(circle1 + circle2) +";");
       occipuiedpercent+=circle3;
+      console.log(occipuiedpercent);
+      console.log((360/100)*occipuiedpercent);
+      document.getElementById('3').append(': ' + circle3 + '%')
+      document.getElementById('chart3').append(': ' + graphData[2].value + ' Шт')
 
       //
       el4Value = graphData[3].value
       circle4 = Number((el4Value/el*100).toFixed(0))
+      document.getElementById('2').append(': ' + circle4 + '%')
+      document.getElementById('chart2').append(': ' + graphData[3].value + ' Шт')
       var el4 = document.getElementById("circle4");
       el4.setAttribute("style", "stroke-dasharray: " + circle4 + " 100; stroke-dashoffset: "+ -(circle1 + circle2 + circle3) +";");
     }
@@ -73,7 +89,7 @@ function showLowPerformace(){
   var xhttp = new XMLHttpRequest();
   xhttp.onreadystatechange = function() {
     if (this.readyState == 4 && this.status == 200) {
-      let marquee = document.createElement('p');
+      let marquee = document.createElement('marquee');
       marquee.innerHTML = this.responseText;
       document.getElementById('nav1').append(marquee);
     }
